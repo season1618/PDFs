@@ -1,0 +1,170 @@
+\documentclass{jsarticle}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{ascmac}
+
+\newtheorem*{lemma}{補題}
+\newtheorem*{euler}{オイラーの定理(微分幾何)}
+\newtheorem*{surface}{曲面論の基本定理}
+\newtheorem*{geodesic}{定理}
+\newtheorem*{gaussbonnet}{Gauss-Bonnetの定理}
+
+\begin{document}
+\title{微分幾何学}
+\author{高校n年 season07001674}
+\date{2019/09/22}
+\maketitle
+\tableofcontents
+
+\newcommand{\repart}[1]{\part{#1}\setcounter{section}{0}}
+\newcommand{\lr}[1]{\left(#1 \right)}
+\newcommand{\mlr}[1]{\left\{#1 \right\}}
+\newcommand{\llr}[1]{\left[#1 \right]}
+\newcommand{\rec}[1]{\frac{1}{#1}}
+\newcommand{\di}[2][]{\frac{d #1}{d #2}}
+\newcommand{\dd}[2][]{\frac{d^2 #1}{d #2^2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ppd}[3]{\frac{\partial^2 #1}{\partial #2\partial #3}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\we}{\wedge}
+\newcommand{\gr}{\theta}
+\newcommand{\om}{\omega}
+\newcommand{\pa}{\partial}
+\newcommand{\na}{\nabla}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\chr}[2]{\left\{#1 \atop #2\right\}}
+
+
+\repart{数学的準備}
+    \section{微分形式}
+        $f_{i_1,\ldots,i_k}$を$x=(x_1,\ldots,x_n)$の関数として、
+            \[\xi = \sum f_{i_1,\ldots,i_k}(x)dx_{i_1}
+            \we\cdots\we dx_{i_k}\]
+        をk次微分形式と呼ぶ。また、関数を0次微分形式とする。$\we$は外積またはウェッジ
+        積と呼ばれるもので、次のような性質を満たす。
+        \begin{gather*}
+            dx_i\we dx_j = -dx_j\we dx_i \tag{交代性}\\
+            dx_i\we dx_i = 0\\
+            (f_1dx_1\we\cdots\we dx_k)\we(f_2dy_1\we\cdots\we dy_l)\\
+            = f_1f_2dx_1\we\cdots\we dx_k\we dy_1\we\cdots\we dy_l\\
+        \end{gather*}
+        微分形式同士の積には分配法則が成り立つ。また、
+        $\xi = fdx_1\we\cdots\we dx_k$に対し、
+            \[\int \xi = \int fdx_1\cdots dx_k\]
+        で定義する。\\
+        なぜこのようなことを考えるかというと、基本的には複素数や四元数などと同じである。
+        線形独立な要素を一つの式にまとめて表すことで、計算や表記が簡単になる。また、
+        外積が積の順番によって符号を変えるのは、面の表と裏が区別可能であることから来
+        ている。外積はクロス積の拡張であり、面の法線ベクトルは二つある。それらを同一視
+        しないのはむしろ自然なことである。\\
+
+
+    \section{外微分}
+        外微分とは関数の全微分の概念を高次の微分形式に拡張したものである。まず、
+        関数$f$の外微分$df$を定義する。
+            \[df = \sum \pd[f]{x_i}dx_i\]
+        そしてk次微分形式$\xi = fdx_1\we\cdots\we dx_k$の外微分は、
+        \begin{eqnarray*}
+            d\xi &=& df\we dx_1\we\cdots\we dx_k\\
+            &=& \sum_i \pd[f]{x_i}dx_i\we dx_1\we\cdots\we dx_k\\
+        \end{eqnarray*}
+        多様体$M$上の微分形式$\omega$に対し、
+        \begin{align*}
+            d(d\omega) = 0\\
+            \int_M d\omega = \int_{\partial M} \omega \tag{ストークスの定理}
+        \end{align*}
+        が成り立つ。
+        \paragraph{ベクトル解析}
+            微分形式を使うとベクトル解析の記号記号を完結に書くことができる。スカラー
+            場を$f$、ベクトル場を$F = (F_x,F_y,F_z)$とすると、
+            \begin{eqnarray*}
+                {\rm grad}f &=& df\\
+                {\rm rot}F &=& d(F_xdx+F_ydy+F_zdz)\\
+                {\rm div}F &=& d(F_xdy\we dz+F_ydz\we dx+F_zdx\we dy)
+            \end{eqnarray*}
+            となる。公式${\rm rot\ grad}=0,{\rm div\ rot}=0$はどちらも$d^2=0$
+            に対応する。\\
+            これをマクスウェル方程式
+            \begin{gather*}
+                {\rm div}E = \frac{\rho}{\epsilon_0}\\
+                {\rm div}B = 0\\
+                {\rm rot}E+\pd[B]{t} = 0\\
+                {\rm rot}B-\rec{c^2}\pd[E]{t} = \mu_0 i
+            \end{gather*}
+            に応用する。$dw = cdt$であり、
+            \begin{eqnarray*}
+                F = &-&E_xdt\we dx-E_ydt\we dy-E_zdt\we dz\\
+                    & &+B_xdy\we dz+B_ydz\we dx+B_zdx\we dy\\
+                J = & &\frac{\rho}{c\epsilon_0}dx\we dy\we dz\\
+                    &-&c\mu_0(i_xdt\we)
+            \end{eqnarray*}
+            とすれば、マクスウェル方程式は
+            \begin{eqnarray*}
+                dF = 0\\
+                d*F = 0\\
+            \end{eqnarray*}
+            となる。
+        \paragraph{ポアンカレの補題}
+            $\mathcal{R}^N$上の微分形式$\omega$が与えられたとき、$d\omega = 0$
+            であることは、$\omega = d\alpha$なる$\alpha$が存在することと同値である。
+
+
+    \section{テンソル解析}
+        \subsection{反変ベクトルと共変ベクトル}
+            ベクトル場$a^i$を座標変換したとき、
+            \begin{eqnarray*}
+                a'^i = \sum_j \pd[x'^i]{x^j}a^j\\
+                b'_i = \sum_j \pd[x^j]{x'^i}b_j
+            \end{eqnarray*}
+            という変換を受けるものをそれぞれ反変ベクトル、共変ベクトルという。例えば座
+            標は
+                \[x'^i = \sum_j \pd[x'^i]{x^j}x^j\]
+            なので反変ベクトルである。また微分演算子は、
+                \[\pd{x'^i} = \sum_j \pd[x^j]{x'^i}\pd{x^j}\]
+            となるので共変ベクトルである。ここで反変ベクトルは添え字を右上に、共変ベク
+            トルは右下に書くことにする。また$a^iとb_i$の内積をとると、
+            \begin{align*}
+                \sum_i a'^ib'_i &= \lr{\sum_j \pd[x'^i]{x^j}a^j}
+                \lr{\sum_k \pd[x^k]{x'^i}b_k}\\
+                &= \sum_i a^ib_i
+            \end{align*}
+            となる。つまり反変ベクトルと共変ベクトルで内積をとったものは座標変換によって
+            変わらないスカラーになる。このような組み合わせで内積をとったものは特に縮約と
+            呼ぶ。
+        \subsection{テンソル}
+            二つの反変ベクトル$a^i,b^i$の積は、
+            \begin{align*}
+                a'^ib'^j &= \lr{\sum_k \pd[x'^i]{x^k}a^k}
+                \lr{\sum_l \pd[x'^i]{x^l}b^l}\\
+                &= \sum_{k,l} \pd[x'^i]{x^k}\pd[x'^i]{x^l}a^kb^l
+            \end{align*}
+            のような変換を受ける。逆にこのような変換を受けるものは二つの反変ベクトルの積
+            で表せるだろう。これを二階の反変テンソルという。一般に次のような座標変換を受
+            けるものをそれぞれ反変テンソル、共変テンソルという。
+            \begin{eqnarray*}
+                T'^{ij} = \sum_{k,l}\pd[x'^i]{x^k}\pd[x'^j]{x^l}T^{kl}\\
+                T'_{ij} = \sum_{k,l}\pd[x^k]{x'^i}\pd[x^l]{x'^j}T_{kl}
+            \end{eqnarray*}
+            高階のテンソル場の場合も同様である。また
+                \[T'^i_j = \sum_{k,l}\pd[x'^i]{x^k}\pd[x^l]{x'^j}T^k_l\]
+            のような変換を受けるものを混合テンソルと呼ぶ。テンソルとは複数の添え字の組に対
+            して値が一つ決まっているようなものであり、それに加えて以上のような座標変換を受け
+            るものである。添え字の数をそのテンソルの階数と呼ぶ。例えばスカラー量は0階、ベクト
+            ルは1階、行列は2階のテンソルである。また空間の各点にテンソルが定義されているも
+            のをテンソル場という。\\
+        
+            二つのテンソル場があったとき、それらの成分ごとの積を、上付き添え字と下付き添え字
+            が共通するものについて和をとったものは、その添え字が相殺される。これをテンソルの縮
+            約という。例えば、
+            \begin{gather*}
+                \sum_{i,j} A^{ij}B_{ij} = C\text{(スカラー)}\\
+                \sum_m A^{im}_jB^k_{lm} = C^{ik}_{jl}\\
+                \sum_{k,l} A^{ik}_lB^{jl}_k = C^{ij}
+            \end{gather*}
+            などである。ここで同じ項で添え字が重なる場合は、その添え字について和をとる、つまり
+            縮約をとることにする。これをアインシュタインの縮約記法という。先程の反変変換、共変
+            変換の式は、
+            \begin{eqnarray*}
+                T'^{ij} = \pd[x'^i]{x^k}\pd[x'^j]{x^l}T^{kl}\\
+                T'_{ij} = \pd[x^k]{x'^i}\pd[x^l]{x'^j}T_{kl}
+            \end{eqnarray*}
+            と簡潔に書ける。
