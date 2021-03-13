@@ -1,0 +1,75 @@
+\repart{電磁ポテンシャル}
+    \section{電磁ポテンシャル}
+        スカラーポテンシャル$\phi$とベクトルポテンシャル$A$のことを電磁ポテンシャルと呼ぶ。この二つを使って電場と磁場を
+        \begin{align*}
+            E &= -\rot \phi - \pd[A]{t}\\
+            B &= \rot A
+        \end{align*}
+        と表せば、
+        \begin{align*}
+            \rot E + \pd[B]{t}
+            &= \rot E + \pd[(\rot A)]{t}\\
+            &= \rot \lr{E + \pd[A]{t}}\\
+            &= -\rot\grad\phi\\
+            &= 0
+        \end{align*}
+            \[\dive B = \dive\rot A = 0\]
+        となって、ファラデーの法則と磁束保存の法則は自動的に満たされることになる。
+    \section{ゲージ変換}
+        ところで電場と磁場が与えられたとき、それを満たす電磁ポテンシャルは一意には決まらない。ある程度の自由度がある。微分可能な任意の関数$\chi$を導入して、
+        \begin{align*}
+            \phi \rightarrow \phi - \pd[\chi]{t}\\
+            A \rightarrow A + \grad\chi
+        \end{align*}
+        としても電磁場の形は変わらない。この変換をゲージ変換という。
+    \section{ローレンツゲージにおけるマクスウェル方程式}
+        残ったマクスウェル方程式は、
+        \begin{align*}
+            \rot E = \frac{\rho}{\epsilon_0}\\
+            \rot B - \mu_0\epsilon_0\pd[E]{t} = \mu_0 i
+        \end{align*}
+        である。これらを電磁ポテンシャルで書き換えてやると次のような形になる。
+        \begin{align*}
+            \Delta \phi+\dive \pd[A]{t}
+            = -\frac{\rho}{\epsilon_0}\\
+            \lr{\Delta-\epsilon_0\mu_0\pd[^2]{t^2}}A
+            -\grad\lr{\dive A+\epsilon_0\mu_0\pd[\phi]{t}}
+            = -\mu_0 i
+        \end{align*}
+        ここで、
+            \[\dive A + \epsilon_0\mu_0\pd[\phi]{t} = 0(ローレンツ条件)\]
+        が成り立っているとすると、
+        \begin{align*}
+            \lr{\Delta-\epsilon_0\mu_0\pd[^2]{t^2}}\phi
+            &= \frac{\rho}{\epsilon_0}\\
+            \lr{\Delta-\epsilon_0\mu_0\pd[^2]{t^2}}A
+            &= -\mu_0 i
+        \end{align*}
+        となる。与えられた電磁場を満たす電磁ポテンシャル$\phi,A$を適当に選ぶ。そしてゲージ変換によってローレンツ条件を満たすような$\chi$は次の微分方程式を満たす。
+            \[\lr{\Delta - \epsilon_0\mu_0\pd[^2]{t^2}}\chi
+            = -\dive A + \epsilon_0\mu_0\pd[\phi]{t}\]
+        この方程式の解は必ず存在する。つまりローレンツ条件は与えられた電磁場に対する電磁ポテンシャルを一意に決定する。以下をローレンツゲージにおけるマクスウェル方程式と呼ぶ。
+        \begin{align*}
+            \lr{\Delta-\epsilon_0\mu_0\pd[^2]{t^2}}\phi
+            &= \frac{\rho}{\epsilon_0}\\
+            \lr{\Delta-\epsilon_0\mu_0\pd[^2]{t^2}}A
+            &= -\mu_0 i\\
+            \dive A + \epsilon_0\mu_0\pd[\phi]{t} = 0
+        \end{align*}
+    \section{荷電粒子のラグランジアン}
+        ローレンツ力を電磁ポテンシャルを使って表すと、
+            \[F = q(E + v\times B) = q\{-\nabla\phi - \pd[A]{t} + v\times (\nabla \times A)\}\]
+        である。これをオイラー・ラグランジュ方程式に合うように変形していく。
+        \begin{align*}
+            \nabla(v\cdot A) &= (v\cdot \nabla)A + v\times (\nabla \times A)\\
+            \di[A]{t} &= \pd[A]{t} + (v\cdot \nabla)A\\
+        \end{align*}
+        より、
+        \begin{align*}
+            F &= -q\mlr{\nabla(\phi-v\cdot A) + \di[A]{t}}\\
+            F_i &= q\mlr{\di{t}\pd[(\phi - v\cdot A)]{v_i} - \pd[(\phi - v\cdot A)]{x_i}}\\
+        \end{align*}
+        したがって、荷電粒子のラグランジアンは、
+            \[L = \rec{2}mv^2 - q(\phi - v\cdot A)\]
+        である。
+    \section{電磁場のラグランジアン}
