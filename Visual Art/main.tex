@@ -1,0 +1,33 @@
+\documentclass{jsarticle}
+\usepackage{amssymb,amsmath}
+\usepackage{mathrsfs,ascmac}
+\begin{document}
+\title{視覚芸術とメディアの科学}
+\author{高校n年　season07001674}
+\date{2020/05/19}
+\maketitle
+%\tableofcontents
+\newcommand{\repart}[1]{\part{#1}\setcounter{section}{0}}
+\newcommand{\lr}[1]{\left(#1 \right)}
+\newcommand{\mlr}[1]{\left\{#1 \right\}}
+\newcommand{\llr}[1]{\left[#1 \right]}
+\newcommand{\rec}[1]{\frac{1}{#1}}
+\newcommand{\de}[2][]{\frac{d #1}{d #2}}
+\newcommand{\dd}[2][]{\frac{d^2 #1}{d #2^2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ppd}[3]{\frac{\partial^2 #1}{\partial #2\partial #3}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\co}[1][]{\cos^{#1}\theta}
+\newcommand{\si}[1][]{\sin^{#1}\theta}
+\newcommand{\grad}{\mathrm{grad}}
+\newcommand{\dive}{\mathrm{div}}
+\newcommand{\rot}{\mathrm{rot}}
+\newcommand{\pa}{\partial}
+\newcommand{\na}{\nabla}
+
+\input part1.tex % 視覚系と光学系
+\input part2.tex % 色彩学
+\input part3.tex % メディア
+\input part4.tex % 光学現象
+
+\end{document}
