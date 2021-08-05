@@ -1,0 +1,40 @@
+\documentclass{jsarticle}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{ascmac}
+
+\newcommand{\repart}[1]{\part{#1}\setcounter{section}{0}}
+\newcommand{\lr}[1]{\left(#1 \right)}
+\newcommand{\mlr}[1]{\left\{#1 \right\}}
+\newcommand{\llr}[1]{\left[#1 \right]}
+\newcommand{\rec}[1]{\frac{1}{#1}}
+\newcommand{\d}{\mathrm{d}}
+\newcommand{\de}[2][]{\frac{\d #1}{\d #2}}
+\newcommand{\dd}[2][]{\frac{\d^2 #1}{\d #2^2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ppd}[3]{\frac{\partial^2 #1}{\partial #2\partial #3}}
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+
+\title{天体力学}
+\author{season07001674}
+\date{\today (初版 2021/09/22)}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\input section1.tex
+\input section2.tex
+\input section3.tex
+\input section4.tex
+\input section5.tex
+
+
+%\begin{thebibliography}
+%	\item 和田純夫『プリンキピアを読む』
+%	\item 永田一清『基礎力学(ライブラリ工学基礎物理学1)』
+%	\item 木下宙『天体と軌道の力学』
+%\end{thebibliography}
+\bibliographystyle{plain}
+\bibliography{refs.bib}
+
+\end{document}

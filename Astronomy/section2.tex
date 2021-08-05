@@ -1,0 +1,179 @@
+\repart{万有引力の法則}
+
+\section{球殻の重力場(ニュートンの球殻定理)}
+	一様な球殻の重力場を考える。クーロンポテンシャルと同様ガウスの定理を使って証明することができるが、ベクトル解析がなかった当時のニュートンは『プリンキピア』において幾何学的な証明を与えている。ここでは積分を使って示す。
+	一様な半径$a$の球殻を考える。球殻の中心から$r$離れた質点にかかる重力は
+	\begin{align*}
+		dF = \frac{G \cdot \frac{M}{4\pi a^2}2\pi a\sin\theta \cdot a\d\theta \cdot m}{(a^2 + r^2 - 2ar\cos\theta)^{3/2}}(r - a\cos\theta)\\
+		= \frac{GMm}{2(a^2 + r^2 - 2ar\cos\theta)^{3/2}}(r - a\cos\theta)\sin\theta\d\theta
+	\end{align*}
+	である。
+	\paragraph{$r \neq a$のとき}
+		$x = r - a\cos\theta$とおくと$\de[x]{\theta} = a\sin\theta$だから、
+		\begin{align*}
+			F = \int_0^\pi \frac{GMm}{2(a^2 + r^2 - 2ar\cos\theta)^{3/2}}(r - a\cos\theta)\sin\theta\d\theta\\
+			= \int_{r-a}^{r+a} \frac{GMm}{2a(a^2 - x^2 + 2rx)^{3/2}}x\d x
+			= \frac{GMm}{2ar} \llr{ \frac{(a^2 - r^2 + 2rx)^{1/2}}{r} - \frac{x}{(a^2 - r^2 + 2rx)^{1/2}} }_{r-a}^{r-a}\\
+			= \frac{GMm}{2ar} \mlr{ \lr{ \frac{|r+a|}{r} - \frac{r+a}{|r+a|} } - \lr{ \frac{|r-a|}{r} - \frac{r-a}{|r-a|} } }\\
+			= \frac{GMm}{2ar} \mlr{ \frac{a}{r} - \lr{ \frac{|r-a|}{r} - \frac{r-a}{|r-a|} } }\\
+			=
+			\begin{cases}
+				\frac{GMm}{r^2} & (r > a)\\
+				0 & (r < a)
+			\end{cases}
+		\end{align*}
+	\paragraph{$r = a$のとき}
+		$r = a$を代入して
+		\begin{align*}
+			F = \frac{GMm}{4\sqrt{2}r^2} \int_0^\pi \frac{\sin\theta}{\sqrt{1 - \cos\theta}} \d\theta\\
+			= \frac{GMm}{4\sqrt{2}r^2} \llr{2\sqrt{1 - \cos\theta}}_0^\pi\\
+			= \frac{GMm}{4\sqrt{2}r^2} (2\sqrt{2} - 0) = \frac{GMm}{2r^2}
+		\end{align*}
+		となり、$r \to +a, r \to -a$の場合の平均に等しい。\\
+	一様な球体の重力は球殻による重力の和なので、中心からの距離が$r$のとき、球体のうち半径$r$以下の領域の質量が質点に集まったときの重力と等しい。
+
+\section{ケプラーの法則}
+	ティコ・ブラーエ(1546-1601)は惑星の詳細な観測記録を残し、他にも超新星や月の二均差()、年差を発見している。ヨハネス・ケプラー(1571-1630)はブラーエの火星の観測記録から惑星の軌道が楕円であると考えるようになった。実際、金星と地球の軌道はほぼ真円だが、火星の離心率は約0.09と比較的扁平である。ケプラーは惑星の運行に関する三つの法則を発見し、1609年の『新天文学』で第一、第二法則を、1619年の『宇宙の調和』で第三法則を発表した。
+	\begin{description}
+		\item[第一法則(楕円軌道の法則)] 惑星は太陽を一つの焦点とする楕円軌道を描く。
+		\item[第二法則(面積速度一定の法則)] 太陽を惑星を結ぶ線分が単位時間当たりに掃く面積は一定。
+		\item[第三法則(調和の法則)] 惑星の公転周期の二乗は軌道長半径の三乗に比例する。
+	\end{description}
+	アイザック・ニュートン(1642-1727)は『プリンキピア』において、万有引力の法則とケプラーの法則が同値であることを証明した。『プリンキピア』の形式はユークリッドの『原論』を踏襲している。以下では万有引力の法則からケプラーの法則を導出する。太陽は静止しているとする。\\
+	まず惑星の角運動量$L$は、
+		\[\de[L]{t} = r \times F = 0\]
+	である。つまり万有引力は中心力なので角運動量は保存する。これは惑星の軌道が同一平面上にあることも示している。また惑星の面積速度は、
+	\begin{align*}
+		\de[S]{t} &= \de{t} \lr{ \frac{1}{2}|r \times \d r| }\\
+		          &= \frac{L}{2m}
+	\end{align*}
+	よって面積速度は一定である。\\
+	中心力場において惑星は同一平面上を動くので平面極座標で表すことができる。太陽と惑星の質量を$M, m$、太陽と惑星の距離を$r$とおくと、運動方程式は
+	\begin{gather*}
+		m \mlr{ \de[^2r]{t^2} - r\lr{ \de[^2\theta]{t} }^2 } = - F(r)\\
+		\frac{m}{r} \de{t} \lr{ r^2\de[\theta]{t} } = 0\\
+	\end{gather*}
+	第二式は$r^2\de[\theta]{t} = h$となる。ここで$h = \frac{L}{m}$であるからこの式は角運動量保存則を表す。第一式に$\de[r]{t}\d t = \d r$を掛けて積分する。
+	\begin{align*}
+		m\de[^2r]{t^2}\de[r]{t}\d t - r\lr{ \de[^2\theta]{t} }^2\d r = - F(r)\d r\\
+		\intertext{左辺第二項は第二式を使って書き換える。中心力は保存力でありポテンシャル$V(r)$が存在する。積分定数をEとおくと}
+		\frac{1}{2}m\lr{\de[r]{t}}^2 - \frac{h^2}{r^3}\d r = - V(r)\\
+		\intertext{ここで}
+		- \frac{h^2}{r^3}\d r = \frac{h^2}{r^2}
+		= \frac{1}{2}mr^2\lr{ \de[\theta]{t} }^2
+		だから
+		\frac{1}{2}m\mlr{ \lr{\de[r]{t}}^2 + r^2\lr{ \de[\theta]{t} }^2 } + V(r) = E\\
+		\intertext{左辺第一項は運動エネルギーの極座標表示だからこれはエネルギー保存則を表す。$E$は全エネルギーを意味する。また$W(r) = V(r) + \frac{h^2}{r^2}$を有効ポテンシャルとおいて}
+		\frac{1}{2}m\lr{\de[r]{t}}^2 + W(r) = E
+		\intertext{と書くこともできる。有効ポテンシャルの第二項を遠心力ポテンシャルという。}
+	\end{align*}
+	よって中心力場の下での方程式は
+	\begin{gather*}
+		\frac{1}{2}m\mlr{ \lr{\de[r]{t}}^2 + r^2\lr{ \de[\theta]{t} }^2 } = E - V(r)\\
+		r^2\de[\theta]{t} = h\\
+	\end{gather*}
+	となる。第一式はエネルギー保存則を、第二式は角運動量保存則を表す。第一式を第二式の二乗で割ると、
+		\[\frac{1}{2}mh^2 \mlr{ \frac{1}{r^4}\lr{\de[r]{\theta}}^2 + \frac{1}{r^2} } = E - V(r)\]
+	$u = \frac{1}{r}$とおけば
+		\[r' = - \frac{u'}{u^2}\]
+	なので
+		\[\frac{1}{2}mh^2\mlr{ \lr{\de[u]{\theta}}^2 + u^2 } = E - V(u^{-1})\]
+	両辺を$\theta$で微分すると
+	\begin{align*}
+		\frac{1}{2}mh^2\mlr{ 2\de[^2u]{\theta^2}\de[u]{\theta} + 2u\de[u]{\theta} } = - \de[V(u^{-1})]{r}\de[r]{\theta} = \frac{F(u^{-1})}{u^2}\de[u]{t}\\
+		\intertext{両辺を$\de[u]{t}$で割れば}
+		mh^2\lr{ \de[^2u]{\theta^2} + u } = \frac{F(u^{-1})}{u^2}\\
+	\end{align*}
+	が得られる。これをビネ方程式という。中心力が万有引力なら右辺は$-GMm$だから、この微分方程式の解は
+		\[u = \frac{GM}{h^2} + k\cos(\theta - \alpha)\]
+	$l = \frac{h^2}{GM}, e = \frac{kh^2}{GM}$とおけば
+		\[r = \frac{l}{1 + e\cos(\theta - \alpha)}\]
+	である。これは二次曲線を表す。$l$は半直弦、$e$は離心率と呼ばれる。$\alpha = 0$とすれば
+	\begin{align}
+		r + er\cos\theta = l\\
+		x^2 + y^2 = (l - ex)^2 = l^2 - 2elx + e^2x^2\\
+		\intertext{$e \neq 1$のとき}
+		\lr{ x + \frac{el}{1 - e^2} }^2 + \frac{y^2}{1 - e^2} = \frac{l^2}{1 - e^2} + \frac{e^2l^2}{(1 - e^2)^2} = \lr{\frac{l}{1 - e^2}}^2\\
+		\intertext{$e = 1$}のとき
+		y^2 = l^2 - 2lx\\
+	\end{align}
+	従って
+	\begin{description}
+		\item[$e = 0$のとき] 円
+		\item[$0 < e < 1$のとき] 楕円
+		\item[$e = 1$のとき] 放物線
+		\item[$1 < e$のとき] 双曲線
+	\end{description}
+	となる。$e < 1$のとき周期$T$は楕円の面積を面積速度で割ったものなので、
+	\begin{align}
+		T = \frac{\pi a \cdot a\sqrt{1 - e^2}}{\frac{h}{2}}
+		= \frac{2\pi a^{3/2}\sqrt{l}}{h}\\
+		= \frac{2\pi}{\sqrt{GM}}a^{3/2}
+		\frac{a^3}{T^2} = \frac{GM}{4\pi^2}
+	\end{align}
+	よって周期の二乗は軌道長半径の三乗に比例する。
+
+\section{軌道の保存量}
+	エネルギーと角運動量を楕円の要素で表すことを考える。まず角運動量は
+	\begin{align*}
+		|L| = 2m\frac{h}{2} = 2m\frac{S}{T}\\
+		= 2m\frac{\pi a\cdot a\sqrt{1-e^2}}{\frac{2\pi}{\sqrt{GM}}a^{3/2}}\\
+		= \sqrt{GM}m\sqrt{a(1-e^2)} = m\sqrt{GMl}\\
+	\end{align*}
+	エネルギーは、
+		\[E = \frac{1}{2}mh^2\mlr{ \lr{\de[u]{\theta}}^2 + u^2 } - GMmu\]
+	$h^2 = GMl$より
+		\[E = \frac{1}{2}GMml\mlr{ \lr{\de[u]{\theta}}^2 + u^2 } - GMmu\]
+	ここで$u = \frac{1 + e\cos(\theta - \alpha)}{l}$だから、
+	\begin{align*}
+		\de[^2u]{\theta^2} = \de{\theta} - \frac{e}{l}\sin(\theta - \alpha) = - \frac{e}{l}\cos(\theta - \alpha)\\
+		\lr{\de[u]{\theta}}^2 + u^2 = \frac{e^2}{l^2}\cos^2(\theta - \alpha) + \frac{1 + 2e\cos(\theta - \alpha) + e^2\cos^2(\theta - \alpha)}{l^2}\\
+		= \frac{1 + e^2 + 2e\cos(\theta - \alpha)}{l^2}\\
+	\end{align*}
+	よって
+	\begin{align*}
+		E = \frac{1}{2}GMml\frac{1 + e^2 + 2e\cos(\theta - \alpha)}{l^2} - GMn\frac{1 + e\cos(\theta - \alpha)}{l}\\
+		= \frac{GMm}\frac{-1 + e^2}{2l} = - \frac{GMm}{2a}
+	\end{align*}
+	となる。エネルギーと角運動量は軌道を表すパラメータのうち半直弦$l$と離心率$e$を表す。この二つの量だけでは楕円の平面上での向き$\alpha$或いは近日点の位置を決定できない。従ってこれを表すような保存量が存在するはずである。近日点において$\frac{\mathbf{r}}{r} = (\cos\alpha, \sin\alpha, 0)$である。そこで$\frac{\mathbf{r}}{r}$の時間微分を考える。
+	\begin{align*}
+		\de{t}\frac{\mathbf{r}}{r} = \frac{\mathbf{\dot{r}}{r} - \mathbf{r}\dot{r}}{r^2} = \frac{(\dot{r}\cdot\dot{r})\mathbf{\dot{r}} - (\dot{r}\cdot r)\mathbf{r}}{r^3}\\
+		= \frac{(\mathbf{r} \times \mathbf{\dot{r}}) \times \mathbf{r}}{r^3}\\
+		= \frac{\mathbf{h} \times \mathbf{r}}{r^3}\\
+	\end{align*}
+	運動方程式$\de[\mathbf{r}]{t^2} = -k\frac{\mathbf{r}}{r^3}$を用いると
+	\begin{align*}
+		\de{t}\frac{\mathbf{r}}{r} = - \mathbf{h}\times\frac{\ddot{r}}{k}\\
+		\de{t}\lr{ \mathbf{v}\times\mathbf{h} - k\frac{\mathbf{r}}{r}} = 0\\
+	\end{align*}
+	よって左辺の括弧内は保存量であり、近日点において第一項、第二項共に近日点の方向を向いている。これに定数を掛けた
+		\[\mathbf{A} = \mathbf{p}\times\mathbf{L} - mk\frac{\mathbf{r}}{r}\]
+	をルンゲ＝レンツベクトルという。
+
+\section{ベルトランの定理}
+任意の有界な閉軌道が安定な閉曲線を描くような中心力は距離に比例する力と距離の二乗に反比例する力だけであるという定理。ジョゼフ・ベルトランによって1873年に証明された。
+
+\section{二体問題}
+	二つの質点系について考える。運動方程式は
+	\begin{gather*}
+		m_1\de[\mathbf{r_1}]{t} = - Gm_1m_2\frac{\mathbf{r_1} - \mathbf{r_2}}{|\mathbf{r_1} - \mathbf{r_2}|}\\
+		m_2\de[\mathbf{r_2}]{t} = - Gm_1m_2\frac{\mathbf{r_2} - \mathbf{r_1}}{|\mathbf{r_2} - \mathbf{r_1}|}\\
+	\end{gather*}
+	第一式$\times m_1$ - 第二式$\times m_2$より
+	\begin{align*}
+		m_1m_2\de[(\mathbf{r_2} - \mathbf{r_1})]{t} = Gm_1m_2(m_1 + m_2)\frac{\mathbf{r_2} - \mathbf{r_1}}{|\mathbf{r_2} - \mathbf{r_1}|}\\
+		\de[(\mathbf{r_2} - \mathbf{r_1})]{t} = G(m_1 + m_2)\frac{\mathbf{r_2} - \mathbf{r_1}}{|\mathbf{r_2} - \mathbf{r_1}|}\\
+	\end{align*}
+	つまり質点1に対する質点2の相対運動は、質量$m_1 + m_2$の固定された質点に対する運動に等しい。一方、重心$\mathbf{r_G} = \frac{m_1\mathbf{r_1} + m_2\mathbf{r_2}}{m_1 + m_2}$は等速直線運動をする。$\mathbf{r_1} - \mathbf{r_2} = \frac{m_1 + m_2}{m_2}(\mathbf{r_1} - \mathbf{r_G})$なので、
+	\begin{align*}
+		m_1\de[(\mathbf{r_1} - \mathbf{r_G}]{t} = - Gm_1\frac{m_2^3}{(m_1 + m_2)^2}\frac{\mathbf{r_1} - \mathbf{r_G}}{|\mathbf{r_1} - \mathbf{r_G}|^3}
+		\de[(\mathbf{r_1} - \mathbf{r_G}]{t} = - G\frac{m_2^3}{(m_1 + m_2)^2}\frac{\mathbf{r_1} - \mathbf{r_G}}{|\mathbf{r_1} - \mathbf{r_G}|^3}
+	\end{align*}
+	つまり重心周りの質点1の運動は、質量$\frac{m_2^3}{(m_1 + m_2)^2}$の固定された質点に対する運動に等しい。
+
+\footnote{
+	ジャック・フィリップ・マリー・ビネ(1786-1856)が導出。
+}
+\footnote{
+	ジョゼフ・ベルトラン(1822-1900) 素数に関するベルトランの仮説、確率論におけるベルトランの逆説で知られる。
+}
