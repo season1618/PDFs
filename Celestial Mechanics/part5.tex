@@ -1,0 +1,247 @@
+\repart{三体問題}
+	%スウェーデンの数学者ヨースタ・ミッタク＝レフラーはノルウェーとスウェーデンの国王オスカー2世に、n体問題の大域的な解を最初に得た者に賞とメダルを授与するよう説得した。審査委員会はカール・ワイエルシュトラス、シャルル・エルミート、そしてミッタク＝レフラーにより構成された。委員会はn体問題を含む4つの問題を提出した。1883年頃、ミッタク＝レフラーが創刊したActa Mathematica誌第7巻に掲載された。問題の記述は次のようになっている。
+	%\begin{quotation}
+		%互いにニュートンの法則によって引力を及ぼし合う任意の数の質点の系が与えられているとし、どの二つの質点も衝突しないと仮定する。このとき各質点の座標を時間のある既知の関数を変数として、この変数の全ての値に対して一様収束するような級数による表現を見つけること。
+		%\hfill 『天体力学のパイオニアたち』
+	%\end{quotation}
+	%懸賞論文提出の締め切りは1888年6月1日、懸賞金は2500クラウンだった。アンリ・ポアンカレは1888年5月17日に論文の大筋となる原稿を提出した。この原稿でポアンカレは制限三体問題に関するある種の安定性を主張しているが、後に誤りに気付いた。1889年1月21日に受賞した。ポアンカレは1890年に「三体問題と力学の方程式について」を発表し、1892年には『天体力学の新しい方法』を出版している。
+\section{潮汐力}
+    三質点$P_1,P_2,P_3$を考え、それぞれの位置ベクトルを$r_1,r_2,r_3$、質量を$m_1,m_2,m_3$とする。$P_1$から$P_2$を見たときの運動は、
+    \begin{gather*}
+        \de[^2r_1]{t^2} = Gm_2\frac{r_2 - r_1}{r_{12}^3} + Gm_3\frac{r_3 - r_1}{r_{13}^3}\\
+        \de[^2r_2]{t^2} = Gm_1\frac{r_1 - r_2}{r_{21}^3} + Gm_3\frac{r_3 - r_2}{r_{23}^3}\\
+    \end{gather*}
+    より
+        \[\de[^2(r_2 - r_1)]{t^2} = - G(m_1 + m_2)\frac{r_2 - r_1}{r_{12}^3} + Gm_3\lr{ - \frac{r_3 - r_1}{r_{13}^3} + \frac{r_3 - r_2}{r_{23}^3} }\]
+    となる。第一項のみであれば二体問題の式と等しい。第二項の摂動を潮汐力という。三質点が一直線上にあるとき、第二項は$P_1$から$P_3$へ向かう単位ベクトルを$e$として、
+        \[Gm_3\lr{ \frac{1}{r_{23}^2} - \frac{1}{r_{13}^2} }e\]
+    $P_1,P_2,P_3$が地球、月、太陽の位置関係にあるとする。新月のとき潮汐力は太陽の方向、満月のとき潮汐力は太陽と反対方向となる。$P_1,P_2,P_3$を地球、海水、月とすれば、月と同じ側と反対側で満潮となる。
+
+    ベクトルポテンシャル
+    \begin{align*}
+        V(r_{12}) &= Gm_3\lr{ \frac{1}{r_{23}} - \frac{r_{12}\cdot r_{13}}{r_{13}^3} }\\
+        &= Gm_3\lr{ \frac{1}{\sqrt{ r_{12}^2 + r_{13}^2 - 2r_{12}\cdot r_{13}}} - \frac{r_{12}\cdot r_{13}}{r_{13}^3} }\\
+    \end{align*}
+    を使うと潮汐力は
+    \begin{align*}
+        R = \pd[V]{r_{12}} &= Gm_3\lr{ \frac{2r_{12} - 2r_{13}}{-2\sqrt{ r_{12}^2 + r_{13}^2 - 2r_{12}\cdot r_{13}}^3} - \frac{r_{13}}{r_{13}^3} }\\
+        &= Gm_3\lr{ \frac{r_{23}}{r_{23}^3} - \frac{r_{13}}{r_{13}^3} }
+    \end{align*}
+    と書ける。$V$を潮汐ポテンシャルと呼ぶ。$r_{12} \ll r_{13}$として、潮汐ポテンシャルの第一項をルジャンドル多項式\footnote{ルジャンドル多項式は1782年、アドリアン＝マリ・ルジャンドル(1752-1833)がニュートンポテンシャルの展開係数として導入した。}を用いて展開する
+    \begin{align*}
+        \frac{1}{r_{23}}
+        &= \frac{1}{\sqrt{ r_{12}^2 + r_{13}^2 - 2r_{12}r_{13} }}\\
+        &= \frac{1}{r_{13}}\mlr{ 1 + \lr{ \frac{r_{12}}{r_{13}} }^2 - 2\frac{r_{12}}{r_{13}}\cos\theta }^{-1/2}\\
+        &= \frac{1}{r_{13}}\sum_{i = 0}^\infty \lr{\frac{r_{12}}{r_{13}}}^iP_i(\cos\theta)
+    \end{align*}
+    第一項は$r_{23}$と独立。第二項は
+        \[\frac{r_{12}}{r_{13}^2}\cos\theta = \frac{r_{12}r_{13}}{r_{13}^3}\cos\theta\]
+    より$R$の第二項と相殺する。よって第三項のみを考えると、
+    \begin{align*}
+        V &= Gm_3\frac{r_{12}^2}{r_{13}^3}P_2(\cos\theta)\\
+        &= Gm_3\frac{r_{12}^2}{r_{13}^3}\frac{1}{2}(3\cos\theta^2 - 1)\\
+        &= \frac{Gm_3}{2r_{13}^3}(3r_{12}^2\cos\theta^2 - r_{12}^2)\\
+    \end{align*}
+    $r_{12} = (x, y, z), r_{13} = (x', y', z')$とすると
+    \begin{align*}
+        V &= \frac{Gm_3}{2r_{13}^3}\mlr{ \frac{3}{r_{13}^2}(xx' + yy' + zz')^2 - (x^2 + y^2 + z^2) }\\
+        \pd[V]{x} &= \frac{Gm_3}{2r_{13}^3}\mlr{ \frac{6x'}{r_{13}^2
+        }(xx' + yy' + zz') - 2x }\\
+        &= \frac{Gm_3}{r_{13}^3}\mlr{ \frac{3x'}{r_{13}^2}(xx' + yy' + zz') - x }\\
+        &= \frac{Gm_3}{r_{13}^3}\mlr{ \frac{3x'r_{12}}{r_{13}}\cos\theta - x }\\
+    \end{align*}
+    つまり
+    \begin{align*}
+        R &= \sqrt{\lr{\pd[V]{x}}^2 + \lr{\pd[V]{y}}^2 + \lr{\pd[V]{z}}^2}\\
+        &= \frac{Gm_3}{r_{13}^3}\sqrt{ \frac{9r_{12}^2\cos^2\theta}{r_{13}^2}r_{13}^2 - \frac{6r_{12}\cos\theta}{r_{13}}r_{12}r_{13}\cos\theta + r_{12}^2 }\\
+        &= \frac{Gm_3}{r_{13}^3}\sqrt{ 9r_{12}^2\cos^2\theta - 6r_{12}^2\cos^2\theta + r_{12}^2 }\\
+        &= \frac{Gm_3r_{12}}{r_{13}^3}\sqrt{ 1 + 3\cos^2\theta }
+    \end{align*}
+%\section{軌道共鳴}
+%\section{潮汐固定}
+
+\section{制限三体問題}
+	二体に比べて第三の物体が無視できるほど小さい場合、制限三体問題という。このとき二体はケプラー運動をする。円運動するものを円制限三体問題という。
+
+	質点$P_1,P_2$は有限質量を持ち、$P_3$の質量が無視できるほど小さいとする。$P_1,P_2,P_3$の位置をそれぞれ$r_1,r_2,r$と置く。また二体のケプラー運動の軌道長半径を$a = |r_2 - r_1|$とする。$P_1,P_2$の重心を原点にとり軌道面を$xy$平面にとると、第三の質点の運動方程式は
+	\begin{gather*}
+		\de[^2r]{t^2} = - \pd[U]{r}\\
+		U(r) = - \frac{Gm_1}{|r - r_1|} - \frac{Gm_2}{|r - r_2|}
+	\end{gather*}
+	二体の円運動の角速度を$n$とするとケプラーの第三法則より
+		\[n^2a^3 = G(m_1 + m_2)\]
+	である。$P_1,P_2$を固定した座標$(X,Y,Z)$で考える。最初、二体は$x$軸上にあるとすると、
+	\begin{align*}
+		x &= X\cos nt - Y\sin nt\\
+		y &= X\sin nt + Y\cos nt\\
+		z &= Z\\
+	\end{align*}
+	である。$R_1 = \left(- \frac{m_2}{m_1 + m_2}a, 0\right), R_2 = \left(\frac{m_1}{m_1 + m_2}a, 0\right)$だから運動方程式は
+	\begin{align*}
+        \begin{aligned}
+            \ddot{X} - 2n \dot{Y} - n^2 X = - \pd[U]{X}\\
+            \ddot{Y} + 2n \dot{X} - n^2 Y = - \pd[U]{Y}\\
+            \ddot{Z} = - \pd[U]{Z}\\
+        \end{aligned}\\
+		U(R) = - \frac{Gm_1}{|R - R_1|} - \frac{Gm_2}{|R - R_2|}
+	\end{align*}
+	となる。左辺第二項はコリオリ力、第三項は遠心力を表す。遠心力の項を左辺に移項すると
+	\begin{align}
+        \begin{aligned}
+            \ddot{X} - 2n \dot{Y} = - \pd[U']{X}\\
+            \ddot{Y} + 2n \dot{X} = - \pd[U']{Y}\\
+            \ddot{Z} = - \pd[U]{Z}\\
+        \end{aligned} \label{eq:3-body}\\
+		U'(R)
+        &= U(R) - \frac{1}{2}n^2(X^2 + Y^2)\\
+        &= - \frac{Gm_1}{|R - R_1|} - \frac{Gm_2}{|R - R_2|} - \frac{1}{2}n^2(X^2 + Y^2)
+	\end{align}
+	上の三式にそれぞれ$\dot{X},\dot{Y},\dot{Z}$を掛けて時間積分すると
+		\[\frac{1}{2}(\dot{X}^2 + \dot{Y}^2 + \dot{Z}^2) + U'(R) = \mathrm{const}\]
+	となる。符号を逆にした
+	\begin{align*}
+		C_J
+        &= \frac{Gm_1}{|R - R_1|} + \frac{Gm_2}{|R - R_2|} + \frac{1}{2}n^2(X^2 + Y^2) - \frac{1}{2}(\dot{X}^2 + \dot{Y}^2 + \dot{Z}^2)\\
+		&= \frac{Gm_1}{|r - r_1|} + \frac{Gm_2}{|r - r_2|} + n(x\dot{y} - \dot{x}y) - \frac{1}{2}(\dot{x}^2 + \dot{y}^2 + \dot{z}^2)\\
+	\end{align*}
+	はヤコビ積分と呼ばれ、円制限三体問題の保存量である。
+
+	%$P_1$を原点にとった非回転系におけるヤコビ積分
+		%\[\frac{r_{12}}{2a_1} + \sqrt{\frac{a_1}{r_{12}}(1 - e_1^2)}\cos I_1 \fallingdotseq \frac{r_{12}}{2a_2} + \sqrt{\frac{a_2}{r_{12}}(1 - e_2^2)}\cos I_2\]
+	%が成り立つ。これをティスランの判定式という。これを用いて別々の時刻に観測された彗星が同一のものかどうか判定することができる。
+
+	\subsection{ラグランジュ点}
+		三体の相対的な位置が不変であるような点を平衡点と言い、制限三体問題の平衡点をラグランジュ点という。ラグランジュ点は5個あり、$L_1$-$L_5$と記号が付けられている。$\dot{R} = \ddot{R} = 0$であるような点を求めれば良いので式(\ref{eq:3-body})より$- \pd[U']{R} = 0$だから、
+		\begin{gather*}
+			|R - R_1| = \sqrt{\lr{X + \frac{m_2}{m_1 + m_2}a}^2 + Y^2 + Z^2}\\
+			|R - R_1| = \sqrt{\lr{X - \frac{m_1}{m_1 + m_2}a}^2 + Y^2 + Z^2}\\
+			U'(R) = - \frac{m_1}{m_1 + m_2}\frac{G(m_1 + m_2)}{|R - R_1|} - \frac{m_2}{m_1 + m_2}\frac{G(m_1 + m_2)}{|R - R_2|} - \frac{1}{2}n^2(X^2 + Y^2)\\
+			= - \frac{m_1}{m_1 + m_2}\frac{a^3}{|R - R_1|}n^2 - \frac{m_2}{m_1 + m_2}\frac{a^3}{|R - R_2|}n^2 - \frac{1}{2}n^2(X^2 + Y^2)
+		\end{gather*}
+        より
+		\begin{align*}
+			- \pd[U']{X} = n^2 X - \frac{m_1}{m_1 + m_2}\frac{a^3}{|R - R_1|^3}n^2\lr{X + \frac{m_2}{m_1 + m_2}a} - \frac{m_2}{m_1 + m_2}\frac{a^3}{|R - R_2|^3}n^2\lr{X - \frac{m_1}{m_1 + m_2}a} = 0\\
+			\lr{ 1 - \frac{m_1}{m_1 + m_2}\frac{a^3}{|R - R_1|^3} - \frac{m_2}{m_1 + m_2}\frac{a^3}{|R - R_2|^3} }X + \frac{m_1m_2}{(m_1 + m_2)^2}\lr{\frac{a^4}{|R - R_2|^3} - \frac{a^4}{|R - R_1|^3}} = 0\\
+		\end{align*}
+		同様に
+		\begin{align*}
+			\lr{ 1 - \frac{m_1}{m_1 + m_2}\frac{a^3}{|R - R_1|^3} - \frac{m_2}{m_1 + m_2}\frac{a^3}{|R - R_2|^3} }Y = 0\\
+			- \pd[U']{Z} = n^2 Z = 0\\
+			Z = 0
+		\end{align*}
+		結局
+		\begin{gather*}
+			\lr{ 1 - \frac{m_1}{m_1 + m_2}\frac{a^3}{|R - R_1|^3} - \frac{m_2}{m_1 + m_2}\frac{a^3}{|R - R_2|^3} }X + \frac{m_1m_2}{(m_1 + m_2)^2}\lr{\frac{a^4}{|R - R_2|^3} - \frac{a^4}{|R - R_1|^3}} = 0\\
+			-\lr{ 1 - \frac{m_1}{m_1 + m_2}\frac{a^3}{|R - R_1|^3} - \frac{m_2}{m_1 + m_2}\frac{a^3}{|R - R_2|^3} }Y = 0\\
+			Z = 0\\
+		\end{gather*}
+		を満たす。
+
+		(a)直線解
+			\[1 - \frac{m_1}{m_1 + m_2}\frac{r_{12}^3}{|R - R_1|^3} - \frac{m_2}{m_1 + m_2}\frac{r_{12}^3}{|R - R_2|^3} \neq 0\]
+		のとき$Y = 0$より
+		\begin{gather*}
+			|R - R_1| = |X + \frac{m_2}{m_1 + m_2}d|\\
+			|R - R_2| = |X - \frac{m_1}{m_1 + m_2}d|\\
+		\end{gather*}
+		$\alpha = \frac{m_1}{m_1 + m_2}, \beta = \frac{m_2}{m_1 + m_2}$と置くと、
+			\[X/d - \alpha\frac{X/d + \beta}{|X/d + \beta|^3} - \beta\frac{X/d - \alpha}{|X/d - \alpha|^3} = 0\]
+		$m_1 \geq m_2$とすれば$1 > \alpha \geq \frac{1}{2} \geq \beta > 0$となる。\\
+		(1)$L_3:X/d < -\beta$
+			\[X/d + \frac{\alpha}{(X/d + \beta)^2} + \frac{\beta}{(X/d - \alpha)^2} = 0\]
+		(2)$L_1:-\beta < X/d < \alpha$
+			\[X/d - \frac{\alpha}{(X/d + \beta)^2} + \frac{\beta}{(X/d - \alpha)^2} = 0\]
+		(3)$L_2:\alpha < X/d$
+			\[X/d - \frac{\alpha}{(X/d + \beta)^2} - \frac{\beta}{(X/d - \alpha)^2} = 0\]
+		これらは二体から受ける重力と遠心力が釣り合っている点である。その合力は区間$(-\infty,-\beta), (-\beta,\alpha), (\alpha,\infty)$において単調増加でかつ端点での極限が$-\infty,\infty$に発散する。よってそれぞれの区間で解をただ一つ持つ。また極値を持たないのでいずれも不安定である。
+
+		(b)三角解
+		\begin{gather*}
+			1 - \frac{m_1}{m_1 + m_2}\frac{d^3}{r_{13}^3} - \frac{m_2}{m_1 + m_2}\frac{d^3}{r_{23}^3} = 0\\
+			\frac{m_1m_2}{(m_1 + m_2)^2}\lr{ \frac{d^4}{r_{23}^2} - \frac{d^4}{r_{13}^2} } = 0\\
+		\end{gather*}
+		第二式より$r_{13} = r_{23}$、さらに第一式より$r_{13} = r_{23} = r_{12}$となる。つまり三体$P_1,P_2,P_3$は正三角形をなす。よって$P_3$の座標は
+			\[X = \frac{m_1 - m_2}{m_1 + m_2}d, Y = \pm \frac{\sqrt{3}}{2}d\]
+		$Y$が正の解を$L_4$、負の解を$L_5$と呼ぶ。太陽-木星系の$L_4,L_5$近傍には数千個の小惑星が発見されており、トロヤ群と呼ばれている。
+	
+	\subsection{平衡解の安定性}
+		平衡点$(X_i,Y_i,Z_i = 0)$からの微小変位を$(x,y,z)$とする。
+			\[\d U(X,Y,Z) = \pd[U]{X_i}x + \pd[U]{Y_i}y + \pd[U]{Z_i}z\]
+		と近似すると運動方程式は、
+		\begin{align*}
+			\ddot{x} - 2n\dot{y} + \pd[^2U']{X_i^2}x + \pd[^2U']{X_iY_i}y + \pd[^2U']{X_iZ_i}z = 0\\
+			\ddot{y} + 2n\dot{x} + \pd[^2U']{Y_iX_i}x + \pd[^2U']{Y_i^2}y + \pd[^2U']{Y_iZ_i}z = 0\\
+			\ddot{z} + \pd[^2U']{Z_iX_i}x + \pd[^2U']{Z_iY_i}y + \pd[^2U']{Z_i^2}z = 0\\
+		\end{align*}
+		$Z_i = 0$より$\pd[^2U']{Z_iX_i} = \pd[^2U']{Z_iY_i} = 0$なので
+		\begin{align}
+			\ddot{x} - 2n\dot{y} + Ax + By = 0 \label{eq:xy-1}\\
+			\ddot{y} + 2n\dot{x} + Bx + Cy = 0 \label{eq:xy-2}\\
+			\ddot{z} + Dz = 0 \label{eq:z}\\
+			A = \pd[^2U']{X_i^2}, B = \pd[^2U']{X_iY_i}, C = \pd[^2U']{Y_i^2}, D = \pd[^2U']{Z_i^2}\\
+		\end{align}
+		$XY$平面内の運動と$Z$軸方向の運動は独立である。
+
+		(a)$XY$平面内の運動
+
+        式(\ref{eq:xy-1})(\ref{eq:xy-2})は定数係数線形微分方程式なので、
+			\begin{align*}
+				x = k_1e^{\lambda t}, y = k_2e^{\lambda t}
+			\end{align*}
+			となる。代入すると
+			\begin{align*}
+                \begin{cases}
+				(\lambda^2 + A)k_1 + (-2n\lambda + B)k_2 = 0\\
+				(2n\lambda + B)k_1 + (\lambda^2 + C)k_2 = 0\\
+                \end{cases}\\
+				\begin{pmatrix}
+					\lambda^2 + A & -2n\lambda + B\\
+					2n\lambda + B & \lambda^2 + C\\
+				\end{pmatrix}
+				\begin{pmatrix}
+					k_1\\
+					k_2\\
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					0\\
+					0\\
+				\end{pmatrix}
+			\end{align*}
+			係数行列の行列式が非零のとき$k_1 = k_2 = 0$となり平衡解そのものである。よって行列式が0となる。
+			\begin{align*}
+				\begin{vmatrix}
+					\lambda^2 + A & -2n\lambda + B\\
+					2n\lambda + B & \lambda^2 + C\\
+				\end{vmatrix}
+				&= 
+				(\lambda^2 + A)(\lambda^2 + C) - (-2n\lambda + B)(2n\lambda + B)\\
+				&= (\lambda^4 + (A + C)\lambda^2 + AC) - (- 4n^2\lambda^2 + B^2)\\
+				&= \lambda^4 + (4n^2 + A + C)\lambda^2 + (AC - B^2) = 0
+			\end{align*}
+			この方程式は天体力学で永年方程式と呼ばれる。
+
+		(b)$Z$軸方向の運動
+			\begin{align*}
+				D &= \pd[^2U']{Z_i^2}\\
+                &= \mlr{ \frac{m_1}{m_1 + m_2}\lr{\frac{a}{|R - R_1|}}^3 + \frac{m_2}{m_1 + m_2}\lr{\frac{a}{|R - R_2|}}^3 }n^2
+			\end{align*}
+            いずれの場合も$D > 0$なので調和振動となる。
+
+	\subsection{ヒル圏}%重力圏・作用圏・
+		速度0の曲面をゼロ速度曲面という。また$Z = 0$のときはゼロ速度曲線と呼ばれる。
+		\begin{align*}
+			\frac{Gm_1}{\sqrt{\lr{X + \frac{m_2}{m_1 + m_2}d}^2 + Y^2}} + \frac{Gm_2}{\sqrt{\lr{X - \frac{m_1}{m_1 + m_2}d}^2 + Y^2}} + \frac{1}{2}n^2(X^2 + Y^2) = C_J\\
+		\end{align*}
+		$P_1$近傍では第一項、$P_2$近傍では第二項、$P_1,P_2$から十分離れた地点では第三項が支配的となる。
+		\begin{gather*}
+			\frac{Gm_1}{\sqrt{\lr{X + \frac{m_2}{m_1 + m_2}d}^2 + Y^2}} = C_J\\
+			\therefore \lr{X + \frac{m_2}{m_1 + m_2}d}^2 + Y^2 = \lr{\frac{Gm_2}{C_J}}^2\\
+			\frac{Gm_2}{\sqrt{\lr{X - \frac{m_1}{m_1 + m_2}d}^2 + Y^2}} = C_J\\
+			\therefore \lr{X - \frac{m_1}{m_1 + m_2}d}^2 + Y^2 = \lr{\frac{Gm_1}{C_J}}^2\\
+			\frac{1}{2}n^2(X^2 + Y^2) = C_J\\
+			\therefore X^2 + Y^2 = \frac{2C_J}{n^2}
+		\end{gather*}
+		より近似的には$P_1$を中心とする半径$\frac{Gm_2}{C_J}$の円、$P_2$を中心とする半径$\frac{Gm_1}{C_J}$の円、原点を中心とする半径$\frac{\sqrt{2C_J}}{n}$の円となる。$P_1$近傍と$P_2$近傍が丁度接するとき$P_2$近傍をヒル圏という。
+%ハロー軌道、リサジュー軌道、馬蹄形軌道
+%\section{ピタゴラス三体問題}
