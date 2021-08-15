@@ -1,0 +1,32 @@
+\documentclass{jsarticle}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{ascmac}
+
+\newcommand{\repart}[1]{\part{#1}\setcounter{section}{0}}
+\newcommand{\lr}[1]{\left(#1 \right)}
+\newcommand{\mlr}[1]{\left\{#1 \right\}}
+\newcommand{\llr}[1]{\left[#1 \right]}
+\def \d {\mathrm{d}}
+\newcommand{\de}[2][]{\frac{\d #1}{\d #2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+
+\title{天体力学}
+\author{season07001674}
+\date{\today (初版 2021/08/15)}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\input part1.tex %天文学史
+\input part2.tex %万有引力
+%\input part3.tex %Appendix
+\input part4.tex %軌道計算
+\input part5.tex %三体問題
+\input part6.tex %摂動論
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{refs.bib}
+
+\end{document}

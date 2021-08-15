@@ -1,0 +1,100 @@
+\repart{摂動論}
+
+\section{定数変化法}
+	一体問題に摂動が働く場合を考える。変数を$(x_1,x_2,x_3),(v_1,v_2,v_3)$と置く。摂動を$X_i$とすると運動方程式は
+		\[\de[^2x_i]{t^2} = - m\frac{r}{|r|^3} + X_i\]
+	一階連立の方程式に書き換えると
+	\begin{align}
+		\de[x_i]{t} &= v_i \label{eq:pert1}\\
+		\de[v_i]{t} &= -m\frac{x}{r^3} + X_i \label{eq:pert2}
+	\end{align}
+	摂動がないとき($X_i = 0$)の解は6個の積分定数を用いて
+	\begin{gather}
+		x_i = f_i(c_1,c_2,c_3,c_4,c_5,c_6,t), v_i = g_i(c_1,c_2,c_3,c_4,c_5,c_6,t) \label{eq:kepler1}\\
+		\pd[f_i]{t} = g_i, \pd[g_i]{t} = - \frac{m}{r^3}f_i \label{eq:kepler2}\\
+	\end{gather}
+	と書ける。摂動のある場合はこの積分定数を$t$の関数とする。これらは接触要素、特に積分定数が軌道要素のときは接触軌道要素と呼ばれる。式(\ref{eq:pert1})(\ref{eq:pert2})に代入すると
+	\begin{align*}
+		\pd[f_i]{t} + \Sigma_{j} \pd[f_i]{c_j}\pd[c_j]{t} &= g_i\\
+		\pd[g_i]{t} + \Sigma_{j} \pd[g_i]{c_j}\pd[c_j]{t} &= - \frac{m}{r^3}f_i + X_i\\
+	\end{align*}
+    式(\ref{eq:kepler1})(\ref{eq:kepler2})より
+	\begin{align}
+		\sum_{j} \pd[f_i]{c_j}\pd[c_j]{t} = 0 \label{eq:f}\\
+		\sum_{j} \pd[g_i]{c_j}\pd[c_j]{t} = \label{eq:g}X_i\\
+	\end{align}
+	$k = 1,2,...,6$について、\ref{eq:f}に$-\pd[g_i]{c_k}$を掛け、\ref{eq:g}に$\pd[f_i]{c_k}$を掛けて足すと
+		\[\sum_{j} [c_k, c_j]\de[c_j]{t} = \sum_{i} X_i\pd[x_i]{c_k} \label{eq:basic}\]
+	ここで
+	\begin{align*}
+		[c_k, c_j] &= \sum_{i}\lr{ \pd[f_i]{c_k}\pd[g_i]{c_j} - \pd[f_i]{c_j}\pd[g_i]{c_k} }\\
+		&= \sum_{i}\lr{ \pd[x_i]{c_k}\pd[\dot{x_i}]{c_j} - \pd[x_i]{c_j}\pd[\dot{x_i}]{c_k} }\\
+		&= \sum_{i} \pd[(x_i, \dot{x_i})]{(c_k, c_j)}
+	\end{align*}
+	はラグランジュ括弧式と呼ばれる。
+
+	\subsection{ラグランジュの惑星方程式}
+		摂動力が摂動関数$R(x_i)$を用いて
+			\[X_i = \pd[R]{x_i}\]
+		と書けるとき、方程式\ref{eq:basic}は
+			\[\sum_{j} [c_k, c_j]\de[c_j]{t} = \pd[R]{x_i}\]
+		となる。積分定数としてケプラー要素$a, e, I, \sigma, \omega, \Omega$を用いる。ラグランジュ括弧式を計算すると
+		\begin{align*}
+			[\sigma, a] &= \frac{1}{2}na\\
+			[\omega, a] &= \frac{1}{2}na\eta\\
+			[\omega, e] &= - \frac{na^2e}{\eta}\\
+			[\Omega, a] &= \frac{1}{2}na\eta \cos I\\
+			[\Omega, e] &= - \frac{na^2e\cos I}{\eta}\\
+			[\Omega, I] &= - na^2\eta\sin I\\
+		\end{align*}
+		方程式は
+		\begin{align*}
+			[\sigma, a]\de[a]{t} = \pd[R]{\sigma}\\
+			[\omega, a]\de[a]{t} + [\omega, e]\de[e]{t} = \pd[R]{\omega}\\
+			[\Omega, a]\de[a]{t} + [\Omega, e]\de[e]{t} + [\Omega, I]\de[I]{t} = \pd[R]{\Omega}\\
+			[a, \sigma]\de[\sigma]{t} + [a, \omega]\de[\omega]{t} + [a, \Omega]\de[\Omega]{t} = \pd[R]{a}\\
+			[e, \omega]\de[\omega]{t} + [e, \Omega]\de[\Omega]{t} = \pd[R]{e}\\
+			[I, \Omega]\de[\Omega]{t} = \pd[R]{I}\\
+		\end{align*}
+		$\de[c_k]{t}$について解くと、
+		\begin{align}
+			\label{eq:laglange}
+			\de[a]{t} &= \frac{2}{na}\pd[R]{t}\\
+			\de[e]{t} &= \frac{\eta^2}{na^2e}\pd[R]{\sigma} - \frac{\eta}{na^2e}\pd[R]{\omega}\\
+			\de[I]{t} &= \frac{1}{na^2\eta\tan I}\pd[R]{\omega} - \frac{1}{na^2\eta\sin I}\pd[R]{\Omega}\\
+			\de[\sigma]{t} &= - \frac{2}{na}\pd[R]{a} - \frac{\eta^2}{na^2e}\pd[R]{e}\\
+			\de[\omega]{t} &= \frac{\eta}{na^2e}\pd[R]{e} - \frac{1}{na^2\eta\tan I}\pd[R]{I}\\
+			\de[\Omega]{t} &= \frac{1}{na^2\eta\sin I}\pd[R]{I}
+		\end{align}
+		ここで$\eta = \sqrt{1 - e^2}$である。式(\ref{eq:laglange})には分母に$e, \sin I$が表れる。$e = 0, I = 0$は近点や昇降点が定義できないことによる見かけの特異点である。数学的に問題はないが、数値計算の際は$e, I$が小さいときに桁落ちが発生するので次の変数が使われることがある。
+		\begin{gather*}
+			h = e\sin\tilde{\omega}, k = e\cos\tilde{\omega}\\
+			p = \sin\frac{I}{2}\sin\Omega, q = \sin\frac{I}{2}\cos\Omega\\
+		\end{gather*}
+
+	\subsection{ガウスの惑星方程式}
+		数値計算の際には摂動力を直接用いる方が計算量が少ない。
+
+		摂動力を以下のように互いに直交する方向に分解する。
+		\begin{enumerate}
+			\item 動径方向$R$ + 軌道面内で動径に垂直方向$S$ + 軌道面に垂直方向$W$
+			\item 接線方向$T$ + 軌道面内で接線に垂直方向$N$ + 軌道面に垂直方向$W$
+		\end{enumerate}
+		ただしこの順番に右手系であるとする。
+		$X = R + S + W$に分解したときの方程式は
+		\begin{align}
+			\label{eq:gauss-rsw}
+			\de[a]{t} &= \frac{2}{na}\lr{ \frac{ae\sin f}{\eta}R + \frac{a^2\eta}{r}S }\\
+			\de[e]{t} &= \frac{\eta}{na}{\sin f R + (\cos f + \cos u)S}\\
+			\de[I]{t} &= \frac{r}{na^2\eta}\cos(f + \omega)W\\
+			\de[\sigma^I]{t} &= - \frac{1}{na}\lr{ \frac{2r}{a} - \frac{\eta^2}{e}\cos f }R - \frac{\eta^2\sin f}{nae}\lr{ 1 + \frac{r}{p} }S\\
+			\de[\omega]{t} &= \frac{\eta}{nae}\mlr{ - \cos f R + \sin f\lr{ 1 + \frac{r}{p} }S } - \frac{r\sin(f + \omega)}{na^2\eta\tan I}W\\
+			\de[\Omega]{t} &= \frac{r\sin(f + \omega)}{na^2\eta\sin I}W\\
+		\end{align}
+		となる。動径ベクトルと速度ベクトルのなす角を$\theta$とおくと
+		\begin{align*}
+			R = T\cos\theta - N\sin\theta\\
+			S = T\sin\theta + N\cos\theta\\
+		\end{align*}
+		なので
+		$X = T + N + W$に分解したときの方程式は式(\ref{eq:gauss-rsw})に代入すれば良い。

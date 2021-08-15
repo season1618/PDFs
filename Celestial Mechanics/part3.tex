@@ -1,0 +1,85 @@
+\repart{Appendix}
+
+\section{距離に比例する力(調和振動子ポテンシャル)}
+	中心力が$F(r) = -kr$と表せるとき、運動方程式は
+	\begin{gather*}
+		m\de[^2x]{t^2} = -kx\\
+		m\de[^2y]{t^2} = -ky\\
+	\end{gather*}
+	となって$x, y$に分解できる。$\omega^2 = k/m$とおけば、それぞれの解は
+	\begin{gather*}
+		x = A\sin(\omega t + \alpha)\\
+		y = B\sin(\omega t + \beta)\\
+	\end{gather*}
+	となる。速度は
+	\begin{gather*}
+		\de[x]{t} = A\omega\cos(\omega t + \alpha)\\
+		\de[y]{t} = B\omega\cos(\omega t + \beta)\\
+	\end{gather*}
+	である。
+	平面極座標における運動方程式は
+	\begin{gather*}
+		m \mlr{ \de[^2r]{t^2} - r\lr{ \de[^2\theta]{t} }^2 } = - kr\\
+		\frac{m}{r} \de{t} \lr{ r^2\de[\theta]{t} } = 0\\
+	\end{gather*}
+	ケプラー問題と同様に第一式には$\de[r]{t}$を掛けてそれぞれ積分するとエネルギー保存則と角運動量保存則
+	\begin{gather*}
+		\frac{1}{2}m\mlr{ \lr{\de[r]{t}}^2 + r^2\lr{ \de[\theta]{t} }^2 } + \frac{1}{2}kr^2 = E\\
+		r^2\de[\theta]{t} = h\\
+	\end{gather*}
+	が得られる。ここで
+	\begin{align*}
+		\de[r]{t} = \de[r]{\theta}\de[\theta]{t} = \frac{h}{r^2}\de[r]{\theta}\\
+		\de[^2r]{t^2} = \mlr{ \de{\theta}\lr{\frac{h}{r^2}}\de[r]{\theta} + \frac{h}{r^2}\de{\theta}\lr{\de[r]{\theta}} }\de[\theta]{t}\\
+		= \mlr{ \de{r}\lr{\frac{h}{r^2}}\lr{\de[r]{\theta}}^2 + \frac{h}{r^2}\de[^2r]{\theta^2} }\de[\theta]{t}\\
+		= \mlr{ -\frac{2h}{r^3}\lr{\de[r]{\theta}}^2 + \frac{h}{r^2}\de[^2r]{\theta^2} }\frac{h}{r^2}\\
+	\end{align*}
+	である。第一式に第二式を代入して、
+	\begin{align*}
+		\frac{1}{2}m\mlr{ \frac{h^2}{r^4}\lr{\de[r]{\theta}}^2 + \frac{h^2}{r^2} } + \frac{1}{2}kr^2 = E
+		\frac{1}{2}m\mlr{ h^2r^2\lr{\de[r]{\theta}}^2 + h^2r^4 } + \frac{1}{2}kr^8 = Er^6\\
+	\end{align*}
+	$u = r^2, \omega^2 = \frac{k}{m}$として
+	\begin{align*}
+		\frac{1}{2}m\mlr{ \frac{1}{4}h^2\lr{\de[u]{\theta}}^2 + h^2u^2 } + \frac{1}{2}ku^4 = Eu^3\\
+		\frac{1}{4}h^2\lr{\de[u]{\theta}}^2 = - \omega^2u^4 + \frac{2E}{m}u^3 - h^2u^2\\
+		\lr{\de[u]{\theta}}^2 = - \frac{4\omega^2}{h^2}u^4 + \frac{8E}{mh^2}u^3 - 4u^2\\
+		= - \frac{4\omega^2}{h^2}u^2 \mlr{ u^2 - \frac{2E}{k}u + \frac{h^2}{\omega^2} }\\
+		= - \frac{4\omega^2}{h^2}u^2 \mlr{ \lr{ u - \frac{E}{k} }^2 - \frac{E^2}{k^2} + \frac{h^2}{\omega^2} }
+		= - \frac{4\omega^2}{h^2}u^2 \mlr{ \lr{ u - \frac{E}{k} }^2 + \frac{- E^2 + mh^2}{k^2} }
+	\end{align*}
+	ここで
+	\begin{gather*}
+		A = \frac{2\omega}{h}\\
+		p = \frac{E}{k}\\
+		q = \frac{\sqrt{-E^2 + mh^2}}{k}
+	\end{gather*}
+	とおくと微分方程式は
+		\[\lr{\de[u]{\theta}}^2 = - A^2u^2\mlr{ (u - p)^2 + q^2 }\]
+	となる。$u = p + q\tan\phi$と変数変換すると
+	\begin{align*}
+		\de[u]{\theta} = \frac{q}{\cos^2\phi}\de[\phi]{\theta}
+		(u - p)^2 + q^2 = \lr{ \frac{q}{\cos\phi} }^2
+	\end{align*}
+	となるので方程式は
+	\begin{align*}
+		\frac{q}{\cos^2\phi}\de[\phi]{\theta} = \pm i\frac{Aq(p + q\tan\phi)}{\cos\phi}\\
+		\frac{1}{\cos\phi(p + q\tan\phi)}\de[\phi]{\theta} = \pm iA\\
+		\frac{1}{p\cos\phi + q\sin\phi}\d\phi = \pm iA\d\theta\\
+	\end{align*}
+	$\frac{p}{q} = \tan\alpha$となる$\alpha$を用いると
+		\[p\cos\phi + q\sin\phi = \sqrt{p^2 + q^2}\sin(\phi + \alpha) = \frac{mh^2}{k}\sin(\phi + \alpha)\]
+	より
+	\begin{align*}
+		\frac{1}{\sin(\phi + \alpha)}\d\phi = \pm i\frac{Amh^2}{k}\d\theta = \frac{2h}{\omega}\\
+		\frac{1}{2}\log\lr{\frac{1 - \cos(\phi + \alpha)}{1 + \cos(\phi + \alpha)}} = \pm i\frac{2h}{\omega}\theta + C\\
+		\frac{1 - \cos(\phi + \alpha)}{1 + \cos(\phi + \alpha)} = B_1e^{i\frac{4h}{\omega}\theta} + B_1e^{-i\frac{4h}{\omega}\theta}\\
+		= B\sin\lr{\frac{4h}{\omega}\theta + \beta}
+		\frac{2}{1 + \cos(\phi + \alpha)} = 1 + B\sin\lr{\frac{4h}{\omega}\theta + \beta}\\
+		\cos(\phi + \alpha) = \frac{1 - B\sin\lr{\frac{4h}{\omega}\theta + \beta}}{1 + B\sin\lr{\frac{4h}{\omega}\theta + \beta}}\\
+		\tan(\phi + \alpha) = \sqrt{\frac{1}{\cos^2(\phi + \alpha)} - 1} = \frac{2\sqrt{B\sin\lr{\frac{4h}{\omega}\theta + \beta}}}{1 + B\sin\lr{\frac{4h}{\omega}\theta + \beta}}\\
+		\tan\phi = \frac{\tan(\phi + \alpha) - \tan\alpha}{1 + \tan(\phi + \alpha)\tan\alpha}
+		u = p + q\tan\phi
+	\end{align*}
+
+\section{$n$次元の万有引力}
