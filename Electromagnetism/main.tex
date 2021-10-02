@@ -1,11 +1,7 @@
 \documentclass{jsarticle}
-\usepackage{amssymb,amsmath,bm}
-\begin{document}
-\title{電磁気学}
-\author{高校n年 season}
-\date{2019/05/19}
-\maketitle
-\tableofcontents
+\usepackage{amssymb,amsmath}
+\usepackage{amsths}
+
 \newcommand{\repart}[1]{\part{#1}\setcounter{section}{0}}
 \newcommand{\lr}[1]{\left(#1 \right)}
 \newcommand{\mlr}[1]{\left\{#1 \right\}}
@@ -16,9 +12,17 @@
 \newcommand{\di}[2][]{\frac{d #1}{d #2}}
 \newcommand{\dd}[2][]{\frac{d^2 #1}{d #2^2}}
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\grad}{\mathrm{grad}}
-\newcommand{\dive}{\mathrm{div}}
-\newcommand{\rot}{\mathrm{rot}}
+\newcommand{\grad}{\mathrm{grad\,}}
+\newcommand{\dive}{\mathrm{div\,}}
+\newcommand{\rot}{\mathrm{rot\,}}
+
+\title{電磁気学}
+\author{season07001674}
+\date{\today (初版 2019/05/19)}
+
+\begin{document}
+\maketitle
+\tableofcontents
 
 \input part1.tex % 真空中のマクスウェル方程式
 \input part2.tex % 物質中の電磁場
