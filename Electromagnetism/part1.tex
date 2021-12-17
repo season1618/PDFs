@@ -1,98 +1,122 @@
 \repart{真空中のマクスウェル方程式}
-    電気に関するのクーロンの法則$F=\rec{4\pi\epsilon_0}\frac{Qq}{r^2}$から静電場$E=\rec{4\pi\epsilon_0}\frac{q}{r^2}$を定義する。電荷の間に働く力には線形性が成り立つ。即ち複数の電場の影響は重ね合わせで計算できる。
-    \section{ガウスの法則}
-        電荷を閉曲面で覆い、曲面に垂直な方向の電場を積分する。するとこれは領域の形に依らない。閉曲面を$S$、球面の一部を$S'$として、
+
+電気に関するのクーロンの法則$F=\rec{4\pi\epsilon_0}\frac{Qq}{r^2}$から静電場$E=\rec{4\pi\epsilon_0}\frac{q}{r^2}$を定義する。電荷の間に働く力には線形性が成り立つ。即ち複数の電場の影響は重ね合わせで計算できる。
+\section{ガウスの法則}
+    電荷を閉曲面で覆い、曲面に垂直な方向の電場を積分する。するとこれは領域の形に依らない。閉曲面を$S$、球面の一部を$S'$として、
+    \begin{align*}
+        \int E\cdot n\ dS &= \frac{q}{4\pi\epsilon_0}
+        \rec{|r|^3}\int |r||n|\cos\theta\ dS'\\
+        &= \frac{q}{4\pi\epsilon_0}\rec{|r|^2}\int dS'\\
+        &= \frac{q}{\epsilon_0}
+    \end{align*}
+    $q = \int \rho dV$なのでガウスの定理より、
+    \begin{align*}
+        \int E\cdot n\ dS &= \int \dive EdV = 
+        \rec{\epsilon_0}\int \rho dV\\
+        \dive E &= \frac{\rho}{\epsilon_0}
+    \end{align*}
+    \paragraph{帯電球の静電場}
+        ガウスの法則から半径$a$の帯電球の電場を求める。電荷密度は一定であると仮定する。\\
+        $r \le a$の場合、
         \begin{align*}
-            \int E\cdot n\ dS &= \frac{q}{4\pi\epsilon_0}
-            \rec{|r|^3}\int |r||n|\cos\theta\ dS'\\
-            &= \frac{q}{4\pi\epsilon_0}\rec{|r|^2}\int dS'\\
-            &= \frac{q}{\epsilon_0}
+            4\pi r^2\cdot E &= \frac{r^3}{a^3}\cdot 
+            \frac{q}{\epsilon_0}\\
+            E &= \rec{4\pi\epsilon_0}\frac{qr}{a^3}
         \end{align*}
-        $q = \int \rho dV$なのでガウスの定理より、
+        $r>a$の場合、
         \begin{align*}
-            \int E\cdot n\ dS &= \int \dive EdV = 
-            \rec{\epsilon_0}\int \rho dV\\
-            \dive E &= \frac{\rho}{\epsilon_0}
+            4\pi r^2\cdot E &= \frac{q}{\epsilon_0}\\
+            E &= \rec{4\pi\epsilon_0}\frac{q}{r^2}
         \end{align*}
-        \paragraph{帯電球の静電場}
-            ガウスの法則から半径$a$の帯電球の電場を求める。電荷密度は一定であると仮定する。\\
-            $r \le a$の場合、
-            \begin{align*}
-                4\pi r^2\cdot E &= \frac{r^3}{a^3}\cdot 
-                \frac{q}{\epsilon_0}\\
-                E &= \rec{4\pi\epsilon_0}\frac{qr}{a^3}
-            \end{align*}
-            $r>a$の場合、
-            \begin{align*}
-                4\pi r^2\cdot E &= \frac{q}{\epsilon_0}\\
-                E &= \rec{4\pi\epsilon_0}\frac{q}{r^2}
-            \end{align*}
-            よって
-                \[E = 
-                \begin{cases}
-                    \rec{4\pi\epsilon_0}\frac{qr}{a^3} & (r \le a)\\
-                    \rec{4\pi\epsilon_0}\frac{q}{r^2} & (r>a)
-                \end{cases}\]
-    \section{ファラデーの法則}
-        静電場中を閉曲線に沿って移動することを考える。エネルギー保存則より、$F$の線積分は0となる。つまり$E$の線積分は0になる。ストークスの定理より、
+        よって
+            \[E = 
+            \begin{cases}
+                \rec{4\pi\epsilon_0}\frac{qr}{a^3} & (r \le a)\\
+                \rec{4\pi\epsilon_0}\frac{q}{r^2} & (r>a)
+            \end{cases}\]
+
+\section{ファラデーの法則}
+    静電場中を閉曲線に沿って移動することを考える。エネルギー保存則より、$F$の線積分は0となる。つまり$E$の線積分は0になる。ストークスの定理より、
+    \begin{align*}
+        \oint E\cdot ds = \int \rot E\cdot ndS = 0\\
+        \rot E = 0
+    \end{align*}
+    ファラデーの電磁誘導の法則より、コイルに発生する起電力$V$はコイルを貫く磁束$\Phi$の変化に比例する。
+        \[V = -\di[\Phi]{t}\]
+    ここにおける起電力は回路で測られるものであるが、近接作用の立場からはコイルの有無に関わらず電場が存在していると考えるべきである。起電力は回路に沿って電場を線積分したものなので、
+    \begin{align*}
+        \int E\cdot ds = -\de{t}\int B\cdot dS\\
+        \intertext{左辺にストークスの定理を適用して、}
+        \int \lr{\rot E + \pd[B]{t}}\cdot dS = 0\\
+        \rot E + \pd[B]{t} = 0
+    \end{align*}
+    \paragraph{ポアソン方程式}
+        ガウスの法則とファラデーの法則から静電場の式が導けることを確認する。静電場$E$は静電ポテンシャル$\phi$を使って
+            \[E = -\grad\phi = \lr{-\pd[\phi]{x},-\pd[\phi]{y},-\pd[\phi]{z}}\]
+        と表せる。既にファラデーの法則を満たしているので、ガウスの法則に当てはめると、
         \begin{align*}
-            \oint E\cdot ds = \int \rot E\cdot ndS = 0\\
-            \rot E = 0
+            -\dive\grad\phi = -\frac{\rho}{\epsilon_0}\\
+            \Delta\phi = -\frac{\rho}{\epsilon_0}
         \end{align*}
-        ファラデーの電磁誘導の法則より、コイルに発生する起電力$V$はコイルを貫く磁束$\Phi$の変化に比例する。
-            \[V = -\di[\Phi]{t}\]
-        ここにおける起電力は回路で測られるものであるが、近接作用の立場からはコイルの有無に関わらず電場が存在していると考えるべきである。起電力は回路に沿って電場を線積分したものなので、
-        \begin{align*}
-            \int E\cdot ds = -\de{t}\int B\cdot dS\\
-            \intertext{左辺にストークスの定理を適用して、}
-            \int \lr{\rot E + \pd[B]{t}}\cdot dS = 0\\
-            \rot E + \pd[B]{t} = 0
-        \end{align*}
-        \paragraph{ポアソン方程式}
-            ガウスの法則とファラデーの法則から静電場の式が導けることを確認する。静電場$E$は静電ポテンシャル$\phi$を使って
-                \[E = -\grad\phi = \lr{-\pd[\phi]{x},-\pd[\phi]{y},-\pd[\phi]{z}}\]
-            と表せる。既にファラデーの法則を満たしているので、ガウスの法則に当てはめると、
-            \begin{align*}
-                -\dive\grad\phi = -\frac{\rho}{\epsilon_0}\\
-                \Delta\phi = -\frac{\rho}{\epsilon_0}
-            \end{align*}
-            この方程式をポアソン方程式と呼ぶ。ラプラシアン$\Delta$は極座標では、
-                \[\Delta = 
-                    \rec{r^2}\pd{r}\lr{r^2\pd{r}}+
-                    \rec{r^2\sin\theta}\pd{\theta}\lr{\sin\theta\pd{\theta}}+
-                    \rec{r^2\sin^2\theta}\pd[^2]{\phi^2}\]
-            電荷は球対称に分布していると仮定すると静電場の方程式は、
-                \[\rec{r^2}\pd{r}\lr{r^2\pd[\phi]{r}} = -\frac{\rho}{\epsilon_0}\]
-            ここから先程と同じ式が導ける。
-    \section{磁束保存の法則}
-        ビオ＝サバ―ルの法則
-            \[dB = \frac{\mu_0}{4\pi}\frac{Ids\times r}{|r|^3}\]
-        を拡張し、
-            \[B(r) = \frac{\mu_0}{4\pi}
-            \int \frac{i(r')\times (r-r')}{|r-r'|^3}dr'\]
-        とする。ここでベクトルポテンシャル
-            \[A = \frac{\mu_0}{4\pi}\int \frac{i(r')}{|r-r'|}dr'\]
-        を導入すると、$B=\rot A$と表せるので、
-            \[\dive B=\dive\rot A=0\]
-    \section{アンペールの法則}
-        アンペールの法則は、
-            \[\rot B = \mu_0i\]
-        これの両辺の$\dive$をとると、
-            \[\mu_0\dive i = 0\]
-        となる。これは電荷の保存則$\dive i = -\pd[\rho]{t}$に反しているので、これを満たすように書き換える。$\dive E = -\frac{\rho}{\epsilon_0}$より、アンペールの法則に付け加えると、
-            \[\rot B - \epsilon_0\mu_0\pd[E]{t} = \mu_0 i\]
-        となる。左辺第二項を移行して、
-            \[\rot B = \mu_0\lr{i + \epsilon_0\pd[E]{t}}\]
-        とする。右辺第二項の$\epsilon_0\pd[E]{t}$を変位電流と呼ぶ。変位電流は電荷の移動を伴わない。
-    \section{ローレンツ力}
-        平行に流れる二つの電流間には引力が働き、アンペールの力という。その大きさは、
-            \[|F| = \frac{\mu_0}{2\pi}\frac{I_1 I_2}{r}\]
-        である。ここで実際は電流の間に直接力が働くのではなく、一方の電流が作った磁場によってもう一方の電荷が力を受けるのだと解釈する。力の方向も考慮すれば、
-            \[dF = Ids\times B\]
-        となる。$1\rm{m}$あたり$n$個の電荷があるとすれば、$I=qnv$と表せるので、
-            \[dF = qnvds\times B\]
-        $nds$は微小長さあたりの電荷の個数を表すので、電荷一つあたりの力は、
-            \[F = qv\times B\]
-        電場による力と合わせて、
-            \[F = q(E+v\times B)\]
-        となる。これをローレンツ力という。
+        この方程式をポアソン方程式と呼ぶ。ラプラシアン$\Delta$は極座標では、
+            \[\Delta = 
+                \rec{r^2}\pd{r}\lr{r^2\pd{r}}+
+                \rec{r^2\sin\theta}\pd{\theta}\lr{\sin\theta\pd{\theta}}+
+                \rec{r^2\sin^2\theta}\pd[^2]{\phi^2}\]
+        電荷は球対称に分布していると仮定すると静電場の方程式は、
+            \[\rec{r^2}\pd{r}\lr{r^2\pd[\phi]{r}} = -\frac{\rho}{\epsilon_0}\]
+        ここから先程と同じ式が導ける。
+
+\section{磁束保存の法則}
+    ビオ＝サバ―ルの法則
+        \[dB = \frac{\mu_0}{4\pi}\frac{Ids\times r}{|r|^3}\]
+    を拡張し、
+        \[B(r) = \frac{\mu_0}{4\pi}
+        \int \frac{i(r')\times (r-r')}{|r-r'|^3}dr'\]
+    とする。ここでベクトルポテンシャル
+        \[A = \frac{\mu_0}{4\pi}\int \frac{i(r')}{|r-r'|}dr'\]
+    を導入すると、$B=\rot A$と表せるので、
+        \[\dive B=\dive\rot A=0\]
+
+\section{アンペールの法則}
+    アンペールの法則は、
+        \[\rot B = \mu_0i\]
+    これの両辺の$\dive$をとると、
+        \[\mu_0\dive i = 0\]
+    となる。これは電荷の保存則$\dive i = -\pd[\rho]{t}$に反しているので、これを満たすように書き換える。$\dive E = -\frac{\rho}{\epsilon_0}$より、アンペールの法則に付け加えると、
+        \[\rot B - \epsilon_0\mu_0\pd[E]{t} = \mu_0 i\]
+    となる。左辺第二項を移行して、
+        \[\rot B = \mu_0\lr{i + \epsilon_0\pd[E]{t}}\]
+    とする。右辺第二項の$\epsilon_0\pd[E]{t}$を変位電流と呼ぶ。変位電流は電荷の移動を伴わない。
+
+\section{ローレンツ力}
+    平行に流れる二つの電流間には引力が働き、アンペールの力という。その大きさは、
+        \[|F| = \frac{\mu_0}{2\pi}\frac{I_1 I_2}{r}\]
+    である。ここで実際は電流の間に直接力が働くのではなく、一方の電流が作った磁場によってもう一方の電荷が力を受けるのだと解釈する。力の方向も考慮すれば、
+        \[dF = Ids\times B\]
+    となる。$1\rm{m}$あたり$n$個の電荷があるとすれば、$I=qnv$と表せるので、
+        \[dF = qnvds\times B\]
+    $nds$は微小長さあたりの電荷の個数を表すので、電荷一つあたりの力は、
+        \[F = qv\times B\]
+    電場による力と合わせて、
+        \[F = q(E+v\times B)\]
+    となる。これをローレンツ力という。
+
+\section{物理量・単位・定数}
+    電磁気学が発展した当時は$\mathrm{cgs}$単位系が用いられていた。後に$\mathrm{SI}$単位系が定義された。
+
+    電気素量$e$及び電荷の単位$\mathrm{C}$(クーロン)は$e = 1.602176634 \time 10^{−19} \mathrm{C}$とすることにより厳密に定義される。電流を表す$\mathrm{A}$(アンペア)は、電磁気に関する唯一の$\mathrm{SI}$基本単位であり、ある断面積を1秒間に1クーロンの電荷が流れるときの電流と定義される。つまり$\mathrm{C} = \mathrm{A} \cdot \mathrm{s}$である。
+
+    電場は$F = qE$より正の単位電荷を空間内に置いたときに受ける力とする。電束密度$D$はガウスの法則
+        \[\oint D \cdot dS = q\]
+    によって定義される。電位は静磁場において定義される量であり、ある点を規準として測られる。二点間の電位差はその間を単位電荷を移動させるときの仕事であり、静磁場において経路に依存しない。時間変化する磁場においては電位はスカラーポテンシャルに拡張される。電圧・起電力の単位である$\mathrm{V}$(ボルト)は、導体の二点間を1クーロンの電荷を運ぶときに必要な仕事が1ジュールであるときの、二点間の電圧である。$\mathrm{V} = \mathrm{J} / \mathrm{C} = \mathrm{m}^2 \cdot \mathrm{kg} \cdot \mathrm{s}^{-3} \cdot \mathrm{A}^{-1}$となる。
+
+    磁束密度$B$はローレンツ力の式
+        \[dF = Idl \times B\]
+    によって試験電流の受ける力によって定義する。ある閉曲面$S$を貫く磁束$\Phi$は
+        \[\Phi = \int_S B \cdot dS\]
+    となる。磁束の単位$\mathrm{Wb}$(ウェーバ)はファラデーの電磁誘導の法則
+        \[V = -\pd[\Phi]{t}\]
+    に基づいて、1$\mathrm{V}$の誘導起電力を生じるのに必要な1$\mathrm{s}$あたりの磁束の変化量として定義される。磁場$H$はアンペールの法則
+        \[\oint H \cdot dl = I\]
+    を満たす量である。
