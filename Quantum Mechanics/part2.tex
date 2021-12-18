@@ -1,0 +1,178 @@
+\repart{波動力学}
+	\begin{enumerate}
+		\item 純粋状態は波動関数$\psi(\vb{x}, t)$で表される。
+		\item ボルンの規則:波動関数の絶対値の二乗は粒子の存在確率を表す。
+		\item オブザーバブルは演算子で表される。
+		\item シュレーディンガー方程式
+		\item 波束の収縮
+	\end{enumerate}
+\section{波動関数}
+	\subsection{多体系}
+		複数の粒子の存在確率は独立ではない。よって多粒子系の場合、それぞれの粒子に対して波動関数を考えるのではなく、系全体の波動関数を考え、絶対値の二乗を系がその配置になる確率とする。それぞれの粒子の位置を$r_1, r_2, \ldots, r_n$とすると波動関数はそれらの関数$\psi = \psi(r_1, r_2, \ldots, r_n)$となる。この波動関数を特に多体波動関数という。系全体のハミルトニアンを考えれば一粒子の場合と同様にシュレーディンガー方程式が成立する。
+
+		原理的に区別できない粒子を同種粒子と呼ぶ。例えば電子はどれも質量や電荷が等しいので区別することができない。同種粒子からなる系では多体波動関数の任意の二つの座標を入れ替えても確率分布は変化せず、位相因子が掛かるだけとなる。二回入れ替えれば元に戻るので位相因子は$\pm 1$となる。$+1$であるとき波動関数は対称性を持つと言い、その粒子をボース粒子(ボゾン)という。$-1$のとき波動関数は反対称性を持つと言い、その粒子をフェルミ粒子(フェルミオン)という。
+	\subsection{有界性}
+		ボルンの規則より波動関数の絶対値の二乗は粒子の存在確率を表すことから全空間における積分は1にならなくてはならない。また波動関数が二乗可積分なら無限遠での極限は0になる。
+
+\section{物理量の演算子}
+	物理量と波動関数は演算子に対する固有値と固有関数である。固有値である物理量は実数だが、固有値が実数であることは演算子がエルミートであることと同値である。エルミート演算子の固有関数による正規直交基底を取ることができる。
+	波動関数は位置と時間の関数なので位置の演算子はそのまま$\vb{x}$となる。
+	ボルンの規則より$|\psi|^2$は粒子の存在確率を表す。粒子の位置の期待値は
+		\[\angle{\vb{x}} = \int \psi^* \vb{x} \psi \d V\]
+	運動量の期待値は
+	\begin{align*}
+	\end{align*}
+	軌道角運動量
+	スピン角運動量
+	\subsection{不確定性原理}
+		物理量$A$の不確定性$\Delta A$を標準偏差によって定義する。つまり
+		\begin{align*}
+			\Delta A^2
+			&= \int \psi^*(A - \angle{A})^2\psi dV\\
+			&= \int \psi^*(A^2 - 2\angle{A}A + \angle{A}^2)\psi dV\\
+			&= \angle{A^2} - \angle{A}^2
+		\end{align*}
+		二つの物理量の不確定性の積はシュワルツの不等式より
+		\begin{align*}
+			\Delta A^2 \cdot \Delta B^2
+			&= \|(A - \angle{A})\psi\|\|(B - \angle{B})\psi\|
+			&\geq \l|\angle{(A - \angle{A})\psi, (B - \angle{B})\psi}\r|^2\\
+			&\geq \l|Im\angle{(A - \angle{A})\psi, (B - \angle{B})\psi}\r|^2\\
+			&= \(\int \psi^*\frac{AB - BA}{2}\psi dV\)^2\\
+			&= \frac{|\angle{[A, B]}|^2}{4}
+		\end{align*}
+		となる。つまり演算子が非可換のとき不確定性関係となる。
+		\begin{align*}
+			[x, y] = 0\\
+			[p_x, p_y] = 0\\
+			[L_x, L_y] = i\hbar L_z\\
+			[x, p_x] = i\hbar\\
+			[x, p_y] = 0\\
+			[L_x, y] = i\hbar z\\
+			[L_x, p_y] = i\hbar p_z\\
+		\end{align*}
+
+\section{シュレーディンガー方程式}
+	\subsection{導出}
+		シュレーディンガーは初め相対論的に扱いクライン・ゴルドン方程式を導いたが、当時知られていなかった電子のスピンを考慮しなかったため実験と一致しなかった。数か月後に再びこの問題を非相対論的に扱いシュレーディンガー方程式を導いた。
+	\subsection{時間に依存しないシュレーディンガー方程式}
+		$\psi(\vb{x}, t) = \phi(\vb{x})g(t)$とし、ポテンシャルが時間変化しないとする。
+		\begin{align*}
+			\(- \frac{\hbar}{2m}\Delta + V(\vb{x})\)\phi(\vb{x})g(t) &= i\hbar \pd[(\phi(\vb{x})g(t))]{t}\\
+			- \frac{\hbar}{2m}g(t)\Delta \phi(\vb{x}) + V(\vb{x})\phi(\vb{x})g(t) &= i\hbar\phi(\vb{x})\de[g]{t}\\
+			- \frac{\hbar}{2m}\frac{1}{\phi}\Delta \phi + V(\vb{x}) &= i\hbar\frac{1}{g}\de[g]{t}\\
+		\end{align*}
+		両辺は$\vb{x}, t$に依存しない定数であり$E$とおく。
+		\begin{gather*}
+			\(- \frac{\hbar}{2m}\Delta + V(\vb{x})\)\phi(\vb{x}) = E\phi(\vb{x})\\
+			i\hbar\de[g(t)]{t} = Eg(t)
+		\end{gather*}
+		第二式を解くと
+			\[g(t) = Ae^{-i\frac{E}{\hbar}t}\]
+		である。波動関数$\psi(\vb{x}, t) = \phi(\vb{x})g(t)$にエネルギー演算子を作用させると
+			\[i\hbar\pd[\psi]{t} = i\hbar \dot -i\frac{E}{\hbar}\psi = E\psi\]
+		つまり$E$はエネルギーを表す。また$E/\hbar$は角速度に等しいので
+			\[E = \hbar\omega = \frac{h}{2\pi}2\pi\nu = h\nu\]
+		となり、ド・ブロイ波のエネルギーと振動数の関係に一致することからも分かる。第一式の
+			\[\(- \frac{\hbar}{2m}\Delta + V(\vb{x})\)\phi = E\phi\]
+		を時間に依存しないシュレーディンガー方程式と呼ぶ。この方程式の解が存在するような$E_n$をエネルギー固有値と呼び、そのときの解$\phi_n(\vb{x})$をその固有値に属する固有関数という。波動関数は$\psi_n(\vb{x}, t) = \phi_n(\vb{x})e^{- i\frac{E_n}{\hbar}t}$である。実際の波動関数は$c_n$を複素数の定数として様々な$E_n$に対して線形結合を取った
+			\[\psi(x, t) = \Sum_n c_n\psi_n(\vb{x}, t) = \Sum_n c_n\phi_n(\vb{x})e^{- i\frac{E_n}{\hbar}t}\]
+		であり、様々なエネルギーを持った状態が重ね合わさっている様子を表す。$\psi_n(x)$が規格化されているとすれば、$\psi(x, t)$の規格化条件は
+			\[\psi^{*}\psi = \Sum_m\Sum_n c_mc_n\phi_m^{*}\phi_n\e^{i\frac{(E_m - E_n}{\hbar}t} = 1\]
+		ここで異なるエルミート演算子の異なる固有値に属する固有関数の内積は0になるので
+			\[\Sum_n c_n^2 = 1\]
+		となる。ポテンシャルが時間に依存しない場合、確率分布も変化しない。固有関数は完全系なので、初期条件を与えれば係数が決定する。
+
+	\subsection{摂動論}
+		時間変化するポテンシャルを扱う場合は、ハミルトニアンに摂動項$\Delta V(x, t)$を加えて、波動関数の係数$c_n$を時間に依存する関数$c_n(t)$と見て定数変化法で解く。時間変化なしのハミルトニアンを
+			\[H_0 = -\frac{\hbar}{2m}\Delta + V_0(\vb{x})\]
+		ポテンシャルの摂動項を$\Delta V(\vb{x}, t)$とするとシュレーディンガー方程式は
+			\[(H_0 + \Delta V(\vb{x}, t))\psi(\vb{x}, t) = i\hbar\pd{t}\psi(\vb{x}, t)\]
+		となる。ここで解を
+			\[\psi(\vb{x}, t) = \Sum_n c_n(t)\psi_n({\vb{x}, t})\]
+		とおいて代入する。
+		\begin{align*}
+			H_0\psi(\vb{x}, t)
+			&= \(-\frac{\hbar}{2m}\Delta + V_0(\vb{x})\)\Sum_n c_n(t)\psi_n(\vb{x}, t)\\
+			&= \Sum_n c_n(t) \dot -\frac{\hbar}{2m}\Delta\psi_n(\vb{x}, t) + V_0c_n(t)\psi_n(\vb{x}, t)\\
+			&= \Sum_n c_n(t)H_0\psi_n(\vb{x}, t)\\
+			i\hbar\pd{t}\psi(\vb{x}, t) &= \Sum_n i\hbar c_n'(t)\psi_n(\vb{x}, t) + i\hbar c_n(t)\pd{t}\psi_n(\vb{x}, t)\\
+		\end{align*}
+		で$H_0\psi_n = i\hbar\pd{t}\psi_n$だから
+			\[\Sum_n c_n\Delta V\psi_n = i\hbar \Sum_n \de[c_n]{t}\psi_n\]
+		$\de[c_n]{t}$は$t$のみに依存するので両辺に$\psi_m^*$を掛けて積分すると
+			\[\de[c_m]{t} = - \frac{i}{\hbar}\Sum_n c_n \int\psi_m^*\Delta V\psi_n d\vb{x}\]
+		となる。このままでは$c_m$を求めることができないので何らかの近似仮定をおいて解くことになる。
+
+	\subsection{WKB(Wentzel Kramers Brillouin)近似}
+		位相を$S$として波動関数を
+			\[\phi(x) = e^{\frac{i}{\hbar}S(x)}\]
+		と仮定する。
+		\begin{align*}
+			\de[\phi]{x^2}
+			&= \de{x}\(\frac{i}{\hbar}\de[S]{x}e^{\frac{i}{\hbar}S(x)}\)\\
+			&= -\frac{1}{\hbar^2}\(\de[S]{x}\)^2e^{\frac{i}{\hbar}S(x)} + \frac{i}{\hbar}\de[^2S]{x^2}e^{\frac{i}{\hbar}S(x)}\\
+		\end{align*}
+		より
+		\begin{align*}
+			\(-\frac{\hbar^2}{2m}\de[\phi]{x^2} + V(x)\)\phi(x) = E\phi(x)\\
+			\frac{1}{2m}\llr{-i\hbar\de[^2S]{x^2} + \(\de[S]{x}\)^2} + V(x) = E\\
+		\end{align*}
+		$\hbar \to 0$の極限でこの方程式はハミルトン＝ヤコビ方程式に帰着し、$S(x)$は位相に対応する。この方程式は$\de[S]{x}$に関するリッカチの微分方程式である。
+			\[S(x) = S_0(x) + \(\frac{\hbar}{i}\)S_1(x) + \(\frac{\hbar}{i}\)^2S_2(x) + \cdots\]
+		と展開すると運動量$p(x) = \sqrt{2m(E - V(x))}$を用いて
+		\begin{gather*}
+			S_0(x) = \pm \frac{i}{\hbar}\int_0^x p(x')dx'\\
+			S_1(x) = \log \frac{1}{\sqrt{p(x)}} + C_1\\
+		\end{gather*}
+		となる。零次は古典力学の解に対応する。$p(x)$を複素関数とみなし閉路に沿って積分すると
+			\[\cint pdx \sim S(x) = nh\]
+		となりゾンマーフェルトの量子条件が導かれる。
+
+\section{現象}
+	\subsection{一次元井戸型ポテンシャル}
+		以下のような形のポテンシャルを考える。
+			\[V(x) =
+				\begin{case}
+					0 & (0 < x < L)\\
+					\infty & (x <= 0, L <= x)
+				\end{case}
+			\]
+		するとシュレーディンガー方程式は
+		\begin{align*}
+			- \frac{\hbar}{2m}\de[^2\phi]{x^2} &= E\phi & (0 < x < L)\\
+			\de[^2\phi]{x^2} &= - \frac{2mE}{\hbar}\phi\\
+			\phi(x) = A\cos\frac{\sqrt{2mE}}{\hbar}x + B\sin\frac{\sqrt{2mE}}{\hbar}x\\
+		\end{align*}
+		境界条件より
+		\begin{align*}
+			\phi(0) = A = 0\\
+			\phi(L) = B\sin\frac{\sqrt{2mE}L}{\hbar} = 0\\
+		\end{align*}
+		$B = 0$のとき波動関数が恒等的に0になるので不適。つまり
+			\[\frac{\sqrt{2mE}L}{\hbar} = n\pi (n = 1, 2, \ldots)\]
+		規格化条件から係数$B$が求まる。
+		\begin{align*}
+			\int_0^L \sin^2\frac{\sqrt{2mE}}{\hbar} dx
+			&= \int_0^L \sin\frac{n\pi}{L} dx\\
+			&= \int_0^L \frac{1 - \cos\frac{2n\pi}{L}}{2} dx\\
+			&= \frac{L}{2}
+		\end{align*}
+		より$B = \sqrt{\frac{2}{L}}$となる。よって固有関数とエネルギー固有値は
+		\begin{gather*}
+			\phi_n(x) = \sqrt{\frac{2}{L}}\sin\frac{\sqrt{2mE}}{\hbar}x\\
+			E_n = \frac{\pi^2\hbar^2}{2mL^2}n^2\\
+		\end{gather*}
+
+	\subsection{一次元調和振動子}
+		一次元調和振動子の波動関数を求める。ポテンシャルエネルギーを$V(x) = 1/2m\omega^2 x^2$とするとシュレーディンガー方程式は
+			\[-\frac{\hbar^2}{2m}\de[^2\phi]{x^2} = \(E - \frac{1}{2}m\omega^2 x^2\)\phi\]
+		となる。
+		つまり
+		\begin{gather*}
+			\phi(y) = H_n(y)e^{-\frac{y^2}{2}}\\
+			\phi(x) = H_n(\sqrt{\frac{m\omega}{\hbar}}x)e^{- \frac{m\omega}{2\hbar}x^2}
+		\end{gather*}
+		波動関数は
+			\[\psi_n(x, t) = H_n(\sqrt{\frac{m\omega}{\hbar}}x)e^{- \(\frac{m\omega}{2\hbar}x^2 + i\(n + \frac{1}{2}\)\omega t\)}\]
+		となる。

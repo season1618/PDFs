@@ -1,0 +1,172 @@
+\repart{量子化学}
+
+\section{水素原子}
+	二つの点電荷$e_1, e_2$がクーロン力を及ぼし合っているときの波動関数を求める。それぞれの位置が$\vb{r}_1, \vb{r}_2$のときハミルトニアンは
+	\begin{gather*}
+		H = -\frac{\hbar^2}{2m_1}\Delta_1 -\frac{\hbar^2}{2m_2}\Delta_2 + \frac{k}{|\vb{r}_2 - \vb{r}_1|}\\
+		\Delta_1 = \pd[^2]{x_1^2} + \pd[^2]{y_1^2} + \pd[^2]{z_1^2}\\
+		\Delta_2 = \pd[^2]{x_2^2} + \pd[^2]{y_2^2} + \pd[^2]{z_2^2}\\
+		k = \frac{e_1e_2}{4\pi\epsilon_0}
+	\end{gather*}
+	となる。
+	\begin{gather*}
+		\vb{r_G} = \frac{m_1\vb{r}_1 + m_2\vb{r}_2}{m_1 + m_2}\\
+		\vb{r} = \vb{r}_2 - \vb{r}_1\\
+		\mu = \frac{m_1m_2}{m_1 + m_2}
+	\end{gather*}
+	とおくと
+	\begin{gather*}
+		\vb{r}_1 = \vb{r}_G - \frac{m_2}{m_1 + m_2}\vb{r}\\
+		\vb{r}_2 = \vb{r}_G + \frac{m_1}{m_1 + m_2}\vb{r}\\
+	\end{gather*}
+	である。
+	\begin{align*}
+		\pd{x_1}
+		&= \pd{x_G}{x_1}\pd{x_G} + \pd{x}{x_1}\pd{x}\\
+		&= \frac{m_1}{m_1 + m_2}\pd{x_G} - \pd{x}\\
+		\pd[^2]{x_1^2}
+		&= \frac{m_1^2}{(m_1 + m_2)^2}\pd[^2]{x_G} - \frac{2m_1}{m_1 + m_2}\ppd{x_G}{x} + \pd[^2]{x^2}\\
+		-\frac{\hbar^2}{2m_1}\Delta_1
+		&= -\frac{m_1\hbar^2}{2(m_1 + m_2)^2}\Delta_G + \frac{\hbar^2}{m_1 + m_2}\nabla_G\dot\nabla_r - \frac{\hbar^2}{2m_1}\Delta_r\\
+	\end{align*}
+	同様に
+		\[-\frac{\hbar^2}{2m_2}\Delta_2 = -\frac{\hbar^2}{2(m_1 + m_2)}\Delta_G - \frac{\hbar^2}{m_1 + m_2}\nabla_G\dot\nabla_r -\frac{\hbar^2}{2m_2}\Delta_r\]
+	なのでハミルトニアンは
+		\[H = \frac{\hbar^2}{2(m_1 + m_2)}\Delta_G - \frac{\hbar^2}{2\mu}\Delta_r + \frac{k}{|r|}\]
+	となる。古典力学と同様、二体問題は一体問題と数学的に同等になる。第一項は自由粒子のハミルトニアンなのでここでは無視する。
+
+	水素原子において中心電荷が固定されている場合のハミルトニアンは
+		\[H = \frac{\hbar^2}{2m}\Delta + \frac{k}{|r|}\]
+	である。球面極座標$(r, \theta, \phi)$で考えると波動関数は$\psi(r, \theta, \phi) = R(r)\Theta(\theta)\Phi(\phi)$という形の変数分離解のみを持つことが知られている。三次元極座標ラプラシアンは
+		\[\Delta = \frac{1}{r^2}\pd{r}\(r^2\pd{r}\) + \frac{1}{r^2\sin\theta}\pd{\theta}\(\sin\theta\pd{\theta}\) + \frac{1}{r^2\sin^2\theta\pd[^2]{\phi^2}}\]
+	なのでシュレーディンガー方程式は
+	\begin{align*}
+		\frac{1}{R(r)}\frac{1}{r^2}\pd{r}\(r^2\pd[R]{r}\)
+		+ \frac{1}{\Theta(\theta)}\frac{1}{r^2\sin\theta}\pd{\theta}\(\sin\theta\pd[\Theta]{\theta}\)
+		+ \frac{1}{\Phi(\phi)}\frac{1}{r^2\sin^2\theta\pd[\Phi^2]{\phi^2}}
+		&= -\frac{2m(E - V(r))}{\hbar^2}\\
+		\frac{1}{R(r)}\pd{r}\(r^2\pd[R]{r}\)
+		+ \frac{1}{\Theta(\theta)}\frac{1}{\sin\theta}\pd{\theta}\(\sin\theta\pd[\Theta]{\theta}\)
+		+ \frac{1}{\Phi(\phi)}\frac{1}{\sin^2\theta\pd[\Phi^2]{\phi^2}}
+		&= -\frac{2mr^2(E - V(r))}{\hbar^2}
+	\end{align*}
+	$\lambda$を定数として
+	\begin{gather*}
+		\frac{1}{R(r)}\pd{r}\(r^2\pd[R]{r}\) + \frac{2mr^2(E - V(r))}{\hbar^2} = \lambda\\
+		\frac{1}{\Theta(\theta)}\frac{1}{\sin\theta}\pd{\theta}\(\sin\theta\pd[\Theta]{\theta}\)
+		+ \frac{1}{\Phi(\phi)}\frac{1}{\sin^2\theta\pd[\Phi^2]{\phi^2}}
+		= -\lambda\\
+	\end{gather*}
+	第二式の両辺に$\sin^2\theta$を掛ければ
+	\begin{align*}
+		\frac{1}{\Theta(\theta)}\sin\theta\pd{\theta}\(\sin\theta\pd[\Theta]{\theta}\)
+		+ \frac{1}{\Phi(\phi)}\frac{1}{\pd[\Phi^2]{\phi^2}} = -\lambda\sin^2\theta\\
+	\end{align*}
+	$\nu$を定数として
+	\begin{gather*}
+		\frac{1}{\Theta(\theta)}\sin\theta\pd{\theta}\(\sin\theta\pd[\Theta]{\theta}\) + \lambda\sin^2\theta = \nu\\
+		\frac{1}{\Phi(\phi)}\frac{1}{\pd[\Phi^2]{\phi^2}} = -\nu\\
+	\end{gather*}
+	結局シュレーディンガー方程式は次のようになる。
+	\begin{gather*}
+		\pd{r}\(r^2\pd[R]{r}\) + \frac{2mr^2(E - V(r))}{\hbar^2} = \lambda R(r)\\
+		\sin\theta\pd{\theta}\(\sin\theta\pd[\Theta]{\theta}\) + \lambda\sin^2\theta = \nu \Theta(\theta)\\
+		\frac{1}{\pd[\Phi^2]{\phi^2}} = -\nu \Phi(\phi)\\
+	\end{gather*}
+	第三式の解は
+	\[
+		\Phi(\phi) =
+		\begin{case}
+			Ae^{i\sqrt{\nu}\phi} + Be^{-i\sqrt{\nu}\phi} & (\nu > 0)\\
+			C\phi + D & (\nu = 0)\\
+		\end{case}
+	\]
+	$\Phi(0) = \Phi(2\pi)$より$\nu = m^2(m = 1,2,\ldots), C = 0$である。$m = 0$とすれば後者の解も含んでいる。また二つの項はそれぞれ単独でも解を成している。規格化すると
+		\[\Phi(\phi) = \frac{1}{2\pi}e^{im\phi} (m = 0,1,2,\ldots)\]
+	である。第二式の解はルジャンドル陪関数を用いて
+	\begin{gather*}
+		\Theta_{lm}(\theta) = (-1)^{\frac{m + |m|}{2}}\sqrt{l + \frac{1}{2}}\sqrt{\frac{(l - |m|)!}{(l + |m|)!}}P_m^l(\cos\theta)\\
+		P_m^l(x) = \\
+		\lambda = l(l + 1), l \geq |m| (l = \ldots,-2,-1,0,1,2,\ldots)
+	\end{gather*}
+	$Y^m_l(\theta, \phi) = \Theta(\theta)\Phi(\phi)$は球面調和関数となる。第一式の解はラゲールの陪多項式を用いて
+	\begin{gather*}
+		R_{nl}(r) = -\(\frac{2mk}{n\hbar^2}\)^{3/2}\sqrt{\frac{(n-l-1)!}{2m[(n+l)!]^3}}\exp(\frac{-\frac{mk}{n\hbar^2}r})\(\frac{2mk}{n\hbar^2}r\)^lL^{2l+1}_{n+l}(\frac{mk}{n\hbar^2}r)\\
+		L^s_t(x) = \\
+		n \geq l + 1 (n = 1,2,\ldots)
+	\end{gather*}
+	$n$を主量子数、$l$を方位量子数、$m$を磁気量子数という。エネルギーは主量子数によって決まり、
+		\[E_n = -\frac{mk^2}{2\hbar^2}\frac{1}{n^2}\]
+	である。つまり水素原子のエネルギー準位は縮退を起こしている。主量子数は$K殻,L殻,M殻,N殻,\ldots$に対応し、方位量子数は$s軌道,p軌道,d軌道,f軌道,\ldost$に対応する。
+	エネルギー準位の差は
+	\begin{align*}
+		\frac{\lambda} &= \frac{E_n - E_m}{hc}\\
+		&= \frac{m}{2\hbar^2}\(\frac{e^2}{4\pi\epsilon_0}\)^2\\
+		&= \frac{me^4}{8\epsilon_0^2h^3c}
+	\end{align*}
+	となってリュードベリの公式に一致した。
+
+\section{多電子原子}
+	多電子原子中の電子のハミルトニアンは
+		\[H = \Sum_i -\frac{\hbar^2}{2m}\Delta_i - \frac{1}{4\pi\epsilon_0}\frac{Ze^2}{r_i} + \frac{1}{4\pi\epsilon_0}\Sum_{i,j} \frac{e^2}{r_{ij}}\]
+	となる。このままではシュレーディンガー方程式を解析的に解くことができないので、電子間相互作用を無視して核電荷の大きさを補正する。つまり
+		\[H = \Sum_i -\frac{\hbar^2}{2m}\Delta_i - \frac{1}{4\pi\epsilon_0}\frac{\bar{Z}e^2}{r_i}\]
+	である。系全体の波動関数を$\phi(r_1, r_2, \ldots, r_n) = \phi(r_1)\phi(r_2)\cdots\phi(r_n)$と変数分離できると仮定するとシュレーディンガー方程式は
+	\begin{align*}
+		\Sum_i \phi(r_1)\cdots \phi(r_{i-1})\phi(r_{i+1})\cdots \phi(r_n) \(-\frac{\hbar^2}{2m}\Delta_i\phi(r_i) - \frac{1}{4\pi\epsilon_0}\frac{\bar{Z}e^2}{r_i}\phi(r_i)\) = E\phi(r_1)\phi(r_2)\cdots \phi(r_n)\\
+		\Sum_i \frac{1}{\phi(r_i)}\(-\frac{\hbar^2}{2m}\Delta_i\phi(r_i) - \frac{1}{4\pi\epsilon_0}\frac{\bar{Z}e^2}{r_i}\phi(r_i)\) = E\\
+	\end{align*}
+	各$i$について
+		\[-\frac{\hbar^2}{2m}\Delta_i\phi(r_i) - \frac{1}{4\pi\epsilon_0}\frac{\bar{Z}e^2}{r_i}\phi(r_i) = E_i\phi(r_i)\]
+	なので水素原子のシュレーディンガー方程式と等しい。このとき
+		\[E = \Sum_i E_i\]
+	となる。
+
+	\subsection{電子のスピン}
+		1922年にシュテルン・ゲルラッハの実験と呼ばれる有名な実験が行われた。銀原子のビームを磁場中に通すとビームが上下の2本に分かれるという結果になった。銀原子は内殻電子については角運動量が相殺し、最外殻電子についても5s軌道に入っているので角運動量は0になっているはずだった。このことから電子にはスピンという性質があるとされた。当初は古典的な描像で電子が自転していると思われたが、後にそうではないことが分かってきた。
+
+		つまり電子は一定の電荷と質量を持っており、スピンに関しては2つの自由度、座標に関しては無限の自由度を持っている。2種類のスピンを$\sigma = +1/2, -1/2$で表すことにすると、電子の固有状態は$(n, l, m, s)$の4つの量子数で区別される。あるいは、空間座標と一緒に考えて波動関数をアップスピンは$\phi(r, \sigma) = \phi(r)\alpha(\sigma)$、ダウンスピンは$\phi(r, \sigma) = \phi(r)\beta(\sigma)$と表すこともできる。つまり電子の固有状態は$\phi_{nlms}(r) = \phi_{nlm}(r)\alpha(\sigma) or \phi_{nlm}(r)\beta(\sigma)$となる。電子がフェルミ粒子であると仮定すれば、反対称性より同じ量子状態$(n, l, m, s)$には一つの電子しか入ることができない(パウリの排他原理)。
+	
+nが等しいときlが小さいほどエネルギーが小さい、パウリの排他原理、フントの規則
+\section{原子価結合法(valence bond theory, VB)}
+	電子を一つの原子軌道に属するとして化学結合を説明する。
+\section{分子軌道法(Molecular Orbital method, MO)}
+	電子が分子全体を動くとして構造を決定する。そのような電子の軌道を分子軌道という。
+	\subsection{LCAO(Linear Combination of Atomic Orbital)法}
+		分子軌道を原子軌道の線形結合として表現する。
+		\subsection{水素分子}
+			二つの水素原子$A, B$が距離$R$を隔てて存在しているとする。一電子のハミルトニアンは
+				\[H = -\frac{\hbar^2}{2m}\Delta - \frac{1}{4\pi\epsilon_0}\frac{e^2}{r_A} - \frac{1}{4\pi\epsilon_0}\frac{e^2}{r_b} + \frac{1}{4\pi\epsilon_0}\frac{e^2}{R}\]
+			1s軌道の波動関数は$\phi^{1s} = \frac{1}{\sqrt{\pi a_0^3}}e^{-r/a_0}$であり、それぞれの原子軌道を$\phi^{1s}_A(r) = \phi^{1s}(r + \frac{R}{2}), \phi^{1s}_B(r) = \phi^{1s}(r - \frac{R}{2})$とすると、分子軌道はそれらの線形結合として
+				\[\phi = C_1\phi^{1s}_A + C_2\phi^{1s}_B\]
+			と表せると仮定する。対称性よりそれぞれの軌道に属する確率は等しいので、$C_1 = \pm C_2$である。規格化条件から
+			\begin{align*}
+				C_1^2\int (\phi^{1s}_A \pm \phi^{1s}_B)^{*}(\phi^{1s}_A \pm \phi^{1s}_B)dV = 1\\
+				C_1^2\int (\phi^{1s}_A^*\phi^{1s}_B \pm \phi^{1s}_A^*\phi^{1s}_B \pm \phi^{1s}_B^*\phi^{1s}_A + \phi^{1s}_B^*\phi^{1s}_B)dV = 1\\
+			\end{align*}
+			$\phi^{1s}_A, \phi^{1s}_B$は実関数なので、第二項、第三項の重なり積分は
+				\[\phi^{1s}_A^*\phi^{1s}_B = \phi^{1s}_B^*\phi^{1s}_A = S\]
+			と置ける。
+			\begin{align*}
+				C_1^2(2 \pm 2S) = 1\\
+				C_1 = C_2 = \frac{1}{\sqrt{2(1 + S)}}, C_1 = -C_2 = \frac{1}{2(1 - S)}\\
+			\end{align*}
+			エネルギー固有値は求められないので代わりに期待値を計算する。ここで
+			\begin{gather*}
+				(クーロン積分) J = \frac{e^2}{4\pi\epsilon_0}\l[- \int \frac{\phi^{1s}_A\phi^{1s}_A}{r_B}dr + \frac{1}{R}\r] = \frac{e^2}{4\pi\epsilon_0}\l[- \int \frac{\phi^{1s}_B\phi^{1s}_B}{r_A}dr + \frac{1}{R}\r]\\
+				(共鳴積分) K = \frac{e^2}{4\pi\epsilon_0}\l[- \int \frac{\phi^{1s}_B\phi^{1s}_A}{r_B}dr + \frac{S}{R}\r] = \frac{e^2}{4\pi\epsilon_0}\l[- \int \frac{\phi^{1s}_A\phi^{1s}_B}{r_A}dr + \frac{S}{R}\r]\\
+			\end{gather*}
+			とおくと
+			\begin{align*}
+				\int (\psi^{1s}_A \pm \psi^{1s}_B)^*H(\psi^{1s}_A \pm \psi^{1s}_B)dr
+				&= \int (\psi^{1s}_A \pm \psi^{1s}_B)^* \(\frac{\hbar^2}{2m}\Delta - \frac{1}{4\pi\epsilon_0}\frac{e^2}{r_A} - \frac{1}{4\pi\epsilon_0}\frac{e^2}{r_b} + \frac{1}{4\pi\epsilon_0}\frac{e^2}{R}\) (\psi^{1s}_A \pm \psi^{1s}_B)dr\\
+				&= \int (\psi^{1s}_A \pm \psi^{1s}_B)^*{(E_{1s} + V_2 + V_3)\psi^{1s}_A \pm (E_{1s} + V_1 + V_3)\psi^{1s}_B)}dr\\
+				&= E^{1s} + J \pm SE^{1s} \pm  K \pm SE^{1s} \pm K + E^{1s} + J\\
+				&= 2(1 \pm S)E^{1s} + 2J \pm 2K\\
+			\end{align*}
+			つまり
+			\begin{gather*}
+				E^+ = E_{1s} + \frac{J + K}{1 + S}\\
+				E^- = E_{1s} + \frac{J - K}{1 - S}\\
+			\end{gather*}
+			となる。どのような$R$に対しても$E_+ < E^{1s} < E_-$となるので$H$と$H^+$が別々に存在するよりも水素分子イオンとして存在した方が安定となる。$\phi_+$は結合性軌道、$\phi_-$は反結合性軌道と呼ばれる。$\phi_+$は二つの原子核の間に電子が存在するためクーロン力により二つの原子核を結び付け安定化すると考えられる。
