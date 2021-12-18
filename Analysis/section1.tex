@@ -1,0 +1,89 @@
+\section{実数と極限}
+
+\subsection{実数}
+ピタゴラスの時代、数は全て有理数だと考えられていた。つまり全ての数は整数$a, b$で$a/b$という形で表せる。そのうち無理数が発見されると、それらを合わせた数が考えられるようになった。ここで言う数とは現代では実数のことである。実数というと十進数による表記を想像することが多い。つまり整数列${a_n}_n, n = \ldots, 2, 1, 0, -1, -2,\ldots$で$\cdots a_2a_1a_0.a_{-1}a_{-2}\cdots$と表せる。しかし実数が有理数とは限らないのと同様に、十進数表記があらゆる実数を表現できることはあまり自明ではない。ここで実数概念を明確に定義する必要がある。もちろん数の体系には様々ある。しかし微分積分学において欲しい数の体系は数直線上の点と一対一に対応するような数体系である。そこで直線の性質(連続性)を反映した数としてを実数の連続性を定義する。まず実数というものを抽象的に定義して、その後小数表記が実数の定義を満たすことを示す。
+\begin{description}\item[定義(実数)]
+	以下の三つの公理を満たすものを実数体と呼び、実数体の元を実数という。
+	\begin{enumerate}
+		\item 可換体の公理
+		\item 順序の公理
+		\item 連続性の公理
+	\end{enumerate}
+	実数体とは、順序体であって空でない上に有界な部分集合が上限を持つようなものである(上限性質)実数体の元を実数という。
+\end{description}
+実数の連続性と同値な命題には
+\begin{itemize}
+	\item 上限性質
+	\item デデキントの公理
+	\item 有界単調数列の収束定理
+	\item ボルツァーノ・ワイエルシュトラスの定理
+	\item アルキメデスの原理、コーシー列の収束
+	\item 最大値・最小値定理
+	\item 中間値の定理
+	\item ロルの定理
+	\item ラグランジュの平均値定理
+	\item コーシーの平均値の定理
+	\item ハイネ・ボレルの定理
+\end{itemize}
+がある。
+
+\begin{description}\item[定義(デデキント切断)]
+	全順序集合$K$について、$K = A \cup B, A, B \neq \varnothing, $任意の$a \in A, b \in B$に対して$a < b$が成り立つような$(A, B)$をデデキント切断という。
+\end{description}
+
+\begin{description}\item[デデキントの公理]
+	実数体$\R$の切断$(A, B)$は以下のいずれかである。
+	\begin{enumerate}
+		\item $A$に最大元があり、$B$に最小元がない。
+		\item $A$に最大元がなく、$B$に最小元がある。
+	\end{enumerate}
+\end{description}
+
+\subsection{極限}
+\begin{description}\item[定義(極限)]
+	実数列$(x_n)$が$a$に収束するとは、任意の$\epsilon > 0$に対して$n_0 \in \N$が存在し、任意の$n \geq n_0$に対し$|x_n - a| < \epsilon$となること。これを
+		\[\lim_{n \to \infty} x_n = a または x_n \to a\]
+	と書く。
+\end{description}
+
+\begin{description}\item[はさみうちの原理]
+	$x_n \leq z_n \leq y_n$で$x_n, y_n \to a$なら$z_n \to a$である。
+\end{description}
+
+\begin{description}\item[合成関数の連続性]
+	$f : [a, b] \to [c, d], g : [c, d] \to \R$について、$f$が$x_0$で連続、$g$が$f(x_0)$で連続なら$g\circle f$は$x_0$で連続。
+\end{description}
+
+
+
+
+
+
+\begin{description}\item[有界単調数列の収束定理]
+\end{description}
+\begin{description}\item[中間値の定理]
+	関数$f$が閉区間$[a, b]$で連続、$f(a) < f(b)$のとき、任意の$f(a) < c < f(b)$に対し、$f(x) = c$となる$a < x < b$が存在。
+\end{descrpition}
+\begin{description}\item[最大値・最小値の定理]
+	関数$f$が閉区間$[a, b]$で連続であるとき、$f$は$[a, b]$で最大値最小値を取る。
+\end{description}
+
+	\subsection{コーシー列による構成}
+	有理コーシー列に対して同値関係
+		\[(x_n) ~ (y_n) \leftrightarrow \lim_{n \to \infty} |x_n - y_n| = 0\]
+	を導入する。コーシー列の四則演算を項同士の四則演算を元に定義することができる。このとき$(0, 0, \ldots)$が零元となる。また
+		\[(x_n) \leq (y_n) \leftrightarrow \lim_{n \to \infty} max{0, x_n - y_n} = 0\]
+	で定義する。有理コーシー列の同値類を実数と定義する。
+	実数のコーシー列$(x_n)$に対して有理コーシー列$(y_n)$で任意の$n$で$|x_n - y_n| < \frac{1}{n}$となるようなものを考えることができる。
+		\[|y_i - y_j| < |x_i - x_j| + \frac{1}{i} + \frac{1}{j} \to 0 (i, j \to \infty)\]
+	よって実数のコーシー列は実数に収束する。つまり$R$は完備である。
+
+	\subsection{デデキント切断による構成}
+	$\Q$の切断$(A, B)$を実数と定義する。
+	\begin{enumerate}
+		\item $A$に最大元があり、$B$に最小元がない。
+		\item $A$に最大元がなく、$B$に最小元がある。
+		\item $A$に最大元がなく、$B$に最小元がない。
+	\end{enumerate}
+	\begin{enumerate}
+	\end{enumerate}

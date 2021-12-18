@@ -1,0 +1,29 @@
+\section{微分}
+
+$\epsilon-\delta$論法
+関数$f(x)$について、任意の$\epsilon > 0$に対してある$\delta > 0$が存在し、
+	\[|x - a| < \delta \rightarrow |f(a) - b| < \epsilon\]
+が成り立つとき、$f$は$a$において連続であるという。
+関数の極限
+$a$の除外近傍で定義された関数$f(x)$について、任意の$\epsilon > 0$に対してある$\delta > 0$が存在し、
+	\[0 < |x - a| < \delta \rightarrow |f(x) - b| < \epsilon\]
+が成り立つとき、
+	\[\lim_{x \to a} f(x) = b\]
+と書く。
+
+微分
+実数値関数$f : (a, b) \to \R$と$x_0 \in (a, b)$に対し、
+	\[\lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h}\]
+が存在するとき、$f$は$x_0$で微分可能である言い、$f'(x_0)$と書く。
+$f$が$x_0$で極値を取りかつ$x_0$で微分可能なら$f'(x_0) = 0$
+\begin{description}\item[ロルの定理]
+	関数$f$が閉区間$[a, b]$で連続、$(a, b)$で微分可能とする。$f'(a) = f'(b) = 0$ならば$f'(c) = 0$となる$a < c < b$が存在する。
+\end{description}
+\begin{description}\item[平均値の定理]
+	関数$f$が閉区間$[a, b]$で連続、$(a, b)$で微分可能とする。$f'(c) = \frac{f(b) - f(a)}{b - a}$となる$a < c < b$が存在する。
+\end{description}
+合成関数の微分
+$f$が$x_0$で微分可能で$g$が$f(x_0)$で微分可能なら$g\circle f$も$x_0$で微分可能で
+	\[(g\circle f)'(x_0) = g'(f(x_0))f'(x_0)\]
+が成り立つ。
+逆関数の微分

@@ -1,0 +1,108 @@
+\section{初等関数の構成}
+
+\subsection{有理関数}
+\subsection{指数関数}
+冪乗を拡張することにより指数関数を定義する。以下では$a > 1$のときを考える。$0 < a < 1$のとき単調増加ではなく単調減少になる以外は同様である。また$a = 1$のときは$a^x = 1$である。
+
+実数$a$と整数$n$に対して$a^n$を次のように定義する。
+\begin{enumerate}
+	\item $a^0 = 1$
+	\item 自然数$n$に対して$a^n = aa^{n-1}$
+	\item 自然数$n$に対して$a^{-n} = \frac{1}{a^n}$
+\end{enumerate}
+このとき任意の$m, n \in \Z$に対して次が成り立つ。
+\begin{description}
+	\item[狭義単調性] $m < n \rightarrow a^m < a^n$
+	\item[加法定理] $a^{m + n} = a^ma^n$
+	\item[正値性] $a^n > 0$
+\end{description}
+以上の性質と連続関数$f(x) = x^n(n \in \N)$に対する中間値の定理より任意の$a > 0$に対して$x^n = a$となる$x > 0$がただ一つ存在し、$x = a^{1/n}$と書く。つまり有理数乗$a^{m/n}$(m \in \Z, n \in \N)を$x^n = a^m$となる$x$と定義する。ここで$m_1/n_1 = m_2/n_2$なら$a^{m_1/n_1} = a^{m_2/n_2}$である。任意の$p, q \in \Q$に対して次が成り立つ。
+\begin{description}
+	\item[狭義単調性] $p < q \rightarrow a^p < a^q$
+	\item[加法定理] $a^{p + q} = a^pa^q$
+	\item[正値性] $a^p > 0$
+\end{description}
+実数$x$に対して集合$\{a^p \mid p \in \Q, p \leq x\}$は上に有界である。よって上限が存在するので
+	\[a^x = \sup\{a^p \mid p \in \Q, p \leq x\}\]
+と定義する。
+
+\newtheorem{prop}{命題}
+\begin{prop}
+	\[\lim_{x \to 0} a^x = 1\]
+\end{prop}
+\begin{proof}
+	自然数$n$に対して$-1/n < x < 1/n$なら$1/{}^n\sqrt{a} < a^x < {}^n\sqrt{a}$であり、$\lim_{n \to \infty} {}^n\sqrt{a} = 1$より示された。
+\end{proof}
+
+\subsubsection{連続性}
+	$0 < |x - x_0| < \delta$のとき、単調性より$a^{x_0 - \delta} < a^x < a^{x_0 + \delta}$である。よって$\delta \to 0$のとき
+	\begin{gather*}
+		a^{x_0 - \delta} = \frac{a^{x_0}}{a^\delta} \to a^{x_0}\\
+		a^{x_0 + \delta} = a^{x_0}a^\delta \to a^{x_0}\\
+	\end{gather*}
+	なのではさうみうちの原理より$a^x \to a^{x_0}$
+
+\begin{prop}
+		\[\lim_{h \to 0} \frac{a^h - 1}{h} = 1\]
+	を満たす$a$が存在する。
+\end{prop}
+\subsubsection{微分}
+指数関数の導関数は
+\begin{align*}
+	\de{x}a^x
+	&= \lim_{h \to 0} \frac{a^{x + h} - a^x}{h}\\
+	&= a^x\lim_{h \to 0} \frac{a^h - 1}{h}\\
+\end{align*}
+任意の$a$に対して極限が存在するので微分可能。ここでネーピア数(自然対数の底)を$\de{x}e^x = e^x$となる$e$として定義する。後で定義する対数関数を用いれば
+\begin{align*}
+	\de{x}a^x
+	&= a^x\log_e(a)\lim_{h \to 0} \frac{e^{h\log_e(a)} - 1}{h\log_e(a)}\\
+	&= a^x\log_e(a)\\
+\end{align*}
+となる。
+
+$e^x$を整級数
+	\[\exp(x) = \sum_{n = 0}^\infty \frac{x^n}{n!}\]
+によって定義した場合は当然微分可能となる。$\de{x}e^x = e^x$であることは容易に分かる。
+
+\subsection{対数関数}
+$a > 0, a \neq 1, x > 0$に対して$a^t = x$となるような実数$t$が存在し、これを$\log_a(x)$と表す。$f(x) = a^x$は狭義単調な連続関数であり、$g(x) = \log_a x$はその逆関数だから同じく狭義単調な連続関数となる。また微分は
+	\[\de{x}\log_a(x) = \frac{1}{\de{y}a^y \mid_{y = a^x}} = \frac{1}{x\log_e(a)}\]
+となる。$e$が底のとき自然対数と呼ぶ。
+
+\subsection{三角関数}
+
+三角関数は整級数によって
+\begin{align*}
+	\sin x &= \sum_{n = 0} \frac{(-1)^n}{(2n + 1)!}x^{2n + 1} = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots\\
+	\cos x &= \sum_{n = 0} \frac{(-1)^n}{(2n)!}x^{2n} = 1 - \frac{1}{2!}x^2 + \frac{1}{4!}x^4 - \cdots\\
+	\tan x &= \frac{\sin x}{\cos x} (\cos x \neq 0)
+\end{align*}
+と定義する。$\sin, \cos$の無限級数の収束半径は無限大である。これらは$C^\infty$級関数であり、
+\begin{align*}
+	(\sin x)' = \cos x\\
+	(\cos x)' = -\sin x\\
+	(\tan x)' = \frac{1}{\cos^2 x}
+\end{align*}
+となる。また$(\sin^2 x + \cos^2 x)' = 2\sin x\cos x - 2\cos x\sin x = 0$なので$\sin^2 x + \cos^2 x = \sin^2 0 + \cos^2 0 = 1$である。加法定理
+\begin{align*}
+	\sin(x + y) = \sin x\cos y + \cos x\sin y\\
+	\cos(x + y) = \cos x\cos y - \sin x\sin y\\
+	\tan(x + y) = \frac{\tan x + \tan y}{1 - \tan x\tan y}
+\end{align*}
+が成り立つ。$x$の周りでテイラー展開することで示せる。
+
+幾何学において円周率は円の直径に対する円周の比として定義されるが、解析学においては曲線の長さが定義されていないため別の定義を採用する。ここでは$\cos x$の最小の正の零点を$\pi/2$と定義する。$0 < x < \sqrt{6}$において
+	\[(\cos x)' = -\sin x < - (x - \frac{1}{6}x^3) < 0\]
+なのでこの範囲で狭義単調減少である。
+	\[\cos x < 1 - \frac{1}{2}x^2 + \frac{1}{24}x^4\]
+より$\cos \sqrt{6} < 1 - 3 + \frac{3}{2} < 0$となる。つまり$0 < x < \sqrt{6}$で$\cos x = 0$となるものがただ一つ存在し、これを$\pi/2$と定義する。ここから三角関数の周期性が示される。
+
+単位円の座標は$(\cos t, \sin t)(0 \leq t < 2\pi)$と表せる。円周の長さと面積は
+\begin{align*}
+	\int_0^{2\pi} \sqrt{(\cos t)'^2 + (\sin t)'^2}dt = 2\pi\\
+	\int_{-1}^1 \sqrt{1 - x^2}dx = \pi
+\end{align*}
+
+\subsection{逆三角関数}
+\subsection{双曲線関数}
