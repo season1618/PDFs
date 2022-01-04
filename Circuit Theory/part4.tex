@@ -1,115 +1,110 @@
-\repart{応用}
-    \section{RC回路}
-        \subsection{ハイパスフィルタとローパスフィルタ}
-            \begin{figure}[H]
-                \begin{minipage}{0.5\hsize}
-                    \begin{center}\begin{circuitikz}[american currents]
-                        \draw(0,2) to[C=$C$] (3,2) to[short] (4,2);
-                        \draw(0,0) to[short] (4,0);
-                        \draw(3,2) to[R=$R$] (3,0);
-                    \end{circuitikz}\end{center}
-                \caption{ハイパスフィルタ}
-                \label{fig:one}
-                \end{minipage}
-                \begin{minipage}{0.5\hsize}
-                    \begin{center}\begin{circuitikz}[american currents]
-                        \draw(0,2) to[R=$R$] (3,2) to[short] (4,2);
-                        \draw(0,0) to[short] (4,0);
-                        \draw(3,2) to[C=$C$] (3,0);
-                    \end{circuitikz}\end{center}
-                \caption{ローパスフィルタ}
-                \label{fig:two}
-                \end{minipage}
-            \end{figure}
-            抵抗とコンデンサを直列につなぐと
-            \begin{align*}
-                Ri(t) + \frac{q(t)}{C} &= v_{in}(t)\\
-                \intertext{$q(0)=0$として、}
-                Ri(t) + \rec{C}\int_0^t i(t')dt' &= v_{in}(t)
-            \end{align*}
-            フェーザ表示すると、
-                \[RI + \rec{Cs}I = V_{in}\]
-                \[I = \frac{Cs}{1+RCs}V_{in}\]
-            である。抵抗とコンデンサの電圧はそれぞれ、
-            \begin{align*}
-                V_R &= RI = \frac{RCs}{1+RCs}V_{in}\\
-                V_C &= \rec{Cs}I = \rec{1+RCs}V_{in}\\
-            \end{align*}
-            入力信号が正弦波定常状態($s = j\omega$)のとき振幅の比は、
-            \begin{align*}
-                \vlr{\frac{V_R}{V_{in}}} &= \vlr{\frac{j\omega RC}{1+j\omega RC}} = \frac{\omega RC}{\sqrt{1+(\omega RC)^2}}\\
-                \vlr{\frac{V_C}{V_{in}}} &= \vlr{\rec{1+j\omega RC}} = \rec{\sqrt{1+(\omega RC)^2}}\\
-            \end{align*}
-            となる。したがって前者がハイパスフィルタ、後者がローパスフィルタとして機能することが分かる。
-        \subsection{微分器と積分器}
-            低周波数($\omega \ll \rec{RC}$)の信号を考える。
-            \begin{align*}
-                I &= \frac{V_{in}}{\rec{j\omega C}+R}\\
-                \intertext{$R \ll \rec{\omega C}$より、}
-                &\approx j\omega CV_{in}\\
-                V_{in} &\approx \frac{I}{j\omega C} \approx V_C\\
-                \intertext{抵抗器にかかる電圧は、}
-                V_R &= R\de[(CV_C)]{t} \approx RC\de[V_{in}]{t}\\
-            \end{align*}
-            となり、微分器として機能する。\\
-            次に高周波数($\omega \gg \rec{RC}$)の信号を考える。
-            \begin{align*}
-                I &= \frac{V_{in}}{\rec{j\omega C}+R}\\
-                \intertext{$R \gg \rec{\omega C}$より、}
-                &\approx \frac{V_{in}}{R}
-                \intertext{コンデンサにかかる電圧は、}
-                V_C &= \rec{C}\int_0^t I dt \approx \rec{RC}\int_0^t V_{in}\\
-            \end{align*}
-            となり積分器として機能する。
-    \section{LC回路} 
-        信号が正弦波の場合を考える。
-        \subsection{共振回路}
-            直列の場合、合成インピーダンスは、
-            \begin{align*}
-                Z = j\omega L + \rec{j\omega C}\\
-                = j(\omega L - \rec{\omega C})\\
-                \intertext{電流が最大となるのは振幅の比$|Z|$が最小の時なので、共振周波数は、}
-                \omega L - \rec{\omega C} = 0\\
-                \omega = \rec{\sqrt{LC}}\\
-                \intertext{単位を$\mathrm{Hz}$に直すと、}
-                f = \rec{2\pi\sqrt{\omega C}}
-            \end{align*}
-            となりバンドパスフィルタ(Band-Pass Filter : BPF)として機能する。\\
-            一方並列の場合、合成アドミッタンスは、
-            \begin{align*}
-                \rec{Z} = \rec{j\omega L} + j\omega C\\
-                = j(\omega C - \rec{\omega L})\\
-                \intertext{電流が最小となるのは振幅の比$|Z|$が最大の時なので、共振周波数は、}
-                \omega C - \rec{\omega L} = 0\\
-                \omega = \rec{\sqrt{LC}}\\
-                \intertext{単位を$\mathrm{Hz}$に直すと、}
-                f = \rec{2\pi\sqrt{\omega C}}
-            \end{align*}
-            となりバンドストップフィルタ(Band-Stop Filter : BSF)として機能する。ちなみにコイル
-            が抵抗を伴っていると考えると、直列LC回路と並列LC回路の共振周波数はそれぞれ、
-            \begin{gather*}
-                \omega = \rec{\sqrt{LC}}\\
-                \omega = \sqrt{\rec{LC} - \frac{R^2}{L^2}}\\
-            \end{gather*}
-            である。
-    \section{増幅回路}
-        \subsection{エミッタ(ソース)接地回路}
-    \section{発振回路}
-        発振回路は、持続した交流を作る回路である。原理によって帰還型と弛緩型に分けられる。
-        帰還型は、出力の一部を入力に合流させるもので、弛緩型はスイッチングを制御することで
-        一定の電気信号を得る。
-    \section{変調回路}
-    \section{オペアンプ}
-        カレントミラー
-    \section{電源回路}
-    \section{変圧器}
-    \section{アンテナ}
-    \section{論理ゲート}
-        真理値あるいは二進数の0と1を、電圧や電流、位相、パルスなどで表現し、論理的な演算
-        を実装したものを論理回路という。論理回路の基本となる演算をする素子を論理ゲートと呼ぶ。
-        \subsection{NOT:論理否定}
-            CMOSトランジスタを使うと低電力で動作することができる。
-        \subsection{OR:論理和}
-        \subsection{AND:論理積}
-        \subsection{XOR:排他的論理和}
-    \section{センサ}
+\repart{アナログ回路}
+
+\section{RC回路}
+    \subsection{ハイパスフィルタとローパスフィルタ}
+        \begin{figure}[H]
+            \begin{minipage}{0.5\hsize}
+                \begin{center}\begin{circuitikz}[american currents]
+                    \draw(0,2) to[C=$C$] (3,2) to[short] (4,2);
+                    \draw(0,0) to[short] (4,0);
+                    \draw(3,2) to[R=$R$] (3,0);
+                \end{circuitikz}\end{center}
+            \caption{ハイパスフィルタ}
+            \label{fig:one}
+            \end{minipage}
+            \begin{minipage}{0.5\hsize}
+                \begin{center}\begin{circuitikz}[american currents]
+                    \draw(0,2) to[R=$R$] (3,2) to[short] (4,2);
+                    \draw(0,0) to[short] (4,0);
+                    \draw(3,2) to[C=$C$] (3,0);
+                \end{circuitikz}\end{center}
+            \caption{ローパスフィルタ}
+            \label{fig:two}
+            \end{minipage}
+        \end{figure}
+        抵抗とコンデンサを直列につなぐと
+        \begin{align*}
+            Ri(t) + \frac{q(t)}{C} &= v_{in}(t)\\
+            \intertext{$q(0)=0$として、}
+            Ri(t) + \rec{C}\int_0^t i(t')dt' &= v_{in}(t)
+        \end{align*}
+        フェーザ表示すると、
+            \[RI + \rec{Cs}I = V_{in}\]
+            \[I = \frac{Cs}{1+RCs}V_{in}\]
+        である。抵抗とコンデンサの電圧はそれぞれ、
+        \begin{align*}
+            V_R &= RI = \frac{RCs}{1+RCs}V_{in}\\
+            V_C &= \rec{Cs}I = \rec{1+RCs}V_{in}\\
+        \end{align*}
+        入力信号が正弦波定常状態($s = j\omega$)のとき振幅の比は、
+        \begin{align*}
+            \vlr{\frac{V_R}{V_{in}}} &= \vlr{\frac{j\omega RC}{1+j\omega RC}} = \frac{\omega RC}{\sqrt{1+(\omega RC)^2}}\\
+            \vlr{\frac{V_C}{V_{in}}} &= \vlr{\rec{1+j\omega RC}} = \rec{\sqrt{1+(\omega RC)^2}}\\
+        \end{align*}
+        となる。したがって前者がハイパスフィルタ、後者がローパスフィルタとして機能することが分かる。
+    \subsection{微分器と積分器}
+        低周波数($\omega \ll \rec{RC}$)の信号を考える。
+        \begin{align*}
+            I &= \frac{V_{in}}{\rec{j\omega C}+R}\\
+            \intertext{$R \ll \rec{\omega C}$より、}
+            &\approx j\omega CV_{in}\\
+            V_{in} &\approx \frac{I}{j\omega C} \approx V_C\\
+            \intertext{抵抗器にかかる電圧は、}
+            V_R &= R\de[(CV_C)]{t} \approx RC\de[V_{in}]{t}\\
+        \end{align*}
+        となり、微分器として機能する。
+
+        次に高周波数($\omega \gg \rec{RC}$)の信号を考える。
+        \begin{align*}
+            I &= \frac{V_{in}}{\rec{j\omega C}+R}\\
+            \intertext{$R \gg \rec{\omega C}$より、}
+            &\approx \frac{V_{in}}{R}
+            \intertext{コンデンサにかかる電圧は、}
+            V_C &= \rec{C}\int_0^t I dt \approx \rec{RC}\int_0^t V_{in}\\
+        \end{align*}
+        となり積分器として機能する。
+
+\section{LC回路} 
+    信号が正弦波の場合を考える。
+    \subsection{共振回路}
+        直列の場合、合成インピーダンスは、
+        \begin{align*}
+            Z = j\omega L + \rec{j\omega C}\\
+            = j(\omega L - \rec{\omega C})\\
+            \intertext{電流が最大となるのは振幅の比$|Z|$が最小の時なので、共振周波数は、}
+            \omega L - \rec{\omega C} = 0\\
+            \omega = \rec{\sqrt{LC}}\\
+            \intertext{単位を$\mathrm{Hz}$に直すと、}
+            f = \rec{2\pi\sqrt{\omega C}}
+        \end{align*}
+        となりバンドパスフィルタ(Band-Pass Filter : BPF)として機能する。
+
+        一方並列の場合、合成アドミッタンスは、
+        \begin{align*}
+            \rec{Z} = \rec{j\omega L} + j\omega C\\
+            = j(\omega C - \rec{\omega L})\\
+            \intertext{電流が最小となるのは振幅の比$|Z|$が最大の時なので、共振周波数は、}
+            \omega C - \rec{\omega L} = 0\\
+            \omega = \rec{\sqrt{LC}}\\
+            \intertext{単位を$\mathrm{Hz}$に直すと、}
+            f = \rec{2\pi\sqrt{\omega C}}
+        \end{align*}
+        となりバンドストップフィルタ(Band-Stop Filter : BSF)として機能する。ちなみにコイルが抵抗を伴っていると考えると、直列LC回路と並列LC回路の共振周波数はそれぞれ、
+        \begin{gather*}
+            \omega = \rec{\sqrt{LC}}\\
+            \omega = \sqrt{\rec{LC} - \frac{R^2}{L^2}}\\
+        \end{gather*}
+        である。
+\section{増幅回路}
+    \subsection{エミッタ(ソース)接地回路}
+\section{発振回路}
+    発振回路は、持続した交流を作る回路である。原理によって帰還型と弛緩型に分けられる。
+    帰還型は、出力の一部を入力に合流させるもので、弛緩型はスイッチングを制御することで
+    一定の電気信号を得る。
+\section{変調回路}
+\section{オペアンプ}
+    カレントミラー
+\section{電源回路}
+\section{変圧器}
+\section{アンテナ}
+\section{センサ}

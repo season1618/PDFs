@@ -1,102 +1,87 @@
 \repart{回路解析}
-    \section{ラプラス変換}
-        回路の微分方程式を解く手法としてラプラス変換がある。ラプラス変換によって微分や積分を代数的な演算に
-        置き換えることができるので、微分方程式を簡単な代数方程式に帰着させることができる。もともとはオリヴァー・
-        ヘヴィサイドが開発した演算子法が利用されていたが、その数学的な裏付けをした経緯がある。ラプラス変換とは
-        次のようなものである。
-            \[F(s) = \lp[f(t)] = \int_0^{\infty} f(t)e^{-st}dt\]
-        ここで$s$は複素数である。右辺の積分はラプラス積分と呼ばれる。ラプラス逆変換は
-            \[f(t) = \lp^{-1}[F(s)] = \lim_{p \to \infty} \rec{2\pi i}\int_{c-ip}^{c+ip} F(s)e^{st}ds\]
-        右辺の積分はブロムウィッチ積分と呼ばれる。ラプラス変換は、フーリエ変換における$i\omega$に減衰成分である
-        $\sigma$を足したもので置き換え、積分範囲を$[0,\infty]$としたものである。しかし$s$は角周波数を
-        表しているわけではない。\\
-        ラプラス変換の性質
-        \begin{itemize}
-            \item 線形性\[\lp[af(t)+bg(t)] = aF(s)+bG(s)\]
-            \item 相似性\[\lp[f(at)] = \rec{a}F(\frac{s}{a})\]
-            \item 微分\[\lp\llr{\de{f(t)}{t}} = sF(s)-f(0)\]
-            \item 積分\[\lp\llr{\int_0^t f(u)du} = \rec{s}F(s)\]
-            \item 畳み込み\[\lp[f(t) * g(t)] = F(s)G(s)\]
-        \end{itemize}
-        \begin{table}[h]
-            \begin{center}\caption{\large ラプラス変換}
-            \scalebox{1.5}[1.5]{
-                \begin{tabular}{|c|c|c|}\hline
-                    変換表 & 原関数 & 像関数\\ \hline
-                    単位インパルス & $\delta(t)$ & 1\\ \hline
-                    理想遅延 & $\delta(t - \tau)$ & $e^{-\tau s}$\\ \hline
-                    ランプ関数 & $tu(t)$ & $\rec{s^2}$\\ \hline
-                    指数関数 & $e^{at}$ & $\rec{s-a}$\\ \hline
-                    正弦関数 & $\sin at$ & $\displaystyle\frac{a}{s^2+a^2}$\\ \hline
-                    余弦関数 & $\cos at$ & $\displaystyle\frac{s}{s^2+a^2}$\\ \hline
-                \end{tabular}
-            }\end{center}
-        \end{table}
-    \section{フェーザ表示}
-        電気信号$v(t)=Ae^{\sigma t}\sin(\omega t+\theta)$はオイラーの公式を用いて
+
+\section{ラプラス変換}
+    回路の微分方程式を解く手法としてラプラス変換がある。ラプラス変換によって微分や積分を代数的な演算に置き換えることができるので、微分方程式を簡単な代数方程式に帰着させることができる。もともとはオリヴァー・ヘヴィサイドが開発した演算子法が利用されていたが、その数学的な裏付けをした経緯がある。ラプラス変換とは次のようなものである。
+        \[F(s) = \lp[f(t)] = \int_0^{\infty} f(t)e^{-st}dt\]
+    ここで$s$は複素数である。右辺の積分はラプラス積分と呼ばれる。ラプラス逆変換は
+        \[f(t) = \lp^{-1}[F(s)] = \lim_{p \to \infty} \rec{2\pi i}\int_{c-ip}^{c+ip} F(s)e^{st}ds\]
+    右辺の積分はブロムウィッチ積分と呼ばれる。ラプラス変換は、フーリエ変換における$i\omega$に減衰成分である$\sigma$を足したもので置き換え、積分範囲を$[0,\infty]$としたものである。しかし$s$は角周波数を表しているわけではない。
+
+    ラプラス変換の性質
+    \begin{itemize}
+        \item 線形性\[\lp[af(t)+bg(t)] = aF(s)+bG(s)\]
+        \item 相似性\[\lp[f(at)] = \rec{a}F(\frac{s}{a})\]
+        \item 微分\[\lp\llr{\de{f(t)}{t}} = sF(s)-f(0)\]
+        \item 積分\[\lp\llr{\int_0^t f(u)du} = \rec{s}F(s)\]
+        \item 畳み込み\[\lp[f(t) * g(t)] = F(s)G(s)\]
+    \end{itemize}
+    \begin{table}[h]
+        \begin{center}\caption{\large ラプラス変換}
+        \scalebox{1.5}[1.5]{
+            \begin{tabular}{|c|c|c|}\hline
+                変換表 & 原関数 & 像関数\\ \hline
+                単位インパルス & $\delta(t)$ & 1\\ \hline
+                理想遅延 & $\delta(t - \tau)$ & $e^{-\tau s}$\\ \hline
+                ランプ関数 & $tu(t)$ & $\rec{s^2}$\\ \hline
+                指数関数 & $e^{at}$ & $\rec{s-a}$\\ \hline
+                正弦関数 & $\sin at$ & $\displaystyle\frac{a}{s^2+a^2}$\\ \hline
+                余弦関数 & $\cos at$ & $\displaystyle\frac{s}{s^2+a^2}$\\ \hline
+            \end{tabular}
+        }\end{center}
+    \end{table}
+\section{フェーザ表示}
+    電気信号$v(t)=Ae^{\sigma t}\sin(\omega t+\theta)$はオイラーの公式を用いて
+    \begin{align*}
+        v(t) &= \rm{Im}(Ae^{\sigma t}e^{j(\omega t+\theta)})
+        = \rm{Im}(Ae^{j\theta}e^{(\sigma + j\omega)t})\\
+        \intertext{と書ける。$\sigma + j\omega$を角周波数といい、$s$で表すと、}
+        v(t) &= \rm{Im}(Ae^{j\theta}e^{st})
+    \end{align*}
+    となる。回路の方程式は上の式の線形結合となる。この時、角周波数$s$が一定ならば$e^{st}$は約分されるので、振幅と初期位相だけを取り出した$V=Ae^{j\theta}$のみを取り出して扱うことができる。これを信号$v(t)$のフェーザ表示という。フェーザ表示は次の性質を満たす。
+    \begin{itemize}
+        \item{線形性}\[v_1(t)+v_2(t) \rightarrow V_1+V_2\]
+        \item{微分}\[v'(t) \rightarrow sV\]
+        \item{積分}\[\int v(t)dt \rightarrow \frac{V}{s}\]
+    \end{itemize}
+    フェーザ表示の絶対値は振幅、偏角は位相を表す。フェーザ表示された電圧と電流の比をインピーダンスという。これは直流における電気抵抗を交流に拡張したものであり、実部をレジスタンス、虚部をリアクタンスという。インピーダンスの絶対値は振幅の比、偏角は位相差に対応する。インピーダンスは、信号の位相差が$\frac{\pi}{2}$の偶数倍のとき実数、奇数倍のとき純虚数になる。またインピーダンスの逆数をアドミタンスと呼ぶ。フェーザ表示には線形性が成り立つので、直列や並列に繋いだ場合の合成インピーダンスは抵抗と同じ計算になる。抵抗のインピーダンスは$R$、コイルは$sL$、コンデンサは$\rec{sC}$となる。
+
+    インピーダンスは制御工学における伝達関数と関連がある。電気回路を入力が電流、出力が電圧であるようなシステムであるとみなす。特に入力が$i(t) = I_0e^{\sigma t}\sin(\omega t + \theta_1)$の時、出力が$v(t) = V_0e^{\sigma t}\sin(\omega t + \theta_2)$であるとする。
+    \begin{align*}
+        i(t) = \rm{Im}(I_0e^{j\theta_1}e^{(\sigma + j\omega)t})\\
+        v(t) = \rm{Im}(V_0e^{j\theta_2}e^{(\sigma + j\omega)t})\\
+    \end{align*}
+    であり、$s = \sigma + j\omega$とすると
+    \begin{align*}
+        s(t - \tau) + j\theta_1 = st + j\theta_2\\
+        \tau = \frac{j(\theta_1 - \theta_2)}{s}
+    \end{align*}
+    なので、入力を時間$\frac{j(\theta_1 - \theta_2)}{s}$だけ遅らせ、$V_0/I_0$をかけたものを出力とするシステムとみることができる。電気回路は線形時不変系なので、システムの応答は、
+        \[v[i(t)] = \int_0^{\infty}z(\tau)i(t - \tau)d\tau\]
+    と表せる。ここで
+        \[z(\tau) = \frac{V_0}{I_0}\delta\lr{\tau - \frac{j(\theta_1 - \theta_2)}{s}}\]
+    である。システムの応答の式をラプラス変換して、
+        \[V(s) = Z(s)I(s)\]
+    したがって系の伝達関数は、
+    \begin{align*}
+        Z(s') &= \lp\llr{\frac{V_0}{I_0}\delta\lr{\tau - \frac{j(\theta_1 - \theta_2)}{s}}}\\
+        &= \frac{V_0}{I_0}\exp\lr{-\frac{j(\theta_1 - \theta_2)}{s}s'}\\
+        \intertext{である。特に$s' = s$とした場合は、}
+        Z(s) &= \frac{V_0}{I_0}e^{j(\theta_2 - \theta_1)}\\
+    \end{align*}
+    となりインピーダンスに等しくなる。
+    \paragraph{実効値}
+        振幅は電気信号の大きさを代表する値であるが、最大値よりも平均を考えた方が分かりやすい場合もある。電圧と電流が同位相であるとする。
         \begin{align*}
-            v(t) &= \rm{Im}(Ae^{\sigma t}e^{j(\omega t+\theta)})
-            = \rm{Im}(Ae^{j\theta}e^{(\sigma + j\omega)t})\\
-            \intertext{と書ける。$\sigma + j\omega$を角周波数といい、$s$で表すと、}
-            v(t) &= \rm{Im}(Ae^{j\theta}e^{st})
+            i(t) = I\sin \omega t\\
+            v(t) = V\sin \omega t\\
         \end{align*}
-        となる。回路の方程式は上の式の線形結合となる。この時、角周波数$s$が一定ならば$e^{st}$
-        は約分されるので、振幅と初期位相だけを取り出した$V=Ae^{j\theta}$のみを取り出して扱うこと
-        ができる。これを信号$v(t)$のフェーザ表示という。フェーザ表示は次の性質を満たす。
-        \begin{itemize}
-            \item{線形性}\[v_1(t)+v_2(t) \rightarrow V_1+V_2\]
-            \item{微分}\[v'(t) \rightarrow sV\]
-            \item{積分}\[\int v(t)dt \rightarrow \frac{V}{s}\]
-        \end{itemize}
-        フェーザ表示の絶対値は振幅、偏角は位相を表す。フェーザ表示された電圧と電流の比をインピーダンスという。これは
-        直流における電気抵抗を交流に拡張したものであり、実部をレジスタンス、虚部をリアクタンスという。インピーダンスの
-        絶対値は振幅の比、偏角は位相差に対応する。インピーダンスは、信号の位相差が$\frac{\pi}{2}$の偶数倍の
-        とき実数、奇数倍のとき純虚数になる。またインピーダンスの逆数をアドミタンスと呼ぶ。フェーザ表示には線形性が成り
-        立つので、直列や並列に繋いだ場合の合成インピーダンスは抵抗と同じ計算になる。抵抗のインピーダンスは$R$、コイ
-        ルは$sL$、コンデンサは$\rec{sC}$となる。\\
-        インピーダンスは制御工学における伝達関数と関連がある。電気回路を入力が電流、出力が電圧であるようなシス
-        テムであるとみなす。特に入力が$i(t) = I_0e^{\sigma t}\sin(\omega t + \theta_1)$の時、
-        出力が$v(t) = V_0e^{\sigma t}\sin(\omega t + \theta_2)$であるとする。
+        この時の電力は、
         \begin{align*}
-            i(t) = \rm{Im}(I_0e^{j\theta_1}e^{(\sigma + j\omega)t})\\
-            v(t) = \rm{Im}(V_0e^{j\theta_2}e^{(\sigma + j\omega)t})\\
+            P(t) &= VI\sin^2 \omega t\\
+            \intertext{周期$\frac{2\pi}{\omega}$なので、電力の平均値は、}
+            P &= \rec{T}\oint VI\sin^2\omega tdt\\
+            &= \rec{T}\oint \frac{VI}{2}\lr{1-\cos 2\omega t}dt\\
+            \intertext{第二項は0になるので、}
+            &= \frac{VI}{2}\\
         \end{align*}
-        であり、$s = \sigma + j\omega$とすると
-        \begin{align*}
-            s(t - \tau) + j\theta_1 = st + j\theta_2\\
-            \tau = \frac{j(\theta_1 - \theta_2)}{s}
-        \end{align*}
-        なので、入力を時間$\frac{j(\theta_1 - \theta_2)}{s}$だけ遅らせ、$V_0/I_0$をかけたものを出力と
-        するシステムとみることができる。電気回路は線形時不変系なので、システムの応答は、
-            \[v[i(t)] = \int_0^{\infty}z(\tau)i(t - \tau)d\tau\]
-        と表せる。ここで
-            \[z(\tau) = \frac{V_0}{I_0}\delta\lr{\tau - \frac{j(\theta_1 - \theta_2)}{s}}\]
-        である。システムの応答の式をラプラス変換して、
-            \[V(s) = Z(s)I(s)\]
-        したがって系の伝達関数は、
-        \begin{align*}
-            Z(s') &= \lp\llr{\frac{V_0}{I_0}\delta\lr{\tau - \frac{j(\theta_1 - \theta_2)}{s}}}\\
-            &= \frac{V_0}{I_0}\exp\lr{-\frac{j(\theta_1 - \theta_2)}{s}s'}\\
-            \intertext{である。特に$s' = s$とした場合は、}
-            Z(s) &= \frac{V_0}{I_0}e^{j(\theta_2 - \theta_1)}\\
-        \end{align*}
-        となりインピーダンスに等しくなる。
-        \paragraph{実効値}
-            振幅は電気信号の大きさを代表する値であるが、最大値よりも平均を考えた方が分かりやすい場合もある。
-            電圧と電流が同位相であるとする。
-            \begin{align*}
-                i(t) = I\sin \omega t\\
-                v(t) = V\sin \omega t\\
-            \end{align*}
-            この時の電力は、
-            \begin{align*}
-                P(t) &= VI\sin^2 \omega t\\
-                \intertext{周期$\frac{2\pi}{\omega}$なので、電力の平均値は、}
-                P &= \rec{T}\oint VI\sin^2\omega tdt\\
-                &= \rec{T}\oint \frac{VI}{2}\lr{1-\cos 2\omega t}dt\\
-                \intertext{第二項は0になるので、}
-                &= \frac{VI}{2}\\
-            \end{align*}
-            係数の1/2を平等に分割した$\frac{V}{\sqrt{2}},\frac{I}{\sqrt{2}}$を実効値という。フェーザ
-            表示に実効値を使う流儀もある。家庭用コンセントの交流100Vというのは実効値であり、実際は最大で約141V
-            の電圧が来ている。そのため中学で習う公式をそのまま当てはめることができるようになっている。
+        係数の1/2を平等に分割した$\frac{V}{\sqrt{2}},\frac{I}{\sqrt{2}}$を実効値という。フェーザ表示に実効値を使う流儀もある。家庭用コンセントの交流100Vというのは実効値であり、実際は最大で約141Vの電圧が来ている。そのため中学で習う公式をそのまま当てはめることができるようになっている。
