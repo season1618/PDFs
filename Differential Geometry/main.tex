@@ -1,5 +1,6 @@
 \documentclass{jsarticle}
-\usepackage{amssymb,amsmath,amsthm}
+\usepackage{amssymb,amsmath}
+\usepackage{amsthm}
 \usepackage{ascmac}
 
 \newtheorem*{lemma}{補題}
@@ -7,13 +8,6 @@
 \newtheorem*{surface}{曲面論の基本定理}
 \newtheorem*{geodesic}{定理}
 \newtheorem*{gaussbonnet}{Gauss-Bonnetの定理}
-
-\begin{document}
-\title{微分幾何学}
-\author{高校n年 season07001674}
-\date{2019/09/22}
-\maketitle
-\tableofcontents
 
 \newcommand{\repart}[1]{\part{#1}\setcounter{section}{0}}
 \newcommand{\lr}[1]{\left(#1 \right)}
@@ -32,6 +26,14 @@
 \newcommand{\na}{\nabla}
 \newcommand{\Ga}{\Gamma}
 \newcommand{\chr}[2]{\left\{#1 \atop #2\right\}}
+
+\title{微分幾何学}
+\author{season07001674}
+\date{\today(初版 2019/09/22)}
+
+\begin{document}
+\maketitle
+\tableofcontents
 
 \input part1.tex % 数学的準備
 \input part2.tex % 曲線
