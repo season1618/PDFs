@@ -1,0 +1,214 @@
+\section{結像理論}
+
+\subsection{characteristic fucntion}
+	ハミルトンは光学系の特性を調べるためにcharacteristic functionと呼ばれるものを導入した。characteristic functionには、point characteristic及びそれをルジャンドル変換したmixed characteristic, angle characteristicがある。
+
+	二点を結ぶ光線がただ一つしか存在しないと仮定したとき、point characteristicをその二点間の光路長として定義する。
+		\[V(r_1, r_2) = \int_{r_1}^{r_2}nds = L(r_2) - L(r_1)\]
+
+
+	互いに平行な直交座標系の二点$r_1, r_2$の特性関数を二点を結ぶ光線の光路長で定義する。
+		\[V(r_1, r_2) = \int_{r_1}^{r_2} nds = L(r_2) - L(r_1)\]
+	ここで
+		\[\pd[L]{r_1} = -\pd[V]{r_1},\ \pd[L]{r_2} = \pd[V]{r_2}\]
+	である。二点における屈折率を$n_1, n_2$とすると、アイコナール方程式
+	\begin{align*}
+		\(\pd[V]{x_1}\)^2 + \(\pd[V]{y_1}\)^2 + \(\pd[V]{z_1}\)^2 &= n_1^2\\
+		\(\pd[V]{x_2}\)^2 + \(\pd[V]{y_2}\)^2 + \(\pd[V]{z_2}\)^2 &= n_2^2\\
+	\end{align*}
+	が成り立つ。ここで
+	\begin{align*}
+		a_{1i} = -\pd[V]{r_{1i}}\\
+		a_{2i} = \pd[V]{r_{2i}}\\
+	\end{align*}
+	とおく。
+
+	mixed characteristicを
+		\[W = V - \sum a_{2i}r_{2i}\]
+	と定義する。
+	\begin{align*}
+		dW
+		&= \sum \(\pd[V]{r_{1i}}dr_{1i} + \pd[V]{r_{2i}}dr_{2i}\) - \sum \(a_{2i}dr_{2i} + r_{2i}da_{2i}\)\\
+		&= \sum \pd[V]{r_{1i}}dr_{1i} - r_{2i}da_{2i}\\
+		&= - \sum a_{1i}dr_{1i} - \sum r_{2i}da_{2i}
+	\end{align*}
+	なので
+		\[a_{1i} = -\pd[W]{r_{1i}},\ r_{2i} = -\pd[W]{a_{2i}}\]
+	ここで
+		\[a_2^2 + b_2^2 + c_2^2 &= n_2^2\]
+	$r_2$における媒質が均一なら、$O_2$から光線に降ろした垂線の足を$Q_2$として
+	\begin{align*}
+		W
+		&= V - r_2 \dot \grad_2 L\\
+		&= V - r_2 \dot n_2s_2\\
+		&= [P_1P_2] - [Q_2p_2]\\
+		&= [P_1Q_2]
+	\end{align*}
+	となる。つまり$W$は$r_1$と最後の媒質における光線のみに依存し、5つの独立な変数で表すことができる。
+	\begin{align*}
+		a_2^2 + b_2^2 + c_2^2 &= n_2^2\\
+		a_2da_2 + b_2db_2 + c_2dc_2 &= 0\\
+	\end{align*}
+	より
+	\begin{align*}
+		dW
+		&= - a_1dx_1 - b_1dy_1 - c_1dz_1 - x_2da_2 - y_2db_2 - z_2dc_2\\
+		&= - a_1dx_1 - b_1dy_1 - c_1dz_1 - \(x_2 - \frac{a_2}{c_2}z_2\)da_2 - \(y_2 - \frac{b_2}{c_2}z_2\)db_2
+	\end{align*}
+	なので
+	\begin{align*}
+		a_1 = -\pd[W]{x_1},\ b_1 = -\pd[W]{y_1},\ c_1 = -\pd[W]{z_1}\\
+		x_2 - \frac{a_2}{c_2}z_2 = -\pd[W]{a_1},\ y_2 - \frac{b_2}{c_2}z_2 = -\pd[W]{b_1}
+	\end{align*}
+	となる。
+
+	angle characteristicを
+		\[T = V + \sum a_{1i}r_{1i} - \sum a_{2i}r_{2i}\]
+	と定義する。
+	\begin{align*}
+		dT
+		&= \sum \(\pd[V]{r_{1i}}dr_{1i} + \pd[V]{r_{2i}}dr_{2i}\) + \sum \(a_{1i}dr_{1i} + r_{1i}da_{1i}\) - \sum \(a_{2i}dr_{2i} + r_{2i}da_{2i}\)\\
+		&= \sum r_{1i}da_{1i} - \sum r_{2i}da_{2i}
+	\end{align*}
+	より
+		\[r_{1i} = \pd[T]{a_{1i}},\ r_{2i} = -\pd[T]{a_{2i}}\]
+	となる。二点における媒質が均一なら、それぞれの原点から光線に降ろした垂線の足を$Q_1, Q_2$として
+	\begin{align*}
+		T
+		&= V - r_1 \dot \grad_1 L - r_2 \dot \grad_2 L\\
+		&= V - r_1 \dot n_1s_1 - r_2 \dot n_2s_2\\
+		&= [P_1P_2] - [P_1Q_1] - [Q_2P_2]\\
+		&= [Q_1Q_2]
+	\end{align*}
+	となる。つまり$T$は光線のみに依存し、4つの独立な変数で表すことができる。
+	\begin{align*}
+		a_1^2 + b_1^2 + c_1^2 &= n_1^2\\
+		a_2^2 + b_2^2 + c_2^2 &= n_2^2\\
+	\end{align*}
+	\begin{align*}
+		a_1da_1 + b_1db_1 + c_1dc_1 &= 0\\
+		a_2da_2 + b_2db_2 + c_2dc_2 &= 0\\
+	\end{align*}
+	より
+	\begin{align*}
+		dT
+		&= x_1da_1 + y_1db_1 + z_1dc_1 - x_2da_2 - y_2db_2 - z_2dc_2\\
+		&= \(x_1 - \frac{a_1}{c_1}z_1\)da_1 + \(y_1 - \frac{b_1}{c_1}z_1\)db_1 - \(x_2 - \frac{a_2}{c_2}z_2\)da_2 - \(y_2 - \frac{b_2}{c_2}z_2\)db_2\\
+	\end{align*}
+	なので
+	\begin{align*}
+		x_1 - \frac{a_1}{c_1}z_1 = \pd[T]{da_1},\ y_1 - \frac{b_1}{c_1}z_1 = \pd[T]{db_1}\\
+		x_2 - \frac{a_2}{c_2}z_2 = -\pd[T]{da_2},\ y_2 - \frac{b_2}{c_2}z_2 = -\pd[T]{db_2}\\
+	\end{align*}
+	となる。
+
+\subsection{光学系の変換}
+	$P_1$から無数の光線が出ており、$P_2$を無限の光線が通る場合、$P_2$は$P_1$のstigmatic(sharp)な像であるという。物空間における任意の曲線と像空間におけるその共役な曲線が相似であるとき完全であるという。三次元領域をstigmaticに結像する光学系をabsolute instrumentと呼ぶ。absolute instrumentでは物空間における任意の光路長とその像の光路長は等しい。absolute instrumentによる結像は射影変換、反転変換、またはそれらの組合せに限られる。さらに完全なabsolute instrumentでは直線が直線に変換されるので射影変換でなければならず、平面鏡の組合せに限られる。
+	物空間と像空間が均一な場合において、軸対称な光学系の自明でないsharpな結像は二つしか存在しない。球面のsharpな結像について調べてみる。
+
+\subsection{射影変換}
+	物空間から像空間への射影変換は
+	\begin{align*}
+		x' = \frac{F_1}{F_0},\ y' = \frac{F_2}{F_0},\ z' = \frac{F_3}{F_0}\\
+		F_i = a_ix + b_iy + c_iz + d_i\\
+	\end{align*}
+	で与えられる。逆変換も同様の形をとる。
+	\begin{align*}
+		x = \frac{F_1'}{F_0'},\ y = \frac{F_2'}{F_0'},\ z = \frac{F_3'}{F_0'}\\
+		F_i' = a_i'x + b_i'y + c_i'z + d_i'\\
+	\end{align*}
+	平面$F_0 = 0$は無限遠に変換され、物空間の焦平面と呼ばれる。平面$F_0' = 0$は無限遠に逆変換され、像空間の焦平面と呼ばれる。物空間の平行光線は像空間で焦平面上の一点で交わる。物空間の焦平面上の一点から出た光束は像空間で平行光線となる。二つの焦平面が無限遠に存在する($a_0=b_0=c_0=0, a_0'=b_0'=c_0'=0$)とき射影変換はaffineまたはtelescopic(望遠系),affocalであるという。
+
+	軸対称な光学系を考える。$yz$平面上の点のみ考えれば良い。物空間の点$(0, y, z)$は像空間の点$(0, y', z')$に変換される。このとき
+	\begin{align*}
+		y' = \frac{b_2y + c_2z + d_2}{b_0y + c_0z + d_0}\\
+		z' = \frac{b_3y + c_3z + d_3}{b_0y + c_0z + d_0}\\
+	\end{align*}
+	である。また$(0, -y, z)$は$(0, -y', z')$に変換されるので$c_2 = d_2 = 0, b_0 = b_3 = 0$となる。よって
+	\begin{align*}
+		y' = \frac{b_2y}{c_0z + d_0}\\
+		z' = \frac{c_3z + d_3}{c_0z + d_0}\\
+	\end{align*}
+	逆に解くと
+	\begin{align*}
+		y = \frac{c_0d_3 - c_3d_0}{b_2}\frac{y'}{c_0z' - c_3}\\
+		z = \frac{-d_0z' + d_3}{c_0z' - c_3}\\
+	\end{align*}
+	焦平面は
+		\[F_0 = c_0z + d_0 = 0,\ F_0' = c_0z' - c_3\]
+	で与えられる。焦平面と軸の交点
+		\[F\(0, 0, -\frac{d_0}{c_0}\),\ F'(0, 0, \frac{c_3}{c_0}\)\]
+	を焦点という。光軸に平行な光線とその像の交点が作る面を主平面という。
+		\[z = \frac{b_2 - d_0}{c_0},\ z' = \frac{c_0d_3 - c_3d_0 + b_2c_3}{b_2c_0}\]
+	主平面と軸の交点
+		\[U\(0, 0, \frac{b_2 - d_0}{c_0}\), U'\(0, 0, \frac{c_0d_3 - c_3d_0 + b_2c_3}{b_2c_0}\)\]
+	を主点という。焦点と主点の距離を焦点距離という。
+	\begin{align*}
+		f = FU = \frac{b_2 - d_0}{c_0} - \(-\frac{d_0}{c_0}\) = \frac{b_2}{c_0}\\
+		f' = F'U' = \frac{c_0d_3 - c_3d_0 + b_2c_3}{b_2c_0} - \frac{c_3}{c_0} = \frac{c_0d_3 - c_3d_0}{b_2c_0}\\
+	\end{align*}
+	それぞれの焦点を原点とした座標
+	\begin{align*}
+		(Y, Z) = \(y, z + \frac{d_0}{c_0}\)\\
+		(Y', Z') = \(y', z' - \frac{c_3}{c_0}\)\\
+	\end{align*}
+	を用いると変換は
+	\begin{align*}
+		Y' = \frac{b_2Y}{c_0Z}\\
+		Z' = \frac{c_3z + d_3}{c_0z + d_0} - \frac{c_3}{c_0}\\
+		= \frac{c_3Z - c_3d_0/c_0 + d_3}{c_0Z} - \frac{c_3}{c_0}\\
+		= \frac{c_0d_3 - c_3d_0}{c_0^2Z}
+	\end{align*}
+	となる。
+		\[ZZ' = ff'\]
+	が成り立つ。これはニュートンの方程式と呼ばれている。横倍率と縦倍率を
+	\begin{align*}
+		\pd[Y']{Y} = \frac{Y'}{Y} = \frac{f}{Z} = \frac{Z'}{f'}\\
+		\pd[Z']{Z} = -\frac{Z'}{Z} = -\frac{ff'}{Z^2} = -\frac{Z'^2}{ff'}
+	\end{align*}
+	で定義する。横倍率は$Z$に依存し$Y$に依存しないため、軸に直交する平面上の図形はそれと相似な像に変換される。affocalな場合は
+		\[y' = \frac{b_2y}{d_0},\ z' = \frac{c_3z + d_3}{d_0}\]
+	より
+		\[Y' = \frac{b_2}{d_0}Y,\ Z' = \frac{c_3}{d_0}Z\]
+	となるので横倍率、縦倍率は一定となる。
+
+\subsection{射影変換の分類}
+	焦点距離の符号によって射影変換を分類する。$ff' < 0$のとき縦倍率は正になる。物体が軸と平行な方向に移動したとき像も同じ方向に移動する。このような結像は屈折と偶数回の反射またはその組合せによって作られるものに限られる。このような結像をconcurrent(同方向)またはdioptic(屈折光学型)と呼ぶ。$ff' > 0$のとき縦倍率は負になる。物体が軸と平行な方向に移動したとき像はそれと反対方向に移動する。このような結像は屈折と奇数回の反射またはその組合せによって作られるものに限られる。このような結像をcontracurrent(逆方向)またはkataoptic(反射光学型)と呼ぶ。また$Z > 0$のとき、$f > 0$なら横倍率は正なので正立像となり、convergent(収束型)という。$f < 0$のとき横倍率は負なので倒立像となり、divergent(発散型)という。
+
+\subsection{光学系の結合}
+	共通の軸を持つ二つの軸対称な光学系の合成を考える。それぞれの焦点を原点とした座標で
+	\begin{align*}
+		Y_1' = \frac{f_1Y_1}{Z_1},\ Z_1' = \frac{f_1f_1'}{Z_1}\\
+		Y_2' = \frac{f_2Y_2}{Z_2},\ Z_2' = \frac{f_2f_2'}{Z_2}\\
+	\end{align*}
+	焦点$F_1', F_2$の距離を$d$とすれば
+		\[Z_1' - c = Z_2,\ Y_1' = Y_2\]
+	なので
+	\begin{align*}
+		Y_2'
+		&= \frac{f_2Y_2}{Z_2} = \frac{f_2Y_1'}{Z_1' - c}\\
+		&= \frac{f_1f_2Y_1}{Z_1\(\frac{f_1f_1'}{Z_1} - c\)}\\
+		&= \frac{f_1f_2Y_1}{f_1f_1' - cZ_1}\\
+		&= -\frac{f_1f_2}{c}\frac{Y_1}{Z_1 - \frac{f_1f_1'}{c}}
+		Z_2'
+		&= \frac{f_2f_2'}{Z_2} = \frac{f_2f_2'}{Z_1' - c}\\
+		&= \frac{f_2f_2'}{\frac{f_1f_1'}{Z_1} - c}\\
+		&= \frac{f_2f_2'Z_1}{f_1f_1' - cZ_1}\\
+		Z_2' + \frac{f_2f_2'}{c}
+		&= \frac{\frac{f_1f_1'f_2f_2'}{c}}{f_1f_1' - cZ_1}\\
+		&= -\frac{f_1f_2}{c}\frac{f_1'f_2'}{c}\frac{Z_1 - \frac{f_1f_1'}{c}}\\
+	\end{align*}
+	比較すると、系全体の焦点距離は
+	\begin{align*}
+		f = -\frac{f_1f_2}{c}\\
+		f' = \frac{f_1'f_2'}{c}\\
+	\end{align*}
+	となる。また焦点は光学系1の焦点より$f_1f_1'/c$だけ手前にずれる。
+
+
+\section{光学機器}
+	\subsection{眼}
+	\subsection{カメラ}
+	\subsection{屈折望遠鏡}
+	\subsection{反射望遠鏡}
+	\subsection{顕微鏡}

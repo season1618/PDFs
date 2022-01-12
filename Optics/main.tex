@@ -1,0 +1,42 @@
+\documentclass{jsarticle}
+\usepackage{amssymb,amsmath}
+
+\newcommand{\lr}[1]{\left(#1 \right)}
+\newcommand{\mlr}[1]{\left\{#1 \right\}}
+\newcommand{\llr}[1]{\left[#1 \right]}
+\newcommand{\rec}[1]{\frac{1}{#1}}
+\newcommand{\de}[2][]{\frac{d #1}{d #2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+
+\newcommand{\grad}{\mathrm{\grad\,}}
+\renewcommand{\div}{\mathrm{\div\,}}
+\newcommand{\rot}{\mathrm{\rot\,}}
+
+\renewcommand{\(}{\left(}
+\renewcommand{\)}{\right)}
+
+\title{光学}
+\author{season07001674}
+\date{\today (初版)}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\part{幾何光学}
+\input geometric-optics-approximation.tex
+\input imaging-theory.tex
+\input gaussian-optics.tex
+\input aberration-theory.tex
+
+\part{波動光学}
+\part{量子光学}
+\part{フーリエ光学}
+\part{非線形光学}
+光物性、光エレクトロニクス
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{refs.bib}
+
+\end{documents}

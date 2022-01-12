@@ -1,0 +1,67 @@
+\section{幾何光学近似}
+
+電磁波の波長が非常に小さいとき電磁波は光線の束とみなすことができる。
+
+振動数一定の電磁波を複素ベクトルで表現する。
+\begin{gather*}
+	E(r, t) = E_0(r)e^{-i\omega t}\\
+	H(r, t) = H_0(r)e^{-i\omega t}
+\end{gather*}
+これを物質中のマクスウェル方程式に代入する。空間には電荷や電流は存在しないとすると
+\begin{gather*}
+	\div \epsilon E_0 = 0\\
+	\div \mu H_0 = 0\\
+	\rot E_0 - ik_0\mu H_0 = 0\\
+	\rot H_0 + ik_0\epsilon E_0 = 0\\
+\end{gather*}
+$L(r)$はアイコナール(eikonal)と呼ばれる量で、ある点における光路長を表す実関数である。$L(r)$が一定の面は幾何光学における波面を表し、$\grad L(r)$は波面の法線つまり光線方向を表す。
+	\[(\grad L(r))^2 = n^2\]
+はアイコナール方程式と呼ばれる。光線上の位置ベクトルを$r$、光線の長さを$s$として
+	\[n\de[r]{s} = \grad L(r)\]
+と表せる。光線と屈折率の関係を直接導くこともできる。
+\begin{align*}
+	\de{s}\(n\de[r]{s}\)
+	&= \de{s}\grad L = \de{s}\(\pd[L]{x}, \pd[L]{y}, \pd[L]{z})\\
+	&= \(\de[r]{s} \dot \grad\pd[L]{x}, \de[r]{s} \dot \grad\pd[L]{y}, \de[r]{s} \dot \grad\pd[L]{z}\)\\
+	&= \frac{1}{n}\(\grad L \dot \grad\pd[L]{x}, \grad L \dot \grad\pd[L]{y}, \grad L \dot \grad\pd[L]{z}\)\\
+	&= \frac{1}{2n}\(\pd{x}(\grad L)^2, \pd{y}(\grad L)^2, \pd{z}(\grad L)^2)\\
+	&= \frac{1}{2n}\grad n^2 = \grad n
+\end{align*}
+均一な媒質中では
+	\[\de[^2r]{s^2} = 0\]
+だから光線は直線になる。また
+	\[n = n\de[r]{s} \dot \de[r]{s} = \grad L(r) \dot \de[r]{s}\]
+より光路長は
+	\[\int_{r_1}^{r_2} nds = L(r_2) - L(r_1)\]
+と書ける。
+
+ポインティングベクトルは
+\begin{align*}
+	S = Re(E \times H) = vus
+\end{align*}
+非等方的な媒質では一般に波面の法線とポインティングベクトルの方向は一致しない。
+光の強度はポインティングベクトルの絶対値で定義される。
+実際には様々な振動数の光が含まれているので、例えばポインティングベクトルは
+\begin{align*}
+	S = Re(E \times H) = Re(\sum_n E_n \times H_n) + Re(\sum_{n \neq m} E_n \times H_m)
+\end{align*}
+となる。
+
+\subsection{反射と屈折}
+	屈折率$n_1, n_2$の媒質が境界で隔てられているとする。
+	\begin{align*}
+		ns &= \grad L(r)\\
+		\rot ns &= \rot\grad L(r) = 0\\
+	\end{align*}
+	光線を含み境界面に垂直な微小な長方形$S$を考えて両辺を積分すると、ストークスの定理より
+		\[\int_S \rot ns \dot dS = \int_{\partial S} ns \dot dl = 0\]
+	線積分はラグランジュの積分不変量と呼ばれる。光線が境界面の単位ベクトルとなす角をそれぞれ$\theta_1, \theta_2$とすると
+		\[n_2\sin\theta_2 - n_1\sin\theta_1 = 0\]
+	$n_1 = n_2$なら$\theta_1 = \theta_2$で反射の法則を表し、$n_1 \neq n_2$なら
+		\[n_1\sin\theta_1 = \n_2\sin\theta_2\]
+	で屈折の法則(スネルの法則)を表す。
+
+\subsection{フェルマーの原理}
+	光はある二点について光路長が極小となるような経路を通る。つまり
+		\[\delta\int nds = 0\]
+	フェルマーの原理から反射・屈折の法則が導かれる。

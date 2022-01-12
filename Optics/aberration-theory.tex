@@ -1,0 +1,131 @@
+\section{収差論}
+
+収差には単色収差と色収差がある。単色収差は一定の波長を持った光線が光学系を通ることによって像に生じる歪みである。色収差は、波長分布を持った光線が屈折する際、波長の違いによる屈折率の違いで分散して生じる収差である。
+
+\subsection{光線収差と波面収差(収差関数)}
+	物点$P_1$を出た光線がガウス像面と交わる点を$P_2$とする。$P_1$のガウス像点を$P_g$としたときベクトル$P_gP_1$を光線収差という。
+
+	$P_1$を出る光束の波面で射出瞳の中心を通るものを$W$、ガウス像点を中心とし同じ点を通る球面を$S$とする。$S$はガウス参照球面と呼ばれ、無収差の場合は$W$と一致する。光線が$S, W$と交わる点を$Q, Q'$とおくと、光路長$\Phi = [Q'Q]$を$Q$における波面収差(収差関数)と呼ぶ。$P_2, Q, Q'$がこの順に並んでいるときを正と定義する。波面収差はpoint characteristicを用いて表すことができる。
+	\begin{align*}
+		\Phi
+		&= [Q'Q] = [P_1Q] - [P_1Q']\\
+		\intertext{$Q'$と$O_2'$は同一波面上にあるので}
+		&= [P_1Q] - [P_1O_2'] = V(P_1, Q) - V(P_1, O_2')\\
+	\end{align*}
+	それぞれ$O_1$を原点とする座標で$P_1(x_1, y_1, 0)$、$O_2$を原点とする座標で$Q(x, y, z), O_2'(0, 0, d_2), P_g(x_g, y_g, 0)$とおき、ガウス参照球面の半径を$R$とおく。$\Phi = V(x_1, y_1, 0, x, y, z) - V(x_1, y_1, 0, 0, 0, d)$だが、$z$は$x, y$に依存するので$\Phi = \Phi(x_1, x_2, x, y)$と書ける。$r = |QP_2|$とすると
+	\begin{align*}
+		\pd[\Phi]{x}
+		&= \pd[V]{x} + \pd[V]{z}\pd[z]{x}\\
+		&= n_1\frac{x_1 - x}{r} - n_1\frac{z}{r} \dot -\frac{x - x_g}{z}\\
+		&= n_1\frac{x_1 - x_g}{r}\\
+	\end{align*}
+	$r \sim R$と近似すれば
+	\begin{align*}
+		x_1 - x_g &= \frac{R}{n_1}\pd[\Phi]{x}\\
+		y_1 - y_g &= \frac{R}{n_1}\pd[\Phi]{y}\\
+	\end{align*}
+	となり光線収差が得られる。
+
+	$\Phi$は軸対称なので$x_1^2 + y_1^2, x^2 + y^2, x_1x + y_1y$の三変数で表すことができる。$\Phi$を4つの変数に対して展開したとき、偶数次の項のみが存在する。$\Phi(0, 0, 0, 0) = 0$より0次の項は存在しない。また2次の項には$x_1^2 + y_1^2$に比例する項しか存在しない。つまり
+		\[\Phi = c(x_1^2 + y_1^2) + \Phi_4 + \Phi_6 + \cdots\]
+	$\Phi_4$は3次収差に対応し、ザイデル収差と呼ばれる。
+
+\subsection{摂動関数}
+	長さの単位$l_1, l_2, \lambda_1, \lambda_2$を$l_2/l_1 = M, \lambda_2/\lambda_1 = M'(横倍率)$となるようにとる。新しく座標としてザイデル変数
+	\begin{align*}
+		X_1 = C\frac{x_1}{l_1},\ Y_1 = C\frac{y_1}{l_1}\\
+		X_2 = C\frac{x_2}{l_2},\ Y_2 = C\frac{y_2}{l_2}\\
+		\xi_1 = \frac{x_1}{\lambda_1} + \frac{d_1p_1}{\lambda_1 n_1},\ \eta_1 = \frac{y_1}{\lambda_1} + \frac{d_1q_1}{\lambda_1 n_1}
+		\xi_2 = \frac{x_2}{\lambda_2} + \frac{d_2p_2}{\lambda_2 n_2},\ \eta_2 = \frac{x_2}{\lambda_2} + \frac{d_2q_2}{\lambda_2 n_2}
+	\end{align*}
+	を用いる。$C = \frac{n_1l_1\lambda_1}{d_1} = \frac{n_2l_2\lambda_2}{d_2}$は定数である。これを用いて収差関数$\Phi(x_1, y_1, x_2', y_2') = \phi(X_1, Y_1, \xi_2, \eta_2)$を書き換える。
+	\begin{align*}
+		\pd[\Phi]{x_2'} = \pd[\phi]{\xi_2}\pd[\xi_2]{x_2'} = \frac{1}{\lambda_2}\pd[\phi]{\xi_2}
+	\end{align*}
+	\begin{align*}
+		X_2 - X_1 &= -\pd[\phi]{\xi_2} + O(d_2\mu^5)\\
+		Y_2 - Y_1 &= -\pd[\phi]{\eta_2} + O(d_1\mu^5)\\
+	\end{align*}
+
+	angle characteristicを用いて
+		\[\psi = T + \frac{d_1}{2n_1\lambda_1^2}(x_1^2 + y_1^2) - \frac{2n_2\lambda_2^2}(x_2^2 + y_2^2) + x_1(\xi_2 - \xi_1) + y_1(\eta_2 - \eta_1)\]
+	と定義する。これはシュバルツシルトの摂動関数と呼ばれている。
+	\begin{align*}
+		dT
+		&= x_1dp_1 + y_1dq_1 - x_2dp_2 - y_2dq_2\\
+		&= X_1\(d\xi_1 - \frac{d_1}{n_1\lambda_1^2}dX_1\) + Y_1\(d\eta_1 - \frac{d_1}{n_1\lambda_1}dY_1\) - X_2\(d\xi_2 - \frac{d_2}{n_2\lambda_2^2}dX_2\) - Y_2\(d\eta_2 - \frac{d_2}{n_2\lambda_2}dY_2\)\\
+		d\psi
+		&= (\xi_2 - \xi_1)dX_1 + (\eta_2 - \eta_1)dY_1 - (X_2 - X_1)d\xi_2 - (Y_2 - Y_1)d\eta_2
+	\end{align*}
+	より光線収差は
+	\begin{align*}
+		\xi_2 - \xi_1 &= \pd[\psi]{X_1},\ \eta_2 - \eta_1 &= \pd[\psi]{Y_1}\\
+		x_2 - x_1 &= -\pd[\psi]{\xi_2},\ y_2 - y_1 &= -\pd[\psi]{\eta_2}\\
+	\end{align*}
+	となる。
+
+	収差関数による光線収差の式の誤差項を考慮したい場合には摂動関数による式を用いることができる。摂動関数に簡単な物理的意味はない。
+
+\subsection{ザイデル収差}
+	摂動関数を
+		\[\psi = \psi_0 + \psi_4 + \psi_6 + \cdots\]
+	と展開することができる。収差関数と同様に摂動関数は以下の三つの変数のみに依存する。
+		\[r^2 = X_1^2 + Y_1^2,\ \rho^2 = \xi_2^2 + \eta_2^2,\ \kappa^2 = X_1\xi_2 + Y_1\eta_2\]
+	これを用いると4次の項は
+		\[\psi_4 = -\frac{1}{4}Ar^4 - \frac{1}{4}B\rho^4 - C\kappa^4 - \frac{1}{2}Dr^2\rho^2 + Er^2\kappa^2 + F\rho^2\kappa^2\]
+	$\phi$は第一項を含まないので
+		\[\phi_4 = -\frac{1}{4}B\rho^4 - C\kappa^4 - \frac{1}{2}Dr^2\rho^2 + Er^2\kappa^2 + F\rho^2\kappa^2\]
+	となる。これを光線収差の式に代入すると
+	\begin{align*}
+		\Delta X_3
+		&\simeq -\pd[\phi]{\xi_2} = \frac{1}{2}B\rho^2\pd[\rho^2]{\xi_2} + 2C\kappa^2\pd[\kappa^2]{\xi_2} + \frac{1}{2}Dr^2\pd[\rho^2]{\xi_2} - Er^2\pd[\kappa^2]{\xi_2} - F\(\pd[\rho^2]{\xi_2}\kappa^2 + \rho^2\pd[\kappa^2]{\xi_2}\)\\
+		&= B\rho^2\xi_2 + 2C\kappa^2X_1 + Dr^2\xi_2 - Er^2X_1 - F(2\xi_2\kappa^2 + \rho^2X_1)\\
+		&= X_1(2C\kappa^2 - Er^2 - F\rho^2) + \xi_2(B\rho^2 + Dr^2 - 2F\kappa^2)\\
+	\end{align*}
+	$\Delta Y_3$も同様に
+		\[\Delta Y_3 = Y_1(2C\kappa^2 - Er^2 - F\rho^2) + \eta_2(B\rho^2 + Dr^2 - 2F\kappa^2)\]
+	これらはザイデル収差と呼ばれる。yz面上で考え、$\xi_2 = \rho\sin\theta, \eta_2 = \rho\cos\theta$とおく。このとき$x_1 = 0, r = y_1, \kappa^2 = y_1\rho\cos\theta$となるので、
+	\begin{align*}
+		\Delta X_3 &= B\rho^3\sin\theta + Dy_1^2\rho\sin\theta - 2Fy_1\rho^2\sin\theta\cos\theta\\
+		\Delta Y_3 &= B\rho^2\cos\theta + 2Cy_1^2\rho\cos\theta + Dy_1^2\rho\cos\theta - Ey_1^3 - Fy_1\rho^2(1 + \cos\theta)\\
+	\end{align*}
+	である。
+
+	ある物点に対する収差は$\xi,\eta-\phi$グラフによって特徴付けられる。
+	\subsubsection{球面収差}
+		$B$のみが非零のとき
+	\subsubsection{コマ収差}
+		$F$のみが非零のとき
+	\subsubsection{非点収差}
+		$C$のみが非零のとき
+	\subsubsection{像面湾曲}
+		$D$のみが非零のとき
+	\subsubsection{歪曲収差}
+		$E$のみが非零のとき
+
+\subsection{色収差}
+	
+	\begin{align*}
+		f(n - 1) = \frac{1}{R_1} + \frac{1}{R_2}\\
+		df(n - 1) + fdn = 0\\
+		\frac{df}{f} = -\frac{dn}{n - 1}
+	\end{align*}
+	フラウンホーファーのF,D,C線における屈折率を用いると近似的に
+		\[\frac{n_F - n_C}{n_D - 1}\]
+	と表せる。これを分散率と言い、ガラスの分散特性を表す。分散率の逆数をアッベ数という。2枚のレンズを組合せて収差を解消する条件を考える。2枚のレンズの焦点距離は
+	\begin{align*}
+		\frac{1}{f} = \frac{1}{f_1} + \frac{1}{f_2} - \frac{l}{f_1f_2}\\
+		\frac{df}{f^2}
+		&= \frac{df_1}{f_1^2} + \frac{df_2}{f_2^2} - \frac{l(f_2df_1 + f_1df_2)}{f_1^2f_2^2}\\
+		&= \frac{df_1}{f_1^2} + \frac{df_2}{f_2^2} - \frac{l}{f_1f_2}\(\frac{df_1}{f_1} + \frac{df_2}{f_2}\) = 0\\
+	\end{align*}
+	$l = 0$としたとき、レンズの分散率を$\Delta_1 = df_1/f_1, \Delta_2 = df_2/f_2$とおくと
+	\begin{gather*}
+		\frac{1}{f} = \frac{1}{f_1} + \frac{1}{f_2}\\
+		\frac{\Delta_1}{f_1} + \frac{\Delta_2}{f_2} = 0\\
+	\end{gather*}
+	より
+	\begin{align*}
+		\frac{1}{f_1} &= \frac{1}{f}\frac{\Delta_2}{\Delta_2 - \Delta_1}\\
+		\frac{1}{f_2} &= -\frac{1}{f}\frac{\Delta_1}{\Delta_2 - \Delta_1}\\
+	\end{align*}

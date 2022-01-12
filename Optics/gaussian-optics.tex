@@ -1,0 +1,155 @@
+\section{ガウス光学}
+
+光線が光軸の近くを通るとしたときの近似を近軸近似という。軸からの距離や軸と光線の成す角に関する二次以上の項は無視される。近軸近似における理論をガウス光学という。近軸を通った光線による像をガウス像という。
+
+\subsection{軸対称な屈折面}
+	$z$軸に関して対称で原点に接する屈折面を考える。曲面の方程式を
+		\[z = c_2(x^2 + y^2) + c_4(x^2 + y^2)^2 + \cdots\]
+	とする。半径$R$の球面の方程式のテイラー展開
+	\begin{align*}
+		z = R - \sqrt(R^2 - x^2 - y^2) = \frac{1}{2R}(x^2 + y^2) + \frac{1}{8R^3}(x^2 + y^2)^4 + \cdots
+	\end{align*}
+	と比較すると、曲率半径を$R$として
+		\[c_2 = \frac{1}{2R},\ c_4 = \frac{1}{8R^3}(1 + k)\]
+	と書けることが分かる。ただし曲率半径は入射光に向かって凸ならば正、屈折光に向かって凸なら負とする。$k$は球面からのずれを表す。屈折面上の点$p$に入射するとき
+
+	
+	\begin{align*}
+		x_1 - \frac{a_1}{n_1}z_1 &= \pd[T_2]{a_1} = 2Aa_1 + Ca_2\\
+		x_2 - \frac{a_2}{n_2}z_2 &= -\pd[T_2]{a_2} = - 2Ba_2 - Ca_1\\
+		y_1 - \frac{b_1}{n_1}z_1 &= \pd[T_2]{b_1} = 2Ab_1 + Cb_2\\
+		y_2 - \frac{b_2}{n_2}z_2 &= -\pd[T_2]{b_2} = - 2Bb_2 - Cb_1\\
+		A = B = \frac{R}{2(n_2 - n_1)},\ C = -\frac{R}{n_2 - n_1}
+	\end{align*}
+	近軸近似では$T_0, T_4$は無視されるので$k$に依存しない。つまり屈折面は球面で近似される。$P_1$の像を$P_2$とするとき、$P_1, P_2$を固定したまま$a_1, a_2, b_1, b_2$を勝手に動かすことができる。つまり、この光学系がabsolute instrumentとなる条件は上の式から$a_1, a_2, b_1, b_2$を消去できることである。第三式と第四式から$b_2$を消去して$y_2$について解くと
+	\begin{align*}
+		y_2
+		&= \frac{z_2}{n_2}b_2 - 2Bb_2 - Cb_1\\
+		&= \(\frac{z_2}{n_2} - 2B\)\frac{1}{C}\(y_1 - \frac{z_1}{n_1}b_1 - 2Ab_1\) - Cb_1\\
+		&= \(\frac{z_2}{n_2} - 2B\)\frac{y_1}{C} - \left{\frac{1}{C}\(\frac{z_2}{n_2} - 2B\)\(\frac{z_1}{n_1} + 2A\) + C\right}b_1\\
+	\end{align*}
+	つまり
+	\begin{align*}
+		\(2A + \frac{z_1}{n_1}\)\(2B - \frac{z_2}{n_2}\) = C^2\\
+		\(\frac{R}{n_2 - n_1} + \frac{z_1}{n_1}\)\(\frac{R}{n_2 - n_1} - \frac{z_2}{n_2}\) = \frac{R^2}{(n_2 - n_1)^2}\\
+		\frac{z_1}{n_1}\frac{R}{n_2 - n_1} - \frac{z_2}{n_2}\frac{R}{n_2 - n_1} - \frac{z_1z_2}{n_1n_2} = 0\\
+		\intertext{両辺に$n_1n_2(n_2 - n_1)/Rz_1z_2$を掛ける。}
+		\frac{n_2}{z_2} - \frac{n_1}{z_1} - \frac{n_2 - n_1}{R} = 0\\
+		n_1\(\frac{1}{R} - \frac{1}{z_1}\) = n_2\(\frac{1}{R} - \frac{1}{z_2}\)
+	\end{align*}
+	となる。これをアッベの屈折に関する零不変量という。結局変換は
+	\begin{gather*}
+		y_2 = \(\frac{z_2}{n_2} - 2B\)\frac{y_1}{C}\\
+		n_1\(\frac{1}{R} - \frac{1}{z_1}\) = n_2\(\frac{1}{R} - \frac{1}{z_2}\)
+	\end{gather*}
+	となる。焦点は
+	\begin{align*}
+		z_1 \to -\frac{n_1R}{n_2 - n_1} (z_2 \to \infty)\\
+		z_2 \to \frac{n_2R}{n_2 - n_1} (z_1 \to -\infty)\\
+	\end{align*}
+	主点は
+		\[y_2 = \(\frac{z_2}{n_2} - 2B\)\frac{y_1}{C}\]
+	より
+	\begin{align*}
+		\frac{z_2}{n_2} = 2B + C = 0\\
+		z_2 = 0\\
+		\frac{z_1}{n_1} = \frac{C^2}{2B} - 2A = 0\\
+		z_1 = 0\\
+	\end{align*}
+	となる。つまり主点は曲面の頂点と一致する。焦点距離は
+	\begin{align*}
+		f_1 &= \frac{n_1R}{n_2 - n_1}\\
+		f_2 &= -\frac{n_2R}{n_2 - n_1}\\
+	\end{align*}
+	異符号なので結像はconcurrentである。
+
+\subsection{軸対称な反射面}
+	軸対称な屈折面に対するangle characteristicと形は同じで定数だけが異なる。また媒質の屈折率を$n_1 = n_2 = n$とおくと
+	\begin{align*}
+		x_1 - \frac{a_1}{n}z_1 &= \pd[T_2]{a_1} = 2Aa_1 + Ca_2\\
+		x_2 - \frac{a_2}{n}z_2 &= -\pd[T_2]{a_2} = - 2Ba_2 - Ca_1\\
+		y_1 - \frac{b_1}{n}z_1 &= \pd[T_2]{b_1} = 2Ab_1 + Cb_2\\
+		y_2 - \frac{b_2}{n}z_2 &= -\pd[T_2]{b_2} = - 2Bb_2 - Cb_1\\
+		A = B = -\frac{R}{4n},\ C = \frac{R}{2n}
+	\end{align*}
+	第三式と第四式から$b_1, b_2$を消去できる条件は同じなので、
+	\begin{align*}
+		\(2A + \frac{z_1}{n}\)\(2B - \frac{z_2}{n}\) = C^2\\
+		\(-\frac{R}{2n} + \frac{z_1}{n}\)\(-\frac{R}{2n} - \frac{z_2}{n}\) = \frac{R^2}{4n^2}\\
+		-\frac{Rz_1}{2n^2} + \frac{Rz_2}{2n^2} - \frac{z_1z_2}{n^2} = 0
+		\intertext{両辺に$2n^2/Rz_1z_2$を掛ける。}
+		-\frac{1}{z_2} + \frac{1}{z_1} - \frac{2}{R} = 0\\
+		\frac{1}{z_1} - \frac{1}{R} = \frac{1}{z_2} + \frac{1}{R}
+	\end{align*}
+	となる。これをアッベの反射に対する不変量という。結局変換は
+	\begin{gather*}
+		y_2 = \(\frac{z_2}{n_2} - 2B\)\frac{y_1}{C}\\
+		\frac{1}{z_1} - \frac{1}{R} = \frac{1}{z_2} + \frac{1}{R}
+	\end{gather*}
+	となる。焦点は
+	\begin{align*}
+		z_1 \to \frac{R}{2} (z_2 \to \infty)\\
+		z_2 \to \frac{R}{2} (z_1 \to -\infty)\\
+	\end{align*}
+	主点は
+		\[y_2 = \(\frac{z_2}{n} - 2B\)\frac{y_1}{C}\]
+	より
+	\begin{align*}
+		\frac{z_2}{n} = 2B + C = 0\\
+		z_2 = 0\\
+		\frac{z_1}{n} = \frac{C^2}{2B} - 2A = 0\\
+		z_1 = 0\\
+	\end{align*}
+	となる。つまり主点は曲面の頂点と一致する。焦点距離は
+		\[f_1 = f_2 = -\frac{R}{2}\]
+	同符号なので結像はcontracurrentである。
+
+\subsection{一般共軸系}
+	光学系の結合を考える。屈折面$S_1, S_2, \dots, S_m$が並んでおり、それぞれの焦点距離を$f_1, f_2, \dots, f_m$とする。また各領域の屈折率を$n_0, n_1, \dots, n_m$とする。媒質0に二点$P_0, P_0'$を取り、各領域における像を$P_i, P_i'$とおく。任意の$i$に対して
+	\begin{align*}
+		\frac{Y_i}{Y_{i-1}} = \frac{f_{i-1}}{Z_{i-1}} = \frac{Z_i}{f_i}\\
+		\frac{Y_i'}{Y_{i-1}'} = \frac{f_{i-1}}{Z_{i-1}'} = \frac{Z_i'}{f_i}\\
+	\end{align*}
+	が成立する。
+	\begin{align*}
+		\frac{Z_i' - Z_i}{f_i} = \frac{Y_i'}{Y_{i-1}'} - \frac{Y_i}{Y_{i-1}} = \frac{Y_{i-1}Y_i' - Y_iY_{i-1}'}{Y_{i-1}Y_{i-1}'}\\
+		\frac{Z_{i-1}' - Z_{i-1}}{f_{i-1}} = \frac{Y_{i-1}'}{Y_i'} - \frac{Y_{i-1}}{Y_i} = \frac{Y_iY_{i-1}' - Y_{i-1}Y_i'}{Y_iY_i'}\\
+		\frac{f_{i-1}Y_{i-1}Y_{i-1}'}{Z_{i-1}' - Z_{i-1}} = -\frac{f_iY_iY_i'}{Z_i' - Z_i}\\
+		\frac{n_{i-1}Y_{i-1}Y_{i-1}'}{Z_{i-1}' - Z_{i-1}} = \frac{n_iY_iY_i'}{Z_i' - Z_i}\\
+	\end{align*}
+	となる。$Y_i'/(Z_i' - Z_i) = \tan\gamma_i$とおき、$\tan\gamma_i = \gamma_i$と近似すると
+		\[n_{i-1}Y_{i-1}\gamma_{i-1} = n_iY_i\gamma_i\]
+	となる。これをSmith-Helmholtzの公式と言い、$n_iY_i\gamma_i$をSmith-Helmholtzの不変量という。
+
+\subsection{レンズ}
+	共通の軸を持つ二つの面による光学系、つまりレンズを考える。レンズの外部の屈折率を$n_1$、レンズの屈折率を$n_2$として相対屈折率$n = n_2/n_1$を導入する。また二つの面の曲率半径を$R_1, R_2$とする。焦点距離がそれぞれ
+	\begin{align*}
+		f_1 &= \frac{n_1R_1}{n_2 - n_1},\ f_1' = -\frac{n_2R_1}{n_2 - n_1}\\
+		f_2 &= \frac{n_2R_2}{n_1 - n_2},\ f_2' = -\frac{n_1R_2}{n_1 - n_2}\\
+	\end{align*}
+	なので、全体の焦点距離は
+	\begin{align*}
+		f &= -\frac{f_1f_2}{c} = \frac{n_1n_2R_1R_2}{c(n_2 - n_1)^2}\\
+		f' &= \frac{f_1'f_2'}{c} = -\frac{n_1n_2R_1R_2}{c(n_2 - n_1)^2}\\
+	\end{align*}
+	となる。またレンズの厚みを
+	\begin{align*}
+		D
+		&= U_1U_2 = U_1F_1' + F_1'F_2 + F_2U_2\\
+		&= c - f_1' + f_2
+	\end{align*}
+	とする。convergent$(f > 0)$となるのは両凸レンズ$(R_1 > 0, R_2 < 0)$、平凸レンズ$(R_1 > 0, R_2 = \infty)$、正メニスカス$(R_2 > R_1 > 0)$であり、divergent$(f < 0)$となるのは、両凹レンズ$(R_1 < 0, R_2 > 0)$、平凹レンズ$(R_1 = \infty, R_2 > 0)$、負メニスカス$(R_1 > R_2 > 0)$
+
+	レンズの厚みが無視できる場合(薄レンズ近似)は、
+	\begin{align*}
+		c = f_1' - f_2 = -\frac{n_2(R_1 + R_2)}{n_2 - n_1}
+		\frac{1}{f} = -\frac{1}{f'}
+		&= \frac{n_2(n_2 - n_1)(R_1 + R_2)}{n_1n_2R_1R_2}\\
+		&= \(\frac{n_2}{n_1} - 1\)\(\frac{1}{R_1} + \frac{1}{R_2}\)
+	\end{align*}
+	となる。共通の軸を持つ2枚のレンズを考える。レンズの間隔を$l = f_1 + c + f_2$を用いると
+		\[\frac{1}{f} = -\frac{1}{f'} = -\frac{c}{f_1f_2} = \frac{1}{f_1} + \frac{1}{f_2} - \frac{l}{f_1f_2}\]
+
+
+
+通常の光学系では平面、球面、放物面が用いられる。それ以外の複雑な曲面では光学で要求される高い精度を出すことが難しい。1930年Bernard Schmidtは非球面レンズを用いて新しい望遠鏡を設計した。これはSchmidtカメラと呼ばれている。軸対称な光学系で、一つの非球面を用いると軸上の物点をstigmaticにすることができ、二つの非球面を用いるとaplanatiにすることができる。
