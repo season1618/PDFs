@@ -1,0 +1,139 @@
+\documentclass{jsarticle}
+\usepackage{amssymb,amsmath}
+\usepackage{mathrsfs,ascmac}
+\begin{document}
+\title{相対性理論}
+\author{ks高校n年　season}
+\date{2019/05/19}
+\maketitle
+%\tableofcontents
+\newcommand{\repart}[1]{\part{#1}\setcounter{section}{0}}
+\newcommand{\lr}[1]{\left(#1 \right)}
+\newcommand{\mlr}[1]{\left\{#1 \right\}}
+\newcommand{\llr}[1]{\left[#1 \right]}
+\newcommand{\rec}[1]{\frac{1}{#1}}
+\newcommand{\de}[2][]{\frac{d #1}{d #2}}
+\newcommand{\dd}[2][]{\frac{d^2 #1}{d #2^2}}
+\newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ppd}[3]{\frac{\partial^2 #1}{\partial #2\partial #3}}
+\newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\co}[1][]{\cos^{#1}\theta}
+\newcommand{\si}[1][]{\sin^{#1}\theta}
+\newcommand{\ga}{\gamma}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\chr}[2]{\Gamma^{#1}_{#2}}
+\newcommand{\ricci}[2]{R^{#1}_{#2}}
+\newcommand{\grad}{\mathrm{grad}}
+\newcommand{\dive}{\mathrm{div}}
+\newcommand{\rot}{\mathrm{rot}}
+\newcommand{\pa}{\partial}
+\newcommand{\na}{\nabla}
+%\newcommand{\chr}[2]{\left\{#1 \atop #2\right\}}
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    \section{パラドックスの解決}
+    \section{アインシュタイン方程式の解}
+    	\subsection{重力波}
+        \subsection{シュバルツシルト解}
+        	質量が球対称に分布した天体を考える。天体は変化せず、外部に物質は存在しない。また時空は無限遠で平坦に近づくとする。計量も球対称なので、時間方向の変位$dw^2$、動径方向の変位$dr^2$、角度方向の変位$r^2d\theta^2 + r^2\sin^2\theta d\phi^2$だけに依存し、係数は半径に比例する。つまり
+        		\[ds^2 = - A(r)dw^2 + B(r)dr^2 + C(r)r^2(d\theta^2 + \sin^2\theta d\phi^2)\]
+        	となる。ミンコフスキー計量は、$- dw^2 + dx^2 + dy^2 + dz^2 = dw^2 + dr^2 + r^2(d\theta^2 + \sin^2\theta d\phi^2)$なので、$r \rightarrow \infty$で$A(r),B(r),C(r) \rightarrow 1$とする。更に計算を簡略化するために$r \rightarrow \sqrt{C(r)}r$と座標変換を行うと、
+        		\[ds^2 = - A(r)dw^2 + B(r)dr^2 + r^2(d\theta^2 + \sin^2\theta d\phi^2)\]
+        	また、
+        	\begin{align*}
+        		A(r) &= e^{\nu(r)}
+        		B(r) &= e^{\lambda(r)}
+        	\end{align*}
+        	と置く。まずクリストッフェル記号は
+        		\[\chr{i}{jk} = \rec{2}g^{il}\lr{\pd[g_{kl}]{x^j} + \pd[g_{jl}]{x^k} - \pd[g_{jk}]{x^l}}\]
+        	であった。$l == i$のときだけを考えれば良いので、
+        	\begin{align*}
+        		\chr{0}{01} &= \chr{0}{10} = \rec{2}e^{-\nu(r)}\lr{\pd[g_{10}]{x^0} + \pd[g_00]{x^1}} = \rec{2}\nu'\\
+        		\chr{1}{00} &= \rec{2}e^{\nu - \lambda}\nu'\\
+        		\chr{1}{11} &= \rec{2}\lambda'\\
+        		\chr{1}{22} &= -re^{-\lambda}\\
+        		\chr{1}{33} &= -re^{-\lambda}\sin^2\theta\\
+        		\chr{2}{12} &= \chr{2}{21} = \rec{r}\\
+        		\chr{2}{33} &= -\sin\theta\cos\theta\\
+        		\chr{3}{13} &= \chr{3}{31} = \rec{r}\\
+        		\chr{3}{23} &= \chr{3}{32} = \rec{\tan\theta}
+        	\end{align*}
+        	その他は全て0である。
+        	まず天体外部の時空の計量について考える。これをシュバルツシルトの外部解という。天体の外部ではエネルギー運動量テンソルは0なのでリッチテンソルも0である。リーマン曲率テンソルは
+        		\[\ricci{i}{jkl} = \pa_k\Ga^i_{jl} - \pa_l\Ga^i_{jk} + \Ga^m_{jl}\Ga^i_{km} - \Ga^m_{jk}\Ga^i_{lm}\]
+        	結果だけを示すとリッチテンソルは、
+        	\begin{align*}
+        		e^{\lambda - \nu}R_{00} &= \rec{2}\nu'' - \rec{4}\nu'\lambda' + \rec{4}\nu'^2 + \frac{\nu'}{r} = 0\\
+        		R_{11} &= - \rec{2}\nu'' + \rec{4}\nu'\lambda' - \rec{4}\nu'^2 + \frac{\lambda'}{r} = 0\\
+        		R_{22} &= 1 - \rec{2}e^{-\lambda}(r\nu' - r\lambda' + 2) = 0\\
+        		R_{33} &= R_{22}\sin^2\theta = 0
+        	\end{align*}
+        	その他は全て0である。あとはこの微分方程式を解けば良い。第一式と第二式を足すと、
+        	\begin{align*}
+        		\frac{\nu' + \lambda'}{r} = 0\\
+        		\intertext{$r > 0 $なので定数を$b$と置き、}
+        		\nu + \lambda = b\\
+        	\end{align*}
+        	となる。第三式を書き直すと、
+        	\begin{align*}
+        		\llr{1 - \rec{2}r(\lambda' - \nu')}e^{\lambda} = 1\\
+        		\intertext{先程の式を代入すると}
+        		(1 - r\lambda')e^{\lambda} = 1\\
+        		(re^{- \lambda})' = 1\\
+        		\intertext{定数をaと置き、}
+        		re^{- \lambda} = r - a\\
+        		\intertext{従って、}
+        		B(r) = e^{\lambda} = \rec{1 - \frac{a}{r}}\\
+        		A(r) = e^{\nu} = e^b\lr{1 - \frac{a}{r}}
+        		\intertext{$r \rightarrow \infty$で$A(r), B(r) \rightarrow 1$となるので、$b = 0$である。アインシュタイン方程式を導いたときと同じように$g_{00}$を比較すれば、}
+        		g_{00} = - A(r) = -1 + \frac{a}{r}\\
+        		\fallingdotseq -1 - \frac{2\phi}{c^2} = -1 + \frac{2GM}{rc^2}\\
+        		a = \frac{2GM}{c^2}
+        	\end{align*}
+        	この$a$をシュバルツシルト半径と呼ぶ。従ってシュバルツシルト計量は、
+        		\[ds^2 = -\lr{1 - \frac{a}{r}}dw^2 + \lr{1 - \frac{a}{r}}^{-1} + r^2d\theta^2 + r^2\sin^2\theta d\phi^2\]
+        	となる。
+        	\paragraph{バーコフの定理}
+        		バーコフの定理とは、真空場において球対称解は静的で漸近的平坦であるという定理である。つまり外部解はシュバルツシルト解である。球対称に拍動する星は重力はを放出しない。また球殻の内部はミンコフスキー計量によって与えられる。これは球対称に分布する星の内部では重力は厳密に相殺するということであり、ニュートンの球殻定理(Newton's shell theorem)に対応するものである。
+        \subsection{}
+    \section{一般相対性理論の検証}
+    	一般相対性理論にはニュートン力学と異なる予測をする現象がある。この章ではその主なものを見ていく。必要なのはシュバルツシルト計量なので、先程求めたのクリストッフェル記号から測地線の方程式を書き下しておく。
+    	\begin{align*}
+    		\de[^2w]{\tau^2} + \frac{a}{r^2}\lr(1 - \frac{a}{r})^{-1}\de[w]{\tau}\de[r]{\tau} = 0\\
+    		\de[^2r]{\tau^2} + \frac{a}{2r^2}\lr(1 - \frac{a}{r})\de[w]{\tau}\de[w]{\tau} - \frac{a}{2r^2}\lr(1 - \frac{a}{r})^{-1}\de[r]{\tau}\de[r]{\tau} - r\lr(1 - \frac{a}{r})\de[\theta]{\tau}\de[\theta]{\tau} - r\lr(1 - \frac{a}{r})\sin^2\theta\de[\phi]{\tau}\de[\phi]{\tau} = 0\\
+    		\de[^2\theta]{\tau^2} + \frac{2}{r}\de[r]{\tau}\de[\theta]{\tau} - \sin\theta\cos\theta\de[\phi]{\tau}\de[\phi]{\tau} = 0\\
+    		\de[^2\phi]{\tau^2} + \frac{2}{r}\de[r]{\tau}\de[\phi]{\tau} + \frac{2}{\tan\theta}\de[\theta]{\tau}\de[\phi]{\tau} = 0
+    	\end{align*}
+    	近似した際にニュートン重力が出てくることだけここで確認しておこう。物体が動径方向だけに変化する、つまり$\de[\theta]{\tau} = \de[\phi]{\tau} = 0$であると仮定する。すると方程式はかなり簡単になって、
+    	\begin{align*}
+    		\de[w']{\tau} + \frac{a}{r^2}\lr(1 - \frac{a}{r})^{-1}w'r' = 0\\
+    		\de[r']{\tau} + \frac{a}{2r^2}\lr(1 - \frac{a}{r})w'^2 - \frac{a}{2r^2}\lr(1 - \frac{a}{r})^{-1}r'^2 = 0
+    	\end{align*}
+    	$v = \de[r]{t}$と置く。$w' = \gamma c, r' = \gamma v$(x'は時間微分)を代入する。
+    	\begin{align*}
+    		\de[\gamma]{\tau} &= \gamma \de{t}\lr(1 - \frac{v^2}{c^2})^{-1/2}\\
+    		&= \gamma \dot \de[v]{t} \dot -\frac{2v}{c^2} \dot -\rec{2}\lr(1 - \frac{v^2}{c^2})^{-3/2} = \frac{\gamma^4v}{c^2}\de[v]{t}\\
+    	\end{align*}
+    	なので、
+    	\begin{align*}
+    		\frac{\gamma^4v}{c^2}\de[v]{t}c + \frac{a}{r^2}\lr(1 - \frac{a}{r})^{-1}\gamma^2 vc = 0\\
+    		\frac{\gamma^4v}{c^2}\de[v]{t}v + \gamma^2\de[v]{t} + \frac{a}{2r^2}\lr(1 - \frac{a}{r})\gamma^2c^2 - \frac{a}{2r^2}\lr(1 - \frac{a}{r})^{-1}\gamma^2v^2 = 0\\
+    		\intertext{$v \neq 0$として、}
+    		\frac{\gamma^2}{c^2}\de[v]{t} + \frac{a}{r^2}\lr(1 - \frac{a}{r})^{-1} = 0\\
+    		\gamma^2\frac{v^2}{c^2}\de[v]{t} + \de[v]{t} + \frac{ac^2}{2r^2}\lr(1 - \frac{a}{r}) - \frac{av^2}{2r^2}\lr(1 - \frac{a}{r})^{-1} = 0\\
+    		\intertext{第一式の左辺第一項を第二式の左辺第二項に代入すると、}
+    		\de[v]{t} = - \frac{ac^2}{2r^2}\lr(1 - \frac{a}{r}) + \frac{3av^2}{2r^2}\lr(1 - \frac{a}{r})^{-1}\\
+    		= - \frac{ac^2}{2r^2} + \frac{ac^2}{2r^2}\frac{a}{r} + \frac{3av^2}{2r(r - a)}\\
+    		\intertext{$a \ll r, v \ll c$とすれば、第一項に比べて第二、第三項は無視できる。$a = \frac{2GM}{c^2}を代入すれば、}
+    		\de[^2r]{t^2} = - \frac{GM}{r^2}
+    	\end{align*}
+    	となってニュートン重力が導かれる。
+    	\subsection{時間の遅れ}
+    	\subsection{重力レンズ効果}
+    		光が重力によって曲がることはニュートン力学でも予測されていた。重力場に沿った軌道は質量に依存しないので、光の質量が分からなくともその軌道を計算することはできた。ところで一般相対性理論では光速は観測者の立場によって変わる。シュバルツシルト計量は
+    			\[ds^2 = -\lr{1 - \frac{a}{r}}dw^2 + \lr{1 - \frac{a}{r}}^{-1} + r^2d\theta^2 + r^2\sin^2\theta d\phi^2\]
+    		であった。$d\theta = d\phi = 0$と置く。光は$ds = 0$なので、
+    			\[\de[r]{w} = \pm\lr(1 - \frac{a}{r})\]
+    		となってシュバルツシルト半径$a = \frac{2GM}{c^2}$に依存する。つまり測地線の方程式に速さ$c$を代入しても光の運動を求めることはできない。そこで$ds = 0$という条件を使う。
+    		パラメータを時間$t$に設定する(光の場合は$d\tau = 0$となるのでそもそもパラメータとして使うことはできない。)
+    	\subsection{重力赤方偏移}
+    	\subsection{水星の近日点移動}
