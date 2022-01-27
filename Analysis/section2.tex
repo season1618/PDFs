@@ -1,29 +1,112 @@
 \section{微分}
 
-$\epsilon-\delta$論法
-関数$f(x)$について、任意の$\epsilon > 0$に対してある$\delta > 0$が存在し、
-	\[|x - a| < \delta \rightarrow |f(a) - b| < \epsilon\]
-が成り立つとき、$f$は$a$において連続であるという。
-関数の極限
-$a$の除外近傍で定義された関数$f(x)$について、任意の$\epsilon > 0$に対してある$\delta > 0$が存在し、
-	\[0 < |x - a| < \delta \rightarrow |f(x) - b| < \epsilon\]
-が成り立つとき、
-	\[\lim_{x \to a} f(x) = b\]
-と書く。
-
-微分
-実数値関数$f : (a, b) \to \R$と$x_0 \in (a, b)$に対し、
-	\[\lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h}\]
-が存在するとき、$f$は$x_0$で微分可能である言い、$f'(x_0)$と書く。
-$f$が$x_0$で極値を取りかつ$x_0$で微分可能なら$f'(x_0) = 0$
-\begin{description}\item[ロルの定理]
+\begin{dfn}[常微分]
+	実数値関数$f : (a, b) \to \R$と$x_0 \in (a, b)$に対し、
+		\[\lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h}\]
+	が存在するとき、$f$は$x_0$で微分可能であると言い、$f'(x_0)$と書く。
+\end{dfn}
+\begin{prop}
+	$f$が$x_0$で極値を取りかつ$x_0$で微分可能なら$f'(x_0) = 0$
+\end{prop}
+\begin{thm}[ロルの定理]
 	関数$f$が閉区間$[a, b]$で連続、$(a, b)$で微分可能とする。$f'(a) = f'(b) = 0$ならば$f'(c) = 0$となる$a < c < b$が存在する。
-\end{description}
-\begin{description}\item[平均値の定理]
+\end{thm}
+\begin{thm}[平均値の定理]
 	関数$f$が閉区間$[a, b]$で連続、$(a, b)$で微分可能とする。$f'(c) = \frac{f(b) - f(a)}{b - a}$となる$a < c < b$が存在する。
-\end{description}
-合成関数の微分
-$f$が$x_0$で微分可能で$g$が$f(x_0)$で微分可能なら$g\circle f$も$x_0$で微分可能で
-	\[(g\circle f)'(x_0) = g'(f(x_0))f'(x_0)\]
-が成り立つ。
-逆関数の微分
+\end{thm}
+\begin{prop}[合成関数の微分]
+	$f$が$x_0$で微分可能かつ$g$が$f(x_0)$で微分可能なら$g\circ f$も$x_0$で微分可能で
+		\[(g\circ f)'(x_0) = g'(f(x_0))f'(x_0)\]
+	が成り立つ。
+\end{prop}
+\begin{prop}[逆関数の微分]
+\end{prop}
+
+\begin{dfn}[全微分]
+		\[\lim_{x \to x_0} \frac{f(x) - f(x_0) - v \cdot (x - x_0)}{|x - x_0|} = 0\]
+	であるとき$f(x)$は$x_0$で全微分可能であるという。このとき$df = a \cdot dx$を$x_0$における全微分という。
+\end{dfn}
+\begin{dfn}[偏微分]
+	任意の$1 \leq i \leq n$に対して
+		\[\lim_{h \to 0} \frac{f(x_0 + he_i) - f(x_0)}{h}\]
+	が存在するとき$f(x)$は$x_0$において偏微分可能であるという。
+\end{dfn}
+\begin{prop}
+	$f$が$x_0$において全微分可能なら、$f$は$x_0$において連続かつ偏微分可能であり、
+		\[\pd[f]{x_i} = a_i\]
+	である。
+\end{prop}
+\begin{proof}
+	\begin{align*}
+		\lim_{x \to x_0} f(x) - f(x_0) 
+		&= \lim_{x \to x_0} f(x) - f(x_0) - v \cdot (x - x_0)\\
+		&= \lim_{x \to x_0} \frac{f(x) - f(x_0) - v \cdot (x - x_0)}{|x - x_0|} \cdot \lim_{x \to x_0} {|x - x_0|} = 0\\
+	\end{align*}
+	より連続。
+		\[\lim_{x \to x_0} \frac{f(x) - f(x_0) - v \cdot (x - x_0)}{|x - x_0|} = 0\]
+	で$x - x_0 = he_i$とすると
+	\begin{align*}
+		\lim_{h \to 0} \frac{f(x_0 + he_i) - f(x_0) - v \cdot he_i}{h} = 0\\
+		\lim_{h \to 0} \frac{f(x_0 + he_i) - f(x_0)}{h} = v \cdot e_i\\
+	\end{align*}
+\end{proof}
+
+\begin{prop}
+	$f$が$x_0$を含む開集合$W$上で偏微分可能で、偏微分が$W$上で連続ならば、$f$は$W$上で全微分可能。
+\end{prop}
+\begin{proof}
+	2変数の場合に証明する。
+
+	平均値の定理よりある$t_1, t_2 \in [0, 1]$について
+	\begin{align*}
+		\frac{f(a + h, b + k) - f(a, b + k)}{h} &= f_x(a + ht_1, b + k)\\
+		\frac{f(a, b + k) - f(a, b)}{k} &= f_y(a, b + kt_2)\\
+	\end{align*}
+	より
+	\begin{align*}
+		f(a + h, b + k) - f(a, b)
+		&= f(a + h, b + k) - f(a, b + k) + f(a, b + k) - f(a, b)\\
+		&= \frac{f(a + h, b + k) - f(a, b + k)}{h}h + \frac{f(a, b + k) - f(a, b)}{k}k\\
+		&= f_x(a + ht_1, b + k)h + f_y(a, b + kt_2)k\\
+	\end{align*}
+	\begin{align*}
+		f(a + h, b + k) - f(a, b) - f_x(a, b)h - f_y(a, b)k\\
+		&= (f_x(a + ht_1, b + k) - f_x(a, b))h + (f_y(a, b + kt_2) - f_y(a, b))k\\
+		\lim_{(h, k) \to (0, 0)}\frac{f(a + h, b + k) - f(a, b) - f_x(a, b)h - f_y(a, b)k}{\sqrt(h^2 + k^2)}\\
+		&= \lim_{(h, k) \to (0, 0)}(f_x(a + ht_1, b + k) - f_x(a, b))\frac{h}{\sqrt{h^2 + k^2}} + \lim_{(h, k) \to (0, 0)}(f_y(a, b + kt_2) - f_y(a, b))\frac{k}{\sqrt{h^2 + k^2}}\\
+		&= 0
+	\end{align*}
+\end{proof}
+
+\begin{prop}[合成関数の微分]
+	$f$が$x(t)$で全微分可能で、$x(t)$が$t_0$で微分可能であるとき、合成関数$f(x(t))$は$t_0$で微分可能であり、
+		\[\de[f]{t} = \sum_i \pd[f]{x_i}\de[x_i]{t}\]
+	となる。
+\end{prop}
+\begin{proof}
+	\begin{align*}
+		\lim_{h \to 0} \frac{f(x(t_0 + h)) - f(x(t_0)) - \pd[f]{x}(x(t_0)) \cdot (x(t_0 + h) - x(t_0))}{|x(t_0 + h) - x(t_0)|} = 0\\
+        \lim_{h \to 0} \frac{f(x(t_0 + h)) - f(x(t_0))}{|x(t_0 + h) - x(t_0)|}
+    \end{align*}
+        \[\lim_{h \to 0} \pd[f]{x}(x(t_0)) \cdot \frac{(x(t_0 + h) - x(t_0))}{|x(t_0 + h) - x(t_0)|}\]
+    \begin{align*}
+        \lim_{h \to 0} \frac{f(x(t_0 + h)) - f(x(t_0))}{h}
+        &= \lim_{h \to 0} \frac{f(x(t_0 + h)) - f(x(t_0))}{|x(t_0 + h) - x(t_0)|}\frac{|x(t_0 + h) - x(t_0)|}{h}\\
+		&= \lim_{h \to 0} \pd[f]{x}(x(t_0)) \cdot \frac{(x(t_0 + h) - x(t_0))}{|x(t_0 + h) - x(t_0)|}\frac{|x(t_0 + h) - x(t_0)|}{h}\\
+		&= \lim_{h \to 0} \pd[f]{x}(x(t_0)) \cdot \frac{(x(t_0 + h) - x(t_0))}{h}\\
+		&= \pd[f]{x}(x(t_0)) \cdot \de[x]{t}
+	\end{align*}
+\end{proof}
+
+\begin{cor}
+	$f$が$(x, y) = (a, b)$で全微分可能で、$x = x(u, v), y = y(u, v)$が$(u, v) = (c, d)$で偏微分可能であるとき、
+	\begin{align*}
+		\pd[f]{u} &= \pd[f]{x}\pd[x]{u} + \pd[f]{y}\pd[y]{u}\\
+		\pd[f]{v} &= \pd[f]{x}\pd[x]{v} + \pd[f]{y}\pd[y]{v}\\
+	\end{align*}
+	が成り立つ。
+		\[(f_x, f_y) = (f_u, f_v) \cdot \begin{pmatrix} x_u & x_v \\ y_u & y_v \\\end{pmatrix}\]
+	を
+		\[\pd[f]{(x, y)} = \pd[f]{(u, v)} \cdot \pd[(x, y)]{(u, v)}\]
+	と表す。$\pd[(x, y)]{(u, v)}$をヤコビ行列(ヤコビアン)という。
+\end{cor}
