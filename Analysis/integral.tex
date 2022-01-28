@@ -1,0 +1,46 @@
+\section{積分}
+
+\begin{dfn}
+	有界閉区間$[a, b]$について
+		\[a = x_0 < x_1 < \dots < x_{k-1} < x_k = b\]
+	となる単調増加数列$\Delta = {x_i}$を$[a, b]$の分割という。$\Delta$の幅を
+		\[|\Delta| = \max{|x_i - x_{i-1}| \mid i = 1,\dots,k}\]
+	と定義する。
+\end{dfn}
+
+\begin{dfn}[上積分・下積分]
+	有界な関数$f(x)$を考える。
+	\begin{align*}
+		M_i = \sup{f(x) \mid x \in [x_{i-1}, x_i]}\\
+		m_i = \inf{f(x) \mid x \in [x_{i-1}, x_i]}\\
+	\end{align*}
+	\begin{align*}
+		S(f, \Delta) \def \sum M_i(x_i - x_{i-1})\\
+		s(f, \Delta) \def \sum m_i(x_i - x_{i-1})\\
+	\end{align*}
+	とする。$I$の分割全体に関する上限・下限を取ったもの
+	\begin{align*}
+		S(f) = \inf{S(f, \Delta)}\\
+		s(f) = \sup{s(f, \Delta)}\\
+	\end{align*}
+	を上積分・下積分という。
+\end{dfn}
+\begin{dfn}[リーマン積分]
+	$S(f) = s(f)$であるときリーマン積分可能であると言い
+		\[\int_a^b f(x) dx = S(f) = s(f)\]
+	を定積分という。
+\end{dfn}
+\begin{thm}[ダルブーの定理]
+	分割の列${\Delta_n}$で$\lim_{n \to \infty} |\Delta_n| = 0$であるとき
+		\[\lim_{n \to \infty} S(f, \Delta_n) = S(f), \lim_{n \to \infty} s(f, \Delta_n) = s(f)\]
+\end{thm}
+
+\begin{thm}
+	関数$f(x)$が閉区間$[a, b]$で連続なら
+		\[F(x) = \int_a^x f(t)dt\]
+	は閉区間$[a, b]$で連続かつ開区間$(a, b)$で微分可能で、$F'(x) = f(x) (a < x < b)$。
+\end{thm}
+\begin{cor}
+	$F'(x) = f(x)$なら
+		\[\int_a^b f(x)dx = F(b) - F(a)\]
+\end{cor}
