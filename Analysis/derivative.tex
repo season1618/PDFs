@@ -6,13 +6,21 @@
 	が存在するとき、$f$は$x_0$で微分可能であると言い、$f'(x_0)$と書く。
 \end{dfn}
 \begin{prop}
+	関数$f$が$x = c$で微分可能なら$x = c$で連続。
+\end{prop}
+\begin{prop}
 	$f$が$x_0$で極値を取りかつ$x_0$で微分可能なら$f'(x_0) = 0$
 \end{prop}
 \begin{thm}[ロルの定理]
-	関数$f$が閉区間$[a, b]$で連続、$(a, b)$で微分可能とする。$f'(a) = f'(b) = 0$ならば$f'(c) = 0$となる$a < c < b$が存在する。
+	関数$f$が閉区間$[a, b]$で連続かつ開区間$(a, b)$で微分可能とする。$f'(a) = f'(b) = 0$ならば$f'(c) = 0$となる$a < c < b$が存在する。
 \end{thm}
 \begin{thm}[平均値の定理]
-	関数$f$が閉区間$[a, b]$で連続、$(a, b)$で微分可能とする。$f'(c) = \frac{f(b) - f(a)}{b - a}$となる$a < c < b$が存在する。
+	関数$f$が閉区間$[a, b]$で連続かつ開区間$(a, b)$で微分可能とする。このとき$f'(c) = \frac{f(b) - f(a)}{b - a}$となる$a < c < b$が存在する。
+\end{thm}
+\begin{thm}[コーシーの平均値の定理]
+	関数$f,g$が閉区間$[a, b]$で連続かつ開区間$(a, b)$で微分可能とする。$g'(x) \neq 0$なら$g(a) \neq g(b)$で
+		\[\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}\]
+	となる$a < c < b$が存在。
 \end{thm}
 \begin{prop}[合成関数の微分]
 	$f$が$x_0$で微分可能かつ$g$が$f(x_0)$で微分可能なら$g\circ f$も$x_0$で微分可能で
@@ -21,6 +29,58 @@
 \end{prop}
 \begin{prop}[逆関数の微分]
 \end{prop}
+\begin{thm}[ロピタルの定理]
+	関数$f,g$が開区間$(a, b)$で微分可能で、以下のいずれかを満たすとき
+	\begin{enumerate}
+		\item $\lim_{x \to a+0} f(x) = \lim_{x \to a+0} g(x) = 0$
+		\item $\lim_{x \to a+0} f(x) = \lim_{x \to a+0} g(x) = \infty$
+	\end{enumerate}
+	$g'(x) \neq 0(a < x < b)$かつ$\lim_{x \to a+0} f'(x)/g'(x)$が存在すれば
+		\[\lim_{x \to a+0} \frac{f(x)}{g(x)} = \lim_{x \to a+0} \frac{f'(x)}{g'(x)}\]
+	左極限についても同様。
+\end{thm}
+\begin{proof}
+		\[\lim_{x \to a+0} f(x) = \lim_{x \to a+0} g(x) = 0\]
+	のとき$f(a) = g(a) = 0$とすると関数$f,g$は$[a, b)$で連続となる。$a < t < b$としたときコーシーの平均値の定理より
+		\[\frac{f(t)}{g(t)} = \frac{f(t) - f(a)}{g(t) - g(a)} = \frac{f'(c)}{g'(c)}\]
+	となる$c$が存在する。$t \to a+0$のとき$c \to a+0$なので
+		\[\lim_{x \to a+0} \frac{f(x)}{g(x)} = \lim_{x \to a+0} \frac{f'(x)}{g'(x)}\]
+\end{proof}
+\begin{cor}
+	関数$f,g$が一点$c$を除く開区間$(a, b)$で微分可能で、以下のいずれかを満たすとき
+	\begin{enumerate}
+		\item $\lim_{x \to c} f(x) = \lim_{x \to c} g(x) = 0$
+		\item $\lim_{x \to c} f(x) = \lim_{x \to c} g(x) = \infty$
+	\end{enumerate}
+	$g'(x) \neq 0(a < x < b)$かつ$\lim_{x \to c} f'(x)/g'(x)$が存在すれば
+		\[\lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)}\]
+\end{cor}
+
+\begin{thm}[テイラーの定理]
+	関数$f$が閉区間$[a, b]$で連続かつ開区間$(a, b)$で$n+1$階微分可能であるとき
+	\begin{gather*}
+		f(b) = f(a) + \frac{f'(a)}{1!}(b - a) + \frac{f''(a)}{2!}(b - a)^2 + \dots + \frac{f^{(n)}(a)}{n!}(b - a)^n + R_{n+1}\\
+		R_{n+1} = \frac{f^{(n+1)}(c)}{(n+1)!}(b - a)^{n+1} = \frac{f^{(n+1)}(d)}{n!}(d - a)^n(b - a)\\
+	\end{gather*}
+	となる$a < c,d < b$が存在する。$R_{n+1}$を剰余項と呼ぶ。
+\end{thm}
+\begin{proof}
+	$f, f', \dots, f^{(n)}$は閉区間$[a, b]$で連続かつ開区間$(a, b)$で微分可能。平均値の定理より
+\end{proof}
+
+\begin{cor}
+	関数$f$が開区間$(a, b)$で$n+1$階微分可能とすると$c, x \in (a, b)$について
+		\[f(x) = f(c) + \frac{f'(c)}{1!}(x - c) + \frac{f''(c)}{2!}(x - c)^2 + \dots + \frac{f^{(n)}(c)}{n!}(x - c)^n + R_{n+1}(x)\]
+	ただし
+	\begin{align*}
+		R_{n+1}(x) &= \frac{f^{(n+1)}(d_1)}{(n+1)!}(x - c)^{n+1} & (ラグランジュの剰余項表示)\\
+		R_{n+1}(x) &= \frac{f^{(n+1)}(d_2)}{n!}(d_2 - c)^n(x - c) & (コーシーの剰余項表示)\\
+	\end{align*}
+\end{cor}
+
+ある$r > 0$が存在して$|x - c| < r$に対して$\lim_{n \to \infty} R_{n+1}(x) = 0$となるなら
+	\[f(x) = \sum_{n = 0}^\infty \frac{f^{(n)}(a)}{n!}(x - c)^n & (|x - c| < r)\]
+となる。これを関数$f(x)$の$x = c$におけるテイラー展開という。特に原点$x = 0$におけるテイラー展開をマクローリン展開という。
 
 \begin{dfn}[全微分]
 		\[\lim_{x \to x_0} \frac{f(x) - f(x_0) - v \cdot (x - x_0)}{|x - x_0|} = 0\]
