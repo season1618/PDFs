@@ -1,13 +1,10 @@
 \documentclass{jsarticle}
-\usepackage{amssymb,amsmath}
+\usepackage{amssymb,amsmath,mathtools}
 \usepackage{amsthm}
+\usepackage{enumerate}
 
-\newcommand{\lr}[1]{\left(#1 \right)}
-\newcommand{\mlr}[1]{\left\{#1 \right\}}
-\newcommand{\llr}[1]{\left[#1 \right]}
 \newcommand{\de}[2][]{\frac{d #1}{d #2}}
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
-\newcommand{\ppd}[3]{\frac{\partial^2 #1}{\partial #2\partial #3}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -31,15 +28,10 @@
 \maketitle
 \tableofcontents
 
-\input section1.tex
+\input real.tex
 \input derivative.tex
 \input integral.tex
-\input section4.tex
+\input elem-func.tex
 \input section5.tex
-多変数関数の微分
-偏微分
-全微分
-逆関数定理
-陰関数定理
 
 \end{document}
