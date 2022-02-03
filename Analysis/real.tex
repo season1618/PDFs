@@ -183,3 +183,57 @@
 			\[f(\lim_{i \to \infty} m_i) = \lim_{i \to \infty} f(m_i) = c\]
 		となる。
 	\end{proof}
+
+\subsection{関数列の極限}
+	\begin{dfn}[一様収束，各点収束]
+		関数列$\{f_n\}$が$g$で、任意の$x \in I$に対して
+			\[\lim_{n \to \infty} \max\{|f_n(x) - g(x)|\} = 0\]
+		となるとき一様収束するという。また、ある$x \in I$について
+			\[\lim_{n \to \infty} f_n(x) = g(x)\]
+		となるとき各点収束するという。
+	\end{dfn}
+
+	\begin{thm}
+		連続関数列$\{f_n\}$が関数$g$に一様収束するとき、$g$は連続関数となる。
+	\end{thm}
+	\begin{proof}
+		任意の$\epsilon > 0$に対してある$N, \delta > 0$が存在して
+		\begin{align*}
+			n \geq N \rightarrow |f_n(x) - g(x)|, |f_n(c) - g(c)| < \epsilon\\
+			|x - c| < \delta \rightarrow |f_N(x) - f_N(c)| < \epsilon\\
+		\end{align*}
+		なので
+		\begin{align*}
+			g(x) - g(c) &= -(f_n(x) - g(x)) + (f_n(c) - g(c)) + (f_n(x) - f_n(c))\\
+			|g(x) - g(c)| &\leq |f_N(x) - g(x)| + |f_N(c) - g(c)| + |f_N(x) - f_N(c)|
+			&< 3\epsilon
+		\end{align*}
+	\end{proof}
+
+	\begin{thm}[ワイエルシュトラスの近似定理]
+		閉区間上の連続関数$f$に関して、任意の$\epsilon > 0$に対してある多項式$p$が存在し$\max|f(x) - p(x)| < \epsilon$となる。
+	\end{thm}
+	\begin{dfn}[バーンスタイン多項式]
+			\[B_n(x) = \sum_{k=0}^n f\(\frac{k}{n}\)\binom{n}{k}x^k(1 - x)^{n-k}\]
+	\end{dfn}
+	\begin{thm}[ディニの定理]
+		閉区間において、任意の点で単調増加または任意の点で単調減少する連続関数列$\{f_n\}$が連続関数$g$に各点収束するとき、$f_n$は$g$に一様収束する。
+	\end{thm}
+	\begin{proof}
+		単調増加とする。任意の$\epsilon > 0$に対してある$N$が存在し$n \geq N$ならば
+			\[g(x) - f_n(x) < \epsilon\]
+	\end{proof}
+
+	\begin{dfn}[一様ノルム]
+		区間において関数$f$の一様ノルムを
+			\[\|f\| = \sup|f(x)|\]
+		と定義する。ただし$|f|$が上に有界でないときは$\infty$とすれば良い。
+	\end{dfn}
+	\begin{dfn}[一様コーシー列]
+		任意の$\epsilon > 0$に対してある$N$が存在して
+			\[n, m \geq N \rightarrow \max|f_n(x) - f_m(x)| < \epsilon\]
+		となるとき一様コーシー列であるという。
+	\end{dfn}
+	\begin{prop}
+		一様収束する関数列であることと一様コーシー列であることは同値
+	\end{prop}
