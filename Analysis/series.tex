@@ -1,0 +1,125 @@
+\section{級数}
+
+\subsection{級数}
+	収束するが絶対収束しない場合条件収束するという。
+	\begin{thm}[ライプニッツの定理]
+		${a_n}$を正の単調減少数列としたとき、交代級数$\sum_{n=0}^\infty (-1)^na_n$が収束する必要十分条件は$\lim_{n \to \infty} a_n = 0$。
+	\end{thm}
+
+	\begin{thm}
+		条件収束する数列について、項の順序を入れ替えることで任意の値に収束させることができる。
+	\end{thm}
+	\begin{thm}[コーシーの収束判定法]
+			\[r = \varlimsup_{n \to \infty} ^n\sqrt{|a_n|}\]
+		とおくと
+		\begin{enumerate}[(1)]
+			\item $0 \leq r < 1$なら収束
+			\item $1 < r \leq \infty$なら発散
+		\end{enumerate}
+	\end{thm}
+	\begin{proof}
+			\[r_n = \sup\{^m\sqrt{|a_m|}\}_{m=n}^\infty\]
+		とおく。任意の$\epsilon > 0$に対してある$m \geq n$が存在し、
+			\[r_n - \epsilon < ^m\sqrt{|a_m|} \leq r_n\]
+		$r < 1$なら、ある$n_0$で$n \geq n_0$に対して$r_n < 1$であり、任意の$m \geq n$に対して$|a_m| < r_n^m$だから$\sum_{n=n_0}^\infty a_n$は絶対収束し元の級数も収束する。$r > 1$なら、ある$n_0$で$n \geq n_0$に対して$r_n > 1$であり、ある$m \geq n$に対して$|a_m| > (r_n - \epsilon)^m > 1$となる。このような$m \leq n_0$は無限に存在するので元の級数は発散する。
+	\end{proof}
+	\begin{thm}[ダランベールの収束判定法]
+			\[r = \lim_{n \to \infty} \frac{|a_{n+1}|}{|a_n|}\]
+		とおく。
+		\begin{enumerate}[(1)]
+			\item $0 \leq r < 1$なら収束
+			\item $1 < r \leq \infty$なら発散
+		\end{enumerate}
+	\end{thm}
+	\begin{thm}[ラーベの判定法]
+		\begin{gather*}
+			\lim_{n \to \infty} \frac{|a_n|}{|a_{n+1}|} = 1\\
+			k = \lim_{n \to \infty} n\(\frac{|a_n|}{|a_{n+1}|} - 1\)\\
+		\end{gather*}
+		としたとき、
+		\begin{enumerate}[(1)]
+			\item $k > 1$なら収束
+			\item $0 \leq k < 1$なら発散
+		\end{enumerate}
+	\end{thm}
+	\begin{proof}
+		$k > 1$のとき$k > p > q > 1$を取る。ある$N$で$n \geq N$に対して
+		\begin{align*}
+			n\(\frac{|a_n|}{|a_{n+1}|} - 1\) > p\\
+			\frac{|a_n|}{|a_{n+1}|} > 1 + \frac{p}{n}\\
+		\end{align*}
+		となる。ロピタルの定理より
+			\[\lim_{x \to 0}\frac{(1 + x)^q - 1}{x} = \lim_{x \to 0} q(1 + x)^{q-1} = q\]
+		なので
+			\[\lim_{n \to \infty}\frac{(n+1)^q}{n^q} = \lim_{n \to \infty}\(1 + \frac{1}{n}\)^q = 1 + \frac{q}{n}\]
+		したがって、ある$N'$で$n \geq N'$に対して
+		\begin{align*}
+			\frac{|a_n|}{|a_{n+1}|} > 1 + \frac{p}{n} > \frac{(n+1)^q}{n^q}\\
+			|a_N|N^q \geq |a_n|n^q > |a_{n+1}|(n+1)^q\\
+			|a_n| \leq \frac{|a_N|N^q}{n^q}\\
+		\end{align*}
+		となる。$\sum_{n=N}^\infty |a_N|$が収束するので元の級数も収束する。$k < 1$のとき$k < p < q < 1$を取ると同様に
+		\begin{align*}
+			n\(\frac{|a_n|}{|a_{n+1}|} - 1\) < p\\
+			\frac{|a_n|}{|a_{n+1}|} < 1 + \frac{p}{n} < \frac{(n+1)^q}{n^q}\\
+			|a_N|N^q \leq |a_n|n^q < |a_{n+1}|(n+1)^q\\
+			|a_n| \geq \frac{|a_N|N^q}{n^q}\\
+		\end{align*}
+		$\sum_{n=N}^\infty |a_N|$が発散するので元の級数も発散する。
+	\end{proof}
+	\begin{thm}[ガウスの判定法]
+			\[\lim_{n \to \infty} n\(\frac{|a_n|}{|a_{n+1}|} - 1\) = 1\]
+		のとき
+			\[\frac{|a_n|}{|a_{n+1}|} = 1 + \frac{1}{n} + \frac{c_n}{n\log n}\]
+		とおく。${c_n}$が0に収束するなら$\sum a_n$は発散する。
+	\end{thm}
+
+	% \begin{align*}
+	% 	e^x = \lim_{n \to \infty} \(1 + \frac{x}{n}\)^n\\
+	% \end{align*}
+
+	% 	\[1 - \frac{1}{3} + \frac{1}{5} - \cdots = \frac{\pi}{4} (ライプニッツの公式)\]
+	% 各項が0に収束する交代級数なので収束する。
+	% 	\[\sqrt{12}\(1 - \frac{1}{3 \cdot 3} + \frac{1}{5 \cdot 3^2} - \frac{1}{7 \cdot 3^3} + \cdots\) = \pi\]
+	% 各項が0に収束する交代級数なので収束する。
+
+	% \begin{align*}
+	% 	\sqrt{\frac{1}{2}}\sqrt{\frac{1}{2} + \frac{1}{2}\sqrt{\frac{1}{2}}}\sqrt{\frac{1}{2} + \frac{1}{2}\sqrt{\frac{1}{2} + \frac{1}{2}\sqrt{\frac{1}{2}}}} \cdots = \frac{2}{\pi} (1759, ビエト)\\
+	% 	\prod_{n = 1}^\infty \(\frac{2n}{2n - 1}\frac{2n}{2n + 1}\) = \frac{\pi}{2} (1655, ウォリス)\\
+	% 	\sum_{n = 1}^\infty \frac{1}{n^22^{n-1}} + (\log 2)^2 = \frac{\pi^2}{6} (オイラー)\\
+	% \end{align*}
+
+\subsection{関数項級数}
+	\begin{thm}[積分と極限の交換]
+		連続関数列${f_n}$が$g$に一様収束すれば
+			\[\lim_{n \to \infty} \int_a^x f(t)dt = \int_a^x g(t)dt\]
+	\end{thm}
+	\begin{thm}[微分と極限の交換]
+		$C^1$級関数列${f_n}$が$g$に各点収束し、${f'_n}$が$h$に一様収束するとき$g'(x) = h(x)$であり${f_n}$は$g$に一様収束する。
+	\end{thm}
+	\begin{thm}[ワイエルシュトラスの$M$判定法]
+		関数列${f_n}$に対して正数列${M_n}$があり$|f_n| < M_n$かつ$\sum_n M_n < \infty$が成り立つなら$\sum_{n=1}^\infty f_n$は一様収束する。
+	\end{thm}
+
+\subsection{整級数}
+	\begin{thm}
+		$\sum a_ny^n$が収束するなら$|x| < |y|$を満たす任意の$x$で$\sum a_nx^n$は絶対収束する。
+	\end{thm}
+	\begin{dfn}[収束半径]
+			\[r = \sup\{y \mid \sum a_ny^n < \infty\}\]
+		を収束半径という。
+	\end{dfn}
+	\begin{thm}[コーシー・アダマールの式]
+			\[\mu = \suplim_{n \to \infty} ^n\sqrt{|a_n|}\]
+		とおくと$r = 1\mu$
+	\end{thm}
+	整級数とテイラー展開は一致する。
+	\begin{thm}[アーベルの連続性定理]
+		収束半径$R$の整級数$\sum_{n=0}^\infty a_n(x - c)^n$が$x = c + R$において収束するなら、整級数は$[c, c + R]$上で一様収束し$f(c + R)$は$\lim_{x \to c + R - 0} f(x)$に一致する。
+	\end{thm}
+
+% \part{実解析}
+% \part{複素解析}
+% \part{関数解析}
+% \part{調和解析}
+% \part{フーリエ解析}
