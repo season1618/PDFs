@@ -3,17 +3,9 @@
 \usepackage{amsthm}
 \usepackage{ascmac}
 
-\newtheorem*{lemma}{補題}
-\newtheorem*{euler}{オイラーの定理(微分幾何)}
-\newtheorem*{surface}{曲面論の基本定理}
-\newtheorem*{geodesic}{定理}
-\newtheorem*{gaussbonnet}{Gauss-Bonnetの定理}
-
-\newcommand{\repart}[1]{\part{#1}\setcounter{section}{0}}
 \newcommand{\lr}[1]{\left(#1 \right)}
 \newcommand{\mlr}[1]{\left\{#1 \right\}}
 \newcommand{\llr}[1]{\left[#1 \right]}
-\newcommand{\rec}[1]{\frac{1}{#1}}
 \newcommand{\di}[2][]{\frac{d #1}{d #2}}
 \newcommand{\dd}[2][]{\frac{d^2 #1}{d #2^2}}
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
@@ -26,6 +18,16 @@
 \newcommand{\na}{\nabla}
 \newcommand{\Ga}{\Gamma}
 \newcommand{\chr}[2]{\left\{#1 \atop #2\right\}}
+
+\renewcommand{\(}{\left(}
+\renewcommand{\)}{\right)}
+\renewcommand{\proofname}{\textbf{証明}}
+
+\newtheorem{dfn}{定義}
+\newtheorem{prop}{命題}
+\newtheorem{thm}{定理}
+\newtheorem{lem}{補題}
+\newtheorem{cor}{系}
 
 \title{微分幾何学}
 \author{season07001674}
