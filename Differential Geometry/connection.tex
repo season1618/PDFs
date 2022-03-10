@@ -19,19 +19,16 @@ $k$次微分形式$\alpha$に対して共変外微分を
 である。
 
 \begin{dfn}{接続形式}
-	
 		\[\nabla_Xs_i = \sum_j \omega^j_i(X)s_j\]
 	標構$\{e_1, e_2, \dots, e_n\}$に対して
 		\[\nabla_{e_i}e_j = \sum_k \omega^k_j(e_i)e_j\]
-	となる1次微分形式$\omega^k_j$を接続形式(connection form)という。
+	となる1次微分形式$\omega: T_p(M) \rightarrow \mathfrak{g}$を接続形式(connection form)と呼ぶ。
 \end{dfn}
-
 \begin{dfn}{曲率形式}
 	接続形式$\omega$に対して、その共変外微分
 		\[\Omega = D\omega = d\omega + \omega \wedge \omega\]
-	を曲率形式(curvature form)という。
+	で定義される2次微分形式$\Omega: T_p(M) \times T_p(M) \rightarrow \mathfrak{g}$を曲率形式(curvature form)と呼ぶ。
 \end{dfn}
-$\Omega$は2次微分形式となる。
 
 \begin{dfn}{持ち上げ}
 	$M$上の曲線$\tau = \{x(t) \mid 0 \leq t \leq 1\}$に対して$P$上の曲線$\tau^{*} = \{u(t) \mid 0 \leq t \leq 1\}$が
@@ -51,10 +48,4 @@ $\Omega$は2次微分形式となる。
 		a(0) = e
 	\end{align*}
 	を満たすものがただ一つ存在する。
-\end{thm}
-
-\begin{thm}{曲率に関する構造方程式}
-	$P$上の任意のベクトル場$X, Y$に対して
-		\[d\omega(X, Y) = -\frac{1}{2}[\omega(X), \omega(Y)] + \Omega(X, Y)\]
-	が成り立つ。
 \end{thm}

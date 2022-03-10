@@ -1,5 +1,9 @@
 \section{アフィン接続}
 
+$n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接$n$枠束$L(M)$を考える。$u \in L(M)$は線形同型写像
+	\[u: \R^n \rightarrow T_p(M) (p = \pi(u))\]
+を定める。
+
 ユークリッド空間の点$p$において、$X(p)$に沿ったベクトル場$Y$の方向微分とは
 	\[D_XY(p) = \lim_{t \to 0} \frac{Y(p + X(p)t - Y(p)}{t}\]
 である。$X(c(t)) = \dot{c}(t)$なる$M$上の曲線$c(t)(a \leq t \leq b)$が存在し、この曲線上において方向微分が常に0となるとき、ベクトル場$Y$は曲線に沿って平行であるという。座標に依存しない形式で方向微分を拡張し、平行を定義する。一般に二点における接ベクトルが平行かどうかは経路に依存する。
@@ -23,20 +27,16 @@
 	&= \sum_{i,j} X^i\pd[Y^j]{x^i}\pd{x^j} + X^iY^j\sum_k \Gamma^k_{ij}\pd{x^k}\\
 \end{align*}
 
-\begin{dfn}{捩率形式}
-	$P$上の1次微分形式$\theta$
-		\[\theta(X) = u^{-1}\pi*(X)\]
-	を標準形式(solder form)と呼ぶ。標準形式の共変外微分
-		\[\Theta = D\theta = d\theta + \omega \wedge \theta\]
-	を捩率形式(torsion form)と呼ぶ。
+\begin{dfn}{標準形式}
+	$u \in L(M), X \in T_p(L(M)), p = \pi(u)$に対して
+		\[\theta(X) = u^{-1}d\pi(X)\]
+	なる1次微分形式$\theta: L(M) \rightarrow \R^n$を標準形式(solder form)と呼ぶ。
 \end{dfn}
-$\Theta$は2次微分形式となる。
-
-\begin{thm}{捩率に関する構造方程式}
-	$P$上の任意のベクトル場$X, Y$に対して
-		\[d\theta(X, Y) = \frac{1}{2}\{\omega(Y)\theta(X) - \omega(X)\theta(Y)\} + \Theta(X, Y)\]
-	が成り立つ。
-\end{thm}
+\begin{dfn}{捩率形式}
+	標準形式の共変外微分
+		\[\Theta = D\theta = d\theta + \omega \wedge \theta\]
+	で定義される2次微分形式$\Theta: L(M) \times L(M) \rightarrow \R^n$を捩率形式(torsion form)と呼ぶ。
+\end{dfn}
 
 アフィン接続の不変量として曲率と捩率がある。
 \begin{dfn}{曲率テンソル}
@@ -44,11 +44,23 @@ $\Theta$は2次微分形式となる。
 		\[R(X, Y)Z = u(2\Omega(\pi^{-1}(X), \pi^{-1}(Y))(u^{-1}(Z)))\]
 	を曲率テンソル場という。曲率テンソルまたは単に曲率ともいう。
 \end{dfn}
+共変微分を用いて表すと
+\begin{align*}
+	R(X, Y)Z = \nabla_X\nabla_YZ - \nabla_Y\nabla_XZ - \nabla_[X, Y]Z\\
+\end{align*}
 \begin{dfn}{捩率テンソル}
 	ベクトル場$X, Y$に対して$(1, 2)$型テンソル場
 		\[T(X, Y) = u(2\Theta(\pi^{-1}(X), \pi^{-1}(Y))) = \nabla_XY - \nabla_YX - [X, Y]\]
 	を捩率テンソル場という。捩率テンソルまたは単に捩率ともいう。
 \end{dfn}
+
+共変微分を用いて表すと
+\begin{align*}
+	T(X, Y) &= u(2\Theta(\pi^{-1}(X), \pi^{-1}(Y)))\\
+	2\Theta(\pi^{-1}(X), \pi^{-1}(Y))
+	&= 2D\theta(\pi^{-1}(X), \pi^{-1}(Y))\\
+	&= 2d\theta()
+\end{align*}
 \begin{proof}
 	\begin{align*}
 		T(fX, Y) &= (\nabla_{fX}Y - \nabla_Y(fX)) - (fXY - YfX)\\
@@ -60,6 +72,7 @@ $\Theta$は2次微分形式となる。
 		\[T(X, fY) = fT(X, Y)\]
 	だから、$T(X, Y)$は多重線形写像つまりテンソルである。
 \end{proof}
+
 $R, T$の成分を接続係数を用いて表す。
 	\[R\(\pd{x^i}, \pd{x^j}\)\pd{x^k} = \sum_l R^l_{ijk}\pd{x^l}\]
 とおくと
@@ -85,3 +98,6 @@ $R, T$の成分を接続係数を用いて表す。
 	T^k_{ij} = \Gamma^k_{ij} - \Gamma^k_{ji}
 \end{align*}
 となる。$T^k_{ij} = - T^k_{ji}$が成り立つ。
+
+曲率形式を曲率テンソルを用いて書くと
+捩率形式を捩率テンソルを用いて書くと
