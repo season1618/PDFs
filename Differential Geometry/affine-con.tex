@@ -1,0 +1,87 @@
+\section{アフィン接続}
+
+ユークリッド空間の点$p$において、$X(p)$に沿ったベクトル場$Y$の方向微分とは
+	\[D_XY(p) = \lim_{t \to 0} \frac{Y(p + X(p)t - Y(p)}{t}\]
+である。$X(c(t)) = \dot{c}(t)$なる$M$上の曲線$c(t)(a \leq t \leq b)$が存在し、この曲線上において方向微分が常に0となるとき、ベクトル場$Y$は曲線に沿って平行であるという。座標に依存しない形式で方向微分を拡張し、平行を定義する。一般に二点における接ベクトルが平行かどうかは経路に依存する。
+\begin{dfn}{アフィン接続，共変微分}
+	写像$\nabla: (X, Y) \in \mathfrak{X} \times \mathfrak{X} \mapsto \nabla_XY \in \mathfrak{X}$が以下の条件を満たすとき共変微分という。
+	\begin{enumerate}
+		\item $\nabla_X(Y_1 + Y_2) = \nabla_XY_1 + \nabla_XY_2$
+		\item $\nabla_{X_1 + X_2}(Y) = \nabla_{X_1}Y + \nabla_{X_2}Y$
+		\item $\nabla_{fX} = f\nabla_XY$
+		\item $\nabla_X(fY) = (Xf)Y + f\nabla_XY$
+	\end{enumerate}
+\end{dfn}
+
+座標系${x^i}$を定めたとき
+	\[\nabla_{\pd{x^i}}\pd{x^j} = \sum_k \Gamma^k_{ij}\pd{x^k}\]
+となる$\Gamma^k_{ij}$を${\pd{x^i}}$に関する接続係数またはクリストッフェル記号という。$X = \sum X^i\pd{x^i}, Y = \sum Y^i\pd{x^i}$のとき
+\begin{align*}
+	\nabla_XY &= \sum_i X^i\nabla_{\pd{x^i}}\(\sum_j Y^j\pd{x^j}\)\\
+	&= \sum_{i,j} X^i\nabla_{\pd{x^i}}\(Y^j\pd{x^j}\)\\
+	&= \sum_{i,j} X^i\pd[Y^j]{x^i}\pd{x^j} + X^iY^j\nabla_{\pd{x^i}}\pd{x^j}\\
+	&= \sum_{i,j} X^i\pd[Y^j]{x^i}\pd{x^j} + X^iY^j\sum_k \Gamma^k_{ij}\pd{x^k}\\
+\end{align*}
+
+\begin{dfn}{捩率形式}
+	$P$上の1次微分形式$\theta$
+		\[\theta(X) = u^{-1}\pi*(X)\]
+	を標準形式(solder form)と呼ぶ。標準形式の共変外微分
+		\[\Theta = D\theta = d\theta + \omega \wedge \theta\]
+	を捩率形式(torsion form)と呼ぶ。
+\end{dfn}
+$\Theta$は2次微分形式となる。
+
+\begin{thm}{捩率に関する構造方程式}
+	$P$上の任意のベクトル場$X, Y$に対して
+		\[d\theta(X, Y) = \frac{1}{2}\{\omega(Y)\theta(X) - \omega(X)\theta(Y)\} + \Theta(X, Y)\]
+	が成り立つ。
+\end{thm}
+
+アフィン接続の不変量として曲率と捩率がある。
+\begin{dfn}{曲率テンソル}
+	ベクトル場$X, Y$に対して$(1, 3)$型テンソル場
+		\[R(X, Y)Z = u(2\Omega(\pi^{-1}(X), \pi^{-1}(Y))(u^{-1}(Z)))\]
+	を曲率テンソル場という。曲率テンソルまたは単に曲率ともいう。
+\end{dfn}
+\begin{dfn}{捩率テンソル}
+	ベクトル場$X, Y$に対して$(1, 2)$型テンソル場
+		\[T(X, Y) = u(2\Theta(\pi^{-1}(X), \pi^{-1}(Y))) = \nabla_XY - \nabla_YX - [X, Y]\]
+	を捩率テンソル場という。捩率テンソルまたは単に捩率ともいう。
+\end{dfn}
+\begin{proof}
+	\begin{align*}
+		T(fX, Y) &= (\nabla_{fX}Y - \nabla_Y(fX)) - (fXY - YfX)\\
+		&= (f\nabla_XY - ((Yf)X + f\nabla_YX)) - (fXY - ((Yf)X + fYX))\\
+		&= f\nabla_XY - f\nabla_YX - f(XY - YX)\\
+		&= fT(X, Y)
+	\end{align*}
+	同様に
+		\[T(X, fY) = fT(X, Y)\]
+	だから、$T(X, Y)$は多重線形写像つまりテンソルである。
+\end{proof}
+$R, T$の成分を接続係数を用いて表す。
+	\[R\(\pd{x^i}, \pd{x^j}\)\pd{x^k} = \sum_l R^l_{ijk}\pd{x^l}\]
+とおくと
+\begin{align*}
+	R\(\pd{x^i}, \pd{x^j}\)\pd{x^k}
+	&= \nabla_{\pd{x^i}}\sum_l \Gamma^l_{jk}\pd{x^l} - \nabla_{\pd{x^j}}\sum_l \Gamma^l_{ik}\pd{x^l} - \nabla_0Z\\
+	&= \sum_l \nabla_{\pd{x^i}}\(\Gamma^l_{jk}\pd{x^l}\) - \sum_l \nabla_{\pd{x^j}}\(\Gamma^l_{ik}\pd{x^l}\)\\
+	&= \sum_l \pd[\Gamma^l_{jk}]{x^i}\pd{x^l} + \Gamma^l_{jk}\nabla_{\pd{x^i}}\pd{x^l} - \sum_l \pd[\Gamma^l{ik}]{x^j}\pd{x^l} + \Gamma^l_{ik}\nabla_{\pd{x^j}}\pd{x^l}\\
+	&= \sum_l \pd[\Gamma^l_{jk}]{x^i}\pd{x^l} + \Gamma^l_{jk}\sum_m \Gamma^m_{il}\pd{x^m} - \sum_l \pd[\Gamma^l_{ik}]{x^j}\pd{x^l} + \Gamma^l_{ik}\sum_m \Gamma^m_{jl}\pd{x^m}\\
+	&= \sum_l \pd[\Gamma^l_{jk}]{x^i}\pd{x^l} + \sum_l\sum_m \Gamma^l_{jk}\Gamma^m_{il}\pd{x^m} - \sum_l \pd[\Gamma^l_{ik}]{x^j}\pd{x^l} - \sum_l\sum_m \Gamma^l_{ik}\Gamma^m_{jl}\pd{x^m}\\
+	\intertext{第二項と第四項で添え字$l, m$を入れ替える。}
+	&= \sum_l \pd[\Gamma^l_{jk}]{x^i}\pd{x^l} + \sum_l\sum_m \Gamma^m_{jk}\Gamma^l_{im}\pd{x^l} - \sum_l \pd[\Gamma^l_{ik}]{x^j}\pd{x^l} - \sum_l\sum_m \Gamma^m_{ik}\Gamma^l_{jm}\pd{x^l}\\
+	&= \sum_l \(\pd[\Gamma^l_{jk}]{x^i} - \pd[\Gamma^l_{ik}]{x^j} + \sum_m \Gamma^m_{jk}\Gamma^l_{im} - \Gamma^m_{ik}\Gamma^l_{jm}\)\pd{x^l}\\
+	R^l_{ijk} &= \pd[\Gamma^l_{jk}]{x^i} - \pd[\Gamma^l_{ik}]{x^j} + \sum_m \Gamma^m_{jk}\Gamma^l_{im} - \Gamma^m_{ik}\Gamma^l_{jm}\\
+\end{align*}
+となる。$R^l_{ijk} = - R^l_{jik}$が成り立つ。また
+	\[T\(\pd{x^i}, \pd{x^j}\) = \sum_k T^k_{ij}\pd{x^k}\]
+とおくと
+\begin{align*}
+	T\(\pd{x^i}, \pd{x^j}\)
+	&= \nabla_{\pd{x^i}}\pd{x^j} - \nabla_{\pd{x^j}}\pd{x^i} - 0\\
+	&= \sum_k \(\Gamma^k_{ij} - \Gamma^k_{ji}\)\pd{x^k}\\
+	T^k_{ij} = \Gamma^k_{ij} - \Gamma^k_{ji}
+\end{align*}
+となる。$T^k_{ij} = - T^k_{ji}$が成り立つ。

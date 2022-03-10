@@ -1,0 +1,60 @@
+\section{接続}
+
+\begin{dfn}{接続}
+	主ファイバー束$P(M, G)$の点$u$における接空間を$T_u(P)$、$u$を通るファイバー$G_u$に接する接ベクトルの作る部分空間を$\mathfrak{g}$とする。$T_u$の部分空間$S_u$が
+	\begin{enumerate}
+		\item $T_u = \mathfrak{g} + S_u$
+		\item $u \in P, a \in G, R_a: u \mapsto ua$に対して$S_{ua} = R_a(S_u)$
+		\item $u \mapsto S_u$は微分可能
+	\end{enumerate}
+	を満たすとき対応$\Gamma: u \maspto S_u$を$P$の接続という。
+\end{dfn}
+
+$k$次微分形式$\alpha$に対して共変外微分を
+	\[D\alpha(X_1, \ldots, X_{k+1}) = (d\alpha)(hX_1, \ldots, hX_{k+1})\]
+とする。
+
+接空間の基底を標構と呼ぶ。標構$\{e_1, e_2, \dots, e_n\}$に対する双対基底を$\{\theta^1, \theta^2, \dots, \theta^n\}$とおく。つまり
+	\[\theta^i(e_j) = \delta^i_j\]
+である。
+
+\begin{dfn}{接続形式}
+	
+		\[\nabla_Xs_i = \sum_j \omega^j_i(X)s_j\]
+	標構$\{e_1, e_2, \dots, e_n\}$に対して
+		\[\nabla_{e_i}e_j = \sum_k \omega^k_j(e_i)e_j\]
+	となる1次微分形式$\omega^k_j$を接続形式(connection form)という。
+\end{dfn}
+
+\begin{dfn}{曲率形式}
+	接続形式$\omega$に対して、その共変外微分
+		\[\Omega = D\omega = d\omega + \omega \wedge \omega\]
+	を曲率形式(curvature form)という。
+\end{dfn}
+$\Omega$は2次微分形式となる。
+
+\begin{dfn}{持ち上げ}
+	$M$上の曲線$\tau = \{x(t) \mid 0 \leq t \leq 1\}$に対して$P$上の曲線$\tau^{*} = \{u(t) \mid 0 \leq t \leq 1\}$が
+	\begin{enumerate}
+		\item $\tau^{*}$の各点での接ベクトルは水平
+		\item $\pi(u(t)) = x(t)$
+	\end{enumerate}
+	を満たすとき持ち上げと呼ぶ。
+\end{dfn}
+\begin{thm}
+	$M$上の曲線$\tau = \{x(t) \mid 0 \leq t \leq 1\}$が与えられたとき、$\pi(u_0) = x(0)$となるような$u_0$に対して$u(0) = u_0$であるような持ち上げ$\tau^{*} = \{u(t) \mid 0 \leq t \leq 1\}$がただ一つ存在する。
+\end{thm}
+\begin{thm}
+	リー群$G$、リー環$\mathfrak{g}$として、$\mathfrak{g}$を$e$における接空間と同一視する。$\mathfrak{g}$上の曲線$Y(t)(0 \leq t \leq 1)$が与えられたとき、$G$上の曲線$a(t)(0 \leq t \leq 1)$であって、
+	\begin{align*}
+		a'(t)a(t)^{-1} = Y(t)\\
+		a(0) = e
+	\end{align*}
+	を満たすものがただ一つ存在する。
+\end{thm}
+
+\begin{thm}{曲率に関する構造方程式}
+	$P$上の任意のベクトル場$X, Y$に対して
+		\[d\omega(X, Y) = -\frac{1}{2}[\omega(X), \omega(Y)] + \Omega(X, Y)\]
+	が成り立つ。
+\end{thm}
