@@ -74,7 +74,7 @@ $n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接
 \end{proof}
 
 $R, T$の成分を接続係数を用いて表す。
-	\[R\(\pd{x^i}, \pd{x^j}\)\pd{x^k} = \sum_l R^l_{ijk}\pd{x^l}\]
+	\[R\(\pd{x^i}, \pd{x^j}\)\pd{x^k} = \sum_l R^l_{kij}\pd{x^l}\]
 とおくと
 \begin{align*}
 	R\(\pd{x^i}, \pd{x^j}\)\pd{x^k}
@@ -86,9 +86,9 @@ $R, T$の成分を接続係数を用いて表す。
 	\intertext{第二項と第四項で添え字$l, m$を入れ替える。}
 	&= \sum_l \pd[\Gamma^l_{jk}]{x^i}\pd{x^l} + \sum_l\sum_m \Gamma^m_{jk}\Gamma^l_{im}\pd{x^l} - \sum_l \pd[\Gamma^l_{ik}]{x^j}\pd{x^l} - \sum_l\sum_m \Gamma^m_{ik}\Gamma^l_{jm}\pd{x^l}\\
 	&= \sum_l \(\pd[\Gamma^l_{jk}]{x^i} - \pd[\Gamma^l_{ik}]{x^j} + \sum_m \Gamma^m_{jk}\Gamma^l_{im} - \Gamma^m_{ik}\Gamma^l_{jm}\)\pd{x^l}\\
-	R^l_{ijk} &= \pd[\Gamma^l_{jk}]{x^i} - \pd[\Gamma^l_{ik}]{x^j} + \sum_m \Gamma^m_{jk}\Gamma^l_{im} - \Gamma^m_{ik}\Gamma^l_{jm}\\
+	R^l_{kij} &= \pd[\Gamma^l_{jk}]{x^i} - \pd[\Gamma^l_{ik}]{x^j} + \sum_m \Gamma^m_{jk}\Gamma^l_{im} - \Gamma^m_{ik}\Gamma^l_{jm}\\
 \end{align*}
-となる。$R^l_{ijk} = - R^l_{jik}$が成り立つ。また
+となる。$R^l_{kij} = - R^l_{kji}$が成り立つ。また
 	\[T\(\pd{x^i}, \pd{x^j}\) = \sum_k T^k_{ij}\pd{x^k}\]
 とおくと
 \begin{align*}
