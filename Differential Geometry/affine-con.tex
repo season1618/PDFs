@@ -5,7 +5,7 @@ $n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接
 を定める。
 
 ユークリッド空間の点$p$において、$X(p)$に沿ったベクトル場$Y$の方向微分とは
-	\[D_XY(p) = \lim_{t \to 0} \frac{Y(p + X(p)t - Y(p)}{t}\]
+	\[D_XY(p) = \lim_{t \to 0} \frac{Y(p + X(p)t) - Y(p)}{t}\]
 である。$X(c(t)) = \dot{c}(t)$なる$M$上の曲線$c(t)(a \leq t \leq b)$が存在し、この曲線上において方向微分が常に0となるとき、ベクトル場$Y$は曲線に沿って平行であるという。座標に依存しない形式で方向微分を拡張し、平行を定義する。一般に二点における接ベクトルが平行かどうかは経路に依存する。
 \begin{dfn}{アフィン接続，共変微分}
 	写像$\nabla: (X, Y) \in \mathfrak{X} \times \mathfrak{X} \mapsto \nabla_XY \in \mathfrak{X}$が以下の条件を満たすとき共変微分という。
@@ -17,7 +17,7 @@ $n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接
 	\end{enumerate}
 \end{dfn}
 
-座標系${x^i}$を定めたとき
+座標系$\{x^i\}$を定めたとき$\nabla_{\pd{x^i}}Y$を単に$\nabla_iY$と書く。
 	\[\nabla_{\pd{x^i}}\pd{x^j} = \sum_k \Gamma^k_{ij}\pd{x^k}\]
 となる$\Gamma^k_{ij}$を${\pd{x^i}}$に関する接続係数またはクリストッフェル記号という。$X = \sum X^i\pd{x^i}, Y = \sum Y^i\pd{x^i}$のとき
 \begin{align*}
@@ -101,3 +101,15 @@ $R, T$の成分を接続係数を用いて表す。
 
 曲率形式を曲率テンソルを用いて書くと
 捩率形式を捩率テンソルを用いて書くと
+
+$K(X, Y, Z)$の巡回和を
+	\[\mathfrak{G}{K(X, Y, Z)} = K(X, Y, Z) + K(Y, Z, X) + K(Z, X, Y)\]
+とすると以下の定理が成り立つ。
+\begin{thm}{ビアンキの恒等式}
+	任意のベクトル場$X, Y, Z$に対して
+	\begin{gather*}
+		\mathfrak{G}{R(X, Y)Z} = \mathfrak{G}{T(T(X, Y), Z)} + \mathfrak{G}{(\nabla_XT)(Y, Z)}\\
+		\mathfrak{G}{(\nabla_ZR)(X, Y) + R(T(X, Y), Z)} = 0\\
+	\end{gather*}
+	が成り立つ。
+\end{thm}
