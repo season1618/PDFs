@@ -6,17 +6,10 @@
 \newcommand{\lr}[1]{\left(#1 \right)}
 \newcommand{\mlr}[1]{\left\{#1 \right\}}
 \newcommand{\llr}[1]{\left[#1 \right]}
-\newcommand{\di}[2][]{\frac{d #1}{d #2}}
-\newcommand{\dd}[2][]{\frac{d^2 #1}{d #2^2}}
+\newcommand{\de}[2][]{\frac{d #1}{d #2}}
 \newcommand{\pd}[2][]{\frac{\partial #1}{\partial #2}}
 \newcommand{\ppd}[3]{\frac{\partial^2 #1}{\partial #2\partial #3}}
 \newcommand{\pmat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
-\newcommand{\we}{\wedge}
-\newcommand{\gr}{\theta}
-\newcommand{\om}{\omega}
-\newcommand{\pa}{\partial}
-\newcommand{\na}{\nabla}
-\newcommand{\Ga}{\Gamma}
 \newcommand{\chr}[2]{\left\{#1 \atop #2\right\}}
 
 \renewcommand{\(}{\left(}
@@ -37,11 +30,11 @@
 \maketitle
 \tableofcontents
 
-\input part1.tex % 数学的準備
-\input part2.tex % 曲線
-\input part3.tex % 曲面
-\input connection.tex
-\input affine-con.tex
+\input curve.tex % 曲線
+\input surface-1.tex % 曲面
+\input surface-2.tex
+\input connection.tex % 接続
+\input affine-con.tex % アフィン接続
 \input riemann.tex % リーマン幾何学
 
 \end{document}
