@@ -207,3 +207,78 @@
     である。
 
 \section{ユークリッド空間内の超曲面}
+    $n$次元多様体$M$とユークリッド空間$E^{n+1}$へのはめ込み$f$が与えられている。$p \in M$に対して$M$上のリーマン計量を$E^{n+1}$内の通常の内積を用いて
+        \[g_p(X, Y) = \<f*X, f*Y\>\]
+    と定義する。これを$M$の第一基本形式または誘導されたリーマン計量という。$M$の局所座標を$\{x^1, x^2, \dots, x^n\}$、$E^{n+1}$のユークリッド座標を$\{y^1, y^2, \dots, y^{n+1}\}$とすると
+        \[f*\(\pd{x^i}\) = \sum_{k=1}^{n+1} \pd[f^k]{x^i}\pd{y^k}\]
+    なので
+    \begin{align*}
+        g_{ij} &= g\(\pd{x^i}, \pd{x^j}\)\\
+        &= \<\sum_{k=1}^{n+1} \pd[f^k]{x^i}\pd{y^k}, \sum_{k=1}^{n+1} \pd[f^k]{x^j}\pd{y^k}\>\\
+        &= \sum_{k=1}^{n+1} \pd[f^k]{x^i}\pd[f^k]{x^j}
+    \end{align*}
+    となる。
+
+    $E^{n+1}$の通常の共変微分を$D$とおく。
+        \[(D_Xf*(Y))_p = f*(\nabla_XY)_p + \alpha_p(X, Y)\]
+    と分解したとき
+        \[\alpha_p(X, Y) = h(X, Y)\xi\]
+    と書くことができる。$h(X, Y)$は双線形写像であり、第二基本形式と呼ぶ。$\nabla$は$g$に対するレヴィ=チヴィタ接続になっている。また$\xi \in \mathfrak{X}_f$とすると
+    \begin{align*}
+        \<\xi, \xi\> = 1\\
+        \<D_X\xi, \xi\> = 0\\
+    \end{align*}
+    より$D_X\xi$は$M$に接しており、$X \mapsto D_X\xi$は線形写像であるから
+        \[D_X\xi = -f*(SX)\]
+    となる$S$が存在する。
+    \begin{gather*}
+        (D_Xf*(Y))_p = f*(\nabla_XY)_p + h(X, Y)\xi\\
+        D_X\xi = -f*(SX)\\
+    \end{gather*}
+    ガウスの公式、ワインガルテン(Weingarten)の公式と呼ぶ。
+    \begin{gather*}
+        R(X, Y) = SX \wedge SX\\
+        \nabla_Xh(Y, Z) = \nabla_Yh(X, Z)\\
+        \nabla_XS(Y) = \nabla_YS(X)\\
+    \end{gather*}
+    それぞれガウスの方程式、コダッチ(Codazzi)の方程式と呼ぶ。ただし内積を持つベクトル空間$V$に対して
+        \[X \wedge Y: Z \in V \mapsto \<Y, Z\>X - \<X, Z\>Y \in V\]
+    である。
+    \begin{thm}
+        シェイプ作用素$S$がコダッチの方程式を満たすとき$M$から$E^{n+1}$への等長的なはめ込みが合同変換を除いて一意的に存在する。
+    \end{thm}
+
+    \subsection{断面曲率}
+
+    $T_p(M)$の2次元部分空間$\sigma$を平面または平面切り口という。$\sigma$の基底$\{X, Y\}$を取ると、シュワルツの不等式より$g(X, X)g(Y, Y) - g(X, Y)^2 > 0$となる。そこで$\sigma$の断面曲率を
+        \[K(\sigma) = \frac{g(R(X, Y)Y, X)}{g(X, X)g(Y, Y) - g(X, Y)^2}\]
+    と定義する。$K(\sigma)$が基底に依らないことを示す。$ad - bc \neq 0$なる$a,b,c,d$を取って
+        \[X' = aX + bY, Y' = cX + dY\]
+    とする。
+    \begin{align*}
+        g(R(X', Y')Y', X')
+        &= g(R(aX + bY, cX + dY)(cX + dY), aX + bY)\\
+        &= g((adR(X, Y) + bcR(Y, X))(cX + dY), aX + bY)\\
+        &= (ad - bc)g(R(X, Y)(cX + dY), aX + bY)\\
+        &= (ad - bc)g(cR(X, Y)X + dR(X, Y)Y, aX + bY)\\
+
+        \bmat{g(X', X') & g(X', Y')\\ g(Y', X') & g(Y', Y')}
+        &= \bmat{a^2g(X, X) + 2abg(X, Y) + b^2g(Y, Y) & acg(X, X) + (ad + bc)g(X, Y) + bdg(Y, Y)\\ acg(X, X) + (ad + bc)g(X, Y) + bdg(Y, Y) & c^2g(X, X) + 2cdg(X, Y) + d^2g(Y, Y)}\\
+        &= \bmat{a & c\\ b & d}\bmat{g(X, X) & g(X, Y)\\ g(Y, X) & g(Y, Y)}\bmat{a & b\\ c & d}
+        g(X', X')g(Y', Y') - g(X', Y')^2 = (ad - bc)^2(g(X, X)g(Y, Y) - g(X, Y)^2)
+    \end{align*}
+    より示された。正規直交基底$\{X, Y\}$を取れば
+        \[K(\sigma) = g(R(X, Y)Y, X)\]
+    である。
+    \begin{thm}
+        $p \in M$について以下は同値である。
+        \begin{itemize}
+            \item $T_p(M)$の任意の平面$\sigma$に対して$K(\sigma) = c$
+            \item $R(X, Y) = cX \wedge Y$
+        \end{itemize}
+    \end{thm}
+    \begin{thm}{シューアの定理}
+        $n(\geq 3)$次元の連結リーマン多様体$M$の各点で$K(\sigma)$が定数なら、$M$全体で$K(\sigma)$は定数
+    \end{thm}
+
+    $M$が$E^3$の曲面であるとき$K = \det A$をガウス曲率という。
