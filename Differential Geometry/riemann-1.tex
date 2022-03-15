@@ -17,9 +17,17 @@
         \[g = \sum_{i,j} g_{ij}dx^i \otimes dx^j\]
     と書くこともできる。つまり
         \[g_{ij} = g(\pd{x^i}, \pd{x^j})\]
-    である。
+    である。また内積を持つベクトル空間$V$に対して
+        \[X \wedge Y: Z \in V \mapsto g(Y, Z)X - g(X, Z)Y \in V\]
+    と定義する。
     \begin{dfn}{リーマン多様体}
         $(M, g)$をリーマン多様体と呼ぶ。
+    \end{dfn}
+
+    \begin{dfn}{等長写像}
+        リーマン多様体$(M_1, g_1), (M_2, g_2)$の間の写像$f: M_1 \rightarrow M_2$であって
+            \[g_1(X, Y) = g_2(df(X), df(Y))\]
+        を満たすものを等長写像という。全単射な等長写像を等長変換という。
     \end{dfn}
 
 \section{レヴィ=チヴィタ接続}
@@ -30,6 +38,7 @@
             \item $\nabla_Xg(Y, Z) = Xg(Y, Z) - g(\nabra_XY, Z) - g(Y, \nabra_XZ) = 0$
         \end{enumerate}
     \end{dfn}
+
     レヴィ=チヴィタ接続の条件より、接続係数をリーマン計量で表すことができる。第一式の成分表示より
         \[\Gamma^k_{ij} = \Gamma^k_{ji}\]
     第二式で$X = \pd{x^i}, Y = \pd{x^j}, Z = \pd{x^k}$として
@@ -49,12 +58,6 @@
     $g_{ij}$の逆行列の成分を$g^{ij}$とおく。両辺に$g^{mk}$を掛けて$k$について和を取ると
         \[\Gamma^m_{ij} = \frac{1}{2}\sum_k g^{mk}\(\pd[g_{jk}]{x^i} + \pd[g_{ki}]{x^j} - \pd[g_{ij}]{x^k}\)\]
     となる。
-
-    リッチテンソル$Ric(X, Y)$を線形変換$V \mapsto R(V, X)Y$のトレースとして定義する。
-        \[Ric = \sum_{i,j} R_{ij}dx^i \otimes dx^j\]
-    とおくと
-        \[R_{ij} = \sum_k R^k_{ikj}\]
-    また$Ric$のトレースをリッチスカラー(スカラー曲率)$R$と呼ぶ。
 
 % \section{共変微分}
 %     反変ベクトル$A^i(X^j)$を座標変換したものが$a^i(x^j)$であるとする。
@@ -128,38 +131,41 @@
 
 
 \section{曲率}
-    共変微分の交換は、
-    \begin{align*}
-        [\na_l,\na_k]A_j &= \na_l\na_kA_j-\na_k\na_lA_j\\
-        &= [\pa_k\Ga^i_{jl}-\pa_i\Ga^l_{jk}
-        +\Ga^m_{jl}\Ga^i_{mk}-\Ga^m_{jk}\Ga^i_{ml}]A_i
-    \end{align*}
-    である。係数は一階反変三階共変のテンソルであり、
-        \[R^i_{jkl}
-        =\pa_k\Ga^i_{jl}-\pa_l\Ga^i_{jk}
-        +\Ga^m_{jl}\Ga^i_{km}-\Ga^m_{jk}\Ga^i_{lm}\]
-    及びこれを縮約した
-        \[R_{ijkl} = g_{ih}R^h_{jkl}\]
-    をリーマン曲率テンソルと呼ぶ。さらに
-    \begin{gather*}
-        R_{ij} = R^k_{ikj}\\
-        R = g^{ij}R_{ij}
-    \end{gather*}
-    をそれぞれリッチテンソル、リッチスカラー(スカラー曲率)という。
+    \subsection{リーマン曲率}
+        リッチテンソル$Ric(X, Y)$を線形変換$V \mapsto R(V, X)Y$のトレースとして定義する。
+            \[Ric = \sum_{i,j} R_{ij}dx^i \otimes dx^j\]
+        とおくと
+            \[R_{ij} = \sum_k R^k_{ikj}\]
+        また$Ric$のトレースをリッチスカラー(スカラー曲率)$R$と呼ぶ。
+%     共変微分の交換は、
+%     \begin{align*}
+%         [\na_l,\na_k]A_j &= \na_l\na_kA_j-\na_k\na_lA_j\\
+%         &= [\pa_k\Ga^i_{jl}-\pa_i\Ga^l_{jk} + \Ga^m_{jl}\Ga^i_{mk}-\Ga^m_{jk}\Ga^i_{ml}]A_i
+%     \end{align*}
+%     である。係数は一階反変三階共変のテンソルであり、
+%         \[R^i_{jkl} = \pa_k\Ga^i_{jl}-\pa_l\Ga^i_{jk} + \Ga^m_{jl}\Ga^i_{km}-\Ga^m_{jk}\Ga^i_{lm}\]
+%     及びこれを縮約した
+%         \[R_{ijkl} = g_{ih}R^h_{jkl}\]
+%     をリーマン曲率テンソルと呼ぶ。さらに
+%     \begin{gather*}
+%         R_{ij} = R^k_{ikj}\\
+%         R = g^{ij}R_{ij}
+%     \end{gather*}
+%     をそれぞれリッチテンソル、リッチスカラー(スカラー曲率)という。
 
 
-\section{ビアンキの恒等式}
-    アフィン接続におけるビアンキの恒等式で$T = 0$とすると
-    \begin{gather*}
-        \mathfrak{G}{R(X, Y)Z} = 0\\
-        \mathfrak{G}{(\nabla_ZR)(X, Y)} = 0\\
-    \end{gather*}
-    これをさらに局所座標の成分で書くと
-    \begin{gather*}
-        R^l_{ijk} + R^l_{jki} + R^l_{kij} = 0\\
-        \nabla_mR^i{jkl} + \nabla_kR^i_{jlm} + \nabla_lR^i_{jmk} = 0\\
-    \end{gather*}
-    となる。
+    \subsection{ビアンキの恒等式}
+        アフィン接続におけるビアンキの恒等式で$T = 0$とすると
+        \begin{gather*}
+            \mathfrak{G}{R(X, Y)Z} = 0\\
+            \mathfrak{G}{(\nabla_ZR)(X, Y)} = 0\\
+        \end{gather*}
+        これをさらに局所座標の成分で書くと
+        \begin{gather*}
+            R^l_{ijk} + R^l_{jki} + R^l_{kij} = 0\\
+            \nabla_mR^i{jkl} + \nabla_kR^i_{jlm} + \nabla_lR^i_{jmk} = 0\\
+        \end{gather*}
+        となる。
 
     % 共変微分の交換関係より、$\na_jA_i = a_jb_i$と書けるので
     % \begin{align*}
@@ -186,62 +192,62 @@
     % \end{gather*}
     % である。これをそれぞれビアンキの第一及び第二恒等式という。
 
-    ビアンキの第二恒等式を変形する。
-        \[\nabla_kR^h_{ilj} - \nabla_jR^h_{ilk} + \nabla_lR^h_{ijk} = 0\]
-    $h=l$として縮約し、第三項を書き換える。
-        \[\nabla_kR_{ij} - \nabla_jR^h_{ik} + \nabla_lg^{ih}R_{hijk} = 0\]
-    両辺に$g^{ij}$を掛ける。計量条件より共変微分の中に入れることができて、
-    \begin{align*}
-        \nabla_kR - \nabla_jR^j_k - \nabla_lg^{ih}R^j_{hjk}
-        &= \nabla_kR - \nabla_jR^j_k - \nabla_lR^i_k\\
-        &= \nabla_kR - 2\nabla_jR^j_k\\
-        \intertext{第一項を書き換えて、}
-        &= \nabla_j(\delta^j_kR) - 2\nabla_jR^j_k = 0
-    \end{align*}
-    となる。
-        \[G^j_k = R^j_k - \frac{1}{2}\delta^j_kR\]
-    とおく。これをアインシュタインテンソルという。添え字を上げて二階の反変テンソルにすれば、
-        \[G^{ij} = g^{ik}G^j_k = R^{ij} - \frac{1}{2}Rg^{ij}\]
-    計量条件より
-        \[\nabla_jG^{ij} = 0\]
-    である。
+        ビアンキの第二恒等式を変形する。
+            \[\nabla_kR^h_{ilj} - \nabla_jR^h_{ilk} + \nabla_lR^h_{ijk} = 0\]
+        $h=l$として縮約し、第三項を書き換える。
+            \[\nabla_kR_{ij} - \nabla_jR^h_{ik} + \nabla_lg^{ih}R_{hijk} = 0\]
+        両辺に$g^{ij}$を掛ける。計量条件より共変微分の中に入れることができて、
+        \begin{align*}
+            \nabla_kR - \nabla_jR^j_k - \nabla_lg^{ih}R^j_{hjk}
+            &= \nabla_kR - \nabla_jR^j_k - \nabla_lR^i_k\\
+            &= \nabla_kR - 2\nabla_jR^j_k\\
+            \intertext{第一項を書き換えて、}
+            &= \nabla_j(\delta^j_kR) - 2\nabla_jR^j_k = 0
+        \end{align*}
+        となる。
+            \[G^j_k = R^j_k - \frac{1}{2}\delta^j_kR\]
+        とおく。これをアインシュタインテンソルという。添え字を上げて二階の反変テンソルにすれば、
+            \[G^{ij} = g^{ik}G^j_k = R^{ij} - \frac{1}{2}Rg^{ij}\]
+        計量条件より
+            \[\nabla_jG^{ij} = 0\]
+        である。
 
-\section{断面曲率}
+    \subsection{断面曲率}
 
-    $T_p(M)$の2次元部分空間$\sigma$を平面または平面切り口という。$\sigma$の基底$\{X, Y\}$を取ると、シュワルツの不等式より$g(X, X)g(Y, Y) - g(X, Y)^2 > 0$となる。そこで$\sigma$の断面曲率を
-        \[K(\sigma) = \frac{g(R(X, Y)Y, X)}{g(X, X)g(Y, Y) - g(X, Y)^2}\]
-    と定義する。$K(\sigma)$が基底に依らないことを示す。$ad - bc \neq 0$なる$a,b,c,d$を取って
-        \[X' = aX + bY, Y' = cX + dY\]
-    とする。
-    \begin{align*}
-        g(R(X', Y')Y', X')
-        &= g(R(aX + bY, cX + dY)(cX + dY), aX + bY)\\
-        &= g((adR(X, Y) + bcR(Y, X))(cX + dY), aX + bY)\\
-        &= (ad - bc)g(R(X, Y)(cX + dY), aX + bY)\\
-        &= (ad - bc)g(cR(X, Y)X + dR(X, Y)Y, aX + bY)\\
+        $T_p(M)$の2次元部分空間$\sigma$を平面または平面切り口という。$\sigma$の基底$\{X, Y\}$を取ると、シュワルツの不等式より$g(X, X)g(Y, Y) - g(X, Y)^2 > 0$となる。そこで$\sigma$の断面曲率を
+            \[K(\sigma) = \frac{g(R(X, Y)Y, X)}{g(X, X)g(Y, Y) - g(X, Y)^2}\]
+        と定義する。$K(\sigma)$が基底に依らないことを示す。$ad - bc \neq 0$なる$a,b,c,d$を取って
+            \[X' = aX + bY, Y' = cX + dY\]
+        とする。
+        \begin{align*}
+            g(R(X', Y')Y', X')
+            &= g(R(aX + bY, cX + dY)(cX + dY), aX + bY)\\
+            &= g((adR(X, Y) + bcR(Y, X))(cX + dY), aX + bY)\\
+            &= (ad - bc)g(R(X, Y)(cX + dY), aX + bY)\\
+            &= (ad - bc)g(cR(X, Y)X + dR(X, Y)Y, aX + bY)\\
 
-        \bmat{g(X', X') & g(X', Y')\\ g(Y', X') & g(Y', Y')}
-        &= \bmat{a^2g(X, X) + 2abg(X, Y) + b^2g(Y, Y) & acg(X, X) + (ad + bc)g(X, Y) + bdg(Y, Y)\\ acg(X, X) + (ad + bc)g(X, Y) + bdg(Y, Y) & c^2g(X, X) + 2cdg(X, Y) + d^2g(Y, Y)}\\
-        &= \bmat{a & c\\ b & d}\bmat{g(X, X) & g(X, Y)\\ g(Y, X) & g(Y, Y)}\bmat{a & b\\ c & d}
-        g(X', X')g(Y', Y') - g(X', Y')^2 = (ad - bc)^2(g(X, X)g(Y, Y) - g(X, Y)^2)
-    \end{align*}
-    より示された。正規直交基底$\{X, Y\}$を取れば
-        \[K(\sigma) = g(R(X, Y)Y, X)\]
-    である。
-    \begin{thm}
-        $p \in M$について以下は同値である。
-        \begin{itemize}
-            \item $T_p(M)$の任意の平面$\sigma$に対して$K(\sigma) = c$
-            \item $R(X, Y) = cX \wedge Y$
-        \end{itemize}
-    \end{thm}
-    \begin{thm}{シューアの定理}
-        $n(\geq 3)$次元の連結リーマン多様体$M$の各点で$K(\sigma)$が定数なら、$M$全体で$K(\sigma)$は定数
-    \end{thm}
+            \bmat{g(X', X') & g(X', Y')\\ g(Y', X') & g(Y', Y')}
+            &= \bmat{a^2g(X, X) + 2abg(X, Y) + b^2g(Y, Y) & acg(X, X) + (ad + bc)g(X, Y) + bdg(Y, Y)\\ acg(X, X) + (ad + bc)g(X, Y) + bdg(Y, Y) & c^2g(X, X) + 2cdg(X, Y) + d^2g(Y, Y)}\\
+            &= \bmat{a & c\\ b & d}\bmat{g(X, X) & g(X, Y)\\ g(Y, X) & g(Y, Y)}\bmat{a & b\\ c & d}
+            g(X', X')g(Y', Y') - g(X', Y')^2 = (ad - bc)^2(g(X, X)g(Y, Y) - g(X, Y)^2)
+        \end{align*}
+        より示された。正規直交基底$\{X, Y\}$を取れば
+            \[K(\sigma) = g(R(X, Y)Y, X)\]
+        である。
+        \begin{thm}
+            $p \in M$について以下は同値である。
+            \begin{itemize}
+                \item $T_p(M)$の任意の平面$\sigma$に対して$K(\sigma) = c$
+                \item $R(X, Y) = cX \wedge Y$
+            \end{itemize}
+        \end{thm}
+        \begin{thm}{シューアの定理}
+            $n(\geq 3)$次元の連結リーマン多様体$M$の各点で$K(\sigma)$が定数なら、$M$全体で$K(\sigma)$は定数
+        \end{thm}
 
-    $T_p(M)$の正規直交基底を$\{X_1, X_2, \dots, X_n\}$とする。$X_1, X_i(i \geq 2)$で張られる平面を$\sigma_i$とすると、リッチテンソルは
-    \begin{align*}
-        Ric(X, X) &= \sum_{i=1}^n g(R(X_i, X)X, X_i)\\
-        &= \sum_{i=2}^n g(R(X_i, X)X, X_i)\\
-        &= \sum_{i=2} K(\sigma_i)\\
-    \end{align*}
+        $T_p(M)$の正規直交基底を$\{X_1, X_2, \dots, X_n\}$とする。$X_1, X_i(i \geq 2)$で張られる平面を$\sigma_i$とすると、リッチテンソルは
+        \begin{align*}
+            Ric(X, X) &= \sum_{i=1}^n g(R(X_i, X)X, X_i)\\
+            &= \sum_{i=2}^n g(R(X_i, X)X, X_i)\\
+            &= \sum_{i=2} K(\sigma_i)\\
+        \end{align*}
