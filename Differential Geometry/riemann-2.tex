@@ -11,37 +11,107 @@
     \end{align*}
     となる。
 
-    $E^{n+1}$の通常の共変微分を$D$とおく。
+    $E^{n+1}$の通常の共変微分を$D$とおく。$(D_Xdf(Y))_p$を$M$に接する成分と垂直な成分に分解すると
         \[(D_Xdf(Y))_p = df(\nabla_XY)_p + \alpha_p(X, Y)\]
-    と分解したとき
-        \[\alpha_p(X, Y) = h(X, Y)\xi\]
-    と書くことができる。$h(X, Y)$は双線形写像であり、第二基本形式と呼ぶ。$\nabla$は$g$に対するレヴィ=チヴィタ接続になっている。また$\xi \in \mathfrak{X}_f$とすると
+    となる。$\alpha_p$は単位法ベクトル場$\xi \in \mathfrak{X}(E^{n+1})(\<\xi, df(X)\> = 0, \<\xi, \xi\> = 1$を用いて
+        \[\alpha_p(X, Y) = h(X, Y)\xi_p\]
+    と書くことができる。$h(X, Y)$は双線形写像であり、第二基本形式と呼ぶ。また$\xi \in \mathfrak{X}_f$とすると
     \begin{align*}
         \<\xi, \xi\> = 1\\
         \<D_X\xi, \xi\> = 0\\
     \end{align*}
     より$D_X\xi$は$M$に接しており、$X \mapsto D_X\xi$は線形写像であるから
         \[D_X\xi = -df(SX)\]
-    となる$S$が存在する。これをシェイプ(Shape)作用素と呼ぶ。
+    となる$(1, 1)$型テンソル場$S$が存在する。これをシェイプ(Shape)作用素と呼ぶ。シェイプ作用素は曲面の外界への入り方を表す外在的な量である。まとめると
     \begin{gather*}
         (D_Xdf(Y))_p = df(\nabla_XY)_p + h(X, Y)\xi\\
         D_X\xi = -df(SX)\\
     \end{gather*}
-    ガウスの公式、ワインガルテン(Weingarten)の公式と呼ぶ。
-    \begin{gather*}
-        R(X, Y) = SX \wedge SX\\
-        \nabla_Xh(Y, Z) = \nabla_Yh(X, Z)\\
-        \nabla_XS(Y) = \nabla_YS(X)\\
-    \end{gather*}
-    それぞれガウスの方程式、コダッチ(Codazzi)の方程式と呼ぶ。ただし内積を持つベクトル空間$V$に対して
-        \[X \wedge Y: Z \in V \mapsto \<Y, Z\>X - \<X, Z\>Y \in V\]
-    である。
-    \begin{thm}{超曲面の基本定理}
-        シェイプ作用素$S$がコダッチの方程式を満たすとき$M$から$E^{n+1}$への等長的なはめ込みが合同変換を除いて一意的に存在する。
-    \end{thm}
+    ガウスの公式、ワインガルテン(Weingarten)の公式と呼ぶ。ガウスの公式は$M$の共変微分と$E^{n+1}$の共変微分を結び付ける。ワインガルテンの公式は$E^{n+1}$の共変微分をシェイプ作用素を用いて書き換える。
+
+    \subsection{ガウス=コダッチ方程式}
+
+        \begin{align*}
+            \<df(Y), \xi\> = 0\\
+            \<D_Xdf(Y), \xi\> + \<df(Y), D_X\xi\> = 0\\
+            h(X, Y) + \<df(Y), -df(SX)\> = 0\\
+            h(X, Y) - g(SX, Y) = 0\\
+        \end{align*}
+
+        $E^{n+1}$の共変微分$D$から$M$の共変微分$\nabla$の性質を導く。$D$は曲率テンソル、捩率テンソルが0で、ユークリッド計量に対して計量的である。つまり
+        \begin{gather*}
+            D_XD_Ydf(Z) - D_YD_Xdf(Z) - D_[X, Y]df(Z) = 0\\
+            D_Xdf(Y) - D_Ydf(X) - df([X, Y]) = 0\\
+            X\<df(Y), df(Z)\> - \<D_Xdf(Y), df(Z)\> - \<df(Y), D_Xdf(Z)\> = 0\\
+        \end{gather*}
+
+        捩率テンソルの式にガウスの公式を適用すると
+        \begin{align*}
+            (df(\nabla_XY) + h(X, Y)\xi) - (df(\nabla_YX) + h(Y, X)\xi) - df([X, Y]) = 0
+        \end{align*}
+        $M$に接する成分と垂直な成分に分解すると
+        \begin{gather*}
+            \nabla_XY - \nabla_YX - [X, Y] = 0\\
+            h(X, Y) = h(Y, X)
+        \end{gather*}
+        つまり$\nabla$の捩率テンソルも0になる。また$h(X, Y), S$が対称線形であることが分かる。
+
+        次に計量条件の式を書き換える
+        \begin{align*}
+            Xg(Y, Z) - \<df(\nabla_XY), df(Z)\> - \<df(Y), df(\nabla_XZ)\> &= 0\\
+            Xg(Y, Z) - g(\nabla_XY, Z) - g(Y, \nabla_XZ) &= 0\\
+        \end{align*}
+        つまり$\nabla$も計量的である。捩率テンソルが0かつ計量的なので$\nabla$もレヴィ=チヴィタ接続である。
+
+        曲率テンソルの式にガウスの公式を適用すると
+        \begin{align*}
+            D_XD_Ydf(Z)
+            &= D_X(df(\nabla_YZ) + h(Y, Z)\xi)\\
+            &= df(\nabla_X\nabla_YZ) + h(X, \nabla_YZ)\xi + X(h(Y, Z))\xi + h(Y, Z)D_X\xi\\
+            \intertext{さらにワインガルテンの公式より}
+            &= df(\nabla_X\nabla_YZ - h(Y, Z)SX) + (h(X, \nabla_YZ) + X(h(Y, Z)))\xi
+        \end{align*}
+        同様に
+            \[D_YD_Xdf(Z) = df(\nabla_Y\nabla_XZ - h(X, Z)SY) + (h(Y, \nabla_XZ) + Y(h(X, Z)))\xi\]
+        であり、また
+            \[D_[X, Y]df(Z) = df(\nabla_[X, Y]Z) + h([X, Y], Z)\xi\]
+        より
+        \begin{align*}
+            \{df(\nabla_X\nabla_YZ - h(Y, Z)SX) - df(\nabla_Y\nabla_XZ - h(X, Z)SY) - df(\nabla_[X, Y]Z)\} + \{(h(X, \nabla_YZ) + X(h(Y, Z)))\xi - (h(Y, \nabla_XZ) + Y(h(X, Z)))\xi - h([X, Y], Z)\xi\} = 0\\
+        \end{align*}
+        $M$に接する成分と垂直な成分に分解する。接する成分は
+        \begin{align*}
+            \nabla_X\nabla_YZ - \nabla_Y\nabla_XZ - \nabla_[X, Y]Z &= h(Y, Z)SX - h(X, Z)SY\\
+            R(X, Y)Z &= g(SY, Z)SX - g(SX, Z)SY
+            R(X, Y) &= SX \wedge SX
+        \end{align*}
+        垂直な成分は
+        \begin{align*}
+            X(h(Y, Z)) - Y(h(X, Z)) + h(X, \nabla_YZ) - h(Y, \nabla_XZ) - h([X, Y], Z) = 0\\
+            X(h(Y, Z)) - Y(h(X, Z)) + h(X, \nabla_YZ) - h(Y, \nabla_XZ) + h(\nabla_YX, Z) - h(\nabla_XY, Z) = 0\\
+            \nabla_Xh(Y, Z) = \nabla_Yh(X, Z)\\
+            \nabla_XS(Y) = \nabla_YS(X)\\
+        \end{align*}
+        まとめると
+        \begin{gather*}
+            R(X, Y) = SX \wedge SX\\
+            \nabla_XS(Y) = \nabla_YS(X)\\
+        \end{gather*}
+        それぞれガウスの方程式、コダッチ(Codazzi)の方程式と呼ぶ。ガウスの方程式はリーマン計量によって定まる曲率テンソルとシェイプ作用素の関係を表す。コダッチの方程式はシェイプ作用素が満足すべき条件を示す。実際次の定理が成り立つ。
+
+        \begin{thm}{超曲面の基本定理}
+            単連結な多様体$M$上で$(1, 1)$型テンソル場$S$がコダッチの方程式を満たすとき、$M$から$E^{n+1}$への等長的なはめ込みが合同変換を除いて一意的に存在する。
+        \end{thm}
 
     \subsection{驚異の定理}
-        $M$が$E^3$の2次元リーマン多様体つまり曲面のときを考える。$S$の固有値を$\lambda_1, \lambda_2$、それに対応する単位固有ベクトルを$X_1, X_2$とおく。$S$は対称変換なので固有ベクトルは直交する。つまり$g(X_1, X_1) = g(X_2, X_2) = 1, g(X_1, X_2) = 0$である。$K = \lambda_1\lambda_2 = \det S$をガウス曲率という。ガウスの方程式より
+
+        $M$が$E^3$の2次元リーマン多様体つまり曲面のときを考える。$S$の固有値を$\lambda_1, \lambda_2$、それに対応する単位固有ベクトルを$X_1, X_2$とおく。ここで$S$は対称変換である。つまり
+        \begin{align*}
+            h(X_1, X_2) &= g(AX_1, X_2) = \lambda_1g(X_1, X_2)\\
+            h(X_1, X_2) &= g(X_1, AX_2) = \lambda_2g(X_1, X_2)\\
+            (\lambda_2 - \lambda_1)g(X_1, X_2) = 0\\
+        \end{align*}
+        なので、異なる固有値に属する固有ベクトルは直交する。つまり$g(X_1, X_1) = g(X_2, X_2) = 1, g(X_1, X_2) = 0$である。$K = \lambda_1\lambda_2 = \det S$をガウス曲率という。ガウスの方程式より
         \begin{align*}
             R(X_1, X_2)
             &= SX_1 \wedge S_X_2 = \lambda_1X_1 \wedge \lambda_2X_2\\
