@@ -206,49 +206,7 @@
         \[\nabla_jG^{ij} = 0\]
     である。
 
-\section{ユークリッド空間内の超曲面}
-    $n$次元多様体$M$とユークリッド空間$E^{n+1}$へのはめ込み$f$が与えられている。$p \in M$に対して$M$上のリーマン計量を$E^{n+1}$内の通常の内積を用いて
-        \[g_p(X, Y) = \<f*X, f*Y\>\]
-    と定義する。これを$M$の第一基本形式または誘導されたリーマン計量という。$M$の局所座標を$\{x^1, x^2, \dots, x^n\}$、$E^{n+1}$のユークリッド座標を$\{y^1, y^2, \dots, y^{n+1}\}$とすると
-        \[f*\(\pd{x^i}\) = \sum_{k=1}^{n+1} \pd[f^k]{x^i}\pd{y^k}\]
-    なので
-    \begin{align*}
-        g_{ij} &= g\(\pd{x^i}, \pd{x^j}\)\\
-        &= \<\sum_{k=1}^{n+1} \pd[f^k]{x^i}\pd{y^k}, \sum_{k=1}^{n+1} \pd[f^k]{x^j}\pd{y^k}\>\\
-        &= \sum_{k=1}^{n+1} \pd[f^k]{x^i}\pd[f^k]{x^j}
-    \end{align*}
-    となる。
-
-    $E^{n+1}$の通常の共変微分を$D$とおく。
-        \[(D_Xf*(Y))_p = f*(\nabla_XY)_p + \alpha_p(X, Y)\]
-    と分解したとき
-        \[\alpha_p(X, Y) = h(X, Y)\xi\]
-    と書くことができる。$h(X, Y)$は双線形写像であり、第二基本形式と呼ぶ。$\nabla$は$g$に対するレヴィ=チヴィタ接続になっている。また$\xi \in \mathfrak{X}_f$とすると
-    \begin{align*}
-        \<\xi, \xi\> = 1\\
-        \<D_X\xi, \xi\> = 0\\
-    \end{align*}
-    より$D_X\xi$は$M$に接しており、$X \mapsto D_X\xi$は線形写像であるから
-        \[D_X\xi = -f*(SX)\]
-    となる$S$が存在する。
-    \begin{gather*}
-        (D_Xf*(Y))_p = f*(\nabla_XY)_p + h(X, Y)\xi\\
-        D_X\xi = -f*(SX)\\
-    \end{gather*}
-    ガウスの公式、ワインガルテン(Weingarten)の公式と呼ぶ。
-    \begin{gather*}
-        R(X, Y) = SX \wedge SX\\
-        \nabla_Xh(Y, Z) = \nabla_Yh(X, Z)\\
-        \nabla_XS(Y) = \nabla_YS(X)\\
-    \end{gather*}
-    それぞれガウスの方程式、コダッチ(Codazzi)の方程式と呼ぶ。ただし内積を持つベクトル空間$V$に対して
-        \[X \wedge Y: Z \in V \mapsto \<Y, Z\>X - \<X, Z\>Y \in V\]
-    である。
-    \begin{thm}
-        シェイプ作用素$S$がコダッチの方程式を満たすとき$M$から$E^{n+1}$への等長的なはめ込みが合同変換を除いて一意的に存在する。
-    \end{thm}
-
-    \subsection{断面曲率}
+\section{断面曲率}
 
     $T_p(M)$の2次元部分空間$\sigma$を平面または平面切り口という。$\sigma$の基底$\{X, Y\}$を取ると、シュワルツの不等式より$g(X, X)g(Y, Y) - g(X, Y)^2 > 0$となる。そこで$\sigma$の断面曲率を
         \[K(\sigma) = \frac{g(R(X, Y)Y, X)}{g(X, X)g(Y, Y) - g(X, Y)^2}\]
@@ -281,4 +239,9 @@
         $n(\geq 3)$次元の連結リーマン多様体$M$の各点で$K(\sigma)$が定数なら、$M$全体で$K(\sigma)$は定数
     \end{thm}
 
-    $M$が$E^3$の曲面であるとき$K = \det A$をガウス曲率という。
+    $T_p(M)$の正規直交基底を$\{X_1, X_2, \dots, X_n\}$とする。$X_1, X_i(i \geq 2)$で張られる平面を$\sigma_i$とすると、リッチテンソルは
+    \begin{align*}
+        Ric(X, X) &= \sum_{i=1}^n g(R(X_i, X)X, X_i)\\
+        &= \sum_{i=2}^n g(R(X_i, X)X, X_i)\\
+        &= \sum_{i=2} K(\sigma_i)\\
+    \end{align*}

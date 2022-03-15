@@ -1,0 +1,117 @@
+\section{ユークリッド空間内の超曲面}
+    $n$次元多様体$M$とユークリッド空間$E^{n+1}$へのはめ込み$f$が与えられている。$p \in M$に対して$M$上のリーマン計量を$E^{n+1}$内の通常の内積を用いて
+        \[g_p(X, Y) = \<df(X), df(Y)\>\]
+    と定義する。これを$M$の第一基本形式または誘導されたリーマン計量という。$M$の局所座標を$\{x^1, x^2, \dots, x^n\}$、$E^{n+1}$のユークリッド座標を$\{y^1, y^2, \dots, y^{n+1}\}$とすると
+        \[f*\(\pd{x^i}\) = \sum_{k=1}^{n+1} \pd[f^k]{x^i}\pd{y^k}\]
+    なので
+    \begin{align*}
+        g_{ij} &= g\(\pd{x^i}, \pd{x^j}\)\\
+        &= \<\sum_{k=1}^{n+1} \pd[f^k]{x^i}\pd{y^k}, \sum_{k=1}^{n+1} \pd[f^k]{x^j}\pd{y^k}\>\\
+        &= \sum_{k=1}^{n+1} \pd[f^k]{x^i}\pd[f^k]{x^j}
+    \end{align*}
+    となる。
+
+    $E^{n+1}$の通常の共変微分を$D$とおく。
+        \[(D_Xdf(Y))_p = df(\nabla_XY)_p + \alpha_p(X, Y)\]
+    と分解したとき
+        \[\alpha_p(X, Y) = h(X, Y)\xi\]
+    と書くことができる。$h(X, Y)$は双線形写像であり、第二基本形式と呼ぶ。$\nabla$は$g$に対するレヴィ=チヴィタ接続になっている。また$\xi \in \mathfrak{X}_f$とすると
+    \begin{align*}
+        \<\xi, \xi\> = 1\\
+        \<D_X\xi, \xi\> = 0\\
+    \end{align*}
+    より$D_X\xi$は$M$に接しており、$X \mapsto D_X\xi$は線形写像であるから
+        \[D_X\xi = -df(SX)\]
+    となる$S$が存在する。これをシェイプ(Shape)作用素と呼ぶ。
+    \begin{gather*}
+        (D_Xdf(Y))_p = df(\nabla_XY)_p + h(X, Y)\xi\\
+        D_X\xi = -df(SX)\\
+    \end{gather*}
+    ガウスの公式、ワインガルテン(Weingarten)の公式と呼ぶ。
+    \begin{gather*}
+        R(X, Y) = SX \wedge SX\\
+        \nabla_Xh(Y, Z) = \nabla_Yh(X, Z)\\
+        \nabla_XS(Y) = \nabla_YS(X)\\
+    \end{gather*}
+    それぞれガウスの方程式、コダッチ(Codazzi)の方程式と呼ぶ。ただし内積を持つベクトル空間$V$に対して
+        \[X \wedge Y: Z \in V \mapsto \<Y, Z\>X - \<X, Z\>Y \in V\]
+    である。
+    \begin{thm}{超曲面の基本定理}
+        シェイプ作用素$S$がコダッチの方程式を満たすとき$M$から$E^{n+1}$への等長的なはめ込みが合同変換を除いて一意的に存在する。
+    \end{thm}
+
+    \subsection{驚異の定理}
+        $M$が$E^3$の2次元リーマン多様体つまり曲面のときを考える。$S$の固有値を$\lambda_1, \lambda_2$、それに対応する単位固有ベクトルを$X_1, X_2$とおく。$S$は対称変換なので固有ベクトルは直交する。つまり$g(X_1, X_1) = g(X_2, X_2) = 1, g(X_1, X_2) = 0$である。$K = \lambda_1\lambda_2 = \det S$をガウス曲率という。ガウスの方程式より
+        \begin{align*}
+            R(X_1, X_2)
+            &= SX_1 \wedge S_X_2 = \lambda_1X_1 \wedge \lambda_2X_2\\
+            &= KX_1 \wedge X_2\\
+        \end{align*}
+        断面曲率は
+        \begin{align*}
+            K(\sigma) &= g(R(X_1, X_2)X_2, X_1)\\
+            &= g(K(X_1 \wedge X_2)X_2, X_1)\\
+            &= g(Kg(X_2, X_2)X_1, X_1)\\
+            &= Kg(X_1, X_1)g(X_2, X_2) = K
+        \end{align*}
+        となりガウス曲率に一致する。断面曲率は基底に依らないので、ガウス曲率はリーマン計量によって完全に決定する。
+
+\section{定曲率空間}
+    断面曲率が一定のリーマン多様体を定曲率空間という。
+    \subsection{$n$次元球面}
+        $E^{n+1}$内の半径$r$の$n$次元球面を
+            \[S^n(r) = {x \in E^{n+1} \mid \<x, x\> = r^2}\]
+        と定義する。また$n$次元単位球面を単に$S^n = S^n(1)$と書く。点$p$における接ベクトル$X \in T_p(S^n(r))$、単位法ベクトル$\xi = -p/r$に対して
+            \[D_X\xi = -\frac{X}{r}\]
+        よりシェイプ作用素は
+            \[S = \frac{1}{r}I\]
+        となる。ガウスの方程式より
+        \begin{align*}
+            R(X, Y) = \frac{1}{r^2}X \wedge Y\\
+            K(\sigma) = \frac{1}{r^2}\\
+        \end{align*}
+        となる。
+    \subsection{双曲空間}
+            \[\<x, y\> = \sum_{i=1}^n x^iy^i - x^{n+1}y^{n+1}\]
+        をローレンツ内積と呼ぶ。$R^{n+1}$にローレンツ内積が定義された空間を$n+1$次元ローレンツ空間$L^{n+1}$と呼ぶ。
+            \[{x \in L^{n+1} \mid \<x, x\> = -r^2}\]
+        は$x^{n+1} > 0$と$x^{n+1} < 0$の二つの連結成分を持つ。そこで$n$次元双曲空間を
+            \[H^n(r) = {x \in L^{n+1} \mid \<x, x\> = -r^2, x^{n+1} > 0}\]
+        と定義する。点$p$における接ベクトル$X \in T_p(H^n(r))$、単位法ベクトル$\xi = -p/r$に対して
+            \[D_X\xi = -\frac{X}{r}\]
+        よりシェイプ作用素は
+            \[S = \frac{1}{r}I\]
+        ガウスの方程式より
+        \begin{align*}
+            R(X, Y) = -\frac{1}{r^2}X \wedge Y\\
+            K(\sigma) = -\frac{1}{r^2}\\
+        \end{align*}
+        となる。
+
+    \begin{thm}
+        $M_1, M_2$が同じ曲率を持つ$n$次元定曲率空間であるとする。$x_0 \in M_1$と$T_{x_0}(M_1)$の正規直交基底$\{X_1, X_2, \dots, X_n\}$、$y_0 \in M_2$と$T_{y_0}(M_2)$の正規直交基底$\{Y_1, Y_2, \dots, Y_n\}$に対して、$x_0$の近傍から$y_0$の近傍への等長変換$f$で
+            \[f(x_0) = y_0, df(X_i) = Y_i\]
+        となるものが存在する。
+    \end{thm}
+    \begin{thm}
+        $n$次元局所対称的リーマン多様体$M_1, M_2$に対して、$x_0 \in M_1$の近傍から$y_0 \in M_2$の近傍への等長変換$f$で
+            \[f(x_0) = y_0, df(R_1(X, Y)Z) = R_2(df(X), df(Y))df(Z)\]
+        となるものが存在する。
+    \end{thm}
+    \begin{cor}
+        一定曲率$c$を持つ$n$次元リーマン多様体は
+        \[\begin{case}
+            E^n & (c = 0)\\
+            S^n(r) & (c > 0, r = \frac{1}{\sqrt{c}})\\
+            H^n(r) & (c < 0, r = \frac{1}{-\sqrt{c}})\\
+        \end{case}\]
+        と局所等長的である。
+    \end{cor}
+    \begin{cor}
+        $n$次元定曲率空間の2点$x, y$とその正規直交基底$\{X_1, X_2, \dots, X_n\}, \{Y_1, Y_2, \dots, Y_n\}$に対して、局所等長写像
+            \[f(x) = y, df(X_i) = Y_i\]
+        が存在する。
+    \end{cor}
+    \begin{cor}
+        局所対称的リーマン多様体の2点$x, y$に対して、$x$の近傍から$y$の近傍への等長変換が存在する。
+    \end{cor}
