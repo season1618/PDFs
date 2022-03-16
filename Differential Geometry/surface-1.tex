@@ -138,19 +138,19 @@
         \end{align*}
         となる。ガウス曲率が正の点を楕円点、負の点を双曲点という。また0の点を放物点と呼ぶこともある。
 
-\section{曲面の分類と驚異の定理}
+\section{曲面の方程式}
 
-    曲面を分類する。
-
-    まずChristoffel記号を導入する。
+    まずクリストッフェル記号を導入する。
     \begin{align*}
         [jk,l] &= \frac{1}{2}\(\pd[g_{kl}]{u^j} + \pd[g_{jl}]{u^k} - \pd[g_{jk}]{u^l}\)\\
         \chr{i}{jk} &= \frac{1}{2}g^{ih}\(\pd[g_{jh}]{u^k} + \pd[g_{kh}]{u^j} - \pd[g_{jk}]{u^h}\)
     \end{align*}
-    ここで$[jk,l] = g_{il}\chr{i}{jk}, \chr{i}{jk} = g^{ih}[jk,h]$が成り立っている。$[jk,l], \chr{i}{jk}$をそれぞれ第一種及び第二種のChristoffel記号という。
+    ここで$[jk,l] = g_{il}\chr{i}{jk}, \chr{i}{jk} = g^{ih}[jk,h]$が成り立っている。$[jk,l], \chr{i}{jk}$をそれぞれ第一種及び第二種のクリストッフェル記号という。
 
-    \subsection{Gauss-Weingardenの方程式}
-        Gauss標構$\{B_1,B_2,n\}$をとる。ここで
+    \subsection{ガウス=ワインガルテンの公式}
+        曲線におけるフレネ=セレの公式に当たるものを導出する。
+        
+        ガウス標構$\{B_1, B_2, n\}$をとる。ここで
             \[n = \frac{B_1 \times B_2}{|B_1 \times B_2|} = \frac{B_1 \times B_2}{\sqrt{g_{11}g_{22} - g_{12}^2}}\]
         である。三つのベクトルは線形独立なので、
             \[\pd[B_j]{u^k} = \Gamma_{jk}^iB_i + h_{jk}n\]
@@ -171,55 +171,48 @@
             \[r_k^i = -h_{kl}g^{li}\]
         二つを合わせて
         \begin{align*}
-            \pd[B_j]{u^k} &= \chr{i}{jk}B_i + h_{jk}n \tag{Gaussの方程式}\\
-            \pd[n]{u^k} &= -h_{kl}g^{li}B_i \tag{Weingartenの方程式}
+            \pd[B_j]{u^k} &= \chr{i}{jk}B_i + h_{jk}n \tag{ガウスの公式}\\
+            \pd[n]{u^k} &= -h_{kl}g^{li}B_i \tag{ワインガルテンの公式}
         \end{align*}
 
-
-    \subsection{Gauss-Codazziの積分可能条件}
-        Gauss-Weingartenの方程式は連立一次偏微分方程式である。係数は第一及び第二基本量から求められ、この方程式を解くことで$\{B_1,B_2,n\}$を求めることができる。しかしここで$B_j = \pd[p]{u^j}$なので、求められたガウス標構が実際の曲面と矛盾しないためにはいくつか条件が必要である。具体的には、
+    \subsection{ガウス=コダッチの方程式}
+        ガウス=ワインガルテンの公式の係数は第一及び第二基本量から求められる。この方程式を解くことで求められたガウス標構$\{B_1, B_2, n\}$が実際の曲面と矛盾しないためには以下の条件が必要となる。
         \begin{align*}
             \ppd{p}{u^j}{u^i} &= \pd{p}{u^i}{u^j}\\
             \ppd{B_i}{u^k}{u^j} &= \pd{B_i}{u^j}{u^k}\\
             \ppd{n}{u^j}{u^i} &= \ppd{n}{u^i}{u^j}
         \end{align*}
-        である。第一式に関しては既に成り立っていることがわかる。なぜなら
+        である。第一式に関しては既に成り立っている。なぜなら
             \[\ppd{p}{u^j}{u^i} = \pd[B_i]{u^j} = \chr{h}{ij}B_h + h_{ij}n\]
         は$i,j$に関して対称だからである。次に第二式の条件を求める。
         \begin{align*}
             \ppd{B_i}{u^k}{u^j}
             &= \pd{u^k}\(\chr{h}{ij}B_h + h_{ij}n\)\\
-            &= \pd{u^k}\chr{h}{ij}B_h + \chr{h}{ij}\pd[B_h]{u^k} + \pd[h_{ij}]{u^k}n + h_{ij}\pd[n]{u^k}
-        \end{align*}
-        $\pd[B_h]{u^k}$と$\pd[n]{u^k}$にそれぞれ代入し、
-        \begin{align*}
-            & = \sum_h \pd{u^k}\chr{h}{ij}B_h
-            + \sum_{h,l} \chr{h}{ij}\chr{l}{hk}B_l + \sum_h \chr{h}{ij}h_{hk}n\\
+            &= \pd{u^k}\chr{h}{ij}B_h + \chr{h}{ij}\pd[B_h]{u^k} + \pd[h_{ij}]{u^k}n + h_{ij}\pd[n]{u^k}\\
+            &= \sum_h \pd{u^k}\chr{h}{ij}B_h + \sum_{h,l} \chr{h}{ij}\chr{l}{hk}B_l + \sum_h \chr{h}{ij}h_{hk}n\\
             &\qquad + \pd[h_{ij}]{u^k}n + h_{ij}\sum_{l,h}(-h_{kl}g^{lh}B_h)\\
-        \end{align*}
-        第二項で添え字$h,l$を付け替えると、
-        \begin{align*}
+            \intertext{第二項で添え字$h,l$を入れ替えると}
             &= \llr{\pd{u^k}\chr{h}{ij} + \chr{h}{kl}\chr{l}{ij} - h_{ij}h_{kl}g^{lh}}B_h\\
             &\qquad + \llr{\pd[h_{ij}]{u^k} + \chr{h}{ij}h_{hk}}n\\
         \end{align*}
-        となる。これと$j,k$を入れ替えたものが等しくなる。また$B_h,n$は線形独立なので、
-        \begin{align*}
-            R^h_{ijk} = h_{ik}h_{jl}g^{lh} - h_{ij}h_{kl}g^{lh} \tag{Gaussの積分可能条件}\\
-            \pd[h_{ij}]{u^k} - \pd[h_{ik}]{u^j} + \chr{h}{ij}h_{hk} - \chr{h}{ik}h_{hj} = 0 \tag{Codazziの積分可能条件}
-        \end{align*}
+        となる。これが$j,k$に関して対称となる。$B_h,n$は線形独立なので、
+        \begin{gather*}
+            R^h_{ijk} = h_{ik}h_{jl}g^{lh} - h_{ij}h_{kl}g^{lh} \tag{ガウスの方程式}\\
+            \pd[h_{ij}]{u^k} - \pd[h_{ik}]{u^j} + \chr{h}{ij}h_{hk} - \chr{h}{ik}h_{hj} = 0 \tag{コダッチの方程式}
+        \end{gather*}
         となる。ただし
             \[R^h_{ijk} = \pd{u^j}\chr{h}{ik} - \pd{u^k}\chr{h}{ij} + \chr{l}{ik}\chr{h}{jl} - \chr{l}{ij}\chr{h}{kl}\]
         である。また両辺に$g^{hl}$をかけて縮約を取ったものを、
             \[R_{lijk} = g^{hl}R^h_{ijk} = \pd{u^j}\chr{h}{ik}g^{hl} - \pd{u^k}\chr{h}{ij}g^{hl} + \chr{a}{ik}\chr{h}{ja}g^{hl} - \chr{a}{ij}\chr{h}{ka}g^{hl}\]
-        これらをリーマン曲率テンソルと呼ぶ。リーマン曲率テンソルを用いてGaussの積分可能条件を表すと、
+        これらをリーマン曲率テンソルと呼ぶ。リーマン曲率テンソルを用いてガウスの方程式を表すと、
         \begin{align*}
             g^{ha}R^h_{ijk} &= h_{ik}h_{ja}g^{ah}g^{hl} - h_{ij}h_{ka}g^{ah}g^{hl}\\
             R_{lijk} &= h_{ik}h_{ja}\delta_l^a - h_{ij}h_{ka}\delta_l^a\\
             &= h_{ik}h_{jl} - h_{ij}h_{kl}
         \end{align*}
-        また第三式については、Codazziの積分可能条件と同じものが導かれるので、条件はこれで十分である。よって次の定理が成り立つ。
+        また第三式については、コダッチの方程式と同じものが導かれるため、条件はこれで十分である。よって次の定理が成り立つ。
         \begin{thm}{曲面論の基本定理}
-            対称テンソル$g_{ij}, h_{ij}$が与えられ、$g_{ij}$は正定値であるとする。これらがGauss-Codazziの積分可能条件を満たすとき、これらを第一及び第二基本量とする曲面$p(u,v)$が剛体運動を除いて一意的に存在する。
+            対称テンソル$g_{ij}, h_{ij}$が与えられ、$g_{ij}$は正定値であるとする。これらがガウス=コダッチの方程式を満たすとき、これらを第一及び第二基本量とする曲面$p(u,v)$が剛体運動を除いて一意的に存在する。
         \end{thm}
 
 
@@ -245,8 +238,8 @@
             \[K = -\frac{2\partial\overline{\partial}\log E}{E} = -\frac{\Delta \log E}{2E}\]
         となる。 
        
-\section{Gauss-Bonnetの定理}
-    \begin{thm}{Gauss-Bonnetの定理}
+\section{ガウス=ボネの定理}
+    \begin{thm}{ガウス=ボネの定理}
         $M$をコンパクトな二次元リーマン多様体とする。$K$を$M$のガウス曲率、$k_g$を$\partial M$の測地的曲率とすると、
             \[\int_M KdA + \int_{\partial M} k_gds = 2\pi\chi(M)\]
         ただし$\chi(M)$は$M$のオイラー標数である。
