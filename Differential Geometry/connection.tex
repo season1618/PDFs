@@ -1,14 +1,14 @@
-\part{接続}
+\newpart{接続}
 
 \section{接続}
-	\begin{dfn}{接続}
+	\begin{dfn}[接続]
 		主ファイバー束$P(M, G)$の点$u$における接空間を$T_u(P)$、$u$を通るファイバー$G_u$に接する接ベクトルの作る部分空間を$\mathfrak{g}$とする。$T_u$の部分空間$H_u$が
 		\begin{enumerate}
 			\item $T_u = \mathfrak{g} + H_u$
 			\item $u \in P, a \in G, R_a: u \mapsto ua$に対して$H_{ua} = R_a(H_u)$
 			\item $u \mapsto S_u$は微分可能
 		\end{enumerate}
-		を満たすとき対応$\Gamma: u \maspto H_u$を$P$の接続という。
+		を満たすとき対応$\Gamma: u \mapsto H_u$を$P$の接続という。
 	\end{dfn}
 
 	$k$次微分形式$\alpha: P \rightarrow V$に対して共変外微分を
@@ -30,7 +30,7 @@
 	$a \in G$に対して
 		\[ad(a): x \in \mathfrak{g} \mapsto axa^{-1} \in \mathfrak{g}\]
 	を随伴表現という。
-	\begin{dfn}{接続形式}
+	\begin{dfn}[接続形式]
 		1次微分形式$\omega: T_u(P) \rightarrow \mathfrak{g}$であって、
 		\begin{enumerate}
 			\item $\omega(A*) = A$
@@ -39,7 +39,7 @@
 		を満たすものを接続形式(connection form)と呼ぶ。
 	\end{dfn}
 
-	\begin{dfn}{曲率形式}
+	\begin{dfn}[曲率形式]
 		接続形式$\omega$に対して、その共変外微分
 			\[\Omega = D\omega = d\omega + \omega \wedge \omega\]
 		で定義される2次微分形式$\Omega: T_u(P) \times T_u(P) \rightarrow \mathfrak{g}$を曲率形式(curvature form)と呼ぶ。

@@ -4,11 +4,11 @@
     で与えられる。ただし$F(u(t),\dot{u}(t)) = \sqrt{g_{ij}(u)\dot{u}^i\dot{u}^j}$である。また$ds = Fdt$である。汎関数$s[r(t)]$が極値をとる条件は$F$がEuler-Lagrange方程式を満たすことである。そのような曲線を測地線と呼ぶ。最短線は測地線だが測地線は最短線ではない。まずEuler-Lagrange方程式は、
         \[\de{t}\pd[F]{\dot{u}^i} - \pd[F]{u^i} = 0\]
     で表される。第一項は、
-        \[\pd[F]{\dot{u}^l} = \frac{1}{2F}g_{jk}\left\{\pd[\dot{u}^j]{\dot{u}^l}\dot{u}^k + \dot{u}^j\pd[\dot{u}^k]{\dot{u}^l}\right\}\]
-    $\pd[\dot{u}^j]{\dot{u}^l}$は$j = l$のときに限り1なので、
     \begin{align*}
+        \pd[F]{\dot{u}^l} &= \frac{1}{2F}g_{jk}\left\{\pd[\dot{u}^j]{\dot{u}^l}\dot{u}^k + \dot{u}^j\pd[\dot{u}^k]{\dot{u}^l}\right\}\\
+        \intertext{$\pd[\dot{u}^j]{\dot{u}^l}$は$j = l$のときに限り1なので、}
         &= \frac{1}{2F}\(\sum_k g_{lk}\dot{u}^k + \sum_j g_{jl}\dot{u}^j\)\\
-        &= \frac{1}{F}g_{il}\dot{u}^i = g_{il}\di[u^i]{s}\\
+        &= \frac{1}{F}g_{il}\dot{u}^i = g_{il}\de[u^i]{s}\\
     \end{align*}
     従って
     \begin{align*}
@@ -41,7 +41,7 @@
         \de[v^i]{s} &= -\chr{i}{jk}v^jv^k
     \end{align*}
     と書き換えると、1階の連立常微分方程式となるので、次の定理が導かれる。
-    \begin{thm}{測地線}
+    \begin{thm}[測地線]
         リーマン多様体$M$の任意の点で任意の方向にただ1本の測地線が引ける。
     \end{thm}
 
@@ -57,14 +57,14 @@
             \[\pd[^2F]{\dot{u}^2} : \ppd{F}{\dot{u}}{\dot{v}} : \pd[^2F]{\dot{v}^2} = \dot{v}^2 : -\dot{u}\dot{v} : \dot{u}^2\]
         となる。比例因子を$c$として
         \begin{align*}
-            \pd[^2F]{\dot{u}^2} = c\dot{v}^2\\
+            \pd[^2F]{\dot{u}^2} &= c\dot{v}^2\\
             \ppd{F}{\dot{u}}{\dot{v}} &= -c\dot{u}\dot{v}\\
-            \pd[^2F]{\dot{v}^2} = c\dot{u}^2\\
+            \pd[^2F]{\dot{v}^2} &= c\dot{u}^2\\
         \end{align*}
         また
         \begin{align*}
-            \pd[F]{\dot{u}} = \frac{g_{11}\dot{u} + g_{12}\dot{v}}{F}\\
-            \pd[F]{\dot{v}} = \frac{g_{21}\dot{u} + g_{22}\dot{v}}{F}\\
+            \pd[F]{\dot{u}} &= \frac{g_{11}\dot{u} + g_{12}\dot{v}}{F}\\
+            \pd[F]{\dot{v}} &= \frac{g_{21}\dot{u} + g_{22}\dot{v}}{F}\\
         \end{align*}
         なので
         \begin{align*}
@@ -75,11 +75,11 @@
         \end{align*}
         これをEuler-Lagrange方程式に代入すると
         \begin{align*}
-            F_{u} - \de{t}F{\dot{u}} = \dot{v}T
-            F_{v} - \de{t}F{\dot{v}} = -\dot{u}T
+            F_{u} - \de{t}F{\dot{u}} &= \dot{v}T
+            F_{v} - \de{t}F{\dot{v}} &= -\dot{u}T
         \end{align*}
         ただし
             \[T = F_{u\dot{v}} - F_{\dot{u}v} + c(\dot{u}\ddot{v} - \dot{v}\ddot{u})\]
         従って曲面の場合、測地線の方程式は$T = 0$と同値である。これをWeierstrassの表現という。
             
-\section{極小曲面}
+% \section{極小曲面}

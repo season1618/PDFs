@@ -70,8 +70,8 @@
             &= h_{ik}h_{jl} - h_{ij}h_{kl}
         \end{align*}
         また第三式については、コダッチの方程式と同じものが導かれるため、条件はこれで十分である。よって次の定理が成り立つ。
-        \begin{thm}{曲面論の基本定理}
-            対称テンソル$g_{ij}, h_{ij}$が与えられ、$g_{ij}$は正定値であるとする。これらがガウス=コダッチの方程式を満たすとき、これらを第一及び第二基本量とする曲面$p(u,v)$が剛体運動を除いて一意的に存在する。
+        \begin{thm}[曲面論の基本定理]
+            対称テンソル$g_{ij}, h_{ij}$が与えられ、$g_{ij}$は正定値であるとする。これらがガウス=コダッチの方程式を満たすとき、これらを第一及び第二基本量とする曲面$p(u,v)$が合同変換を除いて一意に存在する。
         \end{thm}
 
     \subsection{驚異の定理}
@@ -82,19 +82,19 @@
         となる。曲面のガウス曲率を第一基本テンソルだけから求めることができる。これを驚異の定理(Theorem Egregium)という。元々外在的な量から定義されたガウス曲率が、内在的な量のみから決定できることが示された。外界の情報を用いることなく空間の曲がり方を考察することができることを示唆している。
 
 
-    \paragraph{等長写像}
-        二つの曲面が距離を保ったまま変形できるとき、等長的であると言い、そのような写像を等長写像という。等長的な二つの曲面は、伸縮せずに折り曲げることで変形できる。折り紙は平面と等長的な曲面(可展面)を作る遊びである(ウェットフォールディングをする場合はこの限りではない)。等長変換によって第一基本形式およびガウス曲率は不変である。対偶を取ると、ガウス曲率の一致しない曲面は等長的でない。平面のガウス曲率は任意の点で0であり、半径$r$の球面では$\frac{1}{r^2}$なので、球面を歪ませることなく平面に展開することはできない。つまり地球の正確な平面図を作成することは不可能である。
-    \paragraph{共形写像}
-        始点が同じ任意の二つのベクトルの成す角を保存する写像を共形写像(等角写像)という。
-    \paragraph{等温座標}
-        パラメータ$(u,v)$から平面への共形写像が存在するとき、$(u,v)$を等温座標という。これは第一基本形式が$ds^2 = E(du^2 + dv^2)$となることと同値である。複素数$z = u + iv$を使えば、$ds^2 = E|dz|^2$とも書ける。曲面上の任意の点で局所的には等温座標が存在することが証明できる。ここで、
-        \begin{align*}
-            \partial = \pd{z} = \frac{1}{2}\(\pd{u} - i\pd{v}\)\\
-            \overline{\partial} = \pd{\overline{z}} = \frac{1}{2}\lr{\pd[]{u}+i\pd[]{v}}
-        \end{align*}
-        とするとガウス曲率は、
-            \[K = -\frac{2\partial\overline{\partial}\log E}{E} = -\frac{\Delta \log E}{2E}\]
-        となる。 
+    % \paragraph{等長写像}
+    %     二つの曲面が距離を保ったまま変形できるとき、等長的であると言い、そのような写像を等長写像という。等長的な二つの曲面は、伸縮せずに折り曲げることで変形できる。折り紙は平面と等長的な曲面(可展面)を作る遊びである(ウェットフォールディングをする場合はこの限りではない)。等長変換によって第一基本形式およびガウス曲率は不変である。対偶を取ると、ガウス曲率の一致しない曲面は等長的でない。平面のガウス曲率は任意の点で0であり、半径$r$の球面では$1/r^2$なので、球面を歪ませることなく平面に展開することはできない。つまり地球の正確な平面図を作成することは不可能である。
+    % \paragraph{共形写像}
+    %     始点が同じ任意の二つのベクトルの成す角を保存する写像を共形写像(等角写像)という。
+    % \paragraph{等温座標}
+    %     パラメータ$(u,v)$から平面への共形写像が存在するとき、$(u,v)$を等温座標という。これは第一基本形式が$ds^2 = E(du^2 + dv^2)$となることと同値である。複素数$z = u + iv$を使えば、$ds^2 = E|dz|^2$とも書ける。曲面上の任意の点で局所的には等温座標が存在することが証明できる。ここで、
+    %     \begin{align*}
+    %         \partial = \pd{z} = \frac{1}{2}\(\pd{u} - i\pd{v}\)\\
+    %         \overline{\partial} = \pd{\overline{z}} = \frac{1}{2}\lr{\pd[]{u}+i\pd[]{v}}
+    %     \end{align*}
+    %     とするとガウス曲率は、
+    %         \[K = -\frac{2\partial\overline{\partial}\log E}{E} = -\frac{\Delta \log E}{2E}\]
+    %     となる。 
 
 \section{曲面の方程式(正規直交枠)}
     \subsection{構造方程式}
@@ -122,9 +122,9 @@
             de_2 &= \omega^1_2e_1 + \omega^2_2e_2 + \omega^3_2e_3\\
             de_3 &= \omega^1_3e_1 + \omega^2_3e_2 + \omega^3_3e_3\\
         \end{align*}
-        と表すことができる。$\omega^i_j$は1次微分形式である。$e_i \cdot e_j = \delta_{ij}$を微分して
+        と表すことができる。$\omega_i^j$は1次微分形式である。$e_i \cdot e_j = \delta_{ij}$を微分して
             \[de_i \cdot e_j + e_i \cdot de_j = 0\]
-        なので$\omega^i_j + \omega^j_i = 0$であり、特に$\omega^i_i = 0$である。これを用いると第二基本形式は
+        なので$\omega_i^j + \omega_j^i = 0$であり、特に$\omega_i^i = 0$である。これを用いると第二基本形式は
         \begin{align*}
             II &= -dp \cdot de_3\\
             &= - (\theta^1e_1 + \theta^2e_2) \cdot (\omega^1_3e_1 + \omega^2_3e_2)\\
@@ -143,7 +143,9 @@
             K &= \det B = b_{11}b_{22} - b_{12}^2\\
             2H &= \tr B = b_{11} + b_{22}\\
         \end{align*}
+        となる。
 
+        次に
             \[dp = \theta^1e_1 + \theta^2e_2\]
         の両辺の外微分を取ると
         \begin{align*}
@@ -167,7 +169,7 @@
         \end{align*}
         成分ごとに比較すると
             \[d\omega^j_i = \sum_k \omega^k_i \wedge \omega^j_k\]
-        である。これを構造方程式という。$d\omega^1_2$は
+        である。これを第二構造式という。$d\omega^1_2$は
         \begin{align*}
             d\omega^1_2 &= \sum_k \omega^k_2 \wedge \omega^1_k\\
             &= \omega^3_2 \wedge \omega^1_3\\
@@ -189,11 +191,8 @@
         % \end{align*}
 
     \subsection{ガウス=ボネの定理}
-        平面の領域$D$上の正規直交基底を$\{e_1, e_2\}$、双対基底を$\{\theta^1, \theta^2\}$とする。第一基本形式$I = \theta^1\theta^1 + \theta^2\theta^2$が与えられている。構造方程式
-        \begin{gather*}
-            d\theta1 = -\omega^1_2 \wedge \theta^2, d\theta^2 = -\omega^2_1 \wedge \theta^1\
-            d\omega^1_2 = K\theta^1 \wedge \theta^2\\
-        \end{gather*}
+        平面の領域$D$上の正規直交基底を$\{e_1, e_2\}$、双対基底を$\{\theta^1, \theta^2\}$とする。第一基本形式$I = \theta^1\theta^1 + \theta^2\theta^2$が与えられている。
+
         $A \subset D$を考える。$\partial A$は滑らかな曲線$\alpha_1, \dots, \alpha_n$を繋いだものであり、$\alpha_i$から$\alpha_{i+1}$に移るときの内角と外角を$\tau_i, \epsilon_i(\tau_i + \epsilon_i = \pi)$とする。$\partial A$を弧長パラメータを用いて$\alpha(s)$と表すことにする。
             \[\frac{\alpha'(s)}{|\alpha'(s)|} = \cos\phi(s)e_1 + \sin\phi(s)e_2\]
         とおくと
@@ -205,8 +204,9 @@
         \end{align*}
         測地的曲率$k_g$は
         \begin{align*}
-            k_g &= |\alpha''(s)| = \sqrt{\sin^2\phi(s)\(\(\de[\phi]{s}\)^2 - 2\de[\phi]{s}\frac{\omega^1_2}{ds} + \(\frac{\omega^1_2}{ds}\)^2\) + \cos^2\phi(s)\(\(\de[\phi]{s}\)^2 + 2\de[\phi]{s}\frac{\omega^2_1}{ds} + \(\frac{\omega^2_1}{ds}\)^2\)}\\
-            &= \sqrt{\(\de[\phi]{s}\)^2 - 2\de[\phi]{s}\frac{\omega^1_2}{ds} + \frac{\omega^1_2}{ds}\)^2}\\
+            k_g &= |\alpha''(s)|\\
+            &= \sqrt{\sin^2\phi(s)\(\(\de[\phi]{s}\)^2 - 2\de[\phi]{s}\frac{\omega^1_2}{ds} + \(\frac{\omega^1_2}{ds}\)^2\) + \cos^2\phi(s)\(\(\de[\phi]{s}\)^2 + 2\de[\phi]{s}\frac{\omega^2_1}{ds} + \(\frac{\omega^2_1}{ds}\)^2\)}\\
+            &= \sqrt{\(\de[\phi]{s}\)^2 - 2\de[\phi]{s}\frac{\omega^1_2}{ds} + \(\frac{\omega^1_2}{ds}\)^2}\\
             &= \de[\phi]{s} - \frac{\omega^1_2}{ds}\\
             k_gds &= d\phi - \omega^1_2
         \end{align*}
@@ -234,5 +234,5 @@
             \int_S K\theta^1 \wedge \theta^2 &= (2v - f)\pi\\
         \end{align*}
         ここで$2e = 3f$だから、$2v - f = 2v - 3f + 2f = 2(v - e + f)$より
-            \[\int_S K\theta^1 \wedge \theta^2 &= 2\pi(v - e + f)\]
+            \[\int_S K\theta^1 \wedge \theta^2 = 2\pi(v - e + f)\]
         となる。これをガウス=ボネの定理という。閉曲面$S$が与えられたとき、左辺はリーマン計量のみに依存し、右辺は三角形分割のみに依存する。よって両辺ともにリーマン計量にも三角形分割にも依存しない。特に右辺に関して、$\chi(S) = v - e + f$と書くことができる。これを曲面のオイラー標数という。

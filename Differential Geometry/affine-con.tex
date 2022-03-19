@@ -1,7 +1,7 @@
-\part{アフィン接続}
+\newpart{アフィン接続}
 
 \section{アフィン接続}
-	\begin{dfn}{接$n$枠束(frame bundle)}
+	\begin{dfn}[接$n$枠束(frame bundle)]
 		$n$次元多様体$M$の点$p$における接$n$枠とは、接空間$T_p(M)$の基底のことである。$M$の全ての点における接$n$枠の全体を$L(M)$と書く。点$p$における接$n$枠を$u = (X_1, X_2, \dots, X_n)$としたとき、射影を
 			\[\pi: u \in L(M) \mapsto p \in M\]
 		によって定義する。$a \in GL(n, \R)$に対して
@@ -19,7 +19,7 @@
 	ユークリッド空間の点$p$において、$X(p)$に沿ったベクトル場$Y$の方向微分とは
 		\[D_XY(p) = \lim_{t \to 0} \frac{Y(p + X(p)t) - Y(p)}{t}\]
 	である。$X(c(t)) = \dot{c}(t)$なる$M$上の曲線$c(t)(a \leq t \leq b)$が存在し、この曲線上において方向微分が常に0となるとき、ベクトル場$Y$は曲線に沿って平行であるという。座標に依存しない形式で方向微分を拡張し、平行を定義する。一般に二点における接ベクトルが平行かどうかは経路に依存する。
-	\begin{dfn}{共変微分}
+	\begin{dfn}[共変微分]
 		写像$\nabla: (X, Y) \in \mathfrak{X} \times \mathfrak{X} \mapsto \nabla_XY \in \mathfrak{X}$が以下の条件を満たすとき共変微分という。
 		\begin{enumerate}
 			\item $\nabla_X(Y_1 + Y_2) = \nabla_XY_1 + \nabla_XY_2$
@@ -62,7 +62,7 @@
 	を満たすものがただ一つ存在する。これを$f$に沿う共変微分という。
 
 \section{曲率と捩率}
-	\begin{dfn}{標準形式}
+	\begin{dfn}[標準形式]
 		1次微分形式$\theta: T_u(P) \rightarrow \R^n$であって、$u \in P, X \in T_u(P)$に対して
 			\[\theta(X) = u^{-1}(d\pi(X))\]
 		となるものを標準形式(solder form)と呼ぶ。
@@ -71,14 +71,14 @@
 	% 	\[\theta(X) = (a_1, a_2, \dots, a_n)\]
 	% となる。$\theta^i(e_j) = \delta^i_j$だから$\{\theta^i\}$は双対基底となる。
 
-	\begin{dfn}{捩率形式}
+	\begin{dfn}[捩率形式]
 		標準形式の共変外微分
 			\[\Theta = D\theta = d\theta + \omega \wedge \theta\]
 		で定義される2次微分形式$\Theta: T_u(P) \times T_u(P) \rightarrow \R^n$を捩率形式(torsion form)と呼ぶ。
 	\end{dfn}
 
 	アフィン接続の不変量として曲率と捩率がある。
-	\begin{dfn}{曲率テンソル}
+	\begin{dfn}[曲率テンソル]
 		$u \in P$、ベクトル場$X, Y, Z$に対して$(1, 3)$型テンソル場
 			\[R(X, Y)Z = u(2\Omega(\pi^{-1}(X), \pi^{-1}(Y))(u^{-1}(Z)))\]
 		を曲率テンソル場という。曲率テンソルまたは単に曲率ともいう。
@@ -103,7 +103,9 @@
 		R(X, Y)(fZ)
 		&= \nabla_X\nabla_Y(fZ) - \nabla_Y\nabla_X(fZ) - \nabla_[X, Y](fZ)\\
 		&= \nabla_X(YfZ + f\nabla_YZ) - \nabla_Y(XfZ + f\nabla_XZ) - ([X, Y]fZ + f\nabla_[X, Y]Z)\\
-		&= (XYfZ + Yf\nabla_XZ + Xf\nabla_YZ + f\nabla_X\nabla_YZ) - (YXfZ + Xf\nabla_YZ + Yf\nabla_XZ + f\nabla_Y\nabla_XZ) - ([X, Y]fZ + f\nabla_[X, Y]Z)\\
+		&= (XYfZ + Yf\nabla_XZ + Xf\nabla_YZ + f\nabla_X\nabla_YZ)\\
+		- (YXfZ + Xf\nabla_YZ + Yf\nabla_XZ + f\nabla_Y\nabla_XZ)\\
+		- ([X, Y]fZ + f\nabla_[X, Y]Z)\\
 		&= fR(X, Y)Z
 	\end{align*}
 	だから、$R(X, Y)Z$は多重線形写像つまりテンソルである。

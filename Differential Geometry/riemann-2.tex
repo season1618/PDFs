@@ -99,22 +99,22 @@
             \nabla_XS(Y) = \nabla_YS(X) \tag{コダッチの方程式}\\
         \end{gather*}
         ガウス=コダッチの方程式はリーマン計量によって定まる曲率テンソルとシェイプ作用素が満足すべき条件を示す。実際次の定理が成り立つ。
-        \begin{thm}{超曲面の基本定理}
+        \begin{thm}[超曲面の基本定理]
             単連結なリーマン多様体$(M, g)$上で$(1, 1)$型テンソル場$S$が$g$のレヴィ=チヴィタ接続に関してコダッチの方程式を満たすとき、$M$から$E^{n+1}$への等長的なはめ込みが合同変換を除いて一意的に存在する。
         \end{thm}
 
     \subsection{驚異の定理}
 
         $M$が$E^3$の2次元リーマン多様体つまり曲面のときを考える。$S$の固有値を$\lambda_1, \lambda_2$、それに対応する単位固有ベクトルを$X_1, X_2$とおく。ここで$S$は対称変換である。つまり
-        \begin{align*}
-            h(X_1, X_2) &= g(AX_1, X_2) = \lambda_1g(X_1, X_2)\\
-            h(X_1, X_2) &= g(X_1, AX_2) = \lambda_2g(X_1, X_2)\\
+        \begin{gather*}
+            h(X_1, X_2) = g(AX_1, X_2) = \lambda_1g(X_1, X_2)\\
+            h(X_1, X_2) = g(X_1, AX_2) = \lambda_2g(X_1, X_2)\\
             (\lambda_2 - \lambda_1)g(X_1, X_2) = 0\\
-        \end{align*}
+        \end{gather*}
         なので、異なる固有値に属する固有ベクトルは直交する。固有値が縮退する場合も直交する固有ベクトルを取ることができる。つまり$g(X_1, X_1) = g(X_2, X_2) = 1, g(X_1, X_2) = 0$である。$K = \lambda_1\lambda_2 = \det S$をガウス曲率という。ガウスの方程式より
         \begin{align*}
             R(X_1, X_2)
-            &= SX_1 \wedge S_X_2 = \lambda_1X_1 \wedge \lambda_2X_2\\
+            &= SX_1 \wedge SX_2 = \lambda_1X_1 \wedge \lambda_2X_2\\
             &= KX_1 \wedge X_2\\
         \end{align*}
         断面曲率は
@@ -145,17 +145,17 @@
     \subsection{双曲空間}
             \[\<x, y\> = \sum_{i=1}^n x^iy^i - x^{n+1}y^{n+1}\]
         をローレンツ内積と呼ぶ。$R^{n+1}$にローレンツ内積が定義された空間を$n+1$次元ローレンツ空間$L^{n+1}$と呼ぶ。
-            \[{x \in L^{n+1} \mid \<x, x\> = -r^2}\]
+            \[\{x \in L^{n+1} \mid \<x, x\> = -r^2\}\]
         は$x^{n+1} > 0$と$x^{n+1} < 0$の二つの連結成分を持つ。そこで$n$次元双曲空間を
-            \[H^n(r) = {x \in L^{n+1} \mid \<x, x\> = -r^2, x^{n+1} > 0}\]
+            \[H^n(r) = \{x \in L^{n+1} \mid \<x, x\> = -r^2, x^{n+1} > 0\}\]
         と定義する。点$p$における接ベクトル$X \in T_p(H^n(r))$、単位法ベクトル$\xi = -p/r$に対して
             \[D_X\xi = -\frac{X}{r}\]
         よりシェイプ作用素は
             \[S = \frac{1}{r}I\]
         ガウスの方程式より
         \begin{align*}
-            R(X, Y) = -\frac{1}{r^2}X \wedge Y\\
-            K(\sigma) = -\frac{1}{r^2}\\
+            R(X, Y) &= -\frac{1}{r^2}X \wedge Y\\
+            K(\sigma) &= -\frac{1}{r^2}\\
         \end{align*}
         となる。
 
@@ -171,11 +171,11 @@
     \end{thm}
     \begin{cor}
         一定曲率$c$を持つ$n$次元リーマン多様体は
-        \[\begin{case}
+        \[\begin{cases}
             E^n & (c = 0)\\
             S^n(r) & (c > 0, r = \frac{1}{\sqrt{c}})\\
             H^n(r) & (c < 0, r = \frac{1}{-\sqrt{c}})\\
-        \end{case}\]
+        \end{cases}\]
         のいずれかと局所等長的である。
     \end{cor}
     \begin{cor}

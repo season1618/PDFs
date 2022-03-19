@@ -1,9 +1,9 @@
-\part{リーマン幾何学}
+\newpart{リーマン幾何学}
 
 リーマン多様体または擬リーマン多様体に関する微分幾何学をリーマン幾何学という。
 
 \section{リーマン計量}
-    \begin{dfn}{リーマン計量}
+    \begin{dfn}[リーマン計量]
         $n$次元可微分多様体$M$に関して、$(0, 2)$型テンソル
             \[g: \mathfrak{X}(M) \times \mathfrak{X}(M) \rightarrow \mathfrak{F}\]
         が
@@ -16,30 +16,29 @@
     余接束の双対基底$\{dx^1, dx^2, \dots, dx^n\}$を用いて
         \[g = \sum_{i,j} g_{ij}dx^i \otimes dx^j\]
     と書くこともできる。つまり
-        \[g_{ij} = g(\pd{x^i}, \pd{x^j})\]
+        \[g_{ij} = g\(\pd{x^i}, \pd{x^j}\)\]
     である。また内積を持つベクトル空間$V$に対して
         \[X \wedge Y: Z \in V \mapsto g(Y, Z)X - g(X, Z)Y \in V\]
     と定義する。
-    \begin{dfn}{リーマン多様体}
+    \begin{dfn}[リーマン多様体]
         $(M, g)$をリーマン多様体と呼ぶ。
     \end{dfn}
 
-    \begin{dfn}{等長写像}
+    \begin{dfn}[等長写像]
         リーマン多様体$(M_1, g_1), (M_2, g_2)$の間の写像$f: M_1 \rightarrow M_2$であって
             \[g_1(X, Y) = g_2(df(X), df(Y))\]
         を満たすものを等長写像という。全単射な等長写像を等長変換という。
     \end{dfn}
 
 \section{レヴィ=チヴィタ接続}
-    \begin{dfn}{レヴィ=チヴィタ接続(リーマン接続)，リーマン幾何学の基本定理}
+    \begin{dfn}[レヴィ=チヴィタ接続(リーマン接続)，リーマン幾何学の基本定理]
         リーマン多様体$(M, g)$について、捩れのない計量接続(計量テンソルを保存する接続)がただ一つ存在する。これをレヴィ=チヴィタ接続またはリーマン接続という。
         \begin{enumerate}
-            \item $T(X, Y) = \nabra_XY - \nabra_YX - [X, Y] = 0$
-            \item $\nabla_Xg(Y, Z) = Xg(Y, Z) - g(\nabra_XY, Z) - g(Y, \nabra_XZ) = 0$
+            \item $T(X, Y) = \nabla_XY - \nabla_YX - [X, Y] = 0$
+            \item $\nabla_Xg(Y, Z) = Xg(Y, Z) - g(\nabla_XY, Z) - g(Y, \nabla_XZ) = 0$
         \end{enumerate}
     \end{dfn}
-
-    レヴィ=チヴィタ接続の条件より、接続係数をリーマン計量で表すことができる。第一式の成分表示より
+    レヴィ=チヴィタ接続の条件より、接続係数をリーマン計量で表すことができる。第一式より
         \[\Gamma^k_{ij} = \Gamma^k_{ji}\]
     第二式で$X = \pd{x^i}, Y = \pd{x^j}, Z = \pd{x^k}$として
     \begin{align*}
@@ -141,33 +140,33 @@
         \end{gather*}
         となる。
 
-        共変微分のヤコビ恒等式や曲率テンソルの接続係数による表示から導出することもできる。
-        \begin{align*}
-            [\nabla_i, \nabla_j]\(X^k\pd{x^k}\)
-            &= R\(\pd{x^i}, \pd{x^j}\)\(X^k\pd{x^k}\)\\
-            &= R\(\pd{x^i}, \pd{x^j}\)\pd{x^k} = \sum_l R^l_{kij}\pd{x^l}\\
-        \end{align*}
-        だから
-        \begin{align*} 
-            \nabla_i[\nabla_j, \nabla_k]\(X^l\pd{x^l}\)
-            &= \nabla_i\(X^l\sum_h R^h_{ljk}\pd{x^h}\)\\
-            &= \sum_h \(\pd[X^l]{x^i}R^h_{ljk} + X^l\pd[R^h_{ljk}]{x^i}\)\pd{x^h} + \sum_h X^lR^h_{ljk}\nabla_i\pd{x^h}\\
-        \end{align*}
-        となる。また
-        \begin{align*}
-            [\nabla_j, \nabla_k]\nabla_i\(X^l\pd{x^l}\)
-            &= \pd[X^l]{x^i}[\nabla_j, \nabla_k]\pd{x^l}\\
-            &= \pd[X^l]{x^i}\sum_h R^h_{ljk}\pd{x^h}
-            \nabla_j\nabla_k\nabla_i\pd{x^l} - \nabla_k\nabla_j\nabla_i\pd{x^l}
-            \nabla_j[\nabla_k, \nabla_i]\pd{x^l} + \nabla_j\nabla_i\nabla_k\pd{x^l} - \nabla_k[\nabla_j, \nabla_i]\pd{x^l} - \nabla_k\nabla_i\nabla_j\pd{x^l}
+        % 共変微分のヤコビ恒等式や曲率テンソルの接続係数による表示から導出することもできる。
+        % \begin{align*}
+        %     [\nabla_i, \nabla_j]\(X^k\pd{x^k}\)
+        %     &= R\(\pd{x^i}, \pd{x^j}\)\(X^k\pd{x^k}\)\\
+        %     &= R\(\pd{x^i}, \pd{x^j}\)\pd{x^k} = \sum_l R^l_{kij}\pd{x^l}\\
+        % \end{align*}
+        % だから
+        % \begin{align*} 
+        %     \nabla_i[\nabla_j, \nabla_k]\(X^l\pd{x^l}\)
+        %     &= \nabla_i\(X^l\sum_h R^h_{ljk}\pd{x^h}\)\\
+        %     &= \sum_h \(\pd[X^l]{x^i}R^h_{ljk} + X^l\pd[R^h_{ljk}]{x^i}\)\pd{x^h} + \sum_h X^lR^h_{ljk}\nabla_i\pd{x^h}\\
+        % \end{align*}
+        % となる。また
+        % \begin{align*}
+        %     [\nabla_j, \nabla_k]\nabla_i\(X^l\pd{x^l}\)
+        %     &= \pd[X^l]{x^i}[\nabla_j, \nabla_k]\pd{x^l}\\
+        %     &= \pd[X^l]{x^i}\sum_h R^h_{ljk}\pd{x^h}
+        %     \nabla_j\nabla_k\nabla_i\pd{x^l} - \nabla_k\nabla_j\nabla_i\pd{x^l}
+        %     \nabla_j[\nabla_k, \nabla_i]\pd{x^l} + \nabla_j\nabla_i\nabla_k\pd{x^l} - \nabla_k[\nabla_j, \nabla_i]\pd{x^l} - \nabla_k\nabla_i\nabla_j\pd{x^l}
 
-            [\nabla_i, [\nabla_j, \nabla_k]]\(X^l\pd{x^l}\)
-        \end{align*}
-        \begin{gather*}
-            R^l_{ijk} + R^l_{jki} + R^l_{kij} = 0\\
-            \nabla_mR^i{jkl} + \nabla_kR^i_{jlm} + \nabla_lR^i_{jmk} = 0\\
-        \end{gather*}
-        となる。
+        %     [\nabla_i, [\nabla_j, \nabla_k]]\(X^l\pd{x^l}\)
+        % \end{align*}
+        % \begin{gather*}
+        %     R^l_{ijk} + R^l_{jki} + R^l_{kij} = 0\\
+        %     \nabla_mR^i{jkl} + \nabla_kR^i_{jlm} + \nabla_lR^i_{jmk} = 0\\
+        % \end{gather*}
+        % となる。
 
         ビアンキの第二恒等式を変形する。
             \[\nabla_kR^h_{ilj} - \nabla_jR^h_{ilk} + \nabla_lR^h_{ijk} = 0\]
@@ -193,22 +192,23 @@
 
         $T_p(M)$の2次元部分空間$\sigma$を平面または平面切り口という。$\sigma$の基底$\{X, Y\}$を取ると、シュワルツの不等式より$g(X, X)g(Y, Y) - g(X, Y)^2 > 0$となる。そこで$\sigma$の断面曲率を
             \[K(\sigma) = \frac{g(R(X, Y)Y, X)}{g(X, X)g(Y, Y) - g(X, Y)^2}\]
-        と定義する。$K(\sigma)$が基底に依らないことを示す。$ad - bc \neq 0$なる$a,b,c,d$を取って
-            \[X' = aX + bY, Y' = cX + dY\]
-        とする。
-        \begin{align*}
-            g(R(X', Y')Y', X')
-            &= g(R(aX + bY, cX + dY)(cX + dY), aX + bY)\\
-            &= g((adR(X, Y) + bcR(Y, X))(cX + dY), aX + bY)\\
-            &= (ad - bc)g(R(X, Y)(cX + dY), aX + bY)\\
-            &= (ad - bc)g(cR(X, Y)X + dR(X, Y)Y, aX + bY)\\
-
-            \bmat{g(X', X') & g(X', Y')\\ g(Y', X') & g(Y', Y')}
-            &= \bmat{a^2g(X, X) + 2abg(X, Y) + b^2g(Y, Y) & acg(X, X) + (ad + bc)g(X, Y) + bdg(Y, Y)\\ acg(X, X) + (ad + bc)g(X, Y) + bdg(Y, Y) & c^2g(X, X) + 2cdg(X, Y) + d^2g(Y, Y)}\\
-            &= \bmat{a & c\\ b & d}\bmat{g(X, X) & g(X, Y)\\ g(Y, X) & g(Y, Y)}\bmat{a & b\\ c & d}
-            g(X', X')g(Y', Y') - g(X', Y')^2 = (ad - bc)^2(g(X, X)g(Y, Y) - g(X, Y)^2)
-        \end{align*}
-        より示された。正規直交基底$\{X, Y\}$を取れば
+        と定義する。
+        % $K(\sigma)$が基底に依らないことを示す。$ad - bc \neq 0$なる$a,b,c,d$を取って
+        %     \[X' = aX + bY, Y' = cX + dY\]
+        % とする。
+        % \begin{align*}
+        %     g(R(X', Y')Y', X')
+        %     &= g(R(aX + bY, cX + dY)(cX + dY), aX + bY)\\
+        %     &= g((adR(X, Y) + bcR(Y, X))(cX + dY), aX + bY)\\
+        %     &= (ad - bc)g(R(X, Y)(cX + dY), aX + bY)\\
+        %     &= (ad - bc)g(cR(X, Y)X + dR(X, Y)Y, aX + bY)\\
+        %     \bmat{g(X', X') & g(X', Y')\\ g(Y', X') & g(Y', Y')}
+        %     &= \bmat{a^2g(X, X) + 2abg(X, Y) + b^2g(Y, Y) & acg(X, X) + (ad + bc)g(X, Y) + bdg(Y, Y)\\ acg(X, X) + (ad + bc)g(X, Y) + bdg(Y, Y) & c^2g(X, X) + 2cdg(X, Y) + d^2g(Y, Y)}\\
+        %     &= \bmat{a & c\\ b & d}\bmat{g(X, X) & g(X, Y)\\ g(Y, X) & g(Y, Y)}\bmat{a & b\\ c & d}
+        %     g(X', X')g(Y', Y') - g(X', Y')^2 = (ad - bc)^2(g(X, X)g(Y, Y) - g(X, Y)^2)
+        % \end{align*}
+        % より示された。
+        正規直交基底$\{X, Y\}$を取れば
             \[K(\sigma) = g(R(X, Y)Y, X)\]
         である。
         \begin{thm}
@@ -218,7 +218,7 @@
                 \item $R(X, Y) = cX \wedge Y$
             \end{itemize}
         \end{thm}
-        \begin{thm}{シューアの定理}
+        \begin{thm}[シューアの定理]
             $n(\geq 3)$次元の連結リーマン多様体$M$の各点で$K(\sigma)$が定数なら、$M$全体で$K(\sigma)$は定数
         \end{thm}
 
