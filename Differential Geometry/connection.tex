@@ -1,51 +1,99 @@
+\part{接続}
+
 \section{接続}
+	\begin{dfn}{接続}
+		主ファイバー束$P(M, G)$の点$u$における接空間を$T_u(P)$、$u$を通るファイバー$G_u$に接する接ベクトルの作る部分空間を$\mathfrak{g}$とする。$T_u$の部分空間$H_u$が
+		\begin{enumerate}
+			\item $T_u = \mathfrak{g} + H_u$
+			\item $u \in P, a \in G, R_a: u \mapsto ua$に対して$H_{ua} = R_a(H_u)$
+			\item $u \mapsto S_u$は微分可能
+		\end{enumerate}
+		を満たすとき対応$\Gamma: u \maspto H_u$を$P$の接続という。
+	\end{dfn}
 
-\begin{dfn}{接続}
-	主ファイバー束$P(M, G)$の点$u$における接空間を$T_u(P)$、$u$を通るファイバー$G_u$に接する接ベクトルの作る部分空間を$\mathfrak{g}$とする。$T_u$の部分空間$S_u$が
-	\begin{enumerate}
-		\item $T_u = \mathfrak{g} + S_u$
-		\item $u \in P, a \in G, R_a: u \mapsto ua$に対して$S_{ua} = R_a(S_u)$
-		\item $u \mapsto S_u$は微分可能
-	\end{enumerate}
-	を満たすとき対応$\Gamma: u \maspto S_u$を$P$の接続という。
-\end{dfn}
+	$k$次微分形式$\alpha: P \rightarrow V$に対して共変外微分を
+		\[D\alpha(X_1, \ldots, X_{k+1}) = (d\alpha)(hX_1, \ldots, hX_{k+1})\]
+	と定義する。共変外微分について
+	\begin{gather*}
+		D(fv) = v \otimes df + fDv\\
+		D(\alpha \wedge \beta) = D\alpha \wedge \beta + (-1)^{\deg\alpha}\alpha \wedge d\beta\\
+	\end{gather*}
+	が成り立つ。
 
-$k$次微分形式$\alpha$に対して共変外微分を
-	\[D\alpha(X_1, \ldots, X_{k+1}) = (d\alpha)(hX_1, \ldots, hX_{k+1})\]
-とする。
+\section{接続形式}
+		\[L_a: x \mapsto ax\]
+	を左移動という。$G$上のベクトル場$X$が任意の$a, x \in G$に対して$L_aX_x = X_{ax}$を満たすとき、左不変と呼ぶ。$G$上の左不変なベクトル場全体$\mathfrak{g}$をリー環と呼ぶ。任意の$A \in T_e(G)$に対して
+		\[X_x = dL_x(A)\]
+	と定義すると、$X \in \mathfrak{g}$となる。
 
-接空間の基底を標構と呼ぶ。標構$\{e_1, e_2, \dots, e_n\}$に対する双対基底を$\{\theta^1, \theta^2, \dots, \theta^n\}$とおく。つまり
-	\[\theta^i(e_j) = \delta^i_j\]
-である。
+	$A$の局所1パラメータ変換群$\{\phi_t\}$に対して$a_t = \phi_t(e) = \exp tX$とおく。$R_{a_t}: u \mapsto ua_t$が引き起こすベクトル場を基本ベクトル場$A*$という。
+	$a \in G$に対して
+		\[ad(a): x \in \mathfrak{g} \mapsto axa^{-1} \in \mathfrak{g}\]
+	を随伴表現という。
+	\begin{dfn}{接続形式}
+		1次微分形式$\omega: T_u(P) \rightarrow \mathfrak{g}$であって、
+		\begin{enumerate}
+			\item $\omega(A*) = A$
+			\item $\omega(dR_a(X)) = ad(a^{-1})(\omega(X))$
+		\end{enumerate}
+		を満たすものを接続形式(connection form)と呼ぶ。
+	\end{dfn}
 
-\begin{dfn}{接続形式}
-		\[\nabla_Xs_i = \sum_j \omega^j_i(X)s_j\]
-	標構$\{e_1, e_2, \dots, e_n\}$に対して
-		\[\nabla_{e_i}e_j = \sum_k \omega^k_j(e_i)e_j\]
-	となる1次微分形式$\omega: T_p(M) \rightarrow \mathfrak{g}$を接続形式(connection form)と呼ぶ。
-\end{dfn}
-\begin{dfn}{曲率形式}
-	接続形式$\omega$に対して、その共変外微分
-		\[\Omega = D\omega = d\omega + \omega \wedge \omega\]
-	で定義される2次微分形式$\Omega: T_p(M) \times T_p(M) \rightarrow \mathfrak{g}$を曲率形式(curvature form)と呼ぶ。
-\end{dfn}
+	\begin{dfn}{曲率形式}
+		接続形式$\omega$に対して、その共変外微分
+			\[\Omega = D\omega = d\omega + \omega \wedge \omega\]
+		で定義される2次微分形式$\Omega: T_u(P) \times T_u(P) \rightarrow \mathfrak{g}$を曲率形式(curvature form)と呼ぶ。
+	\end{dfn}
+	% \begin{proof}
+	% 	(1)$X, Y \in H_u$のとき
+	% 	$\omega(X) = \omega(Y) = 0$より$\Omega(X, Y) = d\omega(X, Y)$は定義そのもの。
+	% 	(2)$X = A*, Y = B*(A, B \in \mathfrak{g})$のとき
+	% 	\begin{align*}
+	% 		d\omega(A*, B*)
+	% 		&= \frac{1}{2}(A*\omega(B*) - B*\omega(A*) - \omega([A*, B*]))\\
+	% 		&= \frac{1}{2}(A*B - B*A - [A, B]) = 0\\
+	% 		d\omega(A*, B*) + \frac{1}{2}(\omega(A*)\omega(B*) - \omega(B*)\omega(A*)) = 0\\
+	% 		\Omega(A*, B*) = 0\\
+	% 	\end{align*}
+	% 	(3)$X \in H_u, Y = A*(A \in \mathfrak{g})$
+	% 	\begin{align*}
+	% 		d\omega(X, A*)
+	% 		&= \frac{1}{2}(X\omega(A*) - A*\omega(X) - \omega([X, A*]))\\
+	% 		&= XA - A*\omega(X) - \omega([X, A*])\\
+	% 		&= A*\omega(X)
+	% 	\end{align*}
+	% \end{proof}
 
-\begin{dfn}{持ち上げ}
-	$M$上の曲線$\tau = \{x(t) \mid 0 \leq t \leq 1\}$に対して$P$上の曲線$\tau^{*} = \{u(t) \mid 0 \leq t \leq 1\}$が
-	\begin{enumerate}
-		\item $\tau^{*}$の各点での接ベクトルは水平
-		\item $\pi(u(t)) = x(t)$
-	\end{enumerate}
-	を満たすとき持ち上げと呼ぶ。
-\end{dfn}
-\begin{thm}
-	$M$上の曲線$\tau = \{x(t) \mid 0 \leq t \leq 1\}$が与えられたとき、$\pi(u_0) = x(0)$となるような$u_0$に対して$u(0) = u_0$であるような持ち上げ$\tau^{*} = \{u(t) \mid 0 \leq t \leq 1\}$がただ一つ存在する。
-\end{thm}
-\begin{thm}
-	リー群$G$、リー環$\mathfrak{g}$として、$\mathfrak{g}$を$e$における接空間と同一視する。$\mathfrak{g}$上の曲線$Y(t)(0 \leq t \leq 1)$が与えられたとき、$G$上の曲線$a(t)(0 \leq t \leq 1)$であって、
-	\begin{align*}
-		a'(t)a(t)^{-1} = Y(t)\\
-		a(0) = e
-	\end{align*}
-	を満たすものがただ一つ存在する。
-\end{thm}
+	% $\omega$は1次微分形式なので、水平ベクトル場$X, Y$に関して
+	% 	\[2d\omega(X, Y) = X\omega(Y) - Y\omega(X) - \omega([X, Y])\]
+	% $\omega = \alpha dx$なら
+	% \begin{align*}
+	% 	2d\omega(X, Y)
+	% 	&= 2d\alpha \wedge dx(X, Y) = d\alpha(X)dx(Y) - d\alpha(Y)dx(X)\\
+	% 	&= X\alpha dx(Y) - Y\alpha dx(X)\\
+	% 	&= X(\alpha dx(Y)) - Y(\alpha dx(X)) - \alpha X(dx(Y)) + \alpha Y(dx(X))\\
+	% 	&= X(\alpha dx(Y)) - Y(\alpha dx(X)) - (\alpha dx(XY) - \alpha dx(YX))\\
+	% 	&= X\omega(Y) - Y\omega(X) - \omega([X, Y])\\
+	% \end{align*}
+
+	% 	\[2\Omega(X, Y) = 2d\omega(X, Y) = -\omega([X, Y])\]
+
+% \begin{dfn}{持ち上げ}
+% 	$M$上の曲線$\tau = \{x(t) \mid 0 \leq t \leq 1\}$に対して$P$上の曲線$\tau^{*} = \{u(t) \mid 0 \leq t \leq 1\}$が
+% 	\begin{enumerate}
+% 		\item $\tau^{*}$の各点での接ベクトルは水平
+% 		\item $\pi(u(t)) = x(t)$
+% 	\end{enumerate}
+% 	を満たすとき持ち上げと呼ぶ。
+% \end{dfn}
+% \begin{thm}
+% 	$M$上の曲線$\tau = \{x(t) \mid 0 \leq t \leq 1\}$が与えられたとき、$\pi(u_0) = x(0)$となるような$u_0$に対して$u(0) = u_0$であるような持ち上げ$\tau^{*} = \{u(t) \mid 0 \leq t \leq 1\}$がただ一つ存在する。
+% \end{thm}
+% \begin{thm}
+% 	リー群$G$、リー環$\mathfrak{g}$として、$\mathfrak{g}$を$e$における接空間と同一視する。$\mathfrak{g}$上の曲線$Y(t)(0 \leq t \leq 1)$が与えられたとき、$G$上の曲線$a(t)(0 \leq t \leq 1)$であって、
+% 	\begin{align*}
+% 		a'(t)a(t)^{-1} = Y(t)\\
+% 		a(0) = e
+% 	\end{align*}
+% 	を満たすものがただ一つ存在する。
+% \end{thm}
