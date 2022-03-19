@@ -1,8 +1,19 @@
 \part{アフィン接続}
 
-$n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接$n$枠束$L(M)$を考える。$u \in L(M)$は線形同型写像
-	\[u: \R^n \rightarrow T_p(M) (p = \pi(u))\]
-を定める。主ファイバー束$P = L(M)$の接続をアフィン接続という。
+\section{アフィン接続}
+	\begin{dfn}{接$n$枠束(frame bundle)}
+		$n$次元多様体$M$の点$p$における接$n$枠とは、接空間$T_p(M)$の基底のことである。$M$の全ての点における接$n$枠の全体を$L(M)$と書く。点$p$における接$n$枠を$u = (X_1, X_2, \dots, X_n)$としたとき、射影を
+			\[\pi: u \in L(M) \mapsto p \in M\]
+		によって定義する。$a \in GL(n, \R)$に対して
+		\begin{gather*}
+			ua = (Y_1, Y_2, \dots, Y_n)\\
+			Y_i = \sum_j a_i^jX_j\\
+		\end{gather*}
+		とすると$L(M)$は主ファイバー束となる。また$u$を線形同型写像$u: (a_1, a_2, \dots, a_n) \in \R^n \mapsto a_1X_1 + a_2X_2 + \dots + a_nX_n \in T_p(M)$と考えることもできる。
+	\end{dfn}
+	$p \in M$のファイバーは$T_p(M)$の基底全体の集合となる。
+
+	$n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接$n$枠束$L(M)$を考える。主ファイバー束$P = L(M)$の接続をアフィン接続という。
 
 \section{共変微分}
 	ユークリッド空間の点$p$において、$X(p)$に沿ったベクトル場$Y$の方向微分とは
@@ -13,9 +24,10 @@ $n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接
 		\begin{enumerate}
 			\item $\nabla_X(Y_1 + Y_2) = \nabla_XY_1 + \nabla_XY_2$
 			\item $\nabla_{X_1 + X_2}(Y) = \nabla_{X_1}Y + \nabla_{X_2}Y$
-			\item $\nabla_{fX} = f\nabla_XY$
+			\item $\nabla_{fX}Y = f\nabla_XY$
 			\item $\nabla_X(fY) = (Xf)Y + f\nabla_XY$
 		\end{enumerate}
+		ただし$f \in \mathfrak{X}(M)$である。
 	\end{dfn}
 	\begin{thm}
 		多様体$M$と上の条件を満たす写像$\nabla$が与えられているとき、これを共変微分とするアフィン接続が存在する。
@@ -24,7 +36,7 @@ $n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接
 
 	座標系$\{x^i\}$を定めたとき$\nabla_{\pd{x^i}}Y$を単に$\nabla_iY$と書く。
 		\[\nabla_{\pd{x^i}}\pd{x^j} = \sum_k \Gamma^k_{ij}\pd{x^k}\]
-	となる$\Gamma^k_{ij}$を${\pd{x^i}}$に関する接続係数またはクリストッフェル記号という。$X = \sum X^i\pd{x^i}, Y = \sum Y^i\pd{x^i}$のとき
+	となる$\Gamma^k_{ij}$を座標系$\{x^i\}$に関する接続係数またはクリストッフェル記号という。$X = \sum X^i\pd{x^i}, Y = \sum Y^i\pd{x^i}$のとき
 	\begin{align*}
 		\nabla_XY &= \sum_i X^i\nabla_{\pd{x^i}}\(\sum_j Y^j\pd{x^j}\)\\
 		&= \sum_{i,j} X^i\nabla_{\pd{x^i}}\(Y^j\pd{x^j}\)\\
@@ -32,53 +44,94 @@ $n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接
 		&= \sum_{i,j} X^i\pd[Y^j]{x^i}\pd{x^j} + X^iY^j\sum_k \Gamma^k_{ij}\pd{x^k}\\
 	\end{align*}
 
+	可微分写像$f: M_1 \rightarrow M_2$に対して、可微分写像
+		\[X: p \in M_1 \mapsto X_p \in T(M_2)\]
+	であって、
+		\[\pi(X_p) = f(p)\]
+	を満たすようなものを$f$に沿うベクトル場という。$f$に沿うベクトル場全体を$\mathfrak{X}_f$で表す。
+
+	$M$がアフィン接続を持ち、共変微分$\nabla$が与えられているとする。写像
+		\[(X, Y) \in \mathfrak{X}(M) \times \mathfrak{X}_f \mapsto \nabla_XY \in \mathfrak{X}\]
+	で
+	\begin{enumerate}
+		\item $\nabla_{X_1 + X_2}Y = \nabla_{X_1}Y + \nabla_{X_2}Y$
+		\item $\nabla_{\phi X}Y = \phi\nabla_XY$
+		\item $\nabla_X(Y_1 + Y_2) = \nabla_XY_1 + \nabla_XY_2$
+		\item $\nabla_X{\phi Y} = (X\phi)Y + \phi\nabla_XY$
+	\end{enumerate}
+	を満たすものがただ一つ存在する。これを$f$に沿う共変微分という。
+
 \section{曲率と捩率}
 	\begin{dfn}{標準形式}
-		$u \in L(M), X \in T_p(L(M)), p = \pi(u)$に対して
-			\[\theta(X) = u^{-1}d\pi(X)\]
-		なる1次微分形式$\theta: L(M) \rightarrow \R^n$を標準形式(solder form)と呼ぶ。
+		1次微分形式$\theta: T_u(P) \rightarrow \R^n$であって、$u \in P, X \in T_u(P)$に対して
+			\[\theta(X) = u^{-1}(d\pi(X))\]
+		となるものを標準形式(solder form)と呼ぶ。
 	\end{dfn}
+	% $u = (e_1, e_2, \dots, e_n), X = d\pi^{-1}(a_1e_1 + a_2e_2 + \dots + a_ne_n)$なら
+	% 	\[\theta(X) = (a_1, a_2, \dots, a_n)\]
+	% となる。$\theta^i(e_j) = \delta^i_j$だから$\{\theta^i\}$は双対基底となる。
+
 	\begin{dfn}{捩率形式}
 		標準形式の共変外微分
 			\[\Theta = D\theta = d\theta + \omega \wedge \theta\]
-		で定義される2次微分形式$\Theta: L(M) \times L(M) \rightarrow \R^n$を捩率形式(torsion form)と呼ぶ。
+		で定義される2次微分形式$\Theta: T_u(P) \times T_u(P) \rightarrow \R^n$を捩率形式(torsion form)と呼ぶ。
 	\end{dfn}
 
 	アフィン接続の不変量として曲率と捩率がある。
 	\begin{dfn}{曲率テンソル}
-		ベクトル場$X, Y$に対して$(1, 3)$型テンソル場
+		$u \in P$、ベクトル場$X, Y, Z$に対して$(1, 3)$型テンソル場
 			\[R(X, Y)Z = u(2\Omega(\pi^{-1}(X), \pi^{-1}(Y))(u^{-1}(Z)))\]
 		を曲率テンソル場という。曲率テンソルまたは単に曲率ともいう。
 	\end{dfn}
-	共変微分を用いて表すと
+	% 共変微分を用いて表すと
+	% \begin{align*}
+	% 	R(X, Y)Z = \nabla_X\nabla_YZ - \nabla_Y\nabla_XZ - \nabla_[X, Y]Z\\
+	% \end{align*}
+	となる。実際
 	\begin{align*}
-		R(X, Y)Z = \nabla_X\nabla_YZ - \nabla_Y\nabla_XZ - \nabla_[X, Y]Z\\
+		R(fX, Y)Z
+		&= \nabla_{fX}\nabla_YZ - \nabla_Y\nabla_{fX}Z - \nabla_[fX, Y]Z\\
+		&= f\nabla_X\nabla_YZ - \nabla_Y(f\nabla_XZ) - \nabla_[fXY - Y(fX)]Z\\
+		&= f\nabla_X\nabla_YZ - Yf\nabla_XZ - f\nabla_Y\nabla_XZ - \nabla_[fXY - YfX - fYX]Z\\
+		&= f\nabla_X\nabla_YZ - Yf\nabla_XZ - f\nabla_Y\nabla_XZ - f\nabla_[XY - YX]Z + Yf\nabla_XZ\\
+		&= fR(X, Y)Z\\
 	\end{align*}
+	同様に
+		\[R(X, fY)Z = fR(X, Y)Z\]
+	また
+	\begin{align*}
+		R(X, Y)(fZ)
+		&= \nabla_X\nabla_Y(fZ) - \nabla_Y\nabla_X(fZ) - \nabla_[X, Y](fZ)\\
+		&= \nabla_X(YfZ + f\nabla_YZ) - \nabla_Y(XfZ + f\nabla_XZ) - ([X, Y]fZ + f\nabla_[X, Y]Z)\\
+		&= (XYfZ + Yf\nabla_XZ + Xf\nabla_YZ + f\nabla_X\nabla_YZ) - (YXfZ + Xf\nabla_YZ + Yf\nabla_XZ + f\nabla_Y\nabla_XZ) - ([X, Y]fZ + f\nabla_[X, Y]Z)\\
+		&= fR(X, Y)Z
+	\end{align*}
+	だから、$R(X, Y)Z$は多重線形写像つまりテンソルである。
+
 	\begin{dfn}{捩率テンソル}
-		ベクトル場$X, Y$に対して$(1, 2)$型テンソル場
-			\[T(X, Y) = u(2\Theta(\pi^{-1}(X), \pi^{-1}(Y)))\]
+		$u \in P$、ベクトル場$X, Y$に対して$(1, 2)$型テンソル場
+			\[T(X, Y)_u = u(2\Theta_u(\pi^{-1}(X), \pi^{-1}(Y)))\]
 		を捩率テンソル場という。捩率テンソルまたは単に捩率ともいう。
 	\end{dfn}
-
 	共変微分を用いて表すと
 	\begin{align*}
-		T(X, Y) &= u(2\Theta(\pi^{-1}(X), \pi^{-1}(Y)))\\
-		2\Theta(\pi^{-1}(X), \pi^{-1}(Y))
-		&= 2D\theta(\pi^{-1}(X), \pi^{-1}(Y))\\
-		&= 2d\theta()
-		\nabla_XY - \nabla_YX - [X, Y]
+		2\Theta(X*, Y*)
+		&= 2d\theta(X*, Y*) = X*\theta(Y*) - Y*\theta(X*) - \theta([X*, Y*])\\
+		&= \nabla_XY - \nabla_YX - \theta([X, Y]*)\\
+		T(X, Y)_u
+		&= u(2\Theta_u(\pi^{-1}(X), \pi^{-1}(Y)))\\
+		&= \nabla_XY - \nabla_YX - [X, Y]\\
 	\end{align*}
-	\begin{proof}
-		\begin{align*}
-			T(fX, Y) &= (\nabla_{fX}Y - \nabla_Y(fX)) - (fXY - YfX)\\
-			&= (f\nabla_XY - ((Yf)X + f\nabla_YX)) - (fXY - ((Yf)X + fYX))\\
-			&= f\nabla_XY - f\nabla_YX - f(XY - YX)\\
-			&= fT(X, Y)
-		\end{align*}
-		同様に
-			\[T(X, fY) = fT(X, Y)\]
-		だから、$T(X, Y)$は多重線形写像つまりテンソルである。
-	\end{proof}
+	となる。実際
+	\begin{align*}
+		T(fX, Y) &= (\nabla_{fX}Y - \nabla_Y(fX)) - (fXY - YfX)\\
+		&= (f\nabla_XY - ((Yf)X + f\nabla_YX)) - (fXY - ((Yf)X + fYX))\\
+		&= f\nabla_XY - f\nabla_YX - f(XY - YX)\\
+		&= fT(X, Y)
+	\end{align*}
+	同様に
+		\[T(X, fY) = fT(X, Y)\]
+	だから、$T(X, Y)$は双線形写像つまりテンソルである。
 
 	$R, T$の成分を接続係数を用いて表す。
 		\[R\(\pd{x^i}, \pd{x^j}\)\pd{x^k} = \sum_l R^l_{kij}\pd{x^l}\]
@@ -106,8 +159,10 @@ $n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接
 	\end{align*}
 	となる。$T^k_{ij} = - T^k_{ji}$が成り立つ。
 
-	曲率形式を曲率テンソルを用いて書くと
-	捩率形式を捩率テンソルを用いて書くと
+	% 曲率形式を曲率テンソルを用いて書くと
+	%	\[\Omega_i^j = \sum_{k,l}\frac{1}{2}R^j_{ikl}\theta^k \wedge \theta^l\]
+	% 捩率形式を捩率テンソルを用いて書くと
+	% 	\[\Theta^k = \sum_{i,j} T^k_{ij}\theta^i \wedge \theta^j\]
 
 \section{ビアンキの恒等式}
 	$K(X, Y, Z)$の巡回和を
@@ -122,21 +177,9 @@ $n$次元多様体$M$、構造群$GL(n, \R)$、主ファイバー束として接
 		が成り立つ。
 	\end{thm}
 
-\section{測地線}
+	% \begin{align*}
+	% 	D\Omega &= 0\\
+	% 	D\Theta &= \Omega \wedge \theta\\
+	% \end{align*}
 
-可微分写像$f: M_1 \rightarrow M_2$に対して、可微分写像
-	\[X: p \in M_1 \mapsto X_p \in T(M_2)\]
-であって、
-	\[\pi(X_p) = f(p)\]
-を満たすようなものを$f$に沿うベクトル場という。$f$に沿うベクトル場全体を$\mathfrak{X}_f$で表す。
-
-$M$がアフィン接続を持ち、共変微分$\nabla$が与えられているとする。写像
-	\[(X, Y) \in \mathfrak{X}(M) \times \mathfrak{X}_f \mapsto \nabla_XY \in \mathfrak{X}\]
-で
-\begin{enumerate}
-	\item $\nabla_{X_1 + X_2}Y = \nabla_{X_1}Y + \nabla_{X_2}Y$
-	\item $\nabla_{\phi X}Y = \phi\nabla_XY$
-	\item $\nabla_X(Y_1 + Y_2) = \nabla_XY_1 + \nabla_XY_2$
-	\item $\nabla_X{\phi Y} = (X\phi)Y + \phi\nabla_XY$
-\end{enumerate}
-を満たすものがただ一つ存在する。これを$f$に沿う共変微分という。
+% \section{測地線}
