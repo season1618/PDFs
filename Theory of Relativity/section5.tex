@@ -1,202 +1,207 @@
-    \section{物理法則の共変形式}
-        マクスウェル方程式がローレンツ変換で不変であることがわかり、力学は修正を迫られることになった。この章では20世紀以前の物理学を共変形式に書き直すことを行う。
-        \subsection{ニュートンの運動方程式}
-            ニュートンの運動方程式は$\di[p]{t} = F$である。$p$は四元運動量として良いが、時間で微分すればローレンツ変換したときに形式が変わってしまう。そこで四元力というものを次のように定義する。
-                \[f^i = \di[p^i]{\tau}\]
-            これが相対論における運動方程式である。速度が十分小さいときは四元力はニュートン力学での力と一致する。これを観測者の座標で書き換えるとかなり複雑になる。
-            \begin{align*}
-                f &= \di[p]{\tau} = \ga m\di[u]{t}\\
-                &= \ga m\lr{\ga \di[(c,v)]{t}+\di[\ga]{t}(c,v)}\\
-                \intertext{である。}
-                \di{t}\lr{1-\frac{v^2}{c^2}}^{-\rec{2}}
-                &= -\rec{2}\lr{1-\frac{v^2}{c^2}}^{-\frac{3}{2}}\cdot
-                -\rec{c^2}\di[v^2]{t}\\
-                &= \frac{\ga^3}{c^2}\di[v^2/2]{t}
-            \end{align*}
-            より、
-            \begin{align*}
-                f^0 &= \ga m\frac{\ga^3}{c^2}\di[v^2/2]{t}c
-                = \frac{\ga^4}{c}\di{t}\lr{\rec{2}mv^2}\\
-                &= \ga^4\di{t}\frac{E}{c}\\
-                f^i &= \ga m\lr{\ga \di[v^i]{t}
-                +\frac{\ga^3}{c^2}\di[v^2/2]{t}v^i}\\
-                &= \ga^2\di[p^i]{t}
-                +\frac{\ga^4}{c^2}\di{t}\lr{\rec{2}mv^2}v^i\\
-                &= \ga^2\di[p^i]{t}+\ga^4\di{t}
-                \frac{E}{c}\cdot \frac{v^i}{c}\ (i=1,2,3)\\
-            \end{align*}
-        \subsection{変分原理}
-            古典的な解析力学において変分原理とは、物体は、ラグランジアンを$L$、時間を$t$として、作用
-                \[S = \int_{t_1}^{t_2} L(x^i,v^i,t)dt\]
-            を極小にするような軌道をとるというものだった。作用が極小になるような物体の軌道はオイラー・ラグランジュ方程式
-                \[\di{t}\pd[L]{v^i}-\pd[L]{x^i} = 0\]
-            で与えられ、座標に依存しない形式である。これを固有時をパラメータとしたものに書き換える。$Lをx^i,u^i,\tau$の関数として、作用を固有時による積分で表す。ここで$L$はスカラー量となる。つまり、
-                \[S = \int_{\tau_1}^{\tau_2} L(x^i,u^i,\tau)d\tau\]
-            として、これを極小とするような軌道は
-                \[\di{\tau}\pd[L]{u^i}-\pd[L]{x^i} = 0\]
-            となる。尚作用は、時間をパラメータとしたものでも固有時をパラメータとしたものでも良い。それぞれのラグランジアンと運動方程式で計算した結果は同じになる。
-            \subsubsection{自由粒子のラグランジアン}
-                古典力学において自由粒子のラグランジアンは$L=\rec{2}mv^2$であった。運動エネルギーがそのままラグランジアンとなっていたので、相対論的な粒子のラグランジアンとして、最初に$\ga mc^2$が考えられるが、これではうまくいかない。ここで$L_m(x,v,t) = -mc^2\sqrt{1-v^2/c^2}$としてみる。テイラー展開すると、$-mc^2+\rec{2}mv^2$なので、非相対論的極限でニュートン力学と一致する。これを共変形式に書き直すと、
-                \begin{align*}
-                    S &= -\int mc^2\sqrt{1-\frac{v^2}{c^2}}dt\\
-                    &= -\int mc\mlr{\lr{\di[x^0]{t}}^2-\lr{\di[x^\mu]{t}}^2}^{1/2}dt\\
-                    &= -\int mc\mlr{-\eta_{ij}\di[x^i]{t}\di[x^j]{t}}^{1/2}dt\\
-                    \intertext{$dt=(dt/d\tau)d\tau$より、}
-                    &= -\int mc\mlr{-\eta_{ij}\di[x^i]{\tau}\di[x^j]{\tau}}^{1/2}d\tau
-                \end{align*}
-                ここで自由粒子のラグランジアンを
-                    \[L_m(x,u,\tau) = -mc\sqrt{-\eta_{ij}u^iu^j}\]
-                とすると、
-                \begin{align*}
-                    \pd[L_m]{u^i} &= -mc\cdot \rec{2}
-                    (-\eta_{ij}u^iu^j)^{-1/2}\cdot -2\eta_{ij}u^j\\
-                    &= mu_i\\
-                    \pd[L_m]{x^i} &= 0
-                \end{align*}
-                反変ベクトルに直して、
-                    \[\di[p^i]{\tau} = 0\]
-                となり、運動方程式が導かれる。\\
-                $L_m$は複雑に見えるが、$(cd\tau)^2 = -\eta_{ij}x^ix^j$なので、
-                    \[\delta S = -mc^2\int d\tau = 0\]
-                である。つまり物体は固有時が極大となるような軌道をとるということである。\\このラグランジアンは天下り的な導入だったが、筋の通る説明をすることができる。時間
-                $t$をパラメータとして、ハミルトニアンを求めると、
-                \begin{align*}
-                    H_m &= \ga mv\cdot v-L_m = \ga mv^2+mc^2\rec{\ga}\\
-                    &= \ga mc^2\mlr{\frac{v^2}{c^2}+\lr{1-\frac{v^2}{c^2}}}\\
-                    &= \ga mc^2
-                \end{align*}
-                と、粒子の全エネルギーになる。
-        \subsection{マクスウェル方程式}
-            電磁場形式のマクスウェル方程式は
-            \begin{gather*}
-                \dive E = \frac{\rho}{\epsilon_0}\\
-                \rot B-\rec{c^2}\pd[E]{t} = \mu_0 i\\
-                \dive B = 0\\
-                \rot E+\pd[B]{t} = 0
-            \end{gather*}
-            で表される。これを共変であることが分かりやすいように書き直す。まず第一式と第二式を展開する。
-            \begin{gather*}
-                \pa\cdot (0,E_x,E_y,E_z) = \frac{\rho}{\epsilon_0}\\
-                \pa\cdot (-E_x/c,0,B_z,-B_y) = \mu_0i_x\\
-                \pa\cdot (-E_y/c,-B_z,0,B_x) = \mu_0i_y\\
-                \pa\cdot (-E_z/c,B_y,-B_X,0) = \mu_0i_z\\
-            \end{gather*}
-            次に第三式と第四式を展開して、
-            \begin{gather*}
-                \pa\cdot (0,B_x,B_y,B_z) = 0\\
-                \pa\cdot (-B_x,0,E_z/c,-E_y/c) = 0\\
-                \pa\cdot (-B_y,-E_z/c,0,E_x/c) = 0\\
-                \pa\cdot (-B_z,E_y/c,-E_x/c,0) = 0
-            \end{gather*}
-            ここで、
-            \begin{gather*}
-                F^{\mu\nu} = \pmat{
-                    0&E_x/c&E_y/c&E_z/c\\
-                    -E_x/c&0&B_z&-B_y\\
-                    -E_y/c&-B_z&0&B_x\\
-                    -E_z/c&B_y&-B_x&0
-                    }\\
-                G^{\mu\nu} = \pmat{
-                    0&B_x&B_y&B_z\\
-                    -B_x&0&E_z/c&-E_y/c\\
-                    -B_y&-E_z/c&0&E_x/c\\
-                    -B_z&E_y/c&-E_x/c&0
-                    }\\
-                j^\mu = (\rho c,i_x,i_y,i_z)\\
-                \intertext{とすれば、}
-                \pa_\nu F^{\mu\nu} = \mu_0 j^\mu\\
-                \pa_\nu G^{\mu\nu} = 0
-            \end{gather*}
-            となる。$F^{\mu\nu}$を電磁テンソル、$j^\mu$を四元電流密度という。ちなみに第二式の右辺の0ベクトルはスカラーだが、これは同時に反変ベクトル、共変ベクトルである。従って形式を整えるために$G^{\mu\nu}$も二階反変テンソルとした。$F^{\mu\nu}$とミンコフスキー計量で縮約をとり共変テンソルにすると、
-            \begin{align*}
-                F_{ab} &= \eta_{\mu a}\eta_{\mu b}F^{\mu\nu}
-                = \eta_{aa}\eta_{bb}F^{ab}\\
-                &=\pmat{
-                    0&-E_x/c&-E_y/c&-E_z/c\\
-                    E_x/c&0&B_z&-B_y\\
-                    E_y/c&-B_z&0&B_x\\
-                    E_z/c&B_y&-B_x&0
-                }
-            \end{align*}
-            これを用いて$G^{\mu\nu}$を書き直すと、
-                \[
-                G^{\mu\nu} = \pmat{
-                    0&-F_{23}&-F_{31}&-F_{12}\\
-                    F_{23}&0&F_{30}&F_{02}\\
-                    -F_{13}&-F_{30}&0&-F_{01}\\
-                    F_{12}&F_{20}&F_{01}&0
-                    }
-                \]
-            となる。従って、
-            \begin{align*}
-                \pa_{\nu}F^{\mu\nu} &= \mu_0 j^\mu\\
-                \pa_\rho F_{\mu\nu}+\pa_\mu F_{\nu\rho}
-                +\pa_\nu F_{\rho\mu} &= 0\ (Bianchの恒等式)
-            \end{align*}
-            である(第二式は添え字が重なる場合も成り立つ)。\\
+\section{物理法則の共変形式}
+マクスウェル方程式がローレンツ変換で不変であることがわかり、力学は修正を迫られることになった。この章では20世紀以前の物理学を共変形式に書き直すことを行う。
 
-            次に電磁ポテンシャル形式のマクスウェル方程式は
-            \begin{gather*}
-                \square A-\grad
-                \lr{\dive A+\rec{c^2}\pd[\phi]{t}} = -\mu_0i\\
-                \Delta\phi + \dive\pd[A]{t} = -\frac{\rho}{\epsilon_0}\\
-            \end{gather*}
-            である。第一式の$\grad$の中身を見れば、新たに$A=(\phi/c,A_x,A_y,A_z)$とすれば良いとわかる。$A$を四元ポテンシャルという。すると第一式は
-                \[\square A^\mu-\pa^\mu\pa_\nu A^\nu
-                = -\mu_0j^\mu\ (\mu = 1,2,3)\]
-            となる。また第二式を
-            \begin{align*}
-                \lr{\Delta-\rec{c^2}\pd[^2]{t^2}}\phi
-                +\pd{t}\lr{\dive A+\rec{c^2}\pd[\phi]{t}}
-                &= -\frac{\rho}{\epsilon_0}\\
-                \square \phi + \pd{t}\pa_\nu A^\nu
-                &= -\frac{\phi}{\epsilon_0}\\
-                \square A^0 - \pa^0\pa_\nu A^\nu &= -\mu_0j^0
-            \end{align*}
-            二つの式をまとめれば、
-                \[\square A^\mu-\pa^\mu\pa_\nu A^\nu = -\mu_0j^\mu\]
-            である。この式を
-                \[\pa_\nu(\pa^\mu A^\nu-\pa^\nu A^\mu) = \mu_0j^\mu\]
-            と書いて、先ほどの電磁テンソルの式と比較すれば、$F^{\mu\nu} = \pa^\mu A^\nu-\pa^\nu A^\mu+X^{\mu\nu}$だが、$X^{\mu\nu}=0$となることが分かるので、
-            \begin{gather*}
-                F^{\mu\nu} = \pa^\mu A^\nu-\pa^\nu A^\mu\\
-                F_{\mu\nu} = \pa_\mu A_\nu-\pa_\nu A_\mu
-            \end{gather*}
-            となる。$F_{\mu\nu}$は無条件にBianchの恒等式を満たすことがわかる。\\
+\subsection{ニュートンの運動方程式}
+    ニュートンの運動方程式は$\di[p]{t} = F$である。$p$は四元運動量として良いが、時間で微分すればローレンツ変換したときに形式が変わってしまう。そこで四元力というものを次のように定義する。
+        \[f^i = \di[p^i]{\tau}\]
+    これが相対論における運動方程式である。速度が十分小さいときは四元力はニュートン力学での力と一致する。これを観測者の座標で書き換えるとかなり複雑になる。
+    \begin{align*}
+        f &= \di[p]{\tau} = \ga m\di[u]{t}\\
+        &= \ga m\lr{\ga \di[(c,v)]{t}+\di[\ga]{t}(c,v)}\\
+        \intertext{である。}
+        \di{t}\lr{1-\frac{v^2}{c^2}}^{-\rec{2}}
+        &= -\rec{2}\lr{1-\frac{v^2}{c^2}}^{-\frac{3}{2}}\cdot
+        -\rec{c^2}\di[v^2]{t}\\
+        &= \frac{\ga^3}{c^2}\di[v^2/2]{t}
+    \end{align*}
+    より、
+    \begin{align*}
+        f^0 &= \ga m\frac{\ga^3}{c^2}\di[v^2/2]{t}c
+        = \frac{\ga^4}{c}\di{t}\lr{\rec{2}mv^2}\\
+        &= \ga^4\di{t}\frac{E}{c}\\
+        f^i &= \ga m\lr{\ga \di[v^i]{t}
+        +\frac{\ga^3}{c^2}\di[v^2/2]{t}v^i}\\
+        &= \ga^2\di[p^i]{t}
+        +\frac{\ga^4}{c^2}\di{t}\lr{\rec{2}mv^2}v^i\\
+        &= \ga^2\di[p^i]{t}+\ga^4\di{t}
+        \frac{E}{c}\cdot \frac{v^i}{c}\ (i=1,2,3)\\
+    \end{align*}
 
-            マクスウェル方程式を導くラグランジアン密度$\mathcal{L}$は、電磁場の項$\mathcal{L}_{em}$と物質による項$\mathcal{L}_{int}$に分かれる。ここで$\mathcal{L}_{em}=-\rec{4\mu_0}F^{\mu\nu}F_{\mu\nu},\mathcal{L}_{em}=A^{\mu}j_{\mu}$とする。$F^{\mu\nu}F_{\mu\nu}=\eta_{\mu a}\eta_{\nu b}F^{\mu\nu}F^{ab}$なので、
-            \begin{align*}
-                \pd{x^i}\pd[\mathcal{L}_{em}]{(\pa_iA^j)}-\pd[\mathcal{L}_{em}]{A^j}
-                &= -\rec{2\mu_0}\eta_{\mu a}\eta_{\nu b}F^{ab}\pd{x^i}\pd[(\pa^\mu A^\nu-\pa^\nu A^\mu)]{(\pa_iA^j)}\\
-                \intertext{電磁テンソルの偏微分が0にならないのは$(\mu,\nu)=(i,j),(j,i)$の時なので、}
-                &= -\rec{2\mu_0}\pd{x^i}(\eta_{ia}\eta_{jb}F^{ab}-\eta_{ja}\eta_{ib}F^{ab})\\
-                &= -\rec{2\mu_0}\pd{x^i}(F_{ij}-F_{ji})\\
-                &= -\rec{\mu_0}\pd[F_{ij}]{x^i}\\
-                \pd{x^i}\pd[\mathcal{L}_{int}]{(\pa_iA^j)}-\pd[\mathcal{L}_{int}]{A^j}
-                &= -\pd[A^{\mu}j_{\mu}]{A^j}\\
-                &= -j_j\\
-            \end{align*}
-            辺々足せば、
-                \[\pd[F_{ij}]{x^i} = -\mu_0j_j\]
-            となるので、
-                \[\mathcal{L} = \mathcal{L}_{em}+\mathcal{L}_{int} = -\rec{4\mu_0}F^{\mu\nu}F_{\mu\nu}+A^{\mu}j_{\mu}\]
-            である。
-        \subsection{ローレンツ力}
-            ローレンツ力は電磁気学の中でも力学と接点を持つ概念なので、運動方程式と同様修正する必要がある。
-                \[F = e(E+v\times B)\]
-            を展開すると、
-            \[
-                \pmat{F_x\\F_y\\F_z}
-                = \pmat{
-                    -E_x/c & 0 & B_z & -B_y\\
-                    -E_y/c & -B_z & 0 & B_x\\
-                    -E_z/c & B_y & -B_x & 0}
-                \pmat{-c\\v_x\\v_y\\v_z}
-            \]
-            となる。中央の行列は電磁テンソルと1,2,3行成分が一致している。これに0行目を追加する。さらに両辺に$\ga$を掛けると左辺は四元力、右辺のベクトルは四元速度となるので、
-                \[f^\mu = F^{\mu\nu}u_\nu\]
-            である。\\
+\subsection{変分原理}
+    古典的な解析力学において変分原理とは、物体は、ラグランジアンを$L$、時間を$t$として、作用
+        \[S = \int_{t_1}^{t_2} L(x^i,v^i,t)dt\]
+    を極小にするような軌道をとるというものだった。作用が極小になるような物体の軌道はオイラー・ラグランジュ方程式
+        \[\di{t}\pd[L]{v^i}-\pd[L]{x^i} = 0\]
+    で与えられ、座標に依存しない形式である。これを固有時をパラメータとしたものに書き換える。$Lをx^i,u^i,\tau$の関数として、作用を固有時による積分で表す。ここで$L$はスカラー量となる。つまり、
+        \[S = \int_{\tau_1}^{\tau_2} L(x^i,u^i,\tau)d\tau\]
+    として、これを極小とするような軌道は
+        \[\di{\tau}\pd[L]{u^i}-\pd[L]{x^i} = 0\]
+    となる。尚作用は、時間をパラメータとしたものでも固有時をパラメータとしたものでも良い。それぞれのラグランジアンと運動方程式で計算した結果は同じになる。
 
-            また荷電粒子のラグランジアンは電磁ポテンシャルで表すと$-e(\phi-v\cdot A)$であった。これを四元ポテンシャルで表すと、$ev^\mu A_\mu$である。ローレンツ力を四元力に拡張した結果、元より$\ga$倍されたので、ラグランジアンも$\ga$倍して、
-                \[L_{int} = eu^\mu A_\mu\]
-            となる。
+    \subsubsection{自由粒子のラグランジアン}
+        古典力学において自由粒子のラグランジアンは$L=\rec{2}mv^2$であった。運動エネルギーがそのままラグランジアンとなっていたので、相対論的な粒子のラグランジアンとして、最初に$\ga mc^2$が考えられるが、これではうまくいかない。ここで$L_m(x,v,t) = -mc^2\sqrt{1-v^2/c^2}$としてみる。テイラー展開すると、$-mc^2+\rec{2}mv^2$なので、非相対論的極限でニュートン力学と一致する。これを共変形式に書き直すと、
+        \begin{align*}
+            S &= -\int mc^2\sqrt{1-\frac{v^2}{c^2}}dt\\
+            &= -\int mc\mlr{\lr{\di[x^0]{t}}^2-\lr{\di[x^\mu]{t}}^2}^{1/2}dt\\
+            &= -\int mc\mlr{-\eta_{ij}\di[x^i]{t}\di[x^j]{t}}^{1/2}dt\\
+            \intertext{$dt=(dt/d\tau)d\tau$より、}
+            &= -\int mc\mlr{-\eta_{ij}\di[x^i]{\tau}\di[x^j]{\tau}}^{1/2}d\tau
+        \end{align*}
+        ここで自由粒子のラグランジアンを
+            \[L_m(x,u,\tau) = -mc\sqrt{-\eta_{ij}u^iu^j}\]
+        とすると、
+        \begin{align*}
+            \pd[L_m]{u^i} &= -mc\cdot \rec{2}
+            (-\eta_{ij}u^iu^j)^{-1/2}\cdot -2\eta_{ij}u^j\\
+            &= mu_i\\
+            \pd[L_m]{x^i} &= 0
+        \end{align*}
+        反変ベクトルに直して、
+            \[\di[p^i]{\tau} = 0\]
+        となり、運動方程式が導かれる。\\
+        $L_m$は複雑に見えるが、$(cd\tau)^2 = -\eta_{ij}x^ix^j$なので、
+            \[\delta S = -mc^2\int d\tau = 0\]
+        である。つまり物体は固有時が極大となるような軌道をとるということである。\\このラグランジアンは天下り的な導入だったが、筋の通る説明をすることができる。時間
+        $t$をパラメータとして、ハミルトニアンを求めると、
+        \begin{align*}
+            H_m &= \ga mv\cdot v-L_m = \ga mv^2+mc^2\rec{\ga}\\
+            &= \ga mc^2\mlr{\frac{v^2}{c^2}+\lr{1-\frac{v^2}{c^2}}}\\
+            &= \ga mc^2
+        \end{align*}
+        と、粒子の全エネルギーになる。
+
+\subsection{マクスウェル方程式}
+    電磁場形式のマクスウェル方程式は
+    \begin{gather*}
+        \dive E = \frac{\rho}{\epsilon_0}\\
+        \rot B-\rec{c^2}\pd[E]{t} = \mu_0 i\\
+        \dive B = 0\\
+        \rot E+\pd[B]{t} = 0
+    \end{gather*}
+    で表される。これを共変であることが分かりやすいように書き直す。まず第一式と第二式を展開する。
+    \begin{gather*}
+        \pa\cdot (0,E_x,E_y,E_z) = \frac{\rho}{\epsilon_0}\\
+        \pa\cdot (-E_x/c,0,B_z,-B_y) = \mu_0i_x\\
+        \pa\cdot (-E_y/c,-B_z,0,B_x) = \mu_0i_y\\
+        \pa\cdot (-E_z/c,B_y,-B_X,0) = \mu_0i_z\\
+    \end{gather*}
+    次に第三式と第四式を展開して、
+    \begin{gather*}
+        \pa\cdot (0,B_x,B_y,B_z) = 0\\
+        \pa\cdot (-B_x,0,E_z/c,-E_y/c) = 0\\
+        \pa\cdot (-B_y,-E_z/c,0,E_x/c) = 0\\
+        \pa\cdot (-B_z,E_y/c,-E_x/c,0) = 0
+    \end{gather*}
+    ここで、
+    \begin{gather*}
+        F^{\mu\nu} = \pmat{
+            0&E_x/c&E_y/c&E_z/c\\
+            -E_x/c&0&B_z&-B_y\\
+            -E_y/c&-B_z&0&B_x\\
+            -E_z/c&B_y&-B_x&0
+            }\\
+        G^{\mu\nu} = \pmat{
+            0&B_x&B_y&B_z\\
+            -B_x&0&E_z/c&-E_y/c\\
+            -B_y&-E_z/c&0&E_x/c\\
+            -B_z&E_y/c&-E_x/c&0
+            }\\
+        j^\mu = (\rho c,i_x,i_y,i_z)\\
+        \intertext{とすれば、}
+        \pa_\nu F^{\mu\nu} = \mu_0 j^\mu\\
+        \pa_\nu G^{\mu\nu} = 0
+    \end{gather*}
+    となる。$F^{\mu\nu}$を電磁テンソル、$j^\mu$を四元電流密度という。ちなみに第二式の右辺の0ベクトルはスカラーだが、これは同時に反変ベクトル、共変ベクトルである。従って形式を整えるために$G^{\mu\nu}$も二階反変テンソルとした。$F^{\mu\nu}$とミンコフスキー計量で縮約をとり共変テンソルにすると、
+    \begin{align*}
+        F_{ab} &= \eta_{\mu a}\eta_{\mu b}F^{\mu\nu}
+        = \eta_{aa}\eta_{bb}F^{ab}\\
+        &=\pmat{
+            0&-E_x/c&-E_y/c&-E_z/c\\
+            E_x/c&0&B_z&-B_y\\
+            E_y/c&-B_z&0&B_x\\
+            E_z/c&B_y&-B_x&0
+        }
+    \end{align*}
+    これを用いて$G^{\mu\nu}$を書き直すと、
+        \[
+        G^{\mu\nu} = \pmat{
+            0&-F_{23}&-F_{31}&-F_{12}\\
+            F_{23}&0&F_{30}&F_{02}\\
+            -F_{13}&-F_{30}&0&-F_{01}\\
+            F_{12}&F_{20}&F_{01}&0
+            }
+        \]
+    となる。従って、
+    \begin{align*}
+        \pa_{\nu}F^{\mu\nu} &= \mu_0 j^\mu\\
+        \pa_\rho F_{\mu\nu}+\pa_\mu F_{\nu\rho}
+        +\pa_\nu F_{\rho\mu} &= 0\ (Bianchの恒等式)
+    \end{align*}
+    である(第二式は添え字が重なる場合も成り立つ)。
+
+    次に電磁ポテンシャル形式のマクスウェル方程式は
+    \begin{gather*}
+        \square A-\grad
+        \lr{\dive A+\rec{c^2}\pd[\phi]{t}} = -\mu_0i\\
+        \Delta\phi + \dive\pd[A]{t} = -\frac{\rho}{\epsilon_0}\\
+    \end{gather*}
+    である。第一式の$\grad$の中身を見れば、新たに$A=(\phi/c,A_x,A_y,A_z)$とすれば良いとわかる。$A$を四元ポテンシャルという。すると第一式は
+        \[\square A^\mu-\pa^\mu\pa_\nu A^\nu
+        = -\mu_0j^\mu\ (\mu = 1,2,3)\]
+    となる。また第二式を
+    \begin{align*}
+        \lr{\Delta-\rec{c^2}\pd[^2]{t^2}}\phi
+        +\pd{t}\lr{\dive A+\rec{c^2}\pd[\phi]{t}}
+        &= -\frac{\rho}{\epsilon_0}\\
+        \square \phi + \pd{t}\pa_\nu A^\nu
+        &= -\frac{\phi}{\epsilon_0}\\
+        \square A^0 - \pa^0\pa_\nu A^\nu &= -\mu_0j^0
+    \end{align*}
+    二つの式をまとめれば、
+        \[\square A^\mu-\pa^\mu\pa_\nu A^\nu = -\mu_0j^\mu\]
+    である。この式を
+        \[\pa_\nu(\pa^\mu A^\nu-\pa^\nu A^\mu) = \mu_0j^\mu\]
+    と書いて、先ほどの電磁テンソルの式と比較すれば、$F^{\mu\nu} = \pa^\mu A^\nu-\pa^\nu A^\mu+X^{\mu\nu}$だが、$X^{\mu\nu}=0$となることが分かるので、
+    \begin{gather*}
+        F^{\mu\nu} = \pa^\mu A^\nu-\pa^\nu A^\mu\\
+        F_{\mu\nu} = \pa_\mu A_\nu-\pa_\nu A_\mu
+    \end{gather*}
+    となる。$F_{\mu\nu}$は無条件にBianchの恒等式を満たすことがわかる。
+
+    マクスウェル方程式を導くラグランジアン密度$\mathcal{L}$は、電磁場の項$\mathcal{L}_{em}$と物質による項$\mathcal{L}_{int}$に分かれる。ここで$\mathcal{L}_{em}=-\rec{4\mu_0}F^{\mu\nu}F_{\mu\nu},\mathcal{L}_{em}=A^{\mu}j_{\mu}$とする。$F^{\mu\nu}F_{\mu\nu}=\eta_{\mu a}\eta_{\nu b}F^{\mu\nu}F^{ab}$なので、
+    \begin{align*}
+        \pd{x^i}\pd[\mathcal{L}_{em}]{(\pa_iA^j)}-\pd[\mathcal{L}_{em}]{A^j}
+        &= -\rec{2\mu_0}\eta_{\mu a}\eta_{\nu b}F^{ab}\pd{x^i}\pd[(\pa^\mu A^\nu-\pa^\nu A^\mu)]{(\pa_iA^j)}\\
+        \intertext{電磁テンソルの偏微分が0にならないのは$(\mu,\nu)=(i,j),(j,i)$の時なので、}
+        &= -\rec{2\mu_0}\pd{x^i}(\eta_{ia}\eta_{jb}F^{ab}-\eta_{ja}\eta_{ib}F^{ab})\\
+        &= -\rec{2\mu_0}\pd{x^i}(F_{ij}-F_{ji})\\
+        &= -\rec{\mu_0}\pd[F_{ij}]{x^i}\\
+        \pd{x^i}\pd[\mathcal{L}_{int}]{(\pa_iA^j)}-\pd[\mathcal{L}_{int}]{A^j}
+        &= -\pd[A^{\mu}j_{\mu}]{A^j}\\
+        &= -j_j\\
+    \end{align*}
+    辺々足せば、
+        \[\pd[F_{ij}]{x^i} = -\mu_0j_j\]
+    となるので、
+        \[\mathcal{L} = \mathcal{L}_{em}+\mathcal{L}_{int} = -\rec{4\mu_0}F^{\mu\nu}F_{\mu\nu}+A^{\mu}j_{\mu}\]
+    である。
+
+\subsection{ローレンツ力}
+    ローレンツ力は電磁気学の中でも力学と接点を持つ概念なので、運動方程式と同様修正する必要がある。
+        \[F = e(E+v\times B)\]
+    を展開すると、
+    \[
+        \pmat{F_x\\F_y\\F_z}
+        = \pmat{
+            -E_x/c & 0 & B_z & -B_y\\
+            -E_y/c & -B_z & 0 & B_x\\
+            -E_z/c & B_y & -B_x & 0}
+        \pmat{-c\\v_x\\v_y\\v_z}
+    \]
+    となる。中央の行列は電磁テンソルと1,2,3行成分が一致している。これに0行目を追加する。さらに両辺に$\ga$を掛けると左辺は四元力、右辺のベクトルは四元速度となるので、
+        \[f^\mu = F^{\mu\nu}u_\nu\]
+    である。
+
+    また荷電粒子のラグランジアンは電磁ポテンシャルで表すと$-e(\phi-v\cdot A)$であった。これを四元ポテンシャルで表すと、$ev^\mu A_\mu$である。ローレンツ力を四元力に拡張した結果、元より$\ga$倍されたので、ラグランジアンも$\ga$倍して、
+        \[L_{int} = eu^\mu A_\mu\]
+    となる。
